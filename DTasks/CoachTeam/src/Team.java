@@ -3,12 +3,13 @@ public class Team {
 	private String name;
 	private int numOfChampionships;
 	private Coach theCoach;
-
+	
 //============================================================================	
 	public Team (String name, int numOfChampionships) {
 		this.setName(name);
 		this.numOfChampionships =numOfChampionships;
 		setCoach(null);
+		
 	}
 //============================================================================
 	public String getName() {
@@ -37,9 +38,10 @@ public class Team {
 				theCoach.setTeam(null);
 			}
 		theCoach=newCoach;
+		
 		if(theCoach!=null) {
 			theCoach.setTeam(this);
-		}
+			}
 		}
 	}
 //============================================================================

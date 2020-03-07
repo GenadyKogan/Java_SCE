@@ -21,6 +21,7 @@ public class Coach {
 		this.name = name;
 	}
 	public void setTeam(Team newTeam) {
+		
 		if(theTeam!=newTeam) {
 			theTeam=newTeam;
 			if(theTeam!=null) {
