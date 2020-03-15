@@ -9,5 +9,6 @@ public class Program {
 		school.setHouseNember(90);
 		stud2.getHomeAddress().setHouseNember(30);
 		
+		
 	}
 }

@@ -26,7 +26,7 @@ public class Department {
 		else return false;
 	}
 	public String toString(){
-		StringBuffer str = new StringBuffer("Department '"+name+"' has"+ numOfEmployees+" employee"
+		StringBuffer str = new StringBuffer("Department '"+name+"' has "+ numOfEmployees+" employee"
 				+(numOfEmployees>1? "s": ""+":\n"));
 		for (int i=0; i<numOfEmployees;i++)
 			str.append((i+1)+"- "+allEmployees[i].toString()+"\n");

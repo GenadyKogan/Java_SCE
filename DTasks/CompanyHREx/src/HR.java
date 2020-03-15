@@ -12,12 +12,12 @@ public class HR {
 		numOfDepartments=0;
 	}
 //============================================================================		
-	public Employee[] getAllEmployees() {
+	/*public Employee[] getAllEmployees() {
 		return allEmployees;
-	}
-	public void setAllEmployees(Employee[] allEmployees) {
+	}*/
+	/*public void setAllEmployees(Employee[] allEmployees) {
 		this.allEmployees = allEmployees;
-	}
+	}*/
 	public int getNumOfEmployees() {
 		return numOfEmployees;
 	}

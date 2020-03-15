@@ -15,7 +15,7 @@ public class Student {
 		return homeAddress;
 	}
 	public void setHomeAddress(Address homeAddress) {
-		this.homeAddress = new Address(homeAddress);
+		this.homeAddress = homeAddress;
 	}
 	public Address getSchoolAddress() {
 		return schoolAddress;
