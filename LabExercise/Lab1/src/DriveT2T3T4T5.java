@@ -8,10 +8,10 @@ public class DriveT2T3T4T5 {
 		do {
 			System.out.println();
 			System.out.println("Choose one of the following options: ");
-			System.out.println("1) N elements of Fibonacci");
-			System.out.println("2) Max-Min digits of numbers");
-			System.out.println("3) First N prime numbers");
-			System.out.println("4) Convert decimal to binary");
+			System.out.println("1)(Task 2) N elements of Fibonacci");
+			System.out.println("2)(Task 3) Max-Min digits of numbers");
+			System.out.println("3)(Task 4) First N prime numbers");
+			System.out.println("4)(Task 5) Convert decimal to binary");
 			System.out.println(EXIT +") Exit");
 			System.out.println("Enter your choise --> ");
 			answer=s.nextInt();
