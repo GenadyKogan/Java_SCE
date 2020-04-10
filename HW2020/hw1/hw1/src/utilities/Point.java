@@ -16,9 +16,7 @@ public class Point {
 	/**
 	 * Default Ctor for a point sets x and y to be 0.
 	 */
-	public Point() {
-		this(0, 0);
-	}
+	
 
 	/**
 	 * Ctor for a point
@@ -26,8 +24,19 @@ public class Point {
 	 * @param y y position
 	 */
 	public Point(double x, double y) {
-		setX(x);
-		setY(y);
+		if(x<MIN_X||x>MAX_X) {
+			this.x=Math.random()*MAX_X;
+			System.out.print("The value "+x+" is illegal for X, therefore has been replaced with "+this.x+"\n");
+		}
+		if(y<MIN_Y||y>MAX_Y) {
+			this.y=Math.random()*MAX_Y;
+			System.out.print("The value "+y+" is illegal for Y, therefore has been replaced with "+this.y+"\n");
+		}
+			else{
+			setX(x);
+			setY(y);
+		}
+		System.out.print("Point (" + getX()+","+getY()+") has been created\n");
 	}
 
 	/**
@@ -48,7 +57,7 @@ public class Point {
 	 */
 	boolean setX(double x) {
 		if(x<MIN_X||x>MAX_X) {
-			this.x=Math.random()*MAX_X;
+			System.out.print("The value "+x+" is illegal for X\n");
 			return false;
 		}
 		else {
@@ -63,7 +72,7 @@ public class Point {
 	 */
 	boolean setY(double y) {
 		if(y<MIN_Y||y>MAX_Y) {
-			this.y=Math.random()*MAX_Y;
+			System.out.print("The value "+y+" is illegal for Y\n");
 			return false;
 		}
 		else {
@@ -89,7 +98,19 @@ public class Point {
 		return y;
 	}
 	//endregion
-
+	@Override
+	public String toString() {
+		return "(" + this.x + "," + this.y + ")\n";
+	}
+	public boolean equals(Object other) {
+		boolean ans=false;
+		if(other instanceof Point) {
+			ans=( getX() ==((Point)other).getX() &&  getY() ==((Point)other).getY());
+			return ans;
+		}
+		return false;
+		
+	}
 	/**
 	 * offset from the current point
 	 * @param xOffset offset at the x axis
@@ -100,8 +121,5 @@ public class Point {
 		return new Point(this.x+xOffset, this.y+yOffset);
 	}
 
-	@Override
-	public String toString() {
-		return "(" + this.x + "," + this.y + ")";
-	}
+	
 }

@@ -11,12 +11,11 @@ public class TestPoint {
 	private static void testPoint() {
 		
 		
-		Point A=new Point (2,5.5);
-		Point B=new Point(0,0);
-		B.setX(-2);
-		
+//		Point A=new Point (2,5.5);
+//		Point B=new Point(0,0);
 //		Point C=new Point (1000000,800);
-//		Point D=new Point (-1, 5);
+		Point D=new Point (-1, 5);
+		
 //		Point E=new Point (5,-1);
 //		Point F=new Point(1000000.01, 5);
 //		Point G=new Point (5,803);
