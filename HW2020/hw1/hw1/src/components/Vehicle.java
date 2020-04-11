@@ -1,6 +1,7 @@
 package components;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Vehicle {
 	private int id;
@@ -11,8 +12,8 @@ public class Vehicle {
 	private Road lastRoad;
 	private boolean movesNow; //True if the vehicle is on the road between the junctions.
 	private double spentTime; //time passed from the beginning of movement on the route. 
-	static VehicleType[] randomVehicle;  
 
+	
 	
 	/*******************************************************/
 	public Vehicle(int id, VehicleType type, Junction lastJunction) {

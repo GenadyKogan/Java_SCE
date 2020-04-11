@@ -1,12 +1,20 @@
 package components;
 
-
+import java.util.Random;
 
 public class VehicleType {
 	private String typeName;
 	private int speed; //average speed of vehicle type
-	
- 	
+	static VehicleType[] randomVehicle;  
+	public static VehicleType getRandomVehicleTypes() {
+		randomVehicle =new VehicleType[2];
+		randomVehicle[0]= new VehicleType("car",90);
+		randomVehicle[1]= new VehicleType("bicycle",40);
+		Random Dice = new Random();
+		int n = Dice.nextInt(2); 
+		return  randomVehicle[n];
+		
+	}
 	/*******************************************************/
 	
 	public VehicleType(String typeName, int speed) {
