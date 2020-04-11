@@ -115,6 +115,7 @@ public class Junction {
 		boolean ans =false;
 		if(other instanceof Junction) {
 			ans=( this.junctionName==((Junction)other).junctionName   &&  this.hasLights==((Junction)other).hasLights && this.hasLights ==((Junction)other).hasLights &&  this.delay ==((Junction)other).delay && this.enteringRoads ==((Junction)other).enteringRoads && this.vehicles ==((Junction)other).vehicles && this.exitingRoads ==((Junction)other).exitingRoads);
+			return ans;
 		}
 		return ans;
 	}	
