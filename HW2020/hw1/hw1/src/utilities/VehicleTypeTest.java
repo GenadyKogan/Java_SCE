@@ -58,8 +58,8 @@ private static void setVehicleTypes() {
 		System.out.println(arr[6].getName());
 		System.out.println(arr[5].getSpeed());
 		System.out.println(arr[0].getRandomVehicleTypes());
-//		System.out.println(arr[0].getRandomVehicleTypes());
-//		System.out.println(VehicleType.getRandomVehicleTypes());
+		System.out.println(arr[0].getRandomVehicleTypes());
+		System.out.println(VehicleType.getRandomVehicleTypes());
 		
 		
 } 
