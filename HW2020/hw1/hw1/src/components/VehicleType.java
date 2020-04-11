@@ -14,6 +14,8 @@ public class VehicleType {
 		randomVehicle[3]= new VehicleType("truck",80);
 		randomVehicle[4]= new VehicleType("truck",80);
 		Random Dice = new Random();
+		 if(randomVehicle[0]!=null && randomVehicle[1]==null)
+			System.out.println("ss");
 		int n = Dice.nextInt(2); 
 		return  randomVehicle[n];
 		
@@ -66,6 +68,7 @@ public class VehicleType {
 			ans=( this.typeName==((VehicleType)other).typeName   &&  this.speed==((VehicleType)other).speed );
 		}
 		return ans;
+		
 	}
 
 	
