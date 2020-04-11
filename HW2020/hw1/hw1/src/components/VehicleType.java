@@ -67,18 +67,7 @@ public class VehicleType {
 		return ans;
 		
 	}
-	public static VehicleType getRandomVehicleTypes() {
-		randomVehicle =new VehicleType[5];
-		randomVehicle[0]= new VehicleType("car",90);
-		randomVehicle[1]= new VehicleType("bicycle",40);
-		randomVehicle[2]= new VehicleType("motorcycle",120);
-		randomVehicle[3]= new VehicleType("truck",80);
-		randomVehicle[4]= new VehicleType("truck",80);
-		Random Dice = new Random();
-		int n = Dice.nextInt(5); 
-		return  randomVehicle[n];
-		
-	}
+
 	
 	
 }

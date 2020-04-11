@@ -18,6 +18,9 @@ public class Junction {
 		this.setLocation(loc);
 		id=++counter;
 		System.out.print("Junction "+id+" has been created\n");
+		this.setEnteringRoads(new ArrayList<Road>());
+		this.setVehicles(new ArrayList<Road>());
+		this.setExitingRoads(new ArrayList<Road>());
 	}
 
 	/*******************************************************/
@@ -92,7 +95,6 @@ public class Junction {
 	}
 	
 	public ArrayList<Road> getExitingRoads() {
-		
 		return exitingRoads;
 	}
 	
