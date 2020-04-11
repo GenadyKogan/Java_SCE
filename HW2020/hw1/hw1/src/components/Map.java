@@ -14,6 +14,10 @@ public class Map {
 		
 	}
 	*/
+	public Map (int value) {
+		this.junctions=new ArrayList<Junction>(value);
+		this.roads=new ArrayList<Road>(value);
+	}
 	public Map(ArrayList<Junction> juncs, ArrayList<Road> roads) {
 		this.setJunctions(juncs);
 		this.setRoads(roads);
@@ -63,18 +67,23 @@ public class Map {
 	/*******************************************************/
 	public boolean addRoad(Road r) {
 		boolean ans=false;
-		if(r!=null) {
-	        for (Road element : getRoads()) { 
-	            if (element == r) { 
-	            	ans = true; 
-	                break; 
-	            } 
-	        } 			
-			if(ans==false) {
-				this.roads.add(r);
+		if(this.getJunctions()!=null)
+		{
+			if(r!=null) {
+		        for (Road element : getRoads()) { 
+		            if (element == r) { 
+		            	ans = true; 
+		                break; 
+		            } 
+		        } 			
+				if(ans==false)
+					this.roads.add(r);
 			}
 		}
+		else
+			this.roads.add(r);
 		return ans;
+
 	}
 	
 	public void removeRoad(Road r) {
@@ -87,8 +96,7 @@ public class Map {
 	            } 
 	        } 
 			if(ans==true)
-				this.junctions.remove(r);
-			
+				this.roads.remove(r);		
 		}
 		
 	}
@@ -96,23 +104,38 @@ public class Map {
 	
 	public boolean addJunction(Junction junc) {
 		boolean ans=false;
+		if(this.getJunctions()!=null)
+		{
+			if(junc!=null) {
+		        for (Junction element : getJunctions()) { 
+		            if (element == junc) { 
+		            	ans = true; 
+		                break; 
+		            } 
+		        } 			
+				if(ans==false)
+					this.junctions.add(junc);
+			}
+		}
+		else
+			this.junctions.add(junc);
+		return ans;
+
+	}
+	
+	//removes the junction and all connected to it roads from the map.
+	public void removeJunction(Junction junc) {
+		boolean ans=false;
 		if(junc!=null) {
 	        for (Junction element : getJunctions()) { 
 	            if (element == junc) { 
 	            	ans = true; 
 	                break; 
 	            } 
-	        } 			
-			if(ans==false) {
-				this.junctions.add(junc);
-			}
+	        } 
+			if(ans==true)
+				this.junctions.remove(junc);		
 		}
-		return ans;
-	}
-	
-	//removes the junction and all connected to it roads from the map.
-	public void removeJunction(Junction junc) {
-		
 	}
 	
 
