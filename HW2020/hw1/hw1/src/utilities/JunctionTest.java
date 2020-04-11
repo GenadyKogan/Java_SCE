@@ -38,6 +38,7 @@ public static void testJunction() {
 		for (int i=0;i<arr.length;i++) {
 			
 			System.out.println(arr[i].toString() + ": EXITING ROADS:");
+			System.out.println(arr[0].getExitingRoads().size());
 			for (int j=0; j<arr[i].getExitingRoads().size(); j++) {
 				System.out.println(arr[i].getExitingRoads().get(j).toString());
 			}
