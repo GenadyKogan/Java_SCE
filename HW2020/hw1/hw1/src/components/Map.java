@@ -1,22 +1,43 @@
 package components;
 import java.util.ArrayList;
+import java.util.Random;
+
+import utilities.Point;
 
 public class Map {
 	private ArrayList<Junction> junctions;
 	private ArrayList<Road> roads;
+	private Random random = new Random();
 	
-	
-	/*public Map() {
-		super();
+	public Map() {
+		this(20);
 	}
 	
 	public Map (int junctions, int roads) {
-		
+		this.junctions=new ArrayList<Junction>();
+		this.roads=new ArrayList<Road>();
+		for (int i = 0; i < junctions; i++) {
+			this.junctions.add(new Junction("Junction #" + i , new Point(i*1.2, i* 1.5)));
+		}
+		int junctionIndexTo;
+		int junctionIndexFrom;
+		for (int i = 0; i < roads; i++) {
+			junctionIndexTo = random.nextInt(junctions);
+			junctionIndexFrom = random.nextInt(junctions);
+			while(junctionIndexTo == junctionIndexFrom) 
+			{
+				junctionIndexFrom = random.nextInt(junctions);
+			}
+			this.roads.add(new Road(this.junctions.get(junctionIndexFrom),this.junctions.get(junctionIndexTo)));
+			// To -> enter , from - > exit
+			this.junctions.get(junctionIndexFrom).addEnterRoad(this.roads.get(i));
+			this.junctions.get(junctionIndexTo).addExitRoad(this.roads.get(i));
+			
+		}
 	}
-	*/
+	
 	public Map (int value) {
-		this.junctions=new ArrayList<Junction>(value);
-		this.roads=new ArrayList<Road>(value);
+		this(value,5);
 	}
 	public Map(ArrayList<Junction> juncs, ArrayList<Road> roads) {
 		this.setJunctions(juncs);
@@ -124,17 +145,26 @@ public class Map {
 	}
 	
 	//removes the junction and all connected to it roads from the map.
-	public void removeJunction(Junction junc) {
-		boolean ans=false;
+	public void removeJunction(Junction junc) {		
 		if(junc!=null) {
 	        for (Junction element : getJunctions()) { 
-	            if (element == junc) { 
-	            	ans = true; 
-	                break; 
+	            if (element.equals(junc)) { 
+	            	for(Road road : element.getExitingRoads()) {
+	            		if(road.getToJunc().equals(element))
+	            			road.setToJunc(null);
+	            		else if(road.getFromJunc().equals(element))
+	            			road.setFromJunc(null);
+	            	}
+	            	for(Road road : element.getEnteringRoads()) {
+	            		if(road.getToJunc().equals(element))
+	            			road.setToJunc(null);
+	            		else if(road.getFromJunc().equals(element))
+	            			road.setFromJunc(null);
+	            	}
+	            	this.junctions.remove(element);
+	            	return;
 	            } 
 	        } 
-			if(ans==true)
-				this.junctions.remove(junc);		
 		}
 	}
 	

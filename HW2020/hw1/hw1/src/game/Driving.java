@@ -1,10 +1,13 @@
 package game;
 
 import java.util.ArrayList;
+import java.util.Random;
+
 import components.Junction;
 import components.Map;
 import components.Road;
 import components.Vehicle;
+import components.VehicleType;
 
 public class Driving {
 
@@ -96,10 +99,20 @@ public class Driving {
 		return ans;
 	}	
 	
-	/*
-	 * addMap() //creates a map with random (10-25) junctions quantity.
-• addVehicles() //creates random number (2-8) of vehicles of different
-types.
+	public ArrayList<Vehicle> getVehicles() {
+		return this.currentVehicles;
+	}
+	
+	//creates random number (2-8) of vehicles of different types.
+	public  boolean addVehicles() {
+		this.setNumOfVehicles(new Random().nextInt(7) + 2 );
+		this.currentVehicles = new ArrayList<Vehicle>();
+		for (int i = 0; i < this.numOfVehicles ; i++) {
+			this.currentVehicles.add(new Vehicle(i, new VehicleType(), null));
+		}
+		return true;
+	}
+	 /* addMap() //creates a map with random (10-25) junctions quantity.
 • startDrive(int maxTime): void
 
 	 */

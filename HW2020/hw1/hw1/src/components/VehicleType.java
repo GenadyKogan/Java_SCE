@@ -1,5 +1,6 @@
 package components;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class VehicleType {
@@ -14,9 +15,7 @@ public class VehicleType {
 		randomVehicle[3]= new VehicleType("truck",80);
 		randomVehicle[4]= new VehicleType("truck",80);
 		Random Dice = new Random();
-		 if(randomVehicle[0]!=null && randomVehicle[1]==null)
-			System.out.println("ss");
-		int n = Dice.nextInt(2); 
+		int n = Dice.nextInt(5);
 		return  randomVehicle[n];
 		
 	}
@@ -26,15 +25,11 @@ public class VehicleType {
 		this.setName(typeName);
 		this.setSpeed(speed);
 	
-		
 	}
 	public VehicleType() {
-		
-		
-//		this.setName(typeName);
-//		this.setSpeed(speed);
-	
-		
+		VehicleType temp = getRandomVehicleTypes();
+		this.setName(temp.getName());
+		this.setSpeed(temp.getSpeed());
 	}
 
 	/*******************************************************/

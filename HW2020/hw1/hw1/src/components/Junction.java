@@ -73,6 +73,10 @@ public class Junction {
 		return ans;	
 	}
 	
+	public void addEnterRoad(Road roadEnterRoad) {
+		this.enteringRoads.add (roadEnterRoad);
+	}
+	
 	public ArrayList<Road> getVehicles() {
 		return vehicles;
 	}
@@ -100,6 +104,11 @@ public class Junction {
 			ans=true;
 		}
 		return ans;
+	}
+	
+	
+	public void addExitRoad(Road roadExitRoad) {
+		this.exitingRoads.add (roadExitRoad);
 	}
 	/*******************************************************/
 
