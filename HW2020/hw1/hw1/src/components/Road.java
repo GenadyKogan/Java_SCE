@@ -11,6 +11,7 @@ public class Road {
 	private boolean isEnabled; //appears on the map
 	private double length; // the distance between the two junctions.
 	private int maxSpeed;
+	private VehicleType allowed;
 	/*******************************************************/
 	
 	public Road (Junction from, Junction to) {
@@ -25,6 +26,17 @@ public class Road {
 		this.setOpen(isOpen);
 		this.setEnabled(isEnabled);
 	}
+	public Road(Junction from, Junction to, VehicleType vehicleType, boolean isOpen,
+			boolean isEnabled) {
+		this.setFromJunc(from);
+		
+		this.setToJunc(to);
+		//System.out.println(getFromJunc()+" "+getToJunc());
+		this.setAllowed(vehicleType);
+		this.setOpen(isOpen);
+		this.setEnabled(isEnabled);
+	}
+	
 	
 	/*******************************************************/
 
@@ -100,13 +112,18 @@ public class Road {
 	public void setMaxSpeed(int maxSpeed) {
 		this.maxSpeed = maxSpeed;
 	}
+	/*------------------------*/
+	public VehicleType getAllowed() {
+		return allowed;
+	}
+	public void setAllowed(VehicleType vehicleType) {
+		this.allowed = vehicleType;
+	}
 
 	/*******************************************************/
-	@Override
+
 	public String toString() {
-		return "Road [fromJunc=" + fromJunc + ", toJunc=" + toJunc + ", allowedVehicles=" + allowedVehicles
-				+ ", isOpen=" + isOpen + ", isEnabled=" + isEnabled + ", length=" + length + ", maxSpeed=" + maxSpeed
-				+ "]";
+		return "Road from "+ fromJunc+ " to "+ toJunc;
 	}
 	@Override		
 	public boolean equals(Object other) {
@@ -141,4 +158,5 @@ public class Road {
 		return 0;
 		
 	}
+	
 }

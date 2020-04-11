@@ -112,6 +112,8 @@ public class Driving {
 		}
 		return true;
 	}
+	
+	
 	 /* addMap() //creates a map with random (10-25) junctions quantity.
 • startDrive(int maxTime): void
 
