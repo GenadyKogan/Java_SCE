@@ -4,15 +4,18 @@ import java.util.ArrayList;
 
 public class Vehicle {
 	private int id;
-	private  String type;
+	private  VehicleType type;
 	private int speed; //average speed for this type of vehicle.
 	private Route currentRoute;
 	private Junction lastJunction; //current junction or last junction where the vehicle visited
 	private Road lastRoad;
 	private boolean movesNow; //True if the vehicle is on the road between the junctions.
 	private double spentTime; //time passed from the beginning of movement on the route. 
+	static VehicleType[] randomVehicle;  
+
+	
 	/*******************************************************/
-	public Vehicle(int id, String type, Junction lastJunction) {
+	public Vehicle(int id, VehicleType type, Junction lastJunction) {
 		this.setId(id);
 		this.setType(type);
 		this.setLastJunction(lastJunction);
@@ -27,11 +30,11 @@ public class Vehicle {
 		this.id = id;
 	}
 	
-	public String getType() {
+	public VehicleType getType() {
 		return type;
 	}
 	
-	public void setType(String type) {
+	public void setType(VehicleType type) {
 		this.type = type;
 	}
 	

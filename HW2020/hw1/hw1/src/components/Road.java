@@ -6,7 +6,7 @@ import utilities.Point;
 public class Road {
 	private Junction fromJunc;
 	private Junction toJunc;
-	private ArrayList<String> allowedVehicles; //// holds the list of vehicle types that are allowed to move on the road.
+	private ArrayList<VehicleType> allowedVehicles; //// holds the list of vehicle types that are allowed to move on the road.
 	private boolean isOpen; // True when the light is green.
 	private boolean isEnabled; //appears on the map
 	private double length; // the distance between the two junctions.
@@ -17,7 +17,7 @@ public class Road {
 		this.setFromJunc(from);
 		this.setToJunc(to);
 	}
-	public Road(Junction from, Junction to, ArrayList<String> allowed, boolean isOpen,
+	public Road(Junction from, Junction to, ArrayList<VehicleType> allowed, boolean isOpen,
 			boolean isEnabled) {
 		this.setFromJunc(from);
 		this.setToJunc(to);
@@ -54,14 +54,14 @@ public class Road {
 		return ans;
 	}
 	
-	public ArrayList<String> getAllowedVehicles() {
+	public ArrayList<VehicleType> getAllowedVehicles() {
 		return allowedVehicles;
 	}
 	
-	public boolean setAllowedVehicles(ArrayList<String> allowedVehicles) {		
+	public boolean setAllowedVehicles(ArrayList<VehicleType> allowedVehicles) {		
 		boolean ans=false;
 		if(allowedVehicles instanceof ArrayList) {
-			allowedVehicles=new ArrayList<String>();
+			allowedVehicles=new ArrayList<VehicleType>();
 			this.allowedVehicles =allowedVehicles;
 			ans=true;
 		}
@@ -119,10 +119,10 @@ public class Road {
 	}	
 	
 	/*******************************************************/
-	public boolean addVehicleType(String type) {
+	public boolean addVehicleType(VehicleType type) {
 		boolean ans=false;
 		if(type!=null) {
-	        for (String element : getAllowedVehicles()) { 
+	        for (VehicleType element : getAllowedVehicles()) { 
 	            if (element == type) { 
 	            	ans = true; 
 	                break; 

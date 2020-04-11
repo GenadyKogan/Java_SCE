@@ -17,7 +17,7 @@ public class Junction {
 		this.setJunctionName(name);
 		this.setLocation(loc);
 		id=++counter;
-		System.out.println("Junction "+id+" has been created\n");
+		System.out.print("Junction "+id+" has been created\n");
 	}
 
 	/*******************************************************/

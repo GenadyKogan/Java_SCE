@@ -1,23 +1,36 @@
 package components;
 
+
+
 public class VehicleType {
 	private String typeName;
 	private int speed; //average speed of vehicle type
 	
+ 	
 	/*******************************************************/
 	
 	public VehicleType(String typeName, int speed) {
-		this.setTypeName(typeName);
+		this.setName(typeName);
 		this.setSpeed(speed);
+	
+		
+	}
+	public VehicleType() {
+		
+		
+//		this.setName(typeName);
+//		this.setSpeed(speed);
+	
+		
 	}
 
 	/*******************************************************/
 
-	public String getTypeName() {
+	public String getName() {
 		return typeName;
 	}
 
-	public void setTypeName(String typeName) {
+	public void setName(String typeName) {
 		this.typeName = typeName;
 	}
 
@@ -32,7 +45,7 @@ public class VehicleType {
 	/*******************************************************/
 	@Override
 	public String toString() {
-		return "VehicleType [typeName=" + typeName + ", speed=" + speed + "]";
+		return typeName+ " average speed: " +speed;
 	}
 
 	@Override		
@@ -42,6 +55,8 @@ public class VehicleType {
 			ans=( this.typeName==((VehicleType)other).typeName   &&  this.speed==((VehicleType)other).speed );
 		}
 		return ans;
-	}	
+	}
+
+	
 	
 }
