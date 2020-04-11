@@ -17,7 +17,7 @@ public class TestDrivingMapVehicle {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		
+		/*jjj*/
 		Map map=new Map(5);
 		map.addJunction(new Junction("Test", new Point(5,10)));
 		System.out.println(map.getJunctions());
