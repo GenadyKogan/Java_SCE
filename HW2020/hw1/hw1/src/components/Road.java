@@ -19,9 +19,9 @@ public class Road {
 	}
 	public Road(Junction from, Junction to, ArrayList<String> allowed, boolean isOpen,
 			boolean isEnabled) {
-		this.setFromJunc(fromJunc);
-		this.setToJunc(toJunc);
-		this.setAllowedVehicles(allowedVehicles);
+		this.setFromJunc(from);
+		this.setToJunc(to);
+		this.setAllowedVehicles(allowed);
 		this.setOpen(isOpen);
 		this.setEnabled(isEnabled);
 	}
@@ -113,6 +113,7 @@ public class Road {
 		boolean ans =false;
 		if(other instanceof Junction) {
 			ans=( this.fromJunc==((Road)other).fromJunc   &&  this.toJunc==((Road)other).toJunc && this.allowedVehicles ==((Road)other).allowedVehicles &&  this.isOpen ==((Road)other).isOpen && this.isEnabled ==((Road)other).isEnabled && this.length ==((Road)other).length && this.maxSpeed ==((Road)other).maxSpeed);
+			return ans;
 		}
 		return ans;
 	}	
