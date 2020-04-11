@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class Vehicle {
 	private int id;
-	/*sapir alufa*/
+	/*sapir aluf*/
 	private  VehicleType type;
 	private int speed; //average speed for this type of vehicle.
 	private Route currentRoute;

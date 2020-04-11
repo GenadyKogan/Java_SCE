@@ -88,6 +88,7 @@ public class Junction {
 	}
 	
 	public ArrayList<Road> getExitingRoads() {
+		
 		return exitingRoads;
 	}
 	
@@ -105,9 +106,7 @@ public class Junction {
 
 	@Override
 	public String toString() {
-		return "Junction [junctionName=" + junctionName + ", location=" + location + ", hasLights=" + hasLights
-				+ ", delay=" + delay + ", enteringRoads=" + enteringRoads + ", vehicles=" + vehicles + ", exitingRoads="
-				+ exitingRoads + "]";
+		return  junctionName ;
 	}
 
 	@Override		
