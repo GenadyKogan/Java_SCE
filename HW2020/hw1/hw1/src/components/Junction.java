@@ -76,7 +76,7 @@ public class Junction {
 		return ans;	
 	}
 	
-	public void addEnterRoad(Road roadEnterRoad) {
+	public void addEnterRoad(Road roadEnterRoad) { // using for a road
 		this.enteringRoads.add (roadEnterRoad);
 	}
 	
@@ -110,7 +110,7 @@ public class Junction {
 	}
 	
 	
-	public void addExitRoad(Road roadExitRoad) {
+	public void addExitRoad(Road roadExitRoad) { //using for a road
 		this.exitingRoads.add (roadExitRoad);
 	}
 	/*******************************************************/
@@ -124,7 +124,10 @@ public class Junction {
 	public boolean equals(Object other) {
 		boolean ans =false;
 		if(other instanceof Junction) {
-			ans=( this.junctionName==((Junction)other).junctionName   &&  this.hasLights==((Junction)other).hasLights && this.hasLights ==((Junction)other).hasLights &&  this.delay ==((Junction)other).delay && this.enteringRoads ==((Junction)other).enteringRoads && this.vehicles ==((Junction)other).vehicles && this.exitingRoads ==((Junction)other).exitingRoads);
+			ans=( this.junctionName==((Junction)other).junctionName   &&  this.hasLights==((Junction)other).hasLights 
+					&& this.hasLights ==((Junction)other).hasLights &&  this.delay ==((Junction)other).delay
+					&& this.enteringRoads ==((Junction)other).enteringRoads && this.vehicles ==((Junction)other).vehicles 
+					&& this.exitingRoads ==((Junction)other).exitingRoads);
 			return ans;
 		}
 		return ans;
@@ -134,11 +137,12 @@ public class Junction {
 	public void changeLight() {
 			int flag=0;
 			if (isHasLights()==true) {
-		        for (Road element : getEnteringRoads()) { 
-		            if (element.isOpen()) { 
-		            	flag+=1;
-		                break; 
-		            } 
+			for(int i=0;i<this.enteringRoads.size();i++) {
+				//for (Road element : getEnteringRoads()) { 
+				if (this.enteringRoads.get(i).isOpen()) { 
+					    flag+=1;
+					    break; 
+					}  
 		        } 
 		        for (Road element : getEnteringRoads()) 
 		            element.setOpen(false);

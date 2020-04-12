@@ -140,7 +140,7 @@ public class Road {
 		boolean ans=false;
 		if(type!=null) {
 	        for (VehicleType element : getAllowedVehicles()) { 
-	            if (element == type) { 
+	            if (element.equals(type)) { 
 	            	ans = true; 
 	                break; 
 	            } 
