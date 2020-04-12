@@ -8,7 +8,7 @@ public class VehicleType {
 	private int speed; //average speed of vehicle type
 	static VehicleType[] randomVehicle;  
 
-	/*public static VehicleType getRandomVehicleTypes() {
+	public static VehicleType getRandomVehicleTypes() {
 		randomVehicle =new VehicleType[5];
 		randomVehicle[0]= new VehicleType("car",90);
 		randomVehicle[1]= new VehicleType("bicycle",40);
@@ -17,6 +17,7 @@ public class VehicleType {
 		randomVehicle[4]= new VehicleType("truck",80);
 		Random Dice = new Random();
 		int n = Dice.nextInt(5);
+
 		return  randomVehicle[n];
 		
 	}

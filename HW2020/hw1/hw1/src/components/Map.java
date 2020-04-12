@@ -17,7 +17,7 @@ public class Map {
 		this.junctions=new ArrayList<Junction>();
 		this.roads=new ArrayList<Road>();
 		for (int i = 0; i < junctions; i++) {
-			this.junctions.add(new Junction("Junction #" + i , new Point(i*1.2, i* 1.5)));
+			this.junctions.add(new Junction("Junction " + i , new Point(i*1.2, i* 1.5)));
 		}
 		int junctionIndexTo;
 		int junctionIndexFrom;
@@ -29,6 +29,7 @@ public class Map {
 				junctionIndexFrom = random.nextInt(junctions);
 			}
 			this.roads.add(new Road(this.junctions.get(junctionIndexFrom),this.junctions.get(junctionIndexTo)));
+			System.out.println("Road from "+ this.roads.get(i).getFromJunc()+ " to "+ this.roads.get(i).getToJunc());
 			// To -> enter , from - > exit
 			this.junctions.get(junctionIndexFrom).addEnterRoad(this.roads.get(i));
 			this.junctions.get(junctionIndexTo).addExitRoad(this.roads.get(i));
@@ -37,7 +38,7 @@ public class Map {
 	}
 	
 	public Map (int value) {
-		this(value,5);
+		this(value,3);
 	}
 	public Map(ArrayList<Junction> juncs, ArrayList<Road> roads) {
 		this.setJunctions(juncs);
@@ -135,11 +136,18 @@ public class Map {
 		            } 
 		        } 			
 				if(ans==false)
+				{
 					this.junctions.add(junc);
+					System.out.println("Junction "+junc.getJunctionName() +" nas been added to the map");
+				}
+				
 			}
 		}
 		else
+		{
 			this.junctions.add(junc);
+			System.out.println("Junction "+junc.getJunctionName() +" nas been added to the map");
+		}
 		return ans;
 
 	}
@@ -162,6 +170,7 @@ public class Map {
 	            			road.setFromJunc(null);
 	            	}
 	            	this.junctions.remove(element);
+					System.out.println("Junction "+junc.getJunctionName() +" nas been removed to the map");
 	            	return;
 	            } 
 	        } 

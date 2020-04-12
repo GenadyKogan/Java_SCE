@@ -8,6 +8,7 @@ import components.Map;
 import components.Road;
 import components.Vehicle;
 import components.VehicleType;
+import utilities.Point;
 
 public class Driving {
 
@@ -22,6 +23,7 @@ public class Driving {
 		this.setNumOfJuncs(juncs);
 		this.setNumOfVehicles(vehicles);
 		this.setMaxTime(maxTime);
+		this.setCurrentVehicles(this.currentVehicles);
 	}
 	/*******************************************************/
 	public int getNumOfJuncs() {
@@ -105,6 +107,7 @@ public class Driving {
 	
 	//creates random number (2-8) of vehicles of different types.
 	public  boolean addVehicles() {
+		
 		this.setNumOfVehicles(new Random().nextInt(7) + 2 );
 		this.currentVehicles = new ArrayList<Vehicle>();
 		for (int i = 0; i < this.numOfVehicles ; i++) {
@@ -113,9 +116,16 @@ public class Driving {
 		return true;
 	}
 	
-	
-	 /* addMap() //creates a map with random (10-25) junctions quantity.
-• startDrive(int maxTime): void
+	//creates a map with random (10-25) junctions quantity.
+	public  boolean addMap() {
+		this.setNumOfJuncs(new Random().nextInt(24) + 10 );
+		this.currentMap= new Map();
+		for (int i = 0; i < this.numOfJuncs ; i++) {
+			this.currentMap.addJunction(new Junction("Junct #" + i , new Point(i*1.2, i* 1.5)));
+		}
+		return true;
+	}
+/* startDrive(int maxTime): void
 
 	 */
 

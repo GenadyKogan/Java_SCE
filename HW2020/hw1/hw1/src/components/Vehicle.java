@@ -108,10 +108,18 @@ public class Vehicle {
 		System.out.println("currentRoute=" + currentRoute + ", lastJunction=" + lastJunction + ", lastRoad=" + lastRoad	+ ", spentTime=" + spentTime);
 	}
 /*
- * • move() // wait for the current point delay time and move to the next
-//point of the route.
 • checkIn() //if arrived to a junction, update the junction waiting list
 //and calculate the delay time before the next move. 
  */
+	@Override
+	public String toString() {
+		return  this.getType() +", id=" + this.getId() ;
+	}
+	
+	// wait for the current point delay time and move to the next point of the route.
+	public void move() {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

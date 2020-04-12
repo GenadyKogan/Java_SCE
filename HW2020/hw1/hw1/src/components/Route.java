@@ -67,7 +67,7 @@ public class Route {
 	public String toString() {
 		return "Route [junctions=" + junctions + ", roads=" + roads + ", delay=" + delay + ", vehicleType="
 				+ vehicleType + "]";
-	}*
+	}*/
 
 	@Override		
 	public boolean equals(Object other) {
