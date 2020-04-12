@@ -27,7 +27,7 @@ public class Driving {
 		this.setNumOfVehicles(vehicles);
 		this.setMaxTime(maxTime);
 		this.currentVehicles = new ArrayList<Vehicle>();
-		this.initVehicles();
+		//this.initVehicles();
 	}
 	/*******************************************************/
 	public int getNumOfJuncs() {
