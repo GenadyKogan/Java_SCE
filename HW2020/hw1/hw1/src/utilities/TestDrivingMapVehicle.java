@@ -22,7 +22,6 @@ public class TestDrivingMapVehicle {
 		System.out.println(map.getJunctions());
 		map.removeJunction(map.getJunctions().get(5));
 		System.out.println(map.getJunctions());
-		//**//
 		Driving d=new Driving(5,4,20);
 		System.out.println(d.getVehicles());
 		d.addVehicles();

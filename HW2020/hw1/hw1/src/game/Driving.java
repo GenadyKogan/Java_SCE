@@ -6,6 +6,7 @@ import java.util.Random;
 import components.Junction;
 import components.Map;
 import components.Road;
+import components.Route;
 import components.Vehicle;
 import components.VehicleType;
 import utilities.Point;
@@ -18,12 +19,15 @@ public class Driving {
 	private ArrayList<Vehicle> currentVehicles;
 	private double drivingTime; // time passed from the beginning of driving session
 	private int maxTime; // total round time
+	private Random random;
 	/*******************************************************/
 	public Driving(int juncs, int vehicles, int maxTime) {
+		random= new Random();
 		this.setNumOfJuncs(juncs);
 		this.setNumOfVehicles(vehicles);
 		this.setMaxTime(maxTime);
-		this.setCurrentVehicles(this.currentVehicles);
+		this.currentVehicles = new ArrayList<Vehicle>();
+		this.initVehicles();
 	}
 	/*******************************************************/
 	public int getNumOfJuncs() {
@@ -32,6 +36,7 @@ public class Driving {
 	
 	public void setNumOfJuncs(int numOfJuncs) {
 		this.numOfJuncs = numOfJuncs;
+		this.currentMap= new Map(numOfJuncs);
 	}
 	
 	public int getNumOfVehicles() {
@@ -106,14 +111,44 @@ public class Driving {
 	}
 	
 	//creates random number (2-8) of vehicles of different types.
-	public  boolean addVehicles() {
-		
+	public void addVehicles() {
 		this.setNumOfVehicles(new Random().nextInt(7) + 2 );
 		this.currentVehicles = new ArrayList<Vehicle>();
+		initVehicles();
+	}
+	
+	public void initVehicles() {
 		for (int i = 0; i < this.numOfVehicles ; i++) {
-			this.currentVehicles.add(new Vehicle(i, new VehicleType(), null));
+			Vehicle tempVehicle  = new Vehicle(i, new VehicleType(), this.currentMap.getJunctions().get(this.random.nextInt(this.numOfJuncs)));
+			this.currentVehicles.add(tempVehicle);
+			tempVehicle.setCurrentRoute(getRandomRouteFromJunction(tempVehicle.getLastJunction(), tempVehicle.getType().getName()));
+			System.out.println(this.currentVehicles.get(i)+" has been created and placed at Junction "+ this.currentVehicles.get(i).getLastJunction());
 		}
-		return true;
+	}
+	
+	public Route getRandomRouteFromJunction(Junction start, String vehicleType) {
+		ArrayList<Junction> junctions = new ArrayList<Junction>(); 
+		ArrayList<Road> roads = new ArrayList<Road>();
+		junctions.add(start);
+		Junction currJunctions = start;
+		Road currRoad;
+		for (int i = 0; i <5; i++) {
+			if(currJunctions.getExitingRoads() != null &&
+			   currJunctions.getEnteringRoads().size() > 0 ) {
+				currRoad = currJunctions.getExitingRoads().get(0);
+				roads.add(currRoad);
+			} else {
+				break;
+			}
+			
+			if(currRoad.getToJunc() != null) {
+				currJunctions=currRoad.getToJunc();
+				junctions.add(currJunctions);
+			}else {
+				break;
+			}
+		}
+		return new Route(junctions, roads,vehicleType );
 	}
 	
 	//creates a map with random (10-25) junctions quantity.
