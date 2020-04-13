@@ -121,7 +121,7 @@ public class Road {
 	}
 
 	/*******************************************************/
-	//**//
+
 	public String toString() {
 		return "Road from "+ fromJunc+ " to "+ toJunc;
 	}

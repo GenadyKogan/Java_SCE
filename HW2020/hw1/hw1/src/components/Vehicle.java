@@ -119,7 +119,7 @@ public class Vehicle {
 	// wait for the current point delay time and move to the next point of the route.
 	public void move() {
 		// TODO Auto-generated method stub
-		
+		System.out.println("ggg");
 	}
 
 }

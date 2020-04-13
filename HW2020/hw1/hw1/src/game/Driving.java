@@ -27,7 +27,7 @@ public class Driving {
 		this.setNumOfVehicles(vehicles);
 		this.setMaxTime(maxTime);
 		this.currentVehicles = new ArrayList<Vehicle>();
-		//this.initVehicles();
+		this.initVehicles();
 	}
 	/*******************************************************/
 	public int getNumOfJuncs() {
@@ -132,12 +132,13 @@ public class Driving {
 		junctions.add(start);
 		Junction currJunctions = start;
 		Road currRoad;
-		for (int i = 0; i <5; i++) {
+		for (int i = 0; i <=5; i++) {
 			if(currJunctions.getExitingRoads() != null &&
-			   currJunctions.getEnteringRoads().size() > 0 ) {
+			   currJunctions.getEnteringRoads().size() >0 &&  currJunctions.getExitingRoads().size()>0) {
 				currRoad = currJunctions.getExitingRoads().get(0);
 				roads.add(currRoad);
-			} else {
+			}
+			else {
 				break;
 			}
 			
