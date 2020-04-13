@@ -5,7 +5,7 @@ import java.util.Random;
 import components.Junction;
 import components.Road;
 import components.VehicleType;
-
+//**//
 public class JunctionTest {
 
 	public static void main(String[] args) {
