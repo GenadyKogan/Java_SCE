@@ -160,10 +160,13 @@ public class Road {
 	}
 	
 	/*******************************************************/
-	public int countLength() {
-		// TODO Auto-generated method stub
-		return 0;
+	public double countLength() {
+		double xPoin=fromJunc.getLocation().getX()-fromJunc.getLocation().getX() ;
+		double yPoin=toJunc.getLocation().getY()-toJunc.getLocation().getY() ;
+		double dist =Math.sqrt(xPoin*xPoin + yPoin*yPoin);
+		return dist;
 		
 	}
+
 	
 }
