@@ -139,12 +139,19 @@ public class Road {
 	public boolean addVehicleType(VehicleType type) {
 		boolean ans=false;
 		if(type!=null) {
-	        for (VehicleType element : getAllowedVehicles()) { 
-	            if (element == type) { 
+			for(int i=0;i<this.allowedVehicles.size();i++) {
+				if(this.allowedVehicles.get(i).equals(type)) {
+					ans=true;
+					break;
+				}
+					
+			}
+	        /*for (VehicleType element : getAllowedVehicles()) { 
+	            if (element.equals(type)) { 
 	            	ans = true; 
 	                break; 
 	            } 
-	        } 			
+	        } */			
 			if(ans==false) {
 				this.allowedVehicles.add(type);
 			}
