@@ -6,17 +6,16 @@ public class Route {
 	private ArrayList<Junction> junctions; // list of junctions on the route by the order of movement.
 	private ArrayList<Road> roads; // list of roads on the route by the order of movement
 	private double delay; //time that will take the vehicle to make this route.
-	private String vehicleType;
+	private VehicleType vehicleType;
 	/*******************************************************/
-	public Route(ArrayList<Junction> junctions, ArrayList<Road> roads, String vehicleType) {
-		super();
+	public Route(ArrayList<Junction> junctions, ArrayList<Road> roads, VehicleType vehicleType) {
 		this.setJunctions(junctions);
 		this.setRoads(roads);
 		this.setVehicleType(vehicleType);
 	}
 	
 	
-	public Route(Junction start, Junction end, String vehType) {} // no implemented in this task
+	public Route(Junction start, Junction end, VehicleType vehType) {} // no implemented in this task
 	
 	/*******************************************************/
 
@@ -54,11 +53,11 @@ public class Route {
 		this.delay = delay;
 	}
 	
-	public String getVehicleType() {
+	public VehicleType getVehicleType() {
 		return vehicleType;
 	}
 	
-	public void setVehicleType(String vehicleType) {
+	public void setVehicleType(VehicleType vehicleType) {
 		this.vehicleType = vehicleType;
 	}
 	/*******************************************************/

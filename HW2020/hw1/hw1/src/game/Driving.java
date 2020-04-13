@@ -126,7 +126,7 @@ public class Driving {
 		}
 	}
 	
-	public Route getRandomRouteFromJunction(Junction start, String vehicleType) {
+	public Route getRandomRouteFromJunction(Junction start, VehicleType vehicleType) {
 		ArrayList<Junction> junctions = new ArrayList<Junction>(); 
 		ArrayList<Road> roads = new ArrayList<Road>();
 		junctions.add(start);

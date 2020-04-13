@@ -93,7 +93,7 @@ public class Map {
 		{
 			if(r!=null) {
 		        for (Road element : getRoads()) { 
-		            if (element == r) { 
+		            if (element.equals(r)) { 
 		            	ans = true; 
 		                break; 
 		            } 
@@ -112,7 +112,7 @@ public class Map {
 		boolean ans=false;
 		if(r!=null) {
 	        for (Road element : getRoads()) { 
-	            if (element == r) { 
+	            if (element.equals(r)) { 
 	            	ans = true; 
 	                break; 
 	            } 
@@ -130,7 +130,7 @@ public class Map {
 		{
 			if(junc!=null) {
 		        for (Junction element : getJunctions()) { 
-		            if (element == junc) { 
+		            if (element.equals(junc)) { 
 		            	ans = true; 
 		                break; 
 		            } 
