@@ -151,9 +151,11 @@ public class Junction {
 			getEnteringRoads().get(flag).setOpen(true);
 	}
 	
-	public boolean checkAvailability (Road r) {
-		
-		return true;
-	}
+//	public boolean checkAvailability (Road r) {
+//		for(int i=0;i<this.vehicles.size();i++) {
+//			if(this())
+//		}
+//		return true;
+//	}
 }
 
