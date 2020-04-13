@@ -49,21 +49,20 @@ public static void testJunction() {
 		}
 		
 		
-//		for (int i=0; i<arr.length; i++) {
-//			
+//		for (int i=0; i<arr.length; i++) {			
 //			System.out.println(arr[i].toString() + " LIGHTS CHECK");
-//			arr[i].isHasLights();
+//			arr[i].setLightsOn();
 //			for (int j=0; j<5;j++) {
 //				arr[i].changeLight();
-//			}
+			}
 //		}
-		
+//		
 //		for (int i=0; i<arrR.length;i++) {
 //			System.out.println(arrR[i].toString() + ": " + arrR[i].getAllowedVehicle() + " lenth: " + arrR[i].getLength() + " Max Speed: " + arrR[i].getMaxSpeed());
 //		}
 		
 		
-	}
+//	}
 		
 
 }
