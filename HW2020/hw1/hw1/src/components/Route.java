@@ -78,14 +78,16 @@ public class Route {
 	}	
 
 	
-	/*******************************************************/
+	/**
+	 * @return *****************************************************/
 	
-/*	public junctions getStart() {
+	public Junction getStart() {
+		return junctions.get(0);
 	}
 	
-	public junctions getEnd() {
-		
+	public Junction getEnd() {
+		return junctions.get(this.junctions.size());
 	}
-	calcDelay()
+/*	calcDelay()
 	*/ 
 }

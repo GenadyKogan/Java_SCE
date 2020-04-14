@@ -107,19 +107,17 @@ public class Vehicle {
 	public void status() {
 		System.out.println("currentRoute=" + currentRoute + ", lastJunction=" + lastJunction + ", lastRoad=" + lastRoad	+ ", spentTime=" + spentTime);
 	}
-/*
-• checkIn() //if arrived to a junction, update the junction waiting list
-//and calculate the delay time before the next move. 
- */
 	@Override
 	public String toString() {
-		return  this.getType() +", id=" + this.getId() ;
+		return "Vehicle [id=" + id + ", type=" + type + ", speed=" + speed + ", currentRoute=" + currentRoute
+				+ ", lastJunction=" + lastJunction + ", lastRoad=" + lastRoad + ", movesNow=" + movesNow
+				+ ", spentTime=" + spentTime + "]";
 	}
 	
 	// wait for the current point delay time and move to the next point of the route.
 	public void move() {
 		// TODO Auto-generated method stub
-		System.out.println("ggg");
 	}
+	
 
 }

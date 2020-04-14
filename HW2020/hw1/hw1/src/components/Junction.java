@@ -1,5 +1,7 @@
 package components;
 import java.util.ArrayList;
+import java.util.Random;
+
 import utilities.Point;
 
 public class Junction {
@@ -108,6 +110,12 @@ public class Junction {
 		}
 		return ans;
 	}
+
+	public void initExitingRoads() {
+		this.exitingRoads =new ArrayList<Road>();
+		this.exitingRoads.add(new Road(new Junction("Junct #"  , new Point(1.2,  1.5)),new Junction("Junct #" , new Point(1.2, 1.5))));
+		
+	}
 	
 	
 	public void addExitRoad(Road roadExitRoad) { //using for a road
@@ -117,7 +125,7 @@ public class Junction {
 
 	@Override
 	public String toString() {
-		return  junctionName ;
+		return  "junction "+junctionName ;
 	}
 
 	@Override		
@@ -138,27 +146,36 @@ public class Junction {
 			int flag=0;
 			if (isHasLights()==true) {
 			for(int i=0;i<this.enteringRoads.size();i++) {
-				//for (Road element : getEnteringRoads()) { 
 				if (this.enteringRoads.get(i).isOpen()) { 
 					    flag+=1;
 					    break; 
 					}  
 		        } 
-		        for (Road element : getEnteringRoads()) 
-		            element.setOpen(false);
-			} 
+			}
+		    for (Road element : getEnteringRoads()) 
+		    	element.setOpen(false);
+			
 			flag+=1;
 			getEnteringRoads().get(flag).setOpen(true);
+			
 	}
 	
 
 	public boolean checkAvailability (Road r) {
-		for (int i=0 ; i< this.vehicles.size(); i++)
+		boolean ans=false;
+		if(this.vehicles.get(0).equals(r))
 		{
-			
+			ans= true;
 		}
-		return true;
+		return ans;
 	}
+
+	public void setLightsOn() {
+		System.out.println("ggg");
+		this.hasLights=true;
+	}
+	
+
 
 }
 
