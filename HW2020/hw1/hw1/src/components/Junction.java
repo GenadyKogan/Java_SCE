@@ -153,11 +153,10 @@ public class Junction {
 	
 
 	public boolean checkAvailability (Road r) {
-		for (int i=0 ; i< this.vehicles.size(); i++)
-		{
-			
+		if (this.vehicles.get(0).equals(r)) {
+			return true;
 		}
-		return true;
+		return false;
 	}
 
 }
