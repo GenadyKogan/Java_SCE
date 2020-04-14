@@ -1,6 +1,8 @@
 package components;
 
 import java.util.ArrayList;
+import java.util.Random;
+
 import utilities.Point;
 
 public class Road {
@@ -29,12 +31,13 @@ public class Road {
 	public Road(Junction from, Junction to, VehicleType vehicleType, boolean isOpen,
 			boolean isEnabled) {
 		this.setFromJunc(from);
-		
 		this.setToJunc(to);
 		//System.out.println(getFromJunc()+" "+getToJunc());
 		this.setAllowed(vehicleType);
 		this.setOpen(isOpen);
 		this.setEnabled(isEnabled);
+		this.setLength(new Random().nextInt(990000) + 3000 );
+		this.setMaxSpeed(new Random().nextInt(160) + 30 );
 	}
 	
 	
@@ -113,9 +116,10 @@ public class Road {
 		this.maxSpeed = maxSpeed;
 	}
 	/*------------------------*/
-	public VehicleType getAllowed() {
+	public VehicleType getAllowedVehicle() {
 		return allowed;
 	}
+
 	public void setAllowed(VehicleType vehicleType) {
 		this.allowed = vehicleType;
 	}
@@ -161,12 +165,13 @@ public class Road {
 	
 	/*******************************************************/
 	public double countLength() {
-		double xPoin=fromJunc.getLocation().getX()-fromJunc.getLocation().getX() ;
-		double yPoin=toJunc.getLocation().getY()-toJunc.getLocation().getY() ;
-		double dist =Math.sqrt(xPoin*xPoin + yPoin*yPoin);
+		double xPoint=fromJunc.getLocation().getX()-fromJunc.getLocation().getX() ;
+		double yPoint=toJunc.getLocation().getY()-toJunc.getLocation().getY() ;
+		double dist =Math.sqrt(xPoint*xPoint + yPoint*yPoint);
 		return dist;
 		
 	}
+
 
 	
 }
