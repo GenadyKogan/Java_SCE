@@ -161,8 +161,12 @@ public class Driving {
 		}
 		return true;
 	}
-/* startDrive(int maxTime): void
+	
+	public void startDrive(int maxTime) {
+		for(Vehicle vehicle: this.currentVehicles) {
+			vehicle.move();
+		}
+	}
 
-	 */
 
 }

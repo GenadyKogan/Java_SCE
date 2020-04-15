@@ -114,9 +114,34 @@ public class Vehicle {
 	
 	// wait for the current point delay time and move to the next point of the route.
 	public void move() {
-		// TODO Auto-generated method stub
+		new java.util.Timer().schedule( 
+		        new java.util.TimerTask() {
+		            @Override
+		            public void run() {
+		            	checkIn();
+		            }
+		        }, 
+		        (long) (this.spentTime * 1000 //TODO : CHECK IF TIME IS IN MILLISECONDS 
+)
+		);
 	}
 	
+	// check what about road ????!?!?!?!?! 
+	//if arrived to a junction, update the junction waiting list and calculate the delay time before the next move	// TODO: how to update also in juction, 
 	public void checkIn() {
+		if(!this.movesNow && this.currentRoute!=null) {
+			// if we havent visited any junction yet
+			if(this.lastJunction == null) {
+				this.lastJunction = this.currentRoute.getJunctions().get(0);
+			} else {
+				int lastIndex = this.currentRoute.getJunctions().indexOf(lastJunction);
+				if(lastIndex < this.currentRoute.getJunctions().size()) {
+					this.lastJunction = currentRoute.getJunctions().get(lastIndex + 1); 
+					this.currentRoute.getJunctions().remove(lastIndex);
+				}
+			}
+			this.spentTime = this.lastJunction.getDelay();
+			System.out.println(" Got to junction: " + this.lastJunction);
+		}
 	}
 }

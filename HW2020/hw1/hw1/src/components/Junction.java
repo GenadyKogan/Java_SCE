@@ -168,12 +168,12 @@ public class Junction {
 	
 
 	public boolean checkAvailability (Road r) {
-		boolean ans=false;
-		if(this.vehicles.get(0).equals(r))
-		{
-			ans= true;
+		for(Road road: vehicles) {
+			if(road.equals(r)) {
+				return true;
+			}
 		}
-		return ans;
+		return false;
 	}
 
 	public void setLightsOn() {
