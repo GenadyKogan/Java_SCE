@@ -135,7 +135,9 @@ public class Vehicle {
 				this.lastJunction = this.currentRoute.getJunctions().get(0);
 			} else {
 				int lastIndex = this.currentRoute.getJunctions().indexOf(lastJunction);
-				if(lastIndex < this.currentRoute.getJunctions().size()) {
+				//System.out.println(lastIndex );
+				//System.out.println(this.currentRoute.getJunctions().size());
+				if(lastIndex > this.currentRoute.getJunctions().size()) {
 					this.lastJunction = currentRoute.getJunctions().get(lastIndex + 1); 
 					this.currentRoute.getJunctions().remove(lastIndex);
 				}

@@ -29,7 +29,7 @@ public class TestDrivingMapVehicle {
 		d.addVehicles();
 		System.out.println(d.getVehicles());
 		System.out.println();
-		
+		d.getVehicles().get(0).move();
 		for(int i=0;i<d.getVehicles().size();i++) {
 			d.getVehicles().get(i).move();
 		}
