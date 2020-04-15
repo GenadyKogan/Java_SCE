@@ -178,11 +178,8 @@ public class Junction {
 
 	public void setLightsOn() {
 		this.setHasLights(true);
-<<<<<<< HEAD
 		System.out.println("junction "+ this.junctionName +": traffic lights ON. Delay time: "+this.delay);
 
-=======
->>>>>>> branch 'master' of https://github.com/GenadyKogan/Java_SCE.git
 	}
 	
 
