@@ -17,7 +17,9 @@ public class Map {
 		this.junctions=new ArrayList<Junction>();
 		this.roads=new ArrayList<Road>();
 		for (int i = 0; i < junctions; i++) {
-			this.junctions.add(new Junction("Junction " + i , new Point(i*1.2, i* 1.5)));
+			int sizeX=(new Random().nextInt(1000000) + 0 );
+			int sizeY=(new Random().nextInt(800) + 0 );
+			this.junctions.add(new Junction("Junction " + i , new Point(sizeX, sizeY)));
 		}
 		int junctionIndexTo;
 		int junctionIndexFrom;

@@ -109,9 +109,7 @@ public class Vehicle {
 	}
 	@Override
 	public String toString() {
-		return "Vehicle [id=" + id + ", type=" + type + ", speed=" + speed + ", currentRoute=" + currentRoute
-				+ ", lastJunction=" + lastJunction + ", lastRoad=" + lastRoad + ", movesNow=" + movesNow
-				+ ", spentTime=" + spentTime + "]";
+		return type + ", id=" + id;
 	}
 	
 	// wait for the current point delay time and move to the next point of the route.
@@ -119,5 +117,6 @@ public class Vehicle {
 		// TODO Auto-generated method stub
 	}
 	
-
+	public void checkIn() {
+	}
 }
