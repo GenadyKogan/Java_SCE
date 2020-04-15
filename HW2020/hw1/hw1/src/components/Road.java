@@ -148,14 +148,7 @@ public class Road {
 					ans=true;
 					break;
 				}
-					
-			}
-	        /*for (VehicleType element : getAllowedVehicles()) { 
-	            if (element.equals(type)) { 
-	            	ans = true; 
-	                break; 
-	            } 
-	        } */			
+			}			
 			if(ans==false) {
 				this.allowedVehicles.add(type);
 			}
