@@ -44,7 +44,7 @@ public class VehicleType {
 	/*******************************************************/
 	@Override
 	public String toString() {
-		return typeName +","+ " average speed: " ;
+		return typeName +","+ " average speed: "+speed ;
 	}
 	
 	@Override		

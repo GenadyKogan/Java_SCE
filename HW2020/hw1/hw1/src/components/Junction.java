@@ -23,6 +23,7 @@ public class Junction {
 		this.setEnteringRoads(new ArrayList<Road>());
 		this.setVehicles(new ArrayList<Road>());
 		this.setExitingRoads(new ArrayList<Road>());
+		this.setDelay(new Random().nextInt(6) + 0 );
 	}
 
 	/*******************************************************/
@@ -101,7 +102,6 @@ public class Junction {
 	}
 	
 	public boolean setExitingRoads(ArrayList<Road> exitingRoads) {
-		
 		boolean ans=false;
 		if(exitingRoads instanceof ArrayList) {
 			exitingRoads =new ArrayList<Road>();
@@ -112,12 +112,17 @@ public class Junction {
 	}
 
 	public void initExitingRoads() {
+		int i=(new Random().nextInt(5) + 1 );
 		this.exitingRoads =new ArrayList<Road>();
-		this.exitingRoads.add(new Road(new Junction("Junct #"  , new Point(1.2,  1.5)),new Junction("Junct #" , new Point(1.2, 1.5))));
-		
+		this.exitingRoads.add(new Road(new Junction(""+i , new Point(1.2*i,  1.3*1)),new Junction(""+i*1.4 , new Point(1.2*i, 3.2*i))));
 	}
 	
-	
+	public void initEnteringRoads() {
+		int i=(new Random().nextInt(5) + 1 );
+		this.enteringRoads =new ArrayList<Road>();
+		this.enteringRoads.add(new Road(new Junction(""+i  , new Point(1.2*i, 3.2*i)),new Junction("" +i, new Point(1.2*i,  1.3*1))));
+		
+	}	
 	public void addExitRoad(Road roadExitRoad) { //using for a road
 		this.exitingRoads.add (roadExitRoad);
 	}
@@ -125,7 +130,7 @@ public class Junction {
 
 	@Override
 	public String toString() {
-		return  "junction "+junctionName ;
+		return  junctionName ;
 	}
 
 	@Override		
@@ -144,6 +149,7 @@ public class Junction {
 	/*******************************************************/
 	public void changeLight() {
 			int flag=0;
+			System.out.println("roads from "+this.enteringRoads+ "to "+this.exitingRoads);
 			if (isHasLights()==true) {
 			for(int i=0;i<this.enteringRoads.size();i++) {
 				if (this.enteringRoads.get(i).isOpen()) { 
@@ -171,8 +177,9 @@ public class Junction {
 	}
 
 	public void setLightsOn() {
-		System.out.println("ggg");
-		this.hasLights=true;
+		this.setHasLights(true);
+		System.out.println("junction "+ this.junctionName +": traffic lights ON. Delay time: "+this.delay);
+
 	}
 	
 

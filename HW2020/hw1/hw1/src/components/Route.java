@@ -88,6 +88,34 @@ public class Route {
 	public Junction getEnd() {
 		return junctions.get(this.junctions.size());
 	}
-/*	calcDelay()
-	*/ 
+	public double calcDelay() {
+		double length=0;
+		double speed=0;
+		double delay2=0;
+		int count=0;
+		double res = 0;
+		for( int i=0; i< this.roads.size();i++)
+		{
+			length= this.roads.get(i).countLength();
+			speed=Math.min(this.vehicleType.getSpeed(),this.roads.get(i).getMaxSpeed());
+
+			for (int j = 0; j < this.junctions.get(j).getEnteringRoads().size() ; j++)
+					count+=1;
+			for (int j = 0; j < this.junctions.size() ; j++) 
+				delay2=this.junctions.get(j).getDelay()*count;
+		}
+		for( int i=0; i< this.junctions.size();i++)
+		{
+			if(this.junctions.get(i).isHasLights()==true)
+			{
+				res= (length/speed)+delay2;
+			}
+			else
+				res= (length/speed)*this.junctions.get(i).getDelay();
+			
+		}
+		return res;
+		
+	}
+	
 }
