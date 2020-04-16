@@ -66,6 +66,7 @@ public class Junction {
 	}
 	
 	public ArrayList<Road> getEnteringRoads() {
+	//	this.initEnteringRoads();
 		return enteringRoads;
 	}
 	
@@ -98,6 +99,7 @@ public class Junction {
 	}
 	
 	public ArrayList<Road> getExitingRoads() {
+	//	this.initEnteringRoads();
 		return exitingRoads;
 	}
 	
@@ -149,20 +151,22 @@ public class Junction {
 	/*******************************************************/
 	public void changeLight() {
 			int flag=0;
-			System.out.println("roads from "+this.enteringRoads+ "to "+this.exitingRoads);
-			if (isHasLights()==true) {
-			for(int i=0;i<this.enteringRoads.size();i++) {
-				if (this.enteringRoads.get(i).isOpen()) { 
-					    flag+=1;
-					    break; 
-					}  
-		        } 
-			}
-		    for (Road element : getEnteringRoads()) 
-		    	element.setOpen(false);
+			//System.out.println("roads from "+this.enteringRoads+ "to "+this.exitingRoads);
+			if (isHasLights()==true && this.enteringRoads.size()>=2) {
+				for(int i=0;i<this.enteringRoads.size();i++) {
+					if (this.enteringRoads.get(i).isOpen()) { 
+						    flag+=1;
+						    break; 
+						}  
+			        } 
 			
-			flag+=1;
-			getEnteringRoads().get(flag).setOpen(true);
+			    for (Road element : getEnteringRoads()) 
+			    	element.setOpen(false);
+				
+				getEnteringRoads().get(flag+1).setOpen(true);
+
+			}
+
 			
 	}
 	
@@ -179,8 +183,8 @@ public class Junction {
 	public void setLightsOn() {
 		this.setHasLights(true);
 		System.out.println("junction "+ this.junctionName +": traffic lights ON. Delay time: "+this.delay);
-
 	}
+
 	
 
 

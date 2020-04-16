@@ -1,6 +1,7 @@
 package components;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 public class Vehicle {
@@ -109,9 +110,11 @@ public class Vehicle {
 	}
 	@Override
 	public String toString() {
-		return type + ", id=" + id;
+		return type + ", id=" + id ;
 	}
 	
+	
+
 	// wait for the current point delay time and move to the next point of the route.
 	public void move() {
 		new java.util.Timer().schedule( 
@@ -119,10 +122,11 @@ public class Vehicle {
 		            @Override
 		            public void run() {
 		            	checkIn();
+		            	
 		            }
 		        }, 
 		        (long) (this.spentTime * 1000 //TODO : CHECK IF TIME IS IN MILLISECONDS 
-)
+		    )
 		);
 	}
 	
@@ -137,13 +141,17 @@ public class Vehicle {
 				int lastIndex = this.currentRoute.getJunctions().indexOf(lastJunction);
 				//System.out.println(lastIndex );
 				//System.out.println(this.currentRoute.getJunctions().size());
-				if(lastIndex > this.currentRoute.getJunctions().size()) {
+				if(lastIndex < this.currentRoute.getJunctions().size() && this.currentRoute.getJunctions().size()>=2) {
 					this.lastJunction = currentRoute.getJunctions().get(lastIndex + 1); 
 					this.currentRoute.getJunctions().remove(lastIndex);
+
 				}
 			}
 			this.spentTime = this.lastJunction.getDelay();
-			System.out.println(" Got to junction: " + this.lastJunction);
+			System.out.println(this.type +", ID "+ this.id + " is moving on  "+lastRoad.getFromJunc());
+
 		}
+
 	}
+
 }
