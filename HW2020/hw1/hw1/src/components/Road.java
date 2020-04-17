@@ -30,7 +30,7 @@ public class Road {
 		this.setEnabled(isEnabled);
 
 	}
-	//**//
+
 	public Road(Junction from, Junction to, VehicleType vehicleType, boolean isOpen,
 			boolean isEnabled) {
 		this.setFromJunc(from);
