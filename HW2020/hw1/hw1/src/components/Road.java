@@ -19,6 +19,7 @@ public class Road {
 	public Road (Junction from, Junction to) {
 		this.setFromJunc(from);
 		this.setToJunc(to);
+
 	}
 	public Road(Junction from, Junction to, ArrayList<VehicleType> allowed, boolean isOpen,
 			boolean isEnabled) {
@@ -27,17 +28,21 @@ public class Road {
 		this.setAllowedVehicles(allowed);
 		this.setOpen(isOpen);
 		this.setEnabled(isEnabled);
+
 	}
 	public Road(Junction from, Junction to, VehicleType vehicleType, boolean isOpen,
 			boolean isEnabled) {
 		this.setFromJunc(from);
 		this.setToJunc(to);
-		//System.out.println(getFromJunc()+" "+getToJunc());
+		System.out.println(getFromJunc()+" "+getToJunc());
 		this.setAllowed(vehicleType);
 		this.setOpen(isOpen);
 		this.setEnabled(isEnabled);
 		this.setLength(new Random().nextInt(990000) + 3000 );
 		this.setMaxSpeed(new Random().nextInt(160) + 30 );
+		
+		this.fromJunc.addEnterRoad(new Road(from,to));
+		this.toJunc.addExitRoad(new Road(to,from));
 	}
 	
 	

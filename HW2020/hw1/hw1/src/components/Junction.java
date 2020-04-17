@@ -24,6 +24,7 @@ public class Junction {
 		this.setVehicles(new ArrayList<Road>());
 		this.setExitingRoads(new ArrayList<Road>());
 		this.setDelay(new Random().nextInt(6) + 0 );
+
 	}
 
 	/*******************************************************/
@@ -66,7 +67,6 @@ public class Junction {
 	}
 	
 	public ArrayList<Road> getEnteringRoads() {
-	//	this.initEnteringRoads();
 		return enteringRoads;
 	}
 	
@@ -99,7 +99,6 @@ public class Junction {
 	}
 	
 	public ArrayList<Road> getExitingRoads() {
-	//	this.initEnteringRoads();
 		return exitingRoads;
 	}
 	
@@ -125,6 +124,8 @@ public class Junction {
 		this.enteringRoads.add(new Road(new Junction(""+i  , new Point(1.2*i, 3.2*i)),new Junction("" +i, new Point(1.2*i,  1.3*1))));
 		
 	}	
+	
+	
 	public void addExitRoad(Road roadExitRoad) { //using for a road
 		this.exitingRoads.add (roadExitRoad);
 	}
@@ -132,7 +133,7 @@ public class Junction {
 
 	@Override
 	public String toString() {
-		return  junctionName ;
+		return "Junction "+ junctionName ;
 	}
 
 	@Override		
@@ -151,7 +152,7 @@ public class Junction {
 	/*******************************************************/
 	public void changeLight() {
 			int flag=0;
-			//System.out.println("roads from "+this.enteringRoads+ "to "+this.exitingRoads);
+			System.out.println("roads from "+this.enteringRoads+ "to "+this.exitingRoads);
 			if (isHasLights()==true && this.enteringRoads.size()>=2) {
 				for(int i=0;i<this.enteringRoads.size();i++) {
 					if (this.enteringRoads.get(i).isOpen()) { 
@@ -159,12 +160,10 @@ public class Junction {
 						    break; 
 						}  
 			        } 
-			
 			    for (Road element : getEnteringRoads()) 
 			    	element.setOpen(false);
 				
-				getEnteringRoads().get(flag+1).setOpen(true);
-
+				getEnteringRoads().get(flag).setOpen(true);
 			}
 
 			
