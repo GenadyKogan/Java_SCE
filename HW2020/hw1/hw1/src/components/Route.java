@@ -1,6 +1,7 @@
 package components;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Route {
 	private ArrayList<Junction> junctions; // list of junctions on the route by the order of movement.
@@ -12,6 +13,8 @@ public class Route {
 		this.setJunctions(junctions);
 		this.setRoads(roads);
 		this.setVehicleType(vehicleType);
+		this.setDelay(new Random().nextInt(5) + 1 );
+
 	}
 	
 	
@@ -62,11 +65,11 @@ public class Route {
 	}
 	/*******************************************************/
 
-	/*@Override
+	@Override
 	public String toString() {
 		return "Route [junctions=" + junctions + ", roads=" + roads + ", delay=" + delay + ", vehicleType="
 				+ vehicleType + "]";
-	}*/
+	}
 
 	@Override		
 	public boolean equals(Object other) {
@@ -115,6 +118,12 @@ public class Route {
 			
 		}
 		return res;
+		
+	}
+
+
+	public void printRoute() {
+		// TODO Auto-generated method stub
 		
 	}
 	

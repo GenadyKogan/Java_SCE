@@ -90,12 +90,12 @@ public class Driving {
 		this.maxTime = maxTime;
 	}
 	/*******************************************************/
-	@Override
+	/*@Override
 	public String toString() {
 		return "Driving [numOfJuncs=" + numOfJuncs + ", numOfVehicles=" + numOfVehicles + ", currentMap=" + currentMap
 				+ ", currentVehicles=" + currentVehicles + ", drivingTime=" + drivingTime + ", maxTime=" + maxTime
 				+ "]";
-	}
+	}*/
 	
 	@Override		
 	public boolean equals(Object other) {

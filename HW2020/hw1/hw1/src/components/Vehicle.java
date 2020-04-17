@@ -115,6 +115,7 @@ public class Vehicle {
 	
 	
 
+
 	// wait for the current point delay time and move to the next point of the route.
 	public void move() {
 		
@@ -124,6 +125,7 @@ public class Vehicle {
 	// check what about road ????!?!?!?!?! 
 	//if arrived to a junction, update the junction waiting list and calculate the delay time before the next move	// TODO: how to update also in juction, 
 	public void checkIn() {
+		
 		if(!this.movesNow && this.currentRoute!=null) {
 			// if we havent visited any junction yet
 			if(this.lastJunction == null) {
@@ -137,7 +139,7 @@ public class Vehicle {
 				}
 			}
 			this.spentTime = this.lastJunction.getDelay();
-			System.out.println(this.type +", ID "+ this.id + " is moving on  "+lastRoad.getFromJunc());
+			System.out.println(this.type +", ID "+ this.id + " is moving on  "+toString());
 
 		}
 

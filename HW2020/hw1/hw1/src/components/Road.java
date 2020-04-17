@@ -25,7 +25,7 @@ public class Road {
 			boolean isEnabled) {
 		this.setFromJunc(from);
 		this.setToJunc(to);
-		this.setAllowedVehicles(allowed);
+		this.setAllowedVehicle(allowed);
 		this.setOpen(isOpen);
 		this.setEnabled(isEnabled);
 
@@ -34,15 +34,15 @@ public class Road {
 			boolean isEnabled) {
 		this.setFromJunc(from);
 		this.setToJunc(to);
-		System.out.println(getFromJunc()+" "+getToJunc());
 		this.setAllowed(vehicleType);
 		this.setOpen(isOpen);
-		this.setEnabled(isEnabled);
+		this.setEnabled(isEnabled);		
 		this.setLength(new Random().nextInt(990000) + 3000 );
 		this.setMaxSpeed(new Random().nextInt(160) + 30 );
-		
 		this.fromJunc.addEnterRoad(new Road(from,to));
 		this.toJunc.addExitRoad(new Road(to,from));
+		this.allowedVehicles=new ArrayList<VehicleType>();
+		this.addVehicleType(vehicleType);
 	}
 	
 	
@@ -74,11 +74,11 @@ public class Road {
 		return ans;
 	}
 	
-	public ArrayList<VehicleType> getAllowedVehicles() {
+	public ArrayList<VehicleType> getAllowedVehicle() {
 		return allowedVehicles;
 	}
 	
-	public boolean setAllowedVehicles(ArrayList<VehicleType> allowedVehicles) {		
+	public boolean setAllowedVehicle(ArrayList<VehicleType> allowedVehicles) {		
 		boolean ans=false;
 		if(allowedVehicles instanceof ArrayList) {
 			allowedVehicles=new ArrayList<VehicleType>();
@@ -121,7 +121,7 @@ public class Road {
 		this.maxSpeed = maxSpeed;
 	}
 	/*------------------------*/
-	public VehicleType getAllowedVehicle() {
+	public VehicleType getAllowed() {
 		return allowed;
 	}
 

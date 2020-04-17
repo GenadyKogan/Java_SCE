@@ -44,9 +44,10 @@ public class VehicleType {
 	/*******************************************************/
 	@Override
 	public String toString() {
-		return typeName +","+ " average speed: "+speed ;
+		return typeName +","+ " average speed: "+speed;
 	}
 	
+
 	@Override		
 	public boolean equals(Object other) {
 		boolean ans =false;
@@ -65,7 +66,6 @@ public class VehicleType {
 		randomVehicle[4]= new VehicleType("truck",80);
 		Random Dice = new Random();
 		int n = Dice.nextInt(5);
-
 		return  randomVehicle[n];
 		
 	}

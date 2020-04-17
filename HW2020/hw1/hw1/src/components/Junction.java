@@ -19,6 +19,7 @@ public class Junction {
 		this.setJunctionName(name);
 		this.setLocation(loc);
 		id=++counter;
+		System.out.println("Point ("+ loc.getX()+","+loc.getY() +") has been created");
 		System.out.print("Junction "+id+" has been created\n");
 		this.setEnteringRoads(new ArrayList<Road>());
 		this.setVehicles(new ArrayList<Road>());
@@ -133,7 +134,7 @@ public class Junction {
 
 	@Override
 	public String toString() {
-		return "Junction "+ junctionName ;
+		return  junctionName ;
 	}
 
 	@Override		
@@ -152,8 +153,8 @@ public class Junction {
 	/*******************************************************/
 	public void changeLight() {
 			int flag=0;
-			System.out.println("roads from "+this.enteringRoads+ "to "+this.exitingRoads);
-			if (isHasLights()==true && this.enteringRoads.size()>=2) {
+
+			if (isHasLights()==true ) {
 				for(int i=0;i<this.enteringRoads.size();i++) {
 					if (this.enteringRoads.get(i).isOpen()) { 
 						    flag+=1;
@@ -162,9 +163,19 @@ public class Junction {
 			        } 
 			    for (Road element : getEnteringRoads()) 
 			    	element.setOpen(false);
-				
-				getEnteringRoads().get(flag).setOpen(true);
+			    flag+=1;
+			    if(flag<this.enteringRoads.size())
+			    {
+			    	getEnteringRoads().get(flag).setOpen(true);
+					System.out.println("roads from "+this.enteringRoads.get(flag-1).getToJunc()+ " to "+ this.enteringRoads.get(flag).getToJunc()+": green light");
+			    }
+			    else if(flag>=this.enteringRoads.size())
+			    {
+
+			    	System.out.println(" No entering roads, can not change lights");
+			    }
 			}
+
 
 			
 	}
