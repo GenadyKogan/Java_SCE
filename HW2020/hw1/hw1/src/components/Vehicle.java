@@ -128,7 +128,6 @@ public class Vehicle {
 			// if we havent visited any junction yet
 			if(this.lastJunction == null) {
 				this.lastJunction = this.currentRoute.getJunctions().get(0);
-				System.out.println(this.type +", ID "+ this.id + " is moving on  "+lastRoad.getFromJunc());
 
 			} else {
 				int lastIndex = this.currentRoute.getJunctions().indexOf(lastJunction);
@@ -138,6 +137,7 @@ public class Vehicle {
 				}
 			}
 			this.spentTime = this.lastJunction.getDelay();
+			System.out.println(this.type +", ID "+ this.id + " is moving on  "+lastRoad.getFromJunc());
 
 		}
 
