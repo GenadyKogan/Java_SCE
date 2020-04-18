@@ -31,7 +31,7 @@ public class Road {
 
 	}
 
-	/*aaa*/
+	/*aaaaa*/
 	public Road(Junction from, Junction to, VehicleType vehicleType, boolean isOpen,
 			boolean isEnabled) {
 		this.setFromJunc(from);
