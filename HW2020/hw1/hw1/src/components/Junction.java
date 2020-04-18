@@ -134,9 +134,10 @@ public class Junction {
 		
 	}	
 
-	
+	/*****/
 	public void addExitRoad(Road roadExitRoad) { //using for a road
 		this.exitingRoads.add (roadExitRoad);
+	
 	}
 	/*******************************************************/
 
@@ -163,7 +164,6 @@ public class Junction {
 			int flag=0;
 
 			//System.out.println(this.enteringRoads.get(0).getAllowedVehicle());
-
 			if (isHasLights()==true ) {
 				for(int i=0;i<this.enteringRoads.size();i++) {
 					if (this.enteringRoads.get(i).isOpen()) { 
@@ -179,12 +179,13 @@ public class Junction {
 			    	getEnteringRoads().get(flag).setOpen(true);
 					System.out.println("roads from "+this.enteringRoads.get(flag-1).getToJunc()+ " to "+ this.enteringRoads.get(flag).getToJunc()+": green light");
 			    }
-			    else if(flag>=this.enteringRoads.size())
+			    else if(flag==this.enteringRoads.size())
 			    {
 
 			    	System.out.println(" No entering roads, can not change lights");
 			    }
 			}
+
 	}
 	public boolean checkAvailability (Road r) {
 		for(Road road: vehicles) {
@@ -196,7 +197,8 @@ public class Junction {
 	}
 	public void setLightsOn() {
 		this.setHasLights(true);
-		System.out.println("junction "+ this.junctionName +": traffic lights ON. Delay time: "+this.delay);
+		System.out.println("Junction "+junctionName+" : traffic lights ON. Delay time: "+this.delay);
+
 	}
 
 	

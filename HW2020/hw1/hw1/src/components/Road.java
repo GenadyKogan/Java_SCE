@@ -31,7 +31,7 @@ public class Road {
 
 	}
 
-	/*aaaaaa*/
+
 	public Road(Junction from, Junction to, VehicleType vehicleType, boolean isOpen,
 			boolean isEnabled) {
 		this.setFromJunc(from);
@@ -175,12 +175,13 @@ public class Road {
 	}
 
 	public void ïinitVehicles() {
-			for (int i = 0; i < allowed.randomVehicle.length; i++) {
-				this.allowedVehicles.add(allowed.getRandomVehicleTypes());
+		int size=(new Random().nextInt(5) + 1 );
+		for (int i = 0; i < size; i++) {
+			this.allowedVehicles.add(allowed.getRandomVehicleTypes());
 
-			}
 		}
-
+		
+	}
 	
 	
 }

@@ -122,7 +122,7 @@ public class Driving {
 			Vehicle tempVehicle  = new Vehicle(i, new VehicleType(), this.currentMap.getJunctions().get(this.random.nextInt(this.numOfJuncs)));
 			this.currentVehicles.add(tempVehicle);
 			tempVehicle.setCurrentRoute(getRandomRouteFromJunction(tempVehicle.getLastJunction(), tempVehicle.getType()));
-			System.out.println(this.currentVehicles.get(i)+" has been created and placed at Junction "+ this.currentVehicles.get(i).getLastJunction());
+		//	System.out.println(this.currentVehicles.get(i)+" has been created and placed at Junction "+ this.currentVehicles.get(i).getLastJunction());
 		}
 	}
 	

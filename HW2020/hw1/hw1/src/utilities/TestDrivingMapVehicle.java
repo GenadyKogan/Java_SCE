@@ -20,11 +20,11 @@ public class TestDrivingMapVehicle {
 		
 		Map map=new Map(5);
 		map.addJunction(new Junction("Test", new Point(5,10)));
-		System.out.println(map.getJunctions());
-		map.removeJunction(map.getJunctions().get(5));
-		System.out.println(map.getJunctions());
+	//	System.out.println(map.getJunctions());
+//		map.removeJunction(map.getJunctions().get(5));
+	//	System.out.println(map.getJunctions());
 		
-		Driving d=new Driving(5,4,20);
+	/*	Driving d=new Driving(5,4,20);
 		System.out.println(d.getVehicles());
 		d.addVehicles();
 		System.out.println(d.getVehicles());
@@ -32,7 +32,7 @@ public class TestDrivingMapVehicle {
 		d.getVehicles().get(0).move();
 		for(int i=0;i<d.getVehicles().size();i++) {
 			d.getVehicles().get(i).move();
-		}
+		}*/
 	}
 
 }
