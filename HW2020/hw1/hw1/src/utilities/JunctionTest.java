@@ -34,7 +34,7 @@ public static void testJunction() {
 			else i--;
 			
 		}
-	/*	for (int i=0;i<arr.length;i++) {
+		for (int i=0;i<arr.length;i++) {
 			System.out.println(arrR[i].toString());
 
 			System.out.println(arr[i].toString() + ": EXITING ROADS:");
@@ -61,7 +61,7 @@ public static void testJunction() {
 			System.out.println(arrR[i].toString() + ": " + arrR[i].getAllowedVehicle() + " lenth: " + arrR[i].getLength() + " Max Speed: " + arrR[i].getMaxSpeed());
 		}
 		
-		*/
+		
 	}
 		
 
