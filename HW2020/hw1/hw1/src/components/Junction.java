@@ -161,10 +161,9 @@ public class Junction {
 	/*******************************************************/
 	public void changeLight() {
 			int flag=0;
-<<<<<<< HEAD
+
 			//System.out.println(this.enteringRoads.get(0).getAllowedVehicle());
-=======
->>>>>>> branch 'master' of https://github.com/GenadyKogan/Java_SCE.git
+
 			if (isHasLights()==true ) {
 				for(int i=0;i<this.enteringRoads.size();i++) {
 					if (this.enteringRoads.get(i).isOpen()) { 
