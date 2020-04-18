@@ -17,7 +17,6 @@ public class Route {
 
 	}
 	
-	
 	public Route(Junction start, Junction end, VehicleType vehType) {} // no implemented in this task
 	
 	/*******************************************************/
@@ -30,8 +29,9 @@ public class Route {
 	public boolean setJunctions(ArrayList<Junction> junctions) {
 		boolean ans=false;
 		if(junctions instanceof ArrayList) {
-			junctions=new ArrayList<Junction>();
-			this.junctions =junctions;
+			/*junctions=new ArrayList<Junction>();
+			this.junctions =junctions;*/
+			this.junctions=new ArrayList<Junction>(junctions);
 			ans=true;
 		}
 		return ans;	
@@ -41,13 +41,15 @@ public class Route {
 		return roads;
 	}
 	
-	public void setRoads(ArrayList<Road> roads) {
+	public boolean setRoads(ArrayList<Road> roads) {
 		boolean ans=false;
 		if(roads instanceof ArrayList) {
-			roads=new ArrayList<Road>();
-			this.roads =roads;
+			/*roads=new ArrayList<Road>();
+			this.roads =roads;*/
+			this.roads=new ArrayList<Road>(roads);
 			ans=true;
 		}
+		return ans;
 	}
 	public double getDelay() {
 		return delay;
