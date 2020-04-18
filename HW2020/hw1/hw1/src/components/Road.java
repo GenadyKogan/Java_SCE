@@ -23,8 +23,9 @@ public class Road {
 	}
 	public Road(Junction from, Junction to, ArrayList<VehicleType> allowed, boolean isOpen,
 			boolean isEnabled) {
-		this.setFromJunc(from);
-		this.setToJunc(to);
+		/*this.setFromJunc(from);
+		this.setToJunc(to);*/
+		this(from,to);
 		this.setAllowedVehicle(allowed);
 		this.setOpen(isOpen);
 		this.setEnabled(isEnabled);
@@ -33,8 +34,9 @@ public class Road {
 
 	public Road(Junction from, Junction to, VehicleType vehicleType, boolean isOpen,
 			boolean isEnabled) {
-		this.setFromJunc(from);
-		this.setToJunc(to);
+		/*this.setFromJunc(from);
+		this.setToJunc(to);*/
+		this(from,to);
 		this.setAllowed(vehicleType);
 		this.setOpen(isOpen);
 		this.setEnabled(isEnabled);		
@@ -82,8 +84,9 @@ public class Road {
 	public boolean setAllowedVehicle(ArrayList<VehicleType> allowedVehicles) {		
 		boolean ans=false;
 		if(allowedVehicles instanceof ArrayList) {
-			allowedVehicles=new ArrayList<VehicleType>();
-			this.allowedVehicles =allowedVehicles;
+			/*allowedVehicles=new ArrayList<VehicleType>();
+			this.allowedVehicles =allowedVehicles;*/
+			this.allowedVehicles=new ArrayList<VehicleType>(allowedVehicles);
 			ans=true;
 		}
 		return ans;	

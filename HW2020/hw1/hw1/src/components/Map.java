@@ -43,7 +43,7 @@ public class Map {
 		this(value,3);
 	}
 	public Map(ArrayList<Junction> juncs, ArrayList<Road> roads) {
-		this.setJunctions(juncs);
+		this(juncs);
 		this.setRoads(roads);
 	}
 	
@@ -68,8 +68,9 @@ public class Map {
 	public boolean setJunctions(ArrayList<Junction> junctions) {
 		boolean ans=false;
 		if(junctions instanceof ArrayList) {
-			junctions=new ArrayList<Junction>();
-			this.junctions = junctions;
+			/*junctions=new ArrayList<Junction>();
+			this.junctions = junctions;*/
+			this.junctions=new ArrayList<Junction>(junctions);
 			ans=true;
 		}
 		return ans;
@@ -82,8 +83,9 @@ public class Map {
 	public boolean setRoads(ArrayList<Road> roads) {
 		boolean ans=false;
 		if(roads instanceof ArrayList) {
-			roads=new ArrayList<Road>();
-			this.roads =roads;
+			/*roads=new ArrayList<Road>();
+			this.roads =roads;*/
+			this.roads=new ArrayList<Road>(roads);
 			ans=true;
 		}
 		return ans;
@@ -159,7 +161,7 @@ public class Map {
 		if(junc!=null) {
 	        for (Junction element : getJunctions()) { 
 	            if (element.equals(junc)) { 
-	            	for(Road road : element.getExitingRoads()) {
+	            	for(Road road : element.getEnteringRoads()) {
 	            		if(road.getToJunc().equals(element))
 	            			road.setToJunc(null);
 	            		else if(road.getFromJunc().equals(element))

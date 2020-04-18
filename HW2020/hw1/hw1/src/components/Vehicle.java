@@ -6,7 +6,6 @@ import java.util.Random;
 
 public class Vehicle {
 	private int id;
-
 	private  VehicleType type;
 	private int speed; //average speed for this type of vehicle.
 	private Route currentRoute;
@@ -134,6 +133,7 @@ public class Vehicle {
 			} else {
 				int lastIndex = this.currentRoute.getJunctions().indexOf(lastJunction);
 				if(lastIndex < this.currentRoute.getJunctions().size() && this.currentRoute.getJunctions().size()>=2) {
+					//if(lastIndex <=this.currentRoute.getJunctions().size() && this.currentRoute.getJunctions().size()>=2) {
 					this.lastJunction = currentRoute.getJunctions().get(lastIndex + 1); 
 					this.currentRoute.getJunctions().remove(lastIndex);
 				}

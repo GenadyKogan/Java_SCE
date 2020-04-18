@@ -25,6 +25,7 @@ public class Junction {
 		this.setVehicles(new ArrayList<Road>());
 		this.setExitingRoads(new ArrayList<Road>());
 		this.setDelay(new Random().nextInt(6) + 0 );
+		
 
 	}
 
@@ -74,8 +75,9 @@ public class Junction {
 	public boolean setEnteringRoads(ArrayList<Road> enteringRoads) {
 		boolean ans=false;
 		if(enteringRoads instanceof ArrayList) {
-			enteringRoads=new ArrayList<Road>();
-			this.enteringRoads =enteringRoads;
+			/*enteringRoads=new ArrayList<Road>();
+			this.enteringRoads =enteringRoads;*/
+			this.enteringRoads=new ArrayList<Road>(enteringRoads);
 			ans=true;
 		}
 		return ans;	
@@ -92,8 +94,8 @@ public class Junction {
 	public boolean setVehicles(ArrayList<Road> vehicles) {
 		boolean ans=false;
 		if(vehicles instanceof ArrayList) {
-			vehicles =new ArrayList<Road>();
-			this.vehicles=vehicles;
+			//vehicles =new ArrayList<Road>();
+			this.vehicles=new ArrayList<Road>(vehicles);;
 			ans=true;
 		}
 		return ans;	
@@ -106,8 +108,8 @@ public class Junction {
 	public boolean setExitingRoads(ArrayList<Road> exitingRoads) {
 		boolean ans=false;
 		if(exitingRoads instanceof ArrayList) {
-			exitingRoads =new ArrayList<Road>();
-			this.exitingRoads=exitingRoads;
+			//exitingRoads =new ArrayList<Road>();
+			this.exitingRoads=new ArrayList<Road>(exitingRoads);;
 			ans=true;
 		}
 		return ans;
@@ -153,7 +155,6 @@ public class Junction {
 	/*******************************************************/
 	public void changeLight() {
 			int flag=0;
-
 			if (isHasLights()==true ) {
 				for(int i=0;i<this.enteringRoads.size();i++) {
 					if (this.enteringRoads.get(i).isOpen()) { 
@@ -175,12 +176,7 @@ public class Junction {
 			    	System.out.println(" No entering roads, can not change lights");
 			    }
 			}
-
-
-			
 	}
-	
-
 	public boolean checkAvailability (Road r) {
 		for(Road road: vehicles) {
 			if(road.equals(r)) {
@@ -189,7 +185,6 @@ public class Junction {
 		}
 		return false;
 	}
-
 	public void setLightsOn() {
 		this.setHasLights(true);
 		System.out.println("junction "+ this.junctionName +": traffic lights ON. Delay time: "+this.delay);
