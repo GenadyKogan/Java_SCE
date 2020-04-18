@@ -119,13 +119,19 @@ public class Junction {
 		this.exitingRoads.add(new Road(new Junction(""+i , new Point(1.2*i,  1.3*1)),new Junction(""+i*1.4 , new Point(1.2*i, 3.2*i))));
 	}
 	
+	public void initvehicles() {
+		int i=(new Random().nextInt(5) + 1 );
+		this.vehicles =new ArrayList<Road>();
+		this.vehicles.add(new Road(new Junction(""+i , new Point(1.2*i,  1.3*1)),new Junction(""+i*1.4 , new Point(1.2*i, 3.2*i))));
+	}
+	
 	public void initEnteringRoads() {
 		int i=(new Random().nextInt(5) + 1 );
 		this.enteringRoads =new ArrayList<Road>();
 		this.enteringRoads.add(new Road(new Junction(""+i  , new Point(1.2*i, 3.2*i)),new Junction("" +i, new Point(1.2*i,  1.3*1))));
 		
 	}	
-	
+
 	
 	public void addExitRoad(Road roadExitRoad) { //using for a road
 		this.exitingRoads.add (roadExitRoad);
@@ -153,7 +159,7 @@ public class Junction {
 	/*******************************************************/
 	public void changeLight() {
 			int flag=0;
-
+			//System.out.println(this.enteringRoads.get(0).getAllowedVehicle());
 			if (isHasLights()==true ) {
 				for(int i=0;i<this.enteringRoads.size();i++) {
 					if (this.enteringRoads.get(i).isOpen()) { 

@@ -26,13 +26,13 @@ public class TestDrivingMapVehicle {
 		
 		Driving d=new Driving(5,4,20);
 		System.out.println(d.getVehicles());
-		/*d.addVehicles();
+		d.addVehicles();
 		System.out.println(d.getVehicles());
 		System.out.println();
 		d.getVehicles().get(0).move();
 		for(int i=0;i<d.getVehicles().size();i++) {
 			d.getVehicles().get(i).move();
-		}*/
+		}
 	}
 
 }

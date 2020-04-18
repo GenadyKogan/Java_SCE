@@ -140,9 +140,9 @@ public class Vehicle {
 			}
 			this.spentTime = this.lastJunction.getDelay();
 
-			System.out.println(this.type +", ID "+ this.id + " is moving on  "+toString());
+		//	System.out.println(this.type +", ID "+ this.id + " is moving on  "+toString());
 
-		//	System.out.println(this.type +", ID "+ this.id + " is moving on  "+lastRoad.getLength());
+			System.out.println(this.type +", ID "+ this.id + " is moving on  "+lastRoad);
 
 
 		}
