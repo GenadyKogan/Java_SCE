@@ -3,6 +3,8 @@ package components;
 import java.util.ArrayList;
 import java.util.Random;
 
+import utilities.Point;
+
 public class Route {
 	private ArrayList<Junction> junctions; // list of junctions on the route by the order of movement.
 	private ArrayList<Road> roads; // list of roads on the route by the order of movement
@@ -13,10 +15,25 @@ public class Route {
 		this.setJunctions(junctions);
 		this.setRoads(roads);
 		this.setVehicleType(vehicleType);
-		this.setDelay(new Random().nextInt(5) + 1 );
-
+		this.setDelay(new Random().nextInt(400000) + 1200000 );
+		init();
 	}
 	
+
+
+	private void init() {
+		
+		this.junctions.add(new Junction("1", new Point(6,3)));
+		this.roads.add(new Road(new Junction("1", new Point(3,2)),new Junction("2", new Point(3,2))));
+		this.junctions.add(new Junction("2", new Point(3,2)));
+		this.roads.add(new Road(new Junction("3", new Point(3,2)),new Junction("2", new Point(3,2))));
+		this.junctions.add(new Junction("3", new Point(3,2)));
+		this.roads.add(new Road(new Junction("2", new Point(3,2)),new Junction("3", new Point(3,2))));
+		
+	}
+
+
+
 	public Route(Junction start, Junction end, VehicleType vehType) {} // no implemented in this task
 	
 	/*******************************************************/
@@ -29,8 +46,6 @@ public class Route {
 	public boolean setJunctions(ArrayList<Junction> junctions) {
 		boolean ans=false;
 		if(junctions instanceof ArrayList) {
-			/*junctions=new ArrayList<Junction>();
-			this.junctions =junctions;*/
 			this.junctions=new ArrayList<Junction>(junctions);
 			ans=true;
 		}
@@ -44,8 +59,6 @@ public class Route {
 	public boolean setRoads(ArrayList<Road> roads) {
 		boolean ans=false;
 		if(roads instanceof ArrayList) {
-			/*roads=new ArrayList<Road>();
-			this.roads =roads;*/
 			this.roads=new ArrayList<Road>(roads);
 			ans=true;
 		}
@@ -123,10 +136,5 @@ public class Route {
 		
 	}
 
-
-	public void printRoute() {
-		// TODO Auto-generated method stub
-		
-	}
 	
 }

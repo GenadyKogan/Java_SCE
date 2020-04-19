@@ -35,11 +35,17 @@ public class Map {
 			this.junctions.get(junctionIndexFrom).addEnterRoad(this.roads.get(i));
 			this.junctions.get(junctionIndexTo).addExitRoad(this.roads.get(i));
 			System.out.println("Road from "+ this.roads.get(i).getFromJunc()+ " to "+ this.roads.get(i).getToJunc()+" has been created");
+			init();
+			
 		}
 	}
 	
 	private void init() {
-		this.junctions.get(1).setLightsOn();
+		for (int i = 0; i < this.roads.size(); i++) {
+			System.out.println("Road from "+ this.roads.get(i).getFromJunc()+ " to "+ this.roads.get(i).getToJunc()+" has been created");
+			this.junctions.get(i).setLightsOn();
+			this.junctions.get(i).changeLight();
+		}
 		
 	}
 
@@ -93,21 +99,19 @@ public class Map {
 	/*******************************************************/
 	public boolean addRoad(Road r) {
 		boolean ans=false;
-		if(this.getJunctions()!=null)
-		{
-			if(r!=null) {
-		        for (Road element : getRoads()) { 
-		            if (element.equals(r)) { 
-		            	ans = true; 
-		                break; 
-		            } 
-		        } 			
-				if(ans==false)
-					this.roads.add(r);
+		if(r!=null) {
+	        for (Road element : getRoads()) { 
+	            if (element.equals(r)) { 
+	            	ans = true; 
+	                break; 
+	            } 
+	        } 			
+			if(ans==false)
+			{
+				this.roads.add(r);
+				System.out.println("Junction "+r +" nas been added to the map");
 			}
 		}
-		else
-			this.roads.add(r);
 		return ans;
 
 	}
@@ -130,27 +134,19 @@ public class Map {
 	
 	public boolean addJunction(Junction junc) {
 		boolean ans=false;
-		if(this.getJunctions()!=null)
-		{
-			if(junc!=null) {
-		        for (Junction element : getJunctions()) { 
-		            if (element.equals(junc)) { 
-		            	ans = true; 
-		                break; 
-		            } 
-		        } 			
-				if(ans==false)
-				{
-					this.junctions.add(junc);
-					System.out.println("Junction "+junc.getJunctionName() +" nas been added to the map");
-				}
-				
+		if(junc!=null) {
+	        for (Junction element : getJunctions()) { 
+	            if (element.equals(junc)) { 
+	            	ans = true; 
+	                break; 
+	            } 
+	        } 			
+			if(ans==false)
+			{
+				this.junctions.add(junc);
+				System.out.println("Junction "+junc.getJunctionName() +" nas been added to the map");
 			}
-		}
-		else
-		{
-			this.junctions.add(junc);
-			System.out.println("Junction "+junc.getJunctionName() +" nas been added to the map");
+			
 		}
 		return ans;
 
