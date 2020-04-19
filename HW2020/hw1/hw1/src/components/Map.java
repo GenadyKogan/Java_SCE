@@ -31,15 +31,20 @@ public class Map {
 				junctionIndexFrom = random.nextInt(junctions);
 			}
 			this.roads.add(new Road(this.junctions.get(junctionIndexFrom),this.junctions.get(junctionIndexTo)));
+			System.out.println("Road from "+ this.roads.get(i).getFromJunc()+ " to "+ this.roads.get(i).getToJunc());
 			// To -> enter , from - > exit
 			this.junctions.get(junctionIndexFrom).addEnterRoad(this.roads.get(i));
 			this.junctions.get(junctionIndexTo).addExitRoad(this.roads.get(i));
+<<<<<<< HEAD
 			System.out.println("Road from "+ this.roads.get(i).getFromJunc()+ " to "+ this.roads.get(i).getToJunc()+" has been created");
 			init();
+=======
+>>>>>>> branch 'master' of https://github.com/GenadyKogan/Java_SCE.git
 			
 		}
 	}
 	
+<<<<<<< HEAD
 	private void init() {
 		for (int i = 0; i < this.roads.size(); i++) {
 			System.out.println("Road from "+ this.roads.get(i).getFromJunc()+ " to "+ this.roads.get(i).getToJunc()+" has been created");
@@ -49,6 +54,8 @@ public class Map {
 		
 	}
 
+=======
+>>>>>>> branch 'master' of https://github.com/GenadyKogan/Java_SCE.git
 	public Map (int value) {
 		this(value,3);
 	}
@@ -78,6 +85,8 @@ public class Map {
 	public boolean setJunctions(ArrayList<Junction> junctions) {
 		boolean ans=false;
 		if(junctions instanceof ArrayList) {
+			/*junctions=new ArrayList<Junction>();
+			this.junctions = junctions;*/
 			this.junctions=new ArrayList<Junction>(junctions);
 			ans=true;
 		}
@@ -91,6 +100,8 @@ public class Map {
 	public boolean setRoads(ArrayList<Road> roads) {
 		boolean ans=false;
 		if(roads instanceof ArrayList) {
+			/*roads=new ArrayList<Road>();
+			this.roads =roads;*/
 			this.roads=new ArrayList<Road>(roads);
 			ans=true;
 		}

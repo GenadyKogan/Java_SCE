@@ -67,8 +67,9 @@ public class Driving {
 	public boolean setCurrentVehicles(ArrayList<Vehicle> currentVehicles) {
 		boolean ans=false;
 		if(currentVehicles instanceof ArrayList) {
-			currentVehicles =new ArrayList<Vehicle>();
-			this.currentVehicles=currentVehicles;
+			/*currentVehicles =new ArrayList<Vehicle>();
+			this.currentVehicles=currentVehicles;*/
+			this.currentVehicles=new ArrayList<Vehicle>(currentVehicles);
 			ans=true;
 		}
 		return ans;	
