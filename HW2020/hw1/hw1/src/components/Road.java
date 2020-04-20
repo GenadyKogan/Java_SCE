@@ -85,6 +85,7 @@ public class Road {
 		return allowedVehicles;
 	}
 	
+<<<<<<< HEAD
 //	public boolean setAllowedVehicle(ArrayList<VehicleType> allowedVehicles) {
 //		boolean ans=false;
 //		if(allowedVehicles instanceof ArrayList) {
@@ -95,6 +96,18 @@ public class Road {
 //		return ans;
 //	}
 	public void setAllowedVehicle(ArrayList<VehicleType> allowedVehicles){this.allowedVehicles =allowedVehicles;}
+=======
+	public boolean setAllowedVehicle(ArrayList<VehicleType> allowedVehicles) {		
+		boolean ans=false;
+		if(allowedVehicles instanceof ArrayList) {
+			/*allowedVehicles=new ArrayList<VehicleType>();
+			this.allowedVehicles =allowedVehicles;*/
+			this.allowedVehicles=new ArrayList<VehicleType>(allowedVehicles);
+			ans=true;
+		}
+		return ans;	
+	}
+>>>>>>> branch 'master' of https://github.com/GenadyKogan/Java_SCE.git
 	public boolean isOpen() {
 		return isOpen;
 	}

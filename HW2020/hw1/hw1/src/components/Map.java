@@ -16,19 +16,31 @@ public class Map {
 	public Map (int junctions, int roads) {
 		this.junctions=new ArrayList<Junction>();
 		this.roads=new ArrayList<Road>();
+		//creating junction
 		for (int i = 0; i < junctions; i++) {
 			int sizeX=(new Random().nextInt(1000000) + 0 );
 			int sizeY=(new Random().nextInt(800) + 0 );
 			this.junctions.add(new Junction("Junction " + i , new Point(sizeX, sizeY)));
 		}
+		
 		int junctionIndexTo;
 		int junctionIndexFrom;
 		ArrayList<Junction> finaljunctions = new ArrayList<>();
 		ArrayList<Integer> usedJunction = new ArrayList<>();
 		for (int i = 0; i < roads; i++) {
+<<<<<<< HEAD
 			if(usedJunction.size()>= this.junctions.size()){
 				usedJunction = new ArrayList<>();
+=======
+			junctionIndexTo = random.nextInt(junctions);
+			junctionIndexFrom = random.nextInt(junctions);
+			
+			while(junctionIndexTo == junctionIndexFrom) /*???????????????*/
+			{
+				junctionIndexFrom = random.nextInt(junctions);
+>>>>>>> branch 'master' of https://github.com/GenadyKogan/Java_SCE.git
 			}
+<<<<<<< HEAD
 			junctionIndexTo = random.nextInt(this.junctions.size());
 			while (usedJunction.contains(junctionIndexTo)){
 				junctionIndexTo = random.nextInt(this.junctions.size());
@@ -47,9 +59,18 @@ public class Map {
 			Junction toJunction = this.junctions.get(junctionIndexFrom);
 
 			this.roads.add(new Road(fromJunction,toJunction));
+=======
+			
+			this.roads.add(new Road(this.junctions.get(junctionIndexFrom),this.junctions.get(junctionIndexTo)));
+>>>>>>> branch 'master' of https://github.com/GenadyKogan/Java_SCE.git
 			// To -> enter , from - > exit
+<<<<<<< HEAD
 			fromJunction.addExitRoad(this.roads.get(i));
 			toJunction.addEnterRoad(this.roads.get(i));
+=======
+			/*???????????????*/	this.junctions.get(junctionIndexFrom).addEnterRoad(this.roads.get(i));
+			this.junctions.get(junctionIndexTo).addExitRoad(this.roads.get(i));
+>>>>>>> branch 'master' of https://github.com/GenadyKogan/Java_SCE.git
 			System.out.println("Road from "+ this.roads.get(i).getFromJunc()+ " to "+ this.roads.get(i).getToJunc()+" has been created");
 //			init();
 		}
