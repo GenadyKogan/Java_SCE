@@ -12,28 +12,12 @@ public class Route {
 	private VehicleType vehicleType;
 	/*******************************************************/
 	public Route(ArrayList<Junction> junctions, ArrayList<Road> roads, VehicleType vehicleType) {
-//		this.setJunctions(junctions);
-//		this.setRoads(roads);
-//		this.setVehicleType(vehicleType);
-//		this.setDelay(new Random().nextInt(400000) + 1200000 );
-//		init();
+
 		this.junctions = junctions;
 		this.roads = roads;
 		this.vehicleType = vehicleType;
 	}
 	
-
-
-//	private void init() {
-//
-//		this.junctions.add(new Junction("1", new Point(6,3)));
-//		this.roads.add(new Road(new Junction("1", new Point(3,2)),new Junction("2", new Point(3,2))));
-//		this.junctions.add(new Junction("2", new Point(3,2)));
-//		this.roads.add(new Road(new Junction("3", new Point(3,2)),new Junction("2", new Point(3,2))));
-//		this.junctions.add(new Junction("3", new Point(3,2)));
-//		this.roads.add(new Road(new Junction("2", new Point(3,2)),new Junction("3", new Point(3,2))));
-//
-//	}
 
 
 
@@ -47,28 +31,13 @@ public class Route {
 	public void setJunctions(ArrayList<Junction> junctions){this.junctions =junctions;}
 	
 
-//	public boolean setJunctions(ArrayList<Junction> junctions) {
-//		boolean ans=false;
-//		if(junctions instanceof ArrayList) {
-//			this.junctions=new ArrayList<Junction>(junctions);
-//			ans=true;
-//		}
-//		return ans;
-//	}
 	
 	public ArrayList<Road> getRoads() {
 		return roads;
 	}
 	public void setRoads(ArrayList<Road> roads){this.roads = roads;}
 
-	//	public boolean setRoads(ArrayList<Road> roads) {
-//		boolean ans=false;
-//		if(roads instanceof ArrayList) {
-//			this.roads=new ArrayList<Road>(roads);
-//			ans=true;
-//		}
-//		return ans;
-//	}
+
 	public double getDelay() {
 		return delay;
 	}
@@ -88,7 +57,8 @@ public class Route {
 	public String toString() {
 		if(this.junctions.size()>1)
 			return "from "+this.junctions.get(0) +" to "+this.junctions.get(1);
-		return "";
+		else
+			return "from "+this.junctions.get(0) +" to "+this.junctions.get(0);
 	}
 
 	@Override		
