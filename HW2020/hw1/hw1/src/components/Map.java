@@ -2,7 +2,6 @@ package components;
 import java.util.ArrayList;
 import java.util.Random;
 
-import game.Driving;
 import utilities.Point;
 
 public class Map {
@@ -18,58 +17,50 @@ public class Map {
 		this.junctions=new ArrayList<Junction>();
 		this.roads=new ArrayList<Road>();
 		for (int i = 0; i < junctions; i++) {
-			int sizeX=(new Random().nextInt(9000) + 1 );
-			int sizeY=(new Random().nextInt(799) + 1 );
+			int sizeX=(new Random().nextInt(1000000) + 0 );
+			int sizeY=(new Random().nextInt(800) + 0 );
 			this.junctions.add(new Junction("Junction " + i , new Point(sizeX, sizeY)));
 		}
 		int junctionIndexTo;
 		int junctionIndexFrom;
+		ArrayList<Junction> finaljunctions = new ArrayList<>();
+		ArrayList<Integer> usedJunction = new ArrayList<>();
 		for (int i = 0; i < roads; i++) {
-			junctionIndexTo = random.nextInt(junctions);
-			junctionIndexFrom = random.nextInt(junctions);
-			while(junctionIndexTo == junctionIndexFrom) 
-			{
-				junctionIndexFrom = random.nextInt(junctions);
+			if(usedJunction.size()>= this.junctions.size()){
+				usedJunction = new ArrayList<>();
 			}
-			this.roads.add(new Road(this.junctions.get(junctionIndexFrom),this.junctions.get(junctionIndexTo)));
+			junctionIndexTo = random.nextInt(this.junctions.size());
+			while (usedJunction.contains(junctionIndexTo)){
+				junctionIndexTo = random.nextInt(this.junctions.size());
+			}
+			usedJunction.add(junctionIndexTo);
+			Junction fromJunction = this.junctions.get(junctionIndexTo);
+
+			if(usedJunction.size()>= this.junctions.size()){
+				usedJunction = new ArrayList<>();
+			}
+			junctionIndexFrom = random.nextInt(this.junctions.size());
+			while (usedJunction.contains(junctionIndexFrom)){
+				junctionIndexFrom = random.nextInt(this.junctions.size());
+			}
+			usedJunction.add(junctionIndexFrom);
+			Junction toJunction = this.junctions.get(junctionIndexFrom);
+
+			this.roads.add(new Road(fromJunction,toJunction));
 			// To -> enter , from - > exit
-			this.junctions.get(junctionIndexFrom).addEnterRoad(this.roads.get(i));
-			this.junctions.get(junctionIndexTo).addExitRoad(this.roads.get(i));
+			fromJunction.addExitRoad(this.roads.get(i));
+			toJunction.addEnterRoad(this.roads.get(i));
 			System.out.println("Road from "+ this.roads.get(i).getFromJunc()+ " to "+ this.roads.get(i).getToJunc()+" has been created");
-			initJunc(junctions);
-			initRoads(roads,junctions);
-			init();
+//			init();
 		}
+
 	}
 	
-
-
-	private void initRoads(int roads2,int junctions2) {
-		this.roads =new ArrayList<Road>();
-		for (int j = 0; j < roads2; j++) {
-		int i=(new Random().nextInt(junctions2) + 1 );
-			this.roads.add(new Road(new Junction(""+i , new Point(1.2*i,  1.4*i)),new Junction(""+j , new Point(1.1*i, 3.2*i))));
-		}	
-	//	System.out.println(this.roads);
-	}
-
-	private void initJunc(int junctions2) {
-		this.junctions =new ArrayList<Junction>();
-		for (int j = 0; j < junctions2; j++) {
-			int i=(new Random().nextInt(800) + 1 );
-			this.junctions.add(new Junction(""+j , new Point(1.2*i,  1.3*i)));
-		}
-	//	System.out.println(this.junctions);
-	}
-
 	private void init() {
 		for (int i = 0; i < this.roads.size(); i++) {
 			System.out.println("Road from "+ this.roads.get(i).getFromJunc()+ " to "+ this.roads.get(i).getToJunc()+" has been created");
 			this.junctions.get(i).setLightsOn();
 			this.junctions.get(i).changeLight();
-			
-			
-			
 		}
 		
 	}
@@ -202,4 +193,6 @@ public class Map {
 		}
 	}
 	
+
 }
+

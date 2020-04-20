@@ -21,10 +21,11 @@ public class Junction {
 		id=++counter;
 		System.out.println("Point ("+ loc.getX()+","+loc.getY() +") has been created");
 		System.out.print("Junction "+id+" has been created\n");
-		this.setEnteringRoads(new ArrayList<Road>());
+		enteringRoads = new ArrayList<Road>();
+		exitingRoads = new ArrayList<Road>();
 		this.setVehicles(new ArrayList<Road>());
-		this.setExitingRoads(new ArrayList<Road>());
 		this.setDelay(new Random().nextInt(6) + 1 );
+
 	}
 
 	/*******************************************************/
@@ -70,8 +71,13 @@ public class Junction {
 		return enteringRoads;
 	}
 	
-	public void setEnteringRoads(ArrayList<Road> enteringRoads) {
-		this.enteringRoads=new ArrayList<Road>(enteringRoads);
+	public boolean setEnteringRoads(ArrayList<Road> enteringRoads) {
+		boolean ans=false;
+		if(enteringRoads instanceof ArrayList) {
+			this.enteringRoads=new ArrayList<Road>(enteringRoads);
+			ans=true;
+		}
+		return ans;	
 	}
 	
 	public void addEnterRoad(Road roadEnterRoad) { // using for a road
@@ -82,28 +88,28 @@ public class Junction {
 		return vehicles;
 	}
 	
-	public void setVehicles(ArrayList<Road> vehicles) {
-		this.vehicles=new ArrayList<Road>(vehicles);
+	public boolean setVehicles(ArrayList<Road> vehicles) {
+		boolean ans=false;
+		if(vehicles instanceof ArrayList) {
+			this.vehicles=new ArrayList<Road>(vehicles);
+			ans=true;
+		}
+		return ans;	
 	}
 	
 	public ArrayList<Road> getExitingRoads() {
 		return exitingRoads;
 	}
 	
-	public void setExitingRoads(ArrayList<Road> exitingRoads) {
-		this.exitingRoads=new ArrayList<Road>(exitingRoads);
-	}
-	
-	public void addExitRoad(Road roadExitRoad) { //using for a road
-		this.exitingRoads.add (roadExitRoad);
-	
+	public boolean setExitingRoads(ArrayList<Road> exitingRoads) {
+		boolean ans=false;
+		if(exitingRoads instanceof ArrayList) {
+			this.exitingRoads=new ArrayList<Road>(exitingRoads);
+			ans=true;
+		}
+		return ans;
 	}
 
-	public void initExitingRoads() {
-		int i=(new Random().nextInt(5) + 1 );
-		this.exitingRoads =new ArrayList<Road>();
-		this.exitingRoads.add(new Road(new Junction(""+i , new Point(1.2*i,  1.3*1)),new Junction(""+i*1.4 , new Point(1.2*i, 3.2*i))));
-	}
 	
 	public void initvehicles() {
 		int i=(new Random().nextInt(5) + 1 );
@@ -111,14 +117,11 @@ public class Junction {
 		this.vehicles.add(new Road(new Junction(""+i , new Point(1.2*i,  1.3*1)),new Junction(""+i*1.4 , new Point(1.2*i, 3.2*i))));
 	}
 	
-	public void initEnteringRoads() {
-		int i=(new Random().nextInt(5) + 1 );
-		this.enteringRoads =new ArrayList<Road>();
-		this.enteringRoads.add(new Road(new Junction(""+i  , new Point(1.2*i, 3.2*i)),new Junction("" +i, new Point(1.2*i,  1.3*1))));
-		
-	}	
 
-
+	public void addExitRoad(Road roadExitRoad) { //using for a road
+		this.exitingRoads.add (roadExitRoad);
+	
+	}
 	/*******************************************************/
 
 	@Override
@@ -184,3 +187,4 @@ public class Junction {
 
 
 }
+

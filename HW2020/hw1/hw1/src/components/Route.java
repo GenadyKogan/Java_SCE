@@ -17,6 +17,7 @@ public class Route {
 		this.vehicleType = vehicleType;
 	}
 	
+
 	public Route(Junction start, Junction end, VehicleType vehType) {} // no implemented in this task
 	
 	/*******************************************************/
@@ -24,16 +25,14 @@ public class Route {
 	public ArrayList<Junction> getJunctions() {
 		return junctions;
 	}
-	public void setJunctions(ArrayList<Junction> junctions){
-		this.junctions =junctions;
-	}
+	public void setJunctions(ArrayList<Junction> junctions){this.junctions =junctions;}
+	
 	
 	public ArrayList<Road> getRoads() {
 		return roads;
 	}
-	public void setRoads(ArrayList<Road> roads){
-		this.roads = roads;
-	}
+	public void setRoads(ArrayList<Road> roads){this.roads = roads;}
+
 
 	public double getDelay() {
 		return delay;
@@ -50,10 +49,11 @@ public class Route {
 	}
 	/*******************************************************/
 
-
-	
-
-	
+	@Override
+	public String toString() {
+		return "Route [junctions=" + junctions + ", roads=" + roads + ", delay=" + delay + ", vehicleType="
+				+ vehicleType + "]";
+	}
 
 	@Override		
 	public boolean equals(Object other) {
@@ -64,14 +64,9 @@ public class Route {
 		return ans;
 	}	
 
-
-	@Override
-	public String toString() {
-		return "Route [junctions=" + junctions + ", roads=" + roads + ", delay=" + delay + ", vehicleType="
-				+ vehicleType + "]";
-	}
-
-	/******************************************************/
+	
+	/**
+	 * @return *****************************************************/
 	
 	public Junction getStart() {
 		if (junctions.size() > 0) {
@@ -120,3 +115,4 @@ public class Route {
 
 	
 }
+

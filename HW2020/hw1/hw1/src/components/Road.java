@@ -21,7 +21,6 @@ public class Road {
 		this.setToJunc(to);
 
 	}
-	/**/
 	public Road(Junction from, Junction to, ArrayList<VehicleType> allowed, boolean isOpen,
 			boolean isEnabled) {
 		this.setFromJunc(from);
@@ -42,7 +41,7 @@ public class Road {
 		this.setEnabled(isEnabled);		
 		this.setLength(new Random().nextInt(990000) + 3000 );
 		this.setMaxSpeed(new Random().nextInt(160) + 30 );
-		this.fromJunc.addEnterRoad(new Road(from,to));
+		this.fromJunc.addEnterRoad(new Road(to,from));
 		this.toJunc.addExitRoad(new Road(to,from));
 		this.allowedVehicles=new ArrayList<VehicleType>();
 		this.initVehicles();
@@ -57,41 +56,45 @@ public class Road {
 	public Junction getFromJunc() {
 		return fromJunc;
 	}
-	public boolean setFromJunc(Junction fromJunc) {
-		boolean ans=false;
-		if(fromJunc instanceof Junction) {
-			this.fromJunc=fromJunc;
-			ans=true;
-		}
-		return ans;
-	}
+//	public boolean setFromJunc(Junction fromJunc) {
+//		boolean ans=false;
+//		if(fromJunc instanceof Junction) {
+//			this.fromJunc=fromJunc;
+//			ans=true;
+//		}
+//		return ans;
+//	}
+	public void setFromJunc(Junction fromJunc) { this.fromJunc=fromJunc;}
 	
 	public Junction getToJunc() {
 		return toJunc;
 	}
 	
-	public boolean setToJunc(Junction toJunc) {
-		boolean ans=false;
-		if(toJunc instanceof Junction) {
-			this.toJunc=toJunc;
-			ans=true;
-		}
-		return ans;
-	}
+//	public boolean setToJunc(Junction toJunc) {
+//		boolean ans=false;
+//		if(toJunc instanceof Junction) {
+//			this.toJunc=toJunc;
+//			ans=true;
+//		}
+//		return ans;
+//	}
+
+	public void setToJunc(Junction toJunc) { this.toJunc=toJunc; }
 	
 	public ArrayList<VehicleType> getAllowedVehicle() {
 		return allowedVehicles;
 	}
 	
-	public boolean setAllowedVehicle(ArrayList<VehicleType> allowedVehicles) {		
-		boolean ans=false;
-		if(allowedVehicles instanceof ArrayList) {
-			allowedVehicles=new ArrayList<VehicleType>();
-			this.allowedVehicles =allowedVehicles;
-			ans=true;
-		}
-		return ans;	
-	}
+//	public boolean setAllowedVehicle(ArrayList<VehicleType> allowedVehicles) {
+//		boolean ans=false;
+//		if(allowedVehicles instanceof ArrayList) {
+//			allowedVehicles=new ArrayList<VehicleType>();
+//			this.allowedVehicles =allowedVehicles;
+//			ans=true;
+//		}
+//		return ans;
+//	}
+	public void setAllowedVehicle(ArrayList<VehicleType> allowedVehicles){this.allowedVehicles =allowedVehicles;}
 	public boolean isOpen() {
 		return isOpen;
 	}
@@ -148,7 +151,6 @@ public class Road {
 		}
 		return ans;
 	}	
-	/**/
 	/*******************************************************/
 	public boolean addVehicleType(VehicleType type) {
 		boolean ans=false;
@@ -186,4 +188,5 @@ public class Road {
 
 	
 }
+
 

@@ -79,16 +79,9 @@ public class Vehicle {
 	public Road getLastRoad() {
 		return lastRoad;
 	}
-	
-	public boolean setLastRoad(Road lastRoad) {
-		boolean ans=false;
-		if(lastRoad instanceof Road) {
-			this.lastRoad =lastRoad;
-			ans=true;
-		}
-		return ans;	
-	}
-	
+
+	public void setLastRoad(Road lastRoad) { this.lastRoad =lastRoad;}
+
 	public boolean isMovesNow() {
 		return movesNow;
 	}
@@ -107,7 +100,7 @@ public class Vehicle {
 	/*******************************************************/
 	
 	public void status() {
-		System.out.println(this.toString() + " Position: "+lastJunction+ " Corent Route: "+this.currentRoute+". "+this.spentTime);
+		System.out.println("currentRoute=" + currentRoute + ", lastJunction=" + lastJunction + ", lastRoad=" + lastRoad	+ ", spentTime=" + spentTime);
 	}
 	@Override
 	public String toString() {
@@ -126,6 +119,7 @@ public class Vehicle {
 	// check what about road ????!?!?!?!?! 
 	//if arrived to a junction, update the junction waiting list and calculate the delay time before the next move	//
 	public void checkIn() {
+		
 		int lastIndex = this.currentRoute.getJunctions().indexOf(lastJunction);
 		if(!this.movesNow && this.currentRoute!=null) {
 			// if we havent visited any junction yet
@@ -135,16 +129,15 @@ public class Vehicle {
 			} else {
 				if(lastIndex < this.currentRoute.getJunctions().size() && this.currentRoute.getJunctions().size()>=2) {
 					this.lastJunction = currentRoute.getJunctions().get(lastIndex + 1);
-					Junction from = this.currentRoute.getJunctions().get(lastIndex);
+					Junction lastJunction = this.currentRoute.getJunctions().get(lastIndex);
+					System.out.println(this.currentRoute);
 					this.currentRoute.getJunctions().remove(lastIndex);
+					System.out.println(this.type +", ID "+ this.id + " is moving on "+lastJunction );
 				}
 			}
 			this.spentTime = this.lastJunction.getDelay();
-			System.out.println(this.type +", ID "+ this.id + " is moving on from " +this.currentRoute.getJunctions().get(lastIndex)+" to "+this.currentRoute.getJunctions().get(lastIndex));
-
 		}
 	}
-
 
 }
 
