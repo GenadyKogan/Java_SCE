@@ -93,7 +93,7 @@ public class Vehicle {
 	public boolean isMovesNow() {
 		return movesNow;
 	}
-	
+	/**/
 	public void setMovesNow(boolean movesNow) {
 		this.movesNow = movesNow;
 	}
@@ -116,8 +116,6 @@ public class Vehicle {
 	public String toString() {
 		return type + ", id=" + id ;
 	}
-	
-	/**/
 
 
 	// wait for the current point delay time and move to the next point of the route.

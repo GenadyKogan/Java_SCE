@@ -88,7 +88,8 @@ public class Route {
 	public String toString() {
 		if(this.junctions.size()>1)
 			return "from "+this.junctions.get(0) +" to "+this.junctions.get(1);
-		return "";
+		else
+			return "from "+this.junctions.get(0) +" to "+this.junctions.get(0);
 	}
 
 	@Override		
