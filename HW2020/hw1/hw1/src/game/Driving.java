@@ -50,30 +50,32 @@ public class Driving {
 	public Map getCurrentMap() {
 		return currentMap;
 	}
+
+	public void setCurrentMap(Map currentMap) { this.currentMap = currentMap;}
 	
-	public boolean setCurrentMap(Map currentMap) {
-		boolean ans=false;
-		if(currentMap instanceof Map) {
-			this.currentMap = currentMap;
-			ans=true;
-		}
-		return ans;	
-		
-	}
+//	public boolean setCurrentMap(Map currentMap) {
+//		boolean ans=false;
+//		if(currentMap instanceof Map) {
+//			this.currentMap = currentMap;
+//			ans=true;
+//		}
+//		return ans;
+//
+//	}
 	public ArrayList<Vehicle> getCurrentVehicles() {
 		return currentVehicles;
 	}
-	
-	public boolean setCurrentVehicles(ArrayList<Vehicle> currentVehicles) {
-		boolean ans=false;
-		if(currentVehicles instanceof ArrayList) {
-			/*currentVehicles =new ArrayList<Vehicle>();
-			this.currentVehicles=currentVehicles;*/
-			this.currentVehicles=new ArrayList<Vehicle>(currentVehicles);
-			ans=true;
-		}
-		return ans;	
-	}
+
+	public void setCurrentVehicles(ArrayList<Vehicle> currentVehicles) { currentVehicles =new ArrayList<Vehicle>(); }
+//	public boolean setCurrentVehicles(ArrayList<Vehicle> currentVehicles) {
+//		boolean ans=false;
+//		if(currentVehicles instanceof ArrayList) {
+//			currentVehicles =new ArrayList<Vehicle>();
+//			this.currentVehicles=currentVehicles;
+//			ans=true;
+//		}
+//		return ans;
+//	}
 	
 	public double getDrivingTime() {
 		return drivingTime;
@@ -133,8 +135,7 @@ public class Driving {
 		Junction currJunctions = start;
 		Road currRoad;
 		for (int i = 0; i <=5; i++) {
-			if(currJunctions.getExitingRoads() != null &&
-			   currJunctions.getEnteringRoads().size() >0 &&  currJunctions.getExitingRoads().size()>0) {
+			if(currJunctions.getEnteringRoads().size() >0 &&  currJunctions.getExitingRoads().size()>0) {
 				currRoad = currJunctions.getExitingRoads().get(0);
 				roads.add(currRoad);
 			}
@@ -178,3 +179,4 @@ public class Driving {
 
 
 }
+

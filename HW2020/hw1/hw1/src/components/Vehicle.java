@@ -81,7 +81,15 @@ public class Vehicle {
 	}
 
 	public void setLastRoad(Road lastRoad) { this.lastRoad =lastRoad;}
-
+//	public boolean setLastRoad(Road lastRoad) {
+//		boolean ans=false;
+//		if(lastRoad instanceof Road) {
+//			this.lastRoad =lastRoad;
+//			ans=true;
+//		}
+//		return ans;
+//	}
+	
 	public boolean isMovesNow() {
 		return movesNow;
 	}
@@ -100,14 +108,16 @@ public class Vehicle {
 	/*******************************************************/
 	
 	public void status() {
-		System.out.println("currentRoute=" + currentRoute + ", lastJunction=" + lastJunction + ", lastRoad=" + lastRoad	+ ", spentTime=" + spentTime);
+		if(this.getCurrentRoute().getJunctions().size()>0 )
+			System.out.println(this.currentRoute.getVehicleType()+". Position: "+this.getCurrentRoute().getJunctions().get(0)+" .Current Route:  "+this.currentRoute + " spentTime=" + spentTime);
+
 	}
 	@Override
 	public String toString() {
 		return type + ", id=" + id ;
 	}
 	
-	
+	/**/
 
 
 	// wait for the current point delay time and move to the next point of the route.
@@ -130,14 +140,14 @@ public class Vehicle {
 				if(lastIndex < this.currentRoute.getJunctions().size() && this.currentRoute.getJunctions().size()>=2) {
 					this.lastJunction = currentRoute.getJunctions().get(lastIndex + 1);
 					Junction lastJunction = this.currentRoute.getJunctions().get(lastIndex);
-					System.out.println(this.currentRoute);
 					this.currentRoute.getJunctions().remove(lastIndex);
-					System.out.println(this.type +", ID "+ this.id + " is moving on "+lastJunction );
+					System.out.println(this.type +", ID "+ this.id + " is moving on from "+this.currentRoute.getJunctions().get(0)+" to "+lastJunction );
+
 				}
+
 			}
 			this.spentTime = this.lastJunction.getDelay();
 		}
 	}
 
 }
-

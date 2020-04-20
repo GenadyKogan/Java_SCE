@@ -110,6 +110,7 @@ public class Junction {
 		return ans;
 	}
 
+
 	
 	public void initvehicles() {
 		int i=(new Random().nextInt(5) + 1 );
@@ -187,4 +188,5 @@ public class Junction {
 
 
 }
+
 

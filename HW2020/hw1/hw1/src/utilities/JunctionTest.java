@@ -12,7 +12,7 @@ public class JunctionTest {
 		testJunction();
 
 	}
-/**/
+
 	
 public static void testJunction() {
 		

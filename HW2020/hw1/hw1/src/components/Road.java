@@ -85,7 +85,6 @@ public class Road {
 		return allowedVehicles;
 	}
 	
-
 //	public boolean setAllowedVehicle(ArrayList<VehicleType> allowedVehicles) {
 //		boolean ans=false;
 //		if(allowedVehicles instanceof ArrayList) {
@@ -96,8 +95,6 @@ public class Road {
 //		return ans;
 //	}
 	public void setAllowedVehicle(ArrayList<VehicleType> allowedVehicles){this.allowedVehicles =allowedVehicles;}
-
-
 	public boolean isOpen() {
 		return isOpen;
 	}
@@ -154,6 +151,7 @@ public class Road {
 		}
 		return ans;
 	}	
+	/**/
 	/*******************************************************/
 	public boolean addVehicleType(VehicleType type) {
 		boolean ans=false;
@@ -191,5 +189,3 @@ public class Road {
 
 	
 }
-
-
