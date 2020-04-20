@@ -45,8 +45,6 @@ public class Road {
 		this.toJunc.addExitRoad(new Road(to,from));
 		this.allowedVehicles=new ArrayList<VehicleType>();
 		this.ïinitVehicles();
-
-
 	}
 	
 	
