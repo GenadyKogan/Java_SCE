@@ -17,23 +17,27 @@ public class Map {
 	public Map (int junctions, int roads) {
 		this.junctions=new ArrayList<Junction>();
 		this.roads=new ArrayList<Road>();
+		//creating junction
 		for (int i = 0; i < junctions; i++) {
 			int sizeX=(new Random().nextInt(9000) + 1 );
 			int sizeY=(new Random().nextInt(799) + 1 );
 			this.junctions.add(new Junction("Junction " + i , new Point(sizeX, sizeY)));
 		}
+		
 		int junctionIndexTo;
 		int junctionIndexFrom;
 		for (int i = 0; i < roads; i++) {
 			junctionIndexTo = random.nextInt(junctions);
 			junctionIndexFrom = random.nextInt(junctions);
-			while(junctionIndexTo == junctionIndexFrom) 
+			
+			while(junctionIndexTo == junctionIndexFrom) /*???????????????*/
 			{
 				junctionIndexFrom = random.nextInt(junctions);
 			}
+			
 			this.roads.add(new Road(this.junctions.get(junctionIndexFrom),this.junctions.get(junctionIndexTo)));
 			// To -> enter , from - > exit
-			this.junctions.get(junctionIndexFrom).addEnterRoad(this.roads.get(i));
+			/*???????????????*/	this.junctions.get(junctionIndexFrom).addEnterRoad(this.roads.get(i));
 			this.junctions.get(junctionIndexTo).addExitRoad(this.roads.get(i));
 			System.out.println("Road from "+ this.roads.get(i).getFromJunc()+ " to "+ this.roads.get(i).getToJunc()+" has been created");
 			initJunc(junctions);

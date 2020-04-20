@@ -18,9 +18,10 @@ public class TestDrivingMapVehicle {
 	 */
 	public static void main(String[] args) {
 		
-		Map map=new Map(5);
-		map.addJunction(new Junction("Test", new Point(5,10)));
-		System.out.println(map.getJunctions());
+		//Map map=new Map(5);
+		//Map map=new Map(5,5);
+		//map.addJunction(new Junction("Test", new Point(5,10)));
+		/*System.out.println(map.getJunctions());
 		map.removeJunction(map.getJunctions().get(5));
 		System.out.println(map.getJunctions());
 		
@@ -32,7 +33,7 @@ public class TestDrivingMapVehicle {
 		d.getVehicles().get(0).move();
 		for(int i=0;i<d.getVehicles().size();i++) {
 			d.getVehicles().get(i).move();
-		}
+		}*/
 	}
 
 }
