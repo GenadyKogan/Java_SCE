@@ -28,53 +28,52 @@ public class Map {
 		ArrayList<Junction> finaljunctions = new ArrayList<>();
 		ArrayList<Integer> usedJunction = new ArrayList<>();
 		for (int i = 0; i < roads; i++) {
-<<<<<<< HEAD
+
 			if(usedJunction.size()>= this.junctions.size()){
 				usedJunction = new ArrayList<>();
-=======
-			junctionIndexTo = random.nextInt(junctions);
-			junctionIndexFrom = random.nextInt(junctions);
-			
-			while(junctionIndexTo == junctionIndexFrom) /*???????????????*/
-			{
+
+				junctionIndexTo = random.nextInt(junctions);
 				junctionIndexFrom = random.nextInt(junctions);
->>>>>>> branch 'master' of https://github.com/GenadyKogan/Java_SCE.git
-			}
-<<<<<<< HEAD
-			junctionIndexTo = random.nextInt(this.junctions.size());
-			while (usedJunction.contains(junctionIndexTo)){
+				
+				while(junctionIndexTo == junctionIndexFrom) /*???????????????*/
+				{
+					junctionIndexFrom = random.nextInt(junctions);
+	
+				}
+	
 				junctionIndexTo = random.nextInt(this.junctions.size());
-			}
-			usedJunction.add(junctionIndexTo);
-			Junction fromJunction = this.junctions.get(junctionIndexTo);
-
-			if(usedJunction.size()>= this.junctions.size()){
-				usedJunction = new ArrayList<>();
-			}
-			junctionIndexFrom = random.nextInt(this.junctions.size());
-			while (usedJunction.contains(junctionIndexFrom)){
+				while (usedJunction.contains(junctionIndexTo)){
+					junctionIndexTo = random.nextInt(this.junctions.size());
+				}
+				usedJunction.add(junctionIndexTo);
+				Junction fromJunction = this.junctions.get(junctionIndexTo);
+	
+				if(usedJunction.size()>= this.junctions.size()){
+					usedJunction = new ArrayList<>();
+				}
 				junctionIndexFrom = random.nextInt(this.junctions.size());
+				while (usedJunction.contains(junctionIndexFrom)){
+					junctionIndexFrom = random.nextInt(this.junctions.size());
+				}
+				//
+				usedJunction.add(junctionIndexFrom);
+				Junction toJunction = this.junctions.get(junctionIndexFrom);
+	
+				this.roads.add(new Road(fromJunction,toJunction));
+	
+				
+				this.roads.add(new Road(this.junctions.get(junctionIndexFrom),this.junctions.get(junctionIndexTo)));
+	
+				fromJunction.addExitRoad(this.roads.get(i));
+				toJunction.addEnterRoad(this.roads.get(i));
+	
+				this.junctions.get(junctionIndexFrom).addEnterRoad(this.roads.get(i));
+				this.junctions.get(junctionIndexTo).addExitRoad(this.roads.get(i));
+	
+				System.out.println("Road from "+ this.roads.get(i).getFromJunc()+ " to "+ this.roads.get(i).getToJunc()+" has been created");
+	//			init();
 			}
-			usedJunction.add(junctionIndexFrom);
-			Junction toJunction = this.junctions.get(junctionIndexFrom);
-
-			this.roads.add(new Road(fromJunction,toJunction));
-=======
-			
-			this.roads.add(new Road(this.junctions.get(junctionIndexFrom),this.junctions.get(junctionIndexTo)));
->>>>>>> branch 'master' of https://github.com/GenadyKogan/Java_SCE.git
-			// To -> enter , from - > exit
-<<<<<<< HEAD
-			fromJunction.addExitRoad(this.roads.get(i));
-			toJunction.addEnterRoad(this.roads.get(i));
-=======
-			/*???????????????*/	this.junctions.get(junctionIndexFrom).addEnterRoad(this.roads.get(i));
-			this.junctions.get(junctionIndexTo).addExitRoad(this.roads.get(i));
->>>>>>> branch 'master' of https://github.com/GenadyKogan/Java_SCE.git
-			System.out.println("Road from "+ this.roads.get(i).getFromJunc()+ " to "+ this.roads.get(i).getToJunc()+" has been created");
-//			init();
 		}
-
 	}
 	
 	private void init() {
