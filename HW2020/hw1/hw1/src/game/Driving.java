@@ -52,30 +52,13 @@ public class Driving {
 	}
 
 	public void setCurrentMap(Map currentMap) { this.currentMap = currentMap;}
-	
-//	public boolean setCurrentMap(Map currentMap) {
-//		boolean ans=false;
-//		if(currentMap instanceof Map) {
-//			this.currentMap = currentMap;
-//			ans=true;
-//		}
-//		return ans;
-//
-//	}
+
 	public ArrayList<Vehicle> getCurrentVehicles() {
 		return currentVehicles;
 	}
 
 	public void setCurrentVehicles(ArrayList<Vehicle> currentVehicles) { currentVehicles =new ArrayList<Vehicle>(); }
-//	public boolean setCurrentVehicles(ArrayList<Vehicle> currentVehicles) {
-//		boolean ans=false;
-//		if(currentVehicles instanceof ArrayList) {
-//			currentVehicles =new ArrayList<Vehicle>();
-//			this.currentVehicles=currentVehicles;
-//			ans=true;
-//		}
-//		return ans;
-//	}
+
 	
 	public double getDrivingTime() {
 		return drivingTime;
@@ -93,12 +76,7 @@ public class Driving {
 		this.maxTime = maxTime;
 	}
 	/*******************************************************/
-	/*@Override
-	public String toString() {
-		return "Driving [numOfJuncs=" + numOfJuncs + ", numOfVehicles=" + numOfVehicles + ", currentMap=" + currentMap
-				+ ", currentVehicles=" + currentVehicles + ", drivingTime=" + drivingTime + ", maxTime=" + maxTime
-				+ "]";
-	}*/
+
 	
 	@Override		
 	public boolean equals(Object other) {
@@ -162,12 +140,17 @@ public class Driving {
 		}
 		return true;
 	}
-	
+	/**/
 	public void startDrive(int maxTime) {
-		for(Vehicle vehicle: this.currentVehicles) {
-			vehicle.move();
+		int j=0;
+		for(int i=1; i<maxTime+1;i++ ) {
+			System.out.println("TURN"+i);
+			for(j=0; j<this.currentVehicles.size();j++) {
+				this.currentVehicles.get(j).move();
+			}
+		
 		}
-
+		
 		System.out.println("STATUS");
 		for(Vehicle vehicle: this.currentVehicles) {
 			vehicle.status();

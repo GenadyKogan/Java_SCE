@@ -149,27 +149,23 @@ public class Junction {
 
 
 			if (isHasLights()==true ) {
-				if(this.enteringRoads.size()>0) {
-					for(int i=0;i<this.enteringRoads.size();i++) {
-						if (this.enteringRoads.get(i).isOpen()) { 
-							    flag+=1;
-							    break; 
-							}  
-				        } 
-				    for (Road element : getEnteringRoads()) 
-				    	element.setOpen(false);
-				    flag+=1;
-				    if(flag<this.enteringRoads.size())
-				    {
-				    	getEnteringRoads().get(flag).setOpen(true);
-						System.out.println("roads from "+this.enteringRoads.get(flag-1).getToJunc()+ " to "+ this.enteringRoads.get(flag).getToJunc()+": green light");
-				    }
+				for(int i=0;i<this.enteringRoads.size();i++) {
+					if (this.enteringRoads.get(i).isOpen()) { 
+							   flag+=1;
+							   break; 
+					}  
+				} 
+				for (Road element : getEnteringRoads()) 
+				    element.setOpen(false);
+				flag+=1;
+				if(flag<this.enteringRoads.size())
+				{
+				    getEnteringRoads().get(flag).setOpen(true);
+					System.out.println("roads from "+this.enteringRoads.get(flag).getFromJunc()+ " to "+ this.enteringRoads.get(flag).getToJunc()+": green light");
 				}
-				else
-					System.out.println(" No entering roads, can not change lights");
+
 			}
-			else
-				System.out.println("This junction dos not light");
+
 	}
 	public boolean checkAvailability (Road r) {
 		for(Road road: vehicles) {
@@ -182,6 +178,7 @@ public class Junction {
 	public void setLightsOn() {
 		this.setHasLights(true);
 		System.out.println("Junction "+junctionName+" : traffic lights ON. Delay time: "+this.delay);
+
 
 	}
 

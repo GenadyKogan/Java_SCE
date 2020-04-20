@@ -81,19 +81,12 @@ public class Vehicle {
 	}
 
 	public void setLastRoad(Road lastRoad) { this.lastRoad =lastRoad;}
-//	public boolean setLastRoad(Road lastRoad) {
-//		boolean ans=false;
-//		if(lastRoad instanceof Road) {
-//			this.lastRoad =lastRoad;
-//			ans=true;
-//		}
-//		return ans;
-//	}
+
 	
 	public boolean isMovesNow() {
 		return movesNow;
 	}
-	/**/
+	
 	public void setMovesNow(boolean movesNow) {
 		this.movesNow = movesNow;
 	}
@@ -127,12 +120,12 @@ public class Vehicle {
 	// check what about road ????!?!?!?!?! 
 	//if arrived to a junction, update the junction waiting list and calculate the delay time before the next move	//
 	public void checkIn() {
-		
 		int lastIndex = this.currentRoute.getJunctions().indexOf(lastJunction);
 		if(!this.movesNow && this.currentRoute!=null) {
 			// if we havent visited any junction yet
 			if(this.lastJunction == null) {
 				this.lastJunction = this.currentRoute.getJunctions().get(0);
+				System.out.println(this.type +", ID "+ this.id + " is moving on from "+this.currentRoute.getJunctions().get(0)+" to "+lastJunction );
 
 			} else {
 				if(lastIndex < this.currentRoute.getJunctions().size() && this.currentRoute.getJunctions().size()>=2) {
@@ -144,7 +137,7 @@ public class Vehicle {
 				}
 
 			}
-			this.spentTime = this.lastJunction.getDelay();
+
 		}
 	}
 

@@ -17,9 +17,9 @@ public class Map {
 		this.junctions=new ArrayList<Junction>();
 		this.roads=new ArrayList<Road>();
 		for (int i = 0; i < junctions; i++) {
-			int sizeX=(new Random().nextInt(1000000) + 0 );
-			int sizeY=(new Random().nextInt(800) + 0 );
-			this.junctions.add(new Junction("Junction " + i , new Point(sizeX, sizeY)));
+			int sizeX=(new Random().nextInt(999999) + 0 );
+			int sizeY=(new Random().nextInt(799) + 0 );
+			this.junctions.add(new Junction("Junction " + i*2 , new Point(sizeX, sizeY)));
 		}
 		int junctionIndexTo;
 		int junctionIndexFrom;
@@ -50,7 +50,6 @@ public class Map {
 			// To -> enter , from - > exit
 			fromJunction.addExitRoad(this.roads.get(i));
 			toJunction.addEnterRoad(this.roads.get(i));
-			System.out.println("Road from "+ this.roads.get(i).getFromJunc()+ " to "+ this.roads.get(i).getToJunc()+" has been created");
 			init();
 		}
 
