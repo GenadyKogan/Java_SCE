@@ -142,7 +142,7 @@ public class Vehicle {
 					Junction lastJunction = this.currentRoute.getJunctions().get(lastIndex);
 					this.currentRoute.getJunctions().remove(lastIndex);
 					System.out.println(this.type +", ID "+ this.id + " is moving on from "+this.currentRoute.getJunctions().get(0)+" to "+lastJunction );
-
+					
 				}
 
 			}

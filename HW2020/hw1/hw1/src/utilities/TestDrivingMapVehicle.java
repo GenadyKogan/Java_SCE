@@ -18,7 +18,7 @@ public class TestDrivingMapVehicle {
 	 */
 	public static void main(String[] args) {
 		
-		//Map map=new Map(5);
+		Map map=new Map(5);
 		//Map map=new Map(5,5);
 		//map.addJunction(new Junction("Test", new Point(5,10)));
 		/*System.out.println(map.getJunctions());
