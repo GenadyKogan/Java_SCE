@@ -21,6 +21,7 @@ public class Road {
 		this.setToJunc(to);
 
 	}
+	/**/
 	public Road(Junction from, Junction to, ArrayList<VehicleType> allowed, boolean isOpen,
 			boolean isEnabled) {
 		this.setFromJunc(from);
