@@ -123,7 +123,6 @@ public class Driving {
 			Vehicle tempVehicle  = new Vehicle(i, new VehicleType(), this.currentMap.getJunctions().get(this.random.nextInt(this.numOfJuncs)));
 			this.currentVehicles.add(tempVehicle);
 			tempVehicle.setCurrentRoute(getRandomRouteFromJunction(tempVehicle.getLastJunction(), tempVehicle.getType()));
-		//	System.out.println(this.currentVehicles.get(i)+" has been created and placed at Junction "+ this.currentVehicles.get(i).getLastJunction());
 		}
 	}
 	
@@ -155,7 +154,7 @@ public class Driving {
 	
 	//creates a map with random (10-25) junctions quantity.
 	public  boolean addMap() {
-		this.setNumOfJuncs(new Random().nextInt(24) + 10 );
+		this.setNumOfJuncs(new Random().nextInt(16) + 10 );
 		this.currentMap= new Map();
 		for (int i = 0; i < this.numOfJuncs ; i++) {
 			this.currentMap.addJunction(new Junction("Junct #" + i , new Point(i*1.2, i* 1.5)));
@@ -167,6 +166,14 @@ public class Driving {
 		for(Vehicle vehicle: this.currentVehicles) {
 			vehicle.move();
 		}
+
+		System.out.println("STATUS");
+		for(Vehicle vehicle: this.currentVehicles) {
+			vehicle.status();
+			
+		}
+		
+
 	}
 
 

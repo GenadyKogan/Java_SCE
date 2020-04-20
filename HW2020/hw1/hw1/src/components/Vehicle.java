@@ -13,7 +13,7 @@ public class Vehicle {
 	private Road lastRoad;
 	private boolean movesNow; //True if the vehicle is on the road between the junctions.
 	private double spentTime; //time passed from the beginning of movement on the route. 
-
+	
 	
 	
 	/*******************************************************/
@@ -21,6 +21,8 @@ public class Vehicle {
 		this.setId(id);
 		this.setType(type);
 		this.setLastJunction(lastJunction);
+		this.setSpentTime(new Random().nextInt(7) + 1 );
+
 	}
 	/*******************************************************/
 	
@@ -105,7 +107,7 @@ public class Vehicle {
 	/*******************************************************/
 	
 	public void status() {
-		System.out.println("currentRoute=" + currentRoute + ", lastJunction=" + lastJunction + ", lastRoad=" + lastRoad	+ ", spentTime=" + spentTime);
+		System.out.println(this.toString() + " Position: "+lastJunction+ " Corent Route: "+this.currentRoute+". "+this.spentTime);
 	}
 	@Override
 	public String toString() {
@@ -122,31 +124,27 @@ public class Vehicle {
 	}
 	
 	// check what about road ????!?!?!?!?! 
-	//if arrived to a junction, update the junction waiting list and calculate the delay time before the next move	// TODO: how to update also in juction, 
+	//if arrived to a junction, update the junction waiting list and calculate the delay time before the next move	//
 	public void checkIn() {
-		
+		int lastIndex = this.currentRoute.getJunctions().indexOf(lastJunction);
 		if(!this.movesNow && this.currentRoute!=null) {
 			// if we havent visited any junction yet
 			if(this.lastJunction == null) {
 				this.lastJunction = this.currentRoute.getJunctions().get(0);
 
 			} else {
-				int lastIndex = this.currentRoute.getJunctions().indexOf(lastJunction);
 				if(lastIndex < this.currentRoute.getJunctions().size() && this.currentRoute.getJunctions().size()>=2) {
-					//if(lastIndex <=this.currentRoute.getJunctions().size() && this.currentRoute.getJunctions().size()>=2) {
-					this.lastJunction = currentRoute.getJunctions().get(lastIndex + 1); 
+					this.lastJunction = currentRoute.getJunctions().get(lastIndex + 1);
+					Junction from = this.currentRoute.getJunctions().get(lastIndex);
 					this.currentRoute.getJunctions().remove(lastIndex);
 				}
 			}
 			this.spentTime = this.lastJunction.getDelay();
-
-		//	System.out.println(this.type +", ID "+ this.id + " is moving on  "+toString());
-
-			System.out.println(this.type +", ID "+ this.id + " is moving on  "+lastRoad);
-
+			System.out.println(this.type +", ID "+ this.id + " is moving on from " +this.currentRoute.getJunctions().get(lastIndex)+" to "+this.currentRoute.getJunctions().get(lastIndex));
 
 		}
-
 	}
 
+
 }
+
