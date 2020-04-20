@@ -44,7 +44,7 @@ public class Road {
 		this.fromJunc.addEnterRoad(new Road(from,to));
 		this.toJunc.addExitRoad(new Road(to,from));
 		this.allowedVehicles=new ArrayList<VehicleType>();
-		this.ïinitVehicles();
+		this.initVehicles();
 
 
 	}
@@ -174,7 +174,7 @@ public class Road {
 		
 	}
 
-	public void ïinitVehicles() {
+	public void initVehicles() {
 		int size=(new Random().nextInt(5) + 1 );
 		for (int i = 0; i < size; i++) {
 			this.allowedVehicles.add(allowed.getRandomVehicleTypes());
@@ -185,3 +185,4 @@ public class Road {
 
 	
 }
+

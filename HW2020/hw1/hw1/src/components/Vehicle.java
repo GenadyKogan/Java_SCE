@@ -107,7 +107,7 @@ public class Vehicle {
 	/*******************************************************/
 	
 	public void status() {
-		System.out.println("currentRoute=" + currentRoute + ", lastJunction=" + lastJunction + ", lastRoad=" + lastRoad	+ ", spentTime=" + spentTime);
+		System.out.println(this.toString() + " Position: "+lastJunction+ " Corent Route: "+this.currentRoute+". "+this.spentTime);
 	}
 	@Override
 	public String toString() {
@@ -126,7 +126,6 @@ public class Vehicle {
 	// check what about road ????!?!?!?!?! 
 	//if arrived to a junction, update the junction waiting list and calculate the delay time before the next move	//
 	public void checkIn() {
-		
 		int lastIndex = this.currentRoute.getJunctions().indexOf(lastJunction);
 		if(!this.movesNow && this.currentRoute!=null) {
 			// if we havent visited any junction yet
@@ -135,15 +134,17 @@ public class Vehicle {
 
 			} else {
 				if(lastIndex < this.currentRoute.getJunctions().size() && this.currentRoute.getJunctions().size()>=2) {
-					this.lastJunction = currentRoute.getJunctions().get(lastIndex + 1); 
+					this.lastJunction = currentRoute.getJunctions().get(lastIndex + 1);
+					Junction from = this.currentRoute.getJunctions().get(lastIndex);
 					this.currentRoute.getJunctions().remove(lastIndex);
-
 				}
 			}
 			this.spentTime = this.lastJunction.getDelay();
-			System.out.println(this.type +", ID "+ this.id + " is moving on "+this.currentRoute.getRoads().get(lastIndex) );
+			System.out.println(this.type +", ID "+ this.id + " is moving on from " +this.currentRoute.getJunctions().get(lastIndex)+" to "+this.currentRoute.getJunctions().get(lastIndex));
 
 		}
 	}
 
+
 }
+

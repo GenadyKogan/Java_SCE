@@ -12,28 +12,11 @@ public class Route {
 	private VehicleType vehicleType;
 	/*******************************************************/
 	public Route(ArrayList<Junction> junctions, ArrayList<Road> roads, VehicleType vehicleType) {
-		this.setJunctions(junctions);
-		this.setRoads(roads);
-		this.setVehicleType(vehicleType);
-		this.setDelay(new Random().nextInt(400000) + 1200000 );
-		init();
+		this.junctions = junctions;
+		this.roads = roads;
+		this.vehicleType = vehicleType;
 	}
 	
-
-
-	private void init() {
-		
-		this.junctions.add(new Junction("1", new Point(6,3)));
-		this.roads.add(new Road(new Junction("1", new Point(3,2)),new Junction("2", new Point(3,2))));
-		this.junctions.add(new Junction("2", new Point(3,2)));
-		this.roads.add(new Road(new Junction("3", new Point(3,2)),new Junction("2", new Point(3,2))));
-		this.junctions.add(new Junction("3", new Point(3,2)));
-		this.roads.add(new Road(new Junction("2", new Point(3,2)),new Junction("3", new Point(3,2))));
-		
-	}
-
-
-
 	public Route(Junction start, Junction end, VehicleType vehType) {} // no implemented in this task
 	
 	/*******************************************************/
@@ -41,29 +24,17 @@ public class Route {
 	public ArrayList<Junction> getJunctions() {
 		return junctions;
 	}
-	
-
-	public boolean setJunctions(ArrayList<Junction> junctions) {
-		boolean ans=false;
-		if(junctions instanceof ArrayList) {
-			this.junctions=new ArrayList<Junction>(junctions);
-			ans=true;
-		}
-		return ans;	
+	public void setJunctions(ArrayList<Junction> junctions){
+		this.junctions =junctions;
 	}
 	
 	public ArrayList<Road> getRoads() {
 		return roads;
 	}
-	
-	public boolean setRoads(ArrayList<Road> roads) {
-		boolean ans=false;
-		if(roads instanceof ArrayList) {
-			this.roads=new ArrayList<Road>(roads);
-			ans=true;
-		}
-		return ans;
+	public void setRoads(ArrayList<Road> roads){
+		this.roads = roads;
 	}
+
 	public double getDelay() {
 		return delay;
 	}
@@ -74,17 +45,15 @@ public class Route {
 	public VehicleType getVehicleType() {
 		return vehicleType;
 	}
-	
 	public void setVehicleType(VehicleType vehicleType) {
 		this.vehicleType = vehicleType;
 	}
 	/*******************************************************/
 
-	@Override
-	public String toString() {
-		return "Route [junctions=" + junctions + ", roads=" + roads + ", delay=" + delay + ", vehicleType="
-				+ vehicleType + "]";
-	}
+
+	
+
+	
 
 	@Override		
 	public boolean equals(Object other) {
@@ -95,18 +64,31 @@ public class Route {
 		return ans;
 	}	
 
-	
-	/**
-	 * @return *****************************************************/
+
+	@Override
+	public String toString() {
+		return "Route [junctions=" + junctions + ", roads=" + roads + ", delay=" + delay + ", vehicleType="
+				+ vehicleType + "]";
+	}
+
+	/******************************************************/
 	
 	public Junction getStart() {
-		return junctions.get(0);
+		if (junctions.size() > 0) {
+			return junctions.get(0);
+		}else{
+			return null;
+		}
 	}
 	
 	public Junction getEnd() {
-		return junctions.get(this.junctions.size());
+		if (junctions.size() > 0) {
+			return junctions.get(this.junctions.size());
+		}else{
+			return null;
+		}
 	}
-	public double calcDelay() {
+	public void calcDelay() {
 		double length=0;
 		double speed=0;
 		double delay2=0;
@@ -132,7 +114,7 @@ public class Route {
 				res= (length/speed)*this.junctions.get(i).getDelay();
 			
 		}
-		return res;
+		this.delay = res;
 		
 	}
 

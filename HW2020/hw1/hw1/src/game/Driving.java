@@ -154,7 +154,7 @@ public class Driving {
 	
 	//creates a map with random (10-25) junctions quantity.
 	public  boolean addMap() {
-		this.setNumOfJuncs(new Random().nextInt(24) + 10 );
+		this.setNumOfJuncs(new Random().nextInt(16) + 10 );
 		this.currentMap= new Map();
 		for (int i = 0; i < this.numOfJuncs ; i++) {
 			this.currentMap.addJunction(new Junction("Junct #" + i , new Point(i*1.2, i* 1.5)));

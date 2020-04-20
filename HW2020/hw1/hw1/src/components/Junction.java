@@ -70,13 +70,8 @@ public class Junction {
 		return enteringRoads;
 	}
 	
-	public boolean setEnteringRoads(ArrayList<Road> enteringRoads) {
-		boolean ans=false;
-		if(enteringRoads instanceof ArrayList) {
-			this.enteringRoads=new ArrayList<Road>(enteringRoads);
-			ans=true;
-		}
-		return ans;	
+	public void setEnteringRoads(ArrayList<Road> enteringRoads) {
+		this.enteringRoads=new ArrayList<Road>(enteringRoads);
 	}
 	
 	public void addEnterRoad(Road roadEnterRoad) { // using for a road
@@ -87,26 +82,21 @@ public class Junction {
 		return vehicles;
 	}
 	
-	public boolean setVehicles(ArrayList<Road> vehicles) {
-		boolean ans=false;
-		if(vehicles instanceof ArrayList) {
-			this.vehicles=new ArrayList<Road>(vehicles);
-			ans=true;
-		}
-		return ans;	
+	public void setVehicles(ArrayList<Road> vehicles) {
+		this.vehicles=new ArrayList<Road>(vehicles);
 	}
 	
 	public ArrayList<Road> getExitingRoads() {
 		return exitingRoads;
 	}
 	
-	public boolean setExitingRoads(ArrayList<Road> exitingRoads) {
-		boolean ans=false;
-		if(exitingRoads instanceof ArrayList) {
-			this.exitingRoads=new ArrayList<Road>(exitingRoads);
-			ans=true;
-		}
-		return ans;
+	public void setExitingRoads(ArrayList<Road> exitingRoads) {
+		this.exitingRoads=new ArrayList<Road>(exitingRoads);
+	}
+	
+	public void addExitRoad(Road roadExitRoad) { //using for a road
+		this.exitingRoads.add (roadExitRoad);
+	
 	}
 
 	public void initExitingRoads() {
@@ -128,11 +118,7 @@ public class Junction {
 		
 	}	
 
-	/*****/
-	public void addExitRoad(Road roadExitRoad) { //using for a road
-		this.exitingRoads.add (roadExitRoad);
-	
-	}
+
 	/*******************************************************/
 
 	@Override
@@ -156,14 +142,9 @@ public class Junction {
 	/*******************************************************/
 	public void changeLight() {
 			int flag=0;
-			
-			if(isHasLights()==true && this.enteringRoads.size()<=0 )
-				System.out.println("No entiring roads in this junction");
-			
+
 			if (isHasLights()==true ) {
 				for(int i=0;i<this.enteringRoads.size();i++) {
-					
-					
 					if (this.enteringRoads.get(i).isOpen()) { 
 						    flag+=1;
 						    break; 
@@ -177,11 +158,14 @@ public class Junction {
 			    	getEnteringRoads().get(flag).setOpen(true);
 					System.out.println("roads from "+this.enteringRoads.get(flag-1).getToJunc()+ " to "+ this.enteringRoads.get(flag).getToJunc()+": green light");
 			    }
+			 /*   else if(flag==this.enteringRoads.size())
+			    {
+
+			    	System.out.println(" No entering roads, can not change lights");
+			    }*/
 			}
-			else
-				System.out.println("This junction dos not have lights");
+
 	}
-	
 	public boolean checkAvailability (Road r) {
 		for(Road road: vehicles) {
 			if(road.equals(r)) {
@@ -200,4 +184,3 @@ public class Junction {
 
 
 }
-
