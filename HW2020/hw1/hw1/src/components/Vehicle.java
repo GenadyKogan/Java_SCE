@@ -118,26 +118,23 @@ public class Vehicle {
 	
 	//if arrived to a junction, update the junction waiting list and calculate the delay time before the next move	//
 	public void checkIn() {
-		int lastIndex = this.currentRoute.getJunctions().indexOf(lastJunction);
+		Junction start=this.currentRoute.getJunctions().get(0);
+		this.setLastJunction(this.currentRoute.getJunctions().get(this.currentRoute.getJunctions().size()-1));
+		int lastIndex = this.currentRoute.getJunctions().indexOf(start);
+	//	System.out.println(this.lastJunction);
+	/**/
 		if(!this.movesNow && this.currentRoute!=null) {
 			// if we havent visited any junction yet
 			if(this.lastJunction == null) {
 				this.lastJunction = this.currentRoute.getJunctions().get(0);
-				//System.out.println(this.type +", ID "+ this.id + " is moving on from "+this.currentRoute.getJunctions().get(lastIndex)+" to"+lastJunction );
-			}
-			else {
-				if(lastIndex <= this.currentRoute.getJunctions().size() && this.currentRoute.getJunctions().size()>=2) {
-					this.lastJunction = currentRoute.getJunctions().get(lastIndex + 1);
-					Junction lastJunction1 = this.currentRoute.getJunctions().get(lastIndex);
-					System.out.println(this.type +", ID "+ this.id + " is moving on from "+lastJunction1 +" to "+this.lastJunction );
-					this.currentRoute.getJunctions().remove(lastIndex);
-
+			} else {
+				if(this.lastJunction != start ) {
+					start = currentRoute.getJunctions().get(lastIndex + 1);
+					System.out.println(this.type +", ID "+ this.id + " is moving on from"+start+" to "+lastJunction );
 				}
 			}
-			System.out.println(this.type +", ID "+ this.id + " is moving on from "+this.lastJunction+" to Junction "+lastIndex );
-			
+			this.spentTime = this.lastJunction.getDelay();
 		}
-
 	}
 
 }
