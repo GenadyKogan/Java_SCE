@@ -19,7 +19,8 @@ public class Map {
 		for (int i = 0; i < junctions; i++) {
 			int sizeX=(new Random().nextInt(999999) + 0 );
 			int sizeY=(new Random().nextInt(799) + 0 );
-			this.junctions.add(new Junction("Junction " + i*2 , new Point(sizeX, sizeY)));
+			int n=(new Random().nextInt(10) + 1 );
+			this.junctions.add(new Junction("Junction " + n , new Point(sizeX, sizeY)));
 		}
 		int junctionIndexTo;
 		int junctionIndexFrom;

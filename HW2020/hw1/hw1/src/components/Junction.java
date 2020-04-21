@@ -113,7 +113,7 @@ public class Junction {
 
 	
 	public void initvehicles() {
-		int i=(new Random().nextInt(5) + 1 );
+		int i=(new Random().nextInt(200) + 1 );
 		this.vehicles =new ArrayList<Road>();
 		this.vehicles.add(new Road(new Junction(""+i , new Point(1.2*i,  1.3*1)),new Junction(""+i*1.4 , new Point(1.2*i, 3.2*i))));
 	}
@@ -146,7 +146,7 @@ public class Junction {
 	/*******************************************************/
 	public void changeLight() {
 			int flag=0;
-
+/**/
 
 			if (isHasLights()==true ) {
 				for(int i=0;i<this.enteringRoads.size();i++) {

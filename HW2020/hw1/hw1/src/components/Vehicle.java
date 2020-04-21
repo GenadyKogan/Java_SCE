@@ -21,7 +21,7 @@ public class Vehicle {
 		this.setId(id);
 		this.setType(type);
 		this.setLastJunction(lastJunction);
-		this.setSpentTime(new Random().nextInt(7) + 1 );
+		this.setSpentTime(new Random().nextInt(30) + 1 );
 
 	}
 	/*******************************************************/
@@ -101,8 +101,8 @@ public class Vehicle {
 	/*******************************************************/
 	
 	public void status() {
-		if(this.getCurrentRoute().getJunctions().size()>0 )
-			System.out.println(this.currentRoute.getVehicleType()+". Position: "+this.getCurrentRoute().getJunctions().get(0)+" .Current Route:  "+this.currentRoute + " spentTime=" + spentTime);
+		if(this.currentRoute.getRoads().size()>0)
+			System.out.println(this.currentRoute.getVehicleType()+". Position: "+this.getCurrentRoute().getJunctions().get(0)+" .Current Route:  " + this.currentRoute.getRoads().get(0) + " spentTime=" + spentTime);
 
 	}
 	@Override
@@ -113,7 +113,6 @@ public class Vehicle {
 
 	// wait for the current point delay time and move to the next point of the route.
 	public void move() {
-		
 		checkIn();
 	}
 	
@@ -125,20 +124,21 @@ public class Vehicle {
 			// if we havent visited any junction yet
 			if(this.lastJunction == null) {
 				this.lastJunction = this.currentRoute.getJunctions().get(0);
-				System.out.println(this.type +", ID "+ this.id + " is moving on from "+this.currentRoute.getJunctions().get(0)+" to "+lastJunction );
-
-			} else {
-				if(lastIndex < this.currentRoute.getJunctions().size() && this.currentRoute.getJunctions().size()>=2) {
+				System.out.println(this.type +", ID "+ this.id + " is moving on from "+this.currentRoute.getJunctions().get(lastIndex)+" to"+lastJunction );
+			}
+			else {
+				if(lastIndex <= this.currentRoute.getJunctions().size() && this.currentRoute.getJunctions().size()>=2) {
 					this.lastJunction = currentRoute.getJunctions().get(lastIndex + 1);
-					Junction lastJunction = this.currentRoute.getJunctions().get(lastIndex);
+					Junction lastJunction2 = this.currentRoute.getJunctions().get(lastIndex);
+					System.out.println(this.type +", ID "+ this.id + " is moving on from "+this.lastJunction+" to "+lastJunction2 );
 					this.currentRoute.getJunctions().remove(lastIndex);
-					System.out.println(this.type +", ID "+ this.id + " is moving on from "+this.currentRoute.getJunctions().get(0)+" to "+lastJunction );
 
 				}
-
 			}
+			System.out.println(this.type +", ID "+ this.id + " is moving on from "+this.lastJunction+" to Junction "+lastIndex );
 
 		}
+
 	}
 
 }
