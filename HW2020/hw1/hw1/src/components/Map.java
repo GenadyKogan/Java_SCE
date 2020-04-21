@@ -19,8 +19,12 @@ public class Map {
 		for (int i = 0; i < junctions; i++) {
 			int sizeX=(new Random().nextInt(999999) + 0 );
 			int sizeY=(new Random().nextInt(799) + 0 );
-			this.junctions.add(new Junction("Junction " + i*2 , new Point(sizeX, sizeY)));
+			this.junctions.add(new Junction("Junction " + i , new Point(sizeX, sizeY)));
 		}
+		Junction s=this.junctions.get(0);
+		this.junctions.remove(0);
+		this.junctions.add(s);
+		
 		int junctionIndexTo;
 		int junctionIndexFrom;
 		ArrayList<Junction> finaljunctions = new ArrayList<>();
@@ -35,10 +39,7 @@ public class Map {
 			}
 			usedJunction.add(junctionIndexTo);
 			Junction fromJunction = this.junctions.get(junctionIndexTo);
-
-			if(usedJunction.size()>= this.junctions.size()){
-				usedJunction = new ArrayList<>();
-			}
+			usedJunction = new ArrayList<>();
 			junctionIndexFrom = random.nextInt(this.junctions.size());
 			while (usedJunction.contains(junctionIndexFrom)){
 				junctionIndexFrom = random.nextInt(this.junctions.size());
@@ -47,17 +48,17 @@ public class Map {
 			Junction toJunction = this.junctions.get(junctionIndexFrom);
 
 			this.roads.add(new Road(fromJunction,toJunction));
+			System.out.println("Road from "+ fromJunction+ " to "+toJunction+" has been created");
 			// To -> enter , from - > exit
 			fromJunction.addExitRoad(this.roads.get(i));
 			toJunction.addEnterRoad(this.roads.get(i));
-			init();
 		}
-
+		init();
+/**/
 	}
 	
 	private void init() {
-		for (int i = 0; i < this.roads.size(); i++) {
-			System.out.println("Road from "+ this.roads.get(i).getFromJunc()+ " to "+ this.roads.get(i).getToJunc()+" has been created");
+		for (int i = 0; i < this.junctions.size(); i++) {
 			this.junctions.get(i).setLightsOn();
 			this.junctions.get(i).changeLight();
 		}
@@ -65,7 +66,7 @@ public class Map {
 	}
 
 	public Map (int value) {
-		this(value,10);
+		this(value,300);
 	}
 	public Map(ArrayList<Junction> juncs, ArrayList<Road> roads) {
 		this(juncs);
@@ -185,7 +186,7 @@ public class Map {
 	            			road.setFromJunc(null);
 	            	}
 	            	this.junctions.remove(element);
-					System.out.println("Junction "+junc.getJunctionName() +" nas been removed to the map");
+					System.out.println("Junction "+junc.getJunctionName() +" has been removed to the map");
 	            	return;
 	            } 
 	        } 

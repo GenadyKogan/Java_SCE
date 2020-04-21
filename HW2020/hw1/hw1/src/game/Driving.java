@@ -100,9 +100,12 @@ public class Driving {
 	
 	public void initVehicles() {
 		for (int i = 0; i < this.numOfVehicles ; i++) {
-			Vehicle tempVehicle  = new Vehicle(i, new VehicleType(), this.currentMap.getJunctions().get(this.random.nextInt(this.numOfJuncs)));
+			int valueJuncs=this.random.nextInt(this.numOfJuncs);
+			Vehicle tempVehicle  = new Vehicle(i, new VehicleType(), this.currentMap.getJunctions().get(valueJuncs));
 			this.currentVehicles.add(tempVehicle);
+			System.out.println(this.currentVehicles.get(i).toString()+" has been created and placed at junction " +valueJuncs);
 			tempVehicle.setCurrentRoute(getRandomRouteFromJunction(tempVehicle.getLastJunction(), tempVehicle.getType()));
+			
 		}
 	}
 	
@@ -140,21 +143,20 @@ public class Driving {
 		}
 		return true;
 	}
-	/**/
 	public void startDrive(int maxTime) {
 		int j=0;
 		for(int i=1; i<maxTime+1;i++ ) {
 			System.out.println("TURN"+i);
 			for(j=0; j<this.currentVehicles.size();j++) {
+			//	System.out.println(this.currentVehicles.get(j).toString() + " is moving on from " );
 				this.currentVehicles.get(j).move();
+				
 			}
-		
 		}
 		
 		System.out.println("STATUS");
 		for(Vehicle vehicle: this.currentVehicles) {
-			vehicle.status();
-			
+			vehicle.status();	
 		}
 		
 

@@ -53,14 +53,6 @@ public class Route {
 	}
 	/*******************************************************/
 
-	@Override
-	public String toString() {
-		if(this.junctions.size()>1)
-			return "from "+this.junctions.get(0) +" to "+this.junctions.get(1);
-		else
-			return "from "+this.junctions.get(0) +" to "+this.junctions.get(0);
-	}
-
 	@Override		
 	public boolean equals(Object other) {
 		boolean ans =false;
@@ -84,7 +76,7 @@ public class Route {
 	
 	public Junction getEnd() {
 		if (junctions.size() > 0) {
-			return junctions.get(this.junctions.size());
+			return junctions.get(this.junctions.size()-1);
 		}else{
 			return null;
 		}
