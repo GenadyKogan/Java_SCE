@@ -58,8 +58,8 @@ public class Map {
 	
 	private void init() {
 		for (int i = 0; i < this.roads.size(); i++) {
-			System.out.println("Road from "+ this.roads.get(i).getFromJunc()+ " to "+ this.roads.get(i).getToJunc()+" has been created");
 			this.junctions.get(i).setLightsOn();
+			System.out.println("Road from "+ this.roads.get(i).getFromJunc()+ " to "+ this.roads.get(i).getToJunc()+" has been created");
 			this.junctions.get(i).changeLight();
 		}
 		

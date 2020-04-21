@@ -110,13 +110,12 @@ public class Vehicle {
 		return type + ", id=" + id ;
 	}
 
-
+//**//
 	// wait for the current point delay time and move to the next point of the route.
 	public void move() {
 		checkIn();
 	}
 	
-	// check what about road ????!?!?!?!?! 
 	//if arrived to a junction, update the junction waiting list and calculate the delay time before the next move	//
 	public void checkIn() {
 		int lastIndex = this.currentRoute.getJunctions().indexOf(lastJunction);
@@ -124,19 +123,19 @@ public class Vehicle {
 			// if we havent visited any junction yet
 			if(this.lastJunction == null) {
 				this.lastJunction = this.currentRoute.getJunctions().get(0);
-				System.out.println(this.type +", ID "+ this.id + " is moving on from "+this.currentRoute.getJunctions().get(lastIndex)+" to"+lastJunction );
+				//System.out.println(this.type +", ID "+ this.id + " is moving on from "+this.currentRoute.getJunctions().get(lastIndex)+" to"+lastJunction );
 			}
 			else {
 				if(lastIndex <= this.currentRoute.getJunctions().size() && this.currentRoute.getJunctions().size()>=2) {
 					this.lastJunction = currentRoute.getJunctions().get(lastIndex + 1);
-					Junction lastJunction2 = this.currentRoute.getJunctions().get(lastIndex);
-					System.out.println(this.type +", ID "+ this.id + " is moving on from "+this.lastJunction+" to "+lastJunction2 );
+					Junction lastJunction1 = this.currentRoute.getJunctions().get(lastIndex);
+					System.out.println(this.type +", ID "+ this.id + " is moving on from "+lastJunction1 +" to "+this.lastJunction );
 					this.currentRoute.getJunctions().remove(lastIndex);
 
 				}
 			}
 			System.out.println(this.type +", ID "+ this.id + " is moving on from "+this.lastJunction+" to Junction "+lastIndex );
-
+			
 		}
 
 	}

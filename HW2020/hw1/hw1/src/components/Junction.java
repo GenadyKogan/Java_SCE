@@ -146,9 +146,10 @@ public class Junction {
 	/*******************************************************/
 	public void changeLight() {
 			int flag=0;
-/**/
 
-			if (isHasLights()==true ) {
+			if(isHasLights()==false)
+				System.out.println("This junction dos not have lidht");
+			else if (isHasLights()==true ) {
 				for(int i=0;i<this.enteringRoads.size();i++) {
 					if (this.enteringRoads.get(i).isOpen()) { 
 							   flag+=1;
