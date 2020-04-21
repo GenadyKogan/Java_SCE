@@ -122,16 +122,18 @@ public class Vehicle {
 		this.setLastJunction(this.currentRoute.getJunctions().get(this.currentRoute.getJunctions().size()-1));
 		int lastIndex = this.currentRoute.getJunctions().indexOf(start);
 	//	System.out.println(this.lastJunction);
-	/**/
 		if(!this.movesNow && this.currentRoute!=null) {
-			// if we havent visited any junction yet
 			if(this.lastJunction == null) {
 				this.lastJunction = this.currentRoute.getJunctions().get(0);
-			} else {
+			} 
+			
+			else {
 				if(this.lastJunction != start ) {
 					start = currentRoute.getJunctions().get(lastIndex + 1);
-					System.out.println(this.type +", ID "+ this.id + " is moving on from"+start+" to "+lastJunction );
+					System.out.println(this.type +", ID "+ this.id + " is moving on from "+start+" to "+lastJunction );
 				}
+				else
+					System.out.println(this.type +", ID "+ this.id +  " stays at " +start+" - no exiting roads. ");
 			}
 			this.spentTime = this.lastJunction.getDelay();
 		}
