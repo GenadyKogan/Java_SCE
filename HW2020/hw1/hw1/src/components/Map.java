@@ -48,7 +48,6 @@ public class Map {
 			Junction toJunction = this.junctions.get(junctionIndexFrom);
 
 			this.roads.add(new Road(fromJunction,toJunction));
-			System.out.println("Road from "+ fromJunction+ " to "+toJunction+" has been created");
 			// To -> enter , from - > exit
 			fromJunction.addExitRoad(this.roads.get(i));
 			toJunction.addEnterRoad(this.roads.get(i));
@@ -66,7 +65,7 @@ public class Map {
 	}
 
 	public Map (int value) {
-		this(value,100);
+		this(value,200);
 	}
 	public Map(ArrayList<Junction> juncs, ArrayList<Road> roads) {
 		this(juncs);

@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import utilities.Point;
-
+/**/
 public class Junction {
 	private String junctionName;
 	private Point location; //location of the junction on the map
@@ -24,7 +24,6 @@ public class Junction {
 		enteringRoads = new ArrayList<Road>();
 		exitingRoads = new ArrayList<Road>();
 		this.setVehicles(new ArrayList<Road>());
-	//	this.setDelay(new Random().nextInt(12) + 1 );
 
 	}
 
@@ -162,7 +161,6 @@ public class Junction {
 	/*******************************************************/
 	public String changeLight() {
 		int flag=0;
-
 		if(isHasLights()==true) {
 			System.out.println( this.getEnteringRoads().get(flag).toString()+": green light");
 			if(this.enteringRoads.size()>0)
@@ -172,9 +170,7 @@ public class Junction {
 					{
 						this.delay-=1;
 						System.out.println( "roads from "+this.enteringRoads.get(i).getFromJunc()+ " to "+ this.enteringRoads.get(i).getToJunc()+" has been created");
-
 					}
-					
 				}
 				for(int i=0;i<this.enteringRoads.size();i++) {
 					if (this.enteringRoads.get(i).isOpen()) { 
@@ -188,12 +184,15 @@ public class Junction {
 			}
 			else
 				System.out.println( "No entiring roads in this junction");
-			
 		}
 		else
 			return "This junction dos not have lights";
+
 		
+
 		return "";
+
+
 
 	}
 	public boolean checkAvailability (Road r) {
