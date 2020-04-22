@@ -65,7 +65,7 @@ public class Map {
 	}
 
 	public Map (int value) {
-		this(value,200);
+		this(value,150);
 	}
 	public Map(ArrayList<Junction> juncs, ArrayList<Road> roads) {
 		this(juncs);

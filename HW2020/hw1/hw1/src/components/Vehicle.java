@@ -133,6 +133,7 @@ public class Vehicle {
 				else
 				{
 					System.out.println(this.type +", ID "+ this.id +  " stays at " +start+" - no exiting roads. ");
+				//	this.lastJunction.setLightsOn();
 					
 				}
 				

@@ -162,14 +162,13 @@ public class Junction {
 	public String changeLight() {
 		int flag=0;
 		if(isHasLights()==true) {
-			System.out.println( this.getEnteringRoads().get(flag).toString()+": green light");
 			if(this.enteringRoads.size()>0)
 			{
 				if(this.delay>=0) {
 					for(int i=0;i<this.enteringRoads.size();i++) 
 					{
 						this.delay-=1;
-						System.out.println( "roads from "+this.enteringRoads.get(i).getFromJunc()+ " to "+ this.enteringRoads.get(i).getToJunc()+" has been created");
+						System.out.println( this.getEnteringRoads().get(i).toString()+": green light");
 					}
 				}
 				for(int i=0;i<this.enteringRoads.size();i++) {
