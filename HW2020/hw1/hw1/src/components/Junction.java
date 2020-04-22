@@ -111,11 +111,11 @@ public class Junction {
 
 
 	
-	public void initvehicles() {
+/*	public void initvehicles() {
 		int i=(new Random().nextInt(200) + 1 );
 		this.vehicles =new ArrayList<Road>();
 		this.vehicles.add(new Road(new Junction(""+i , new Point(1.2*i,  1.3*1)),new Junction(""+i*1.4 , new Point(1.2*i, 3.2*i))));
-	}
+	}*/
 	
 
 	public void addExitRoad(Road roadExitRoad) { //using for a road
@@ -124,19 +124,19 @@ public class Junction {
 	}
 	
 
-	public void initExitingRoads() {
+	/*public void initExitingRoads() {
 		int i=(new Random().nextInt(5) + 1 );
 		this.exitingRoads =new ArrayList<Road>();
 		this.exitingRoads.add(new Road(new Junction(""+i , new Point(1.2*i,  1.3*1)),new Junction(""+i*1.4 , new Point(1.2*i, 3.2*i))));
-	}
+	}*/
 	
 	
-	public void initEnteringRoads() {
+/*	public void initEnteringRoads() {
 		int i=(new Random().nextInt(5) + 1 );
 		this.enteringRoads =new ArrayList<Road>();
 		this.enteringRoads.add(new Road(new Junction(""+i  , new Point(1.2*i, 3.2*i)),new Junction("" +i, new Point(1.2*i,  1.3*1))));
 		
-	}	
+	}*/	
 
 	/*******************************************************/
 
@@ -199,6 +199,7 @@ public class Junction {
 		}
 		return false;
 	}
+	/*???*/
 	public void setLightsOn() {
 		this.setDelay(this.enteringRoads.size());
 		System.out.println("Junction "+junctionName+" : traffic lights ON. Delay time: "+this.delay);
