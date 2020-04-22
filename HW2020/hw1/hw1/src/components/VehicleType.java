@@ -11,12 +11,20 @@ public class VehicleType {
 	
 
 	/*******************************************************/
-	
+	/**
+	 * Ctor for a VehicleType
+	 * @param typeName - Type String
+	 * @param speed - Type int
+	 */
 	public VehicleType(String typeName, int speed) {
 		this.setName(typeName);
 		this.setSpeed(speed);
 	
 	}
+	/**
+	 * Default Ctor for a VehicleType
+	 * @param  No parameters
+	 */
 	public VehicleType() {
 		VehicleType temp = getRandomVehicleTypes();
 		this.setName(temp.getName());
@@ -24,29 +32,49 @@ public class VehicleType {
 	}
 
 	/*******************************************************/
-
+	/**
+	 * @param No parameters
+	 * @return typeName - Type String
+	 */
 	public String getName() {
 		return typeName;
 	}
-
+	/**
+	 * @param typeName - Type String
+	 * @return nothing - Initializes an typeName 
+	 */	
 	public void setName(String typeName) {
 		this.typeName = typeName;
 	}
-
+	/**
+	 * @param No parameters
+	 * @return speed - Type int
+	 */
 	public int getSpeed() {
 		return speed;
 	}
-
+	/**
+	 * @param speed - Type int
+	 * @return nothing - Initializes an speed 
+	 */	
 	public void setSpeed(int speed) {
 		this.speed = speed;
 	}
 
 	/*******************************************************/
+	/**
+	 * @param No parameters
+	 * @return String - Print the data for a typeName and average speed
+	 */
 	@Override
 	public String toString() {
 		return typeName +","+ " average speed: "+speed;
 	}
 	
+	/**
+	 * @param other - Object type
+	 * @return Boolean value - true or false
+	 */	
 
 	@Override		
 	public boolean equals(Object other) {
@@ -57,6 +85,10 @@ public class VehicleType {
 		return ans;
 		
 	}
+	/**
+	 * @param No parameters
+	 * @return randomVehicle - Type VehicleType
+	 */
 	public static VehicleType getRandomVehicleTypes() {
 		randomVehicle =new VehicleType[5];
 		randomVehicle[0]= new VehicleType("car",90);

@@ -21,6 +21,12 @@ public class Driving {
 	private int maxTime; // total round time
 	private Random random;
 	/*******************************************************/
+	/**
+	 * Ctor for a Driving
+	 * @param juncs - Type int
+	 * @param vehicles - Type int
+	 * @param maxTime - Type int
+	 */
 	public Driving(int juncs, int vehicles, int maxTime) {
 		random= new Random();
 		this.setNumOfJuncs(juncs);
@@ -30,74 +36,104 @@ public class Driving {
 		this.initVehicles();
 	}
 	/*******************************************************/
+	/**
+	 * @param No parameters
+	 * @return numOfJuncs - Type int
+	 */
 	public int getNumOfJuncs() {
 		return numOfJuncs;
 	}
-	
+	/**
+	 * @param numOfJuncs - Type int 
+	 * @return nothing - Initializes an numOfJuncs 
+	 */	
 	public void setNumOfJuncs(int numOfJuncs) {
 		this.numOfJuncs = numOfJuncs;
 		this.currentMap= new Map(numOfJuncs);
 	}
-	
+	/**
+	 * @param No parameters
+	 * @return numOfVehicles - Type int
+	 */
 	public int getNumOfVehicles() {
 		return numOfVehicles;
 	}
-	
+	/**
+	 * @param numOfVehicles - Type int 
+	 * @return nothing - Initializes an numOfVehicles 
+	 */		
 	public void setNumOfVehicles(int numOfVehicles) {
 		this.numOfVehicles = numOfVehicles;
 	}
-	
+	/**
+	 * @param No parameters
+	 * @return currentMap - Type Map
+	 */
 	public Map getCurrentMap() {
 		return currentMap;
 	}
-
-	public void setCurrentMap(Map currentMap) { this.currentMap = currentMap;}
-
+	/**
+	 * @param currentMap - Type Map 
+	 * @return nothing - Initializes an currentMap 
+	 */		
+	public void setCurrentMap(Map currentMap) {
+		this.currentMap = currentMap;
+	}
+	/**
+	 * @param No parameters
+	 * @return currentVehicles - Type ArrayList<Vehicle>
+	 */
 	public ArrayList<Vehicle> getCurrentVehicles() {
 		return currentVehicles;
 	}
+	/**
+	 * @param currentVehicles - Type ArrayList<Vehicle> 
+	 * @return nothing - Initializes an currentVehicles 
+	 */	
+	public void setCurrentVehicles(ArrayList<Vehicle> currentVehicles) { 
+		currentVehicles =new ArrayList<Vehicle>(); 
+	}
 
-	public void setCurrentVehicles(ArrayList<Vehicle> currentVehicles) { currentVehicles =new ArrayList<Vehicle>(); }
-
-	
+	/**
+	 * @param No parameters
+	 * @return drivingTime - Type double
+	 */
 	public double getDrivingTime() {
 		return drivingTime;
 	}
-	
+	/**
+	 * @param drivingTime - Type double 
+	 * @return nothing - Initializes an drivingTime 
+	 */	
 	public void setDrivingTime(double drivingTime) {
 			this.drivingTime = drivingTime;
 	}
-	
+	/**
+	 * @param No parameters
+	 * @return maxTime - Type int
+	 */
 	public int getMaxTime() {
 		return maxTime;
 	}
-	
+	/**
+	 * @param maxTime - Type int 
+	 * @return nothing - Initializes an maxTime 
+	 */	
 	public void setMaxTime(int maxTime) {
 		this.maxTime = maxTime;
 	}
-	/*******************************************************/
-
-	
-	@Override		
-	public boolean equals(Object other) {
-		boolean ans =false;
-		if(other instanceof Driving) {
-			ans=( this.numOfJuncs==((Driving)other).numOfJuncs   &&  this.numOfVehicles==((Driving)other).numOfVehicles && this.currentMap ==((Driving)other).currentMap &&  this.currentVehicles ==((Driving)other).currentVehicles && this.drivingTime ==((Driving)other).drivingTime && this.maxTime ==((Driving)other).maxTime);
-		}
-		return ans;
-	}	
-	
+	/**
+	 * @param No parameters
+	 * @return currentVehicles - Type ArrayList<Vehicle>
+	 */
 	public ArrayList<Vehicle> getVehicles() {
 		return this.currentVehicles;
 	}
 	
-	//creates random number (2-8) of vehicles of different types.
-	public void addVehicles() {
-		this.setNumOfVehicles(new Random().nextInt(7) + 2 );
-		this.currentVehicles = new ArrayList<Vehicle>();
-		initVehicles();
-	}
-	
+	/**
+	 * @param No parameters
+	 * @return nothing - add Vehicle
+	 */	
 	public void initVehicles() {
 		for (int i = 0; i < this.numOfVehicles ; i++) {
 			int valueJuncs=this.random.nextInt(this.numOfJuncs);
@@ -109,6 +145,36 @@ public class Driving {
 		}
 	}
 	
+	/*******************************************************/
+	/**
+	 * @param other - Object type
+	 * @return Boolean value - true or false
+	 */	
+	@Override		
+	public boolean equals(Object other) {
+		boolean ans =false;
+		if(other instanceof Driving) {
+			ans=( this.numOfJuncs==((Driving)other).numOfJuncs   &&  this.numOfVehicles==((Driving)other).numOfVehicles && this.currentMap ==((Driving)other).currentMap &&  this.currentVehicles ==((Driving)other).currentVehicles && this.drivingTime ==((Driving)other).drivingTime && this.maxTime ==((Driving)other).maxTime);
+		}
+		return ans;
+	}	
+	
+	/**
+	 * @param No parameters
+	 * @return nothing
+	 * function add Vehicle - creates random number (2-8) of vehicles of different types.
+	 */
+
+	public void addVehicles() {
+		this.setNumOfVehicles(new Random().nextInt(7) + 2 );
+		this.currentVehicles = new ArrayList<Vehicle>();
+		initVehicles();
+	}
+	/**
+	 * @param start - Type Junction
+	 * @param vehicleType - Type VehicleType
+	 * @return Route - Auxiliary function to create route
+	 */
 	public Route getRandomRouteFromJunction(Junction start, VehicleType vehicleType) {
 		ArrayList<Junction> junctions = new ArrayList<Junction>(); 
 		ArrayList<Road> roads = new ArrayList<Road>();
@@ -134,7 +200,11 @@ public class Driving {
 		return new Route(junctions, roads,vehicleType );
 	}
 	
-	//creates a map with random (10-25) junctions quantity.
+	/**
+	 * @param No parameters
+	 * @return nothing
+	 * function add Map - creates a map with random (10-25) junctions quantity.
+	 */
 	public  boolean addMap() {
 		this.setNumOfJuncs(new Random().nextInt(16) + 10 );
 		this.currentMap= new Map();
@@ -143,6 +213,10 @@ public class Driving {
 		}
 		return true;
 	}
+	/**
+	 * @param maxTime - Type int 
+	 * @return nothing - A function that receives a maxTime and defines the number of times a vehicle turns
+	 */	
 	public void startDrive(int maxTime) {
 		for(int i=1; i<maxTime+1;i++ ) {
 			System.out.println("TURN "+i);

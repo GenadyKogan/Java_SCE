@@ -14,11 +14,6 @@ public class Point {
 	private double y;
 
 	/**
-	 * Default Ctor for a point sets x and y to be 0.
-	 */
-	
-
-	/**
 	 * Ctor for a point
 	 * @param x x position
 	 * @param y y position
@@ -42,7 +37,6 @@ public class Point {
 	/**
 	 * Copy Ctor
 	 * @param other other instance
-	 * @throws IllegalArgumentException if other instance is null
 	 */
 	public Point(Point other){
 		this.setX(other.x);
@@ -53,7 +47,6 @@ public class Point {
 
 	/**
 	 * @param x the x position of the point
-	 * @throws IllegalArgumentException if x is out of range [{@value MIN_X},{@value MAX_X}]
 	 */
 	boolean setX(double x) {
 		if(x<MIN_X||x>MAX_X) {
@@ -68,7 +61,6 @@ public class Point {
 	}
 	/**
 	 * @param y the y position of the point
-	 * @throws IllegalArgumentException if y is out of range [{@value MIN_Y},{@value MAX_Y}]
 	 */
 	boolean setY(double y) {
 		if(y<MIN_Y||y>MAX_Y) {
@@ -80,9 +72,7 @@ public class Point {
 		return true;
 		}
 	}
-	//endregion
 
-	//region Getters
 
 	/**
 	 * @return the x value of the point
@@ -91,13 +81,13 @@ public class Point {
 		return x;
 	}
 
-	/*
-	  @return the y value of the point
+	/**
+	  * @return the y value of the point
 	 */
 	public double getY() {
 		return y;
 	}
-	//endregion
+
 	@Override
 	public String toString() {
 		return "(" + this.x + "," + this.y + ")\n";
@@ -111,15 +101,7 @@ public class Point {
 		return false;
 		
 	}
-	/**
-	 * offset from the current point
-	 * @param xOffset offset at the x axis
-	 * @param yOffset offset at the y axis
-	 * @return a new clone of the current point with an x and y offset
-	 */
-	public Point offset(double xOffset, double yOffset){
-		return new Point(this.x+xOffset, this.y+yOffset);
-	}
+
 
 	
 }

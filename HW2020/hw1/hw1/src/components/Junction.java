@@ -1,9 +1,8 @@
 package components;
 import java.util.ArrayList;
 import java.util.Random;
-
 import utilities.Point;
-/**/
+
 public class Junction {
 	private String junctionName;
 	private Point location; //location of the junction on the map
@@ -15,6 +14,14 @@ public class Junction {
 	private int id=0;
 	private static int counter=-1;
 	/*******************************************************/
+	
+	
+	/**
+	 * Ctor for a Junction
+	 * @param name - Type String
+	 * @param loc - Type Point
+	 */
+	
 	public Junction (String name, Point loc) {
 		this.setJunctionName(name);
 		this.setLocation(loc);
@@ -29,64 +36,110 @@ public class Junction {
 
 	/*******************************************************/
 	/*****geters and seters ****/
+	
+	/**
+	 * @param No parameters
+	 * @return junctionName - Type Junction
+	 */
+
 	public String getJunctionName() {
 		return junctionName;
 	}
 	
+	
+	/**
+	 * @param junctionName - Type String
+	 * @return nothing - Initializes an junctionName 
+	 */	
+
 	public void setJunctionName(String junctionName) {
 		this.junctionName = junctionName;
 	}
 	
+	/**
+	 * @param No parameters
+	 * @return location - Type Point
+	 */
 	public Point getLocation() {
 		return location;
 	}
 	
-	public boolean setLocation(Point location) {
-		boolean ans=false;
-		if(location instanceof Point) {
+	/**
+	 * @param location - Type Point
+	 * @return nothing - Initializes an location 
+	 */	
+	public void setLocation(Point location) {
 			this.location=new Point(location);
-			ans=true;
-		}
-		return ans;
 	}
 	
+	/**
+	 * @param No parameters
+	 * @return hasLights - Type boolean
+	 */
 	public boolean isHasLights() {
 		return hasLights;
 	}
 	
+	/**
+	 * @param hasLights - Type boolean
+	 * @return nothing - Initializes an hasLights 
+	 */	
 	public void setHasLights(boolean hasLights) {
 		this.hasLights = hasLights;
 	}
 	
+	/**
+	 * @param No parameters
+	 * @return delay - Type int
+	 */
 	public int getDelay() {
 		return delay;
 	}
 	
+	/**
+	 * @param delay - Type int
+	 * @return nothing - Initializes an delay 
+	 */	
 	public void setDelay(int delay) {
 			this.delay = delay;
 	}
 	
+	/**
+	 * @param No parameters
+	 * @return enteringRoads - Type ArrayList<Road
+	 */
 	public ArrayList<Road> getEnteringRoads() {
 		return enteringRoads;
 	}
 	
-	public boolean setEnteringRoads(ArrayList<Road> enteringRoads) {
-		boolean ans=false;
-		if(enteringRoads instanceof ArrayList) {
+	/**
+	 * @param enteringRoads - Type ArrayList<Road> 
+	 * @return nothing - Initializes an enteringRoads 
+	 */	
+	public void setEnteringRoads(ArrayList<Road> enteringRoads) {
 			this.enteringRoads=new ArrayList<Road>(enteringRoads);
-			ans=true;
-		}
-		return ans;	
+
 	}
-	
-	public void addEnterRoad(Road roadEnterRoad) { // using for a road
+	/**
+	 * @param roadEnterRoad - Type Road 
+	 * @return nothing - add an roadEnterRoad 
+	 */	
+	public void addEnterRoad(Road roadEnterRoad) { 
 		this.enteringRoads.add (roadEnterRoad);
 	}
 	
+	/**
+	 * @param No parameters
+	 * @return vehicles - Type ArrayList<Road>
+	 */
 	public ArrayList<Road> getVehicles() {
 		return vehicles;
 	}
 	
+	/**
+	 * @param vehicles - Type ArrayList<Road> 
+	 * @return nothing - Initializes an vehicles 
+	 */	
 	public boolean setVehicles(ArrayList<Road> vehicles) {
 		boolean ans=false;
 		if(vehicles instanceof ArrayList) {
@@ -95,11 +148,18 @@ public class Junction {
 		}
 		return ans;	
 	}
-	
+	/**
+	 * @param No parameters
+	 * @return exitingRoads - Type ArrayList<Road
+	 */
 	public ArrayList<Road> getExitingRoads() {
 		return exitingRoads;
 	}
 	
+	/**
+	 * @param exitingRoads - Type ArrayList<Road> 
+	 * @return nothing - Initializes an exitingRoads 
+	 */	
 	public boolean setExitingRoads(ArrayList<Road> exitingRoads) {
 		boolean ans=false;
 		if(exitingRoads instanceof ArrayList) {
@@ -108,16 +168,10 @@ public class Junction {
 		}
 		return ans;
 	}
-
-
-	
-/*	public void initvehicles() {
-		int i=(new Random().nextInt(200) + 1 );
-		this.vehicles =new ArrayList<Road>();
-		this.vehicles.add(new Road(new Junction(""+i , new Point(1.2*i,  1.3*1)),new Junction(""+i*1.4 , new Point(1.2*i, 3.2*i))));
-	}*/
-	
-
+	/**
+	 * @param roadExitRoad - Type Road 
+	 * @return nothing - add an roadExitRoad 
+	 */	
 	public void addExitRoad(Road roadExitRoad) { //using for a road
 		this.exitingRoads.add (roadExitRoad);
 	
@@ -126,11 +180,20 @@ public class Junction {
 
 
 	/*******************************************************/
+	/**
+	 * @param No parameters
+	 * @return String - Print the data for a junctionName
+	 */
 
 	@Override
 	public String toString() {
 		return  junctionName ;
 	}
+
+	/**
+	 * @param other - Object type
+	 * @return Boolean value - true or false
+	 */	
 
 	@Override		
 	public boolean equals(Object other) {
@@ -146,6 +209,10 @@ public class Junction {
 	}	
 	
 	/*******************************************************/
+	/**
+	 * @param nothing 
+	 * @return nothing - make the next entering road in the list green (open) and all the others (exiting only) red (closed).
+	 */	
 	public void changeLight() {
 		int flag=0;
 		if(isHasLights()==true) {
@@ -173,11 +240,13 @@ public class Junction {
 		}
 		else
 			System.out.println( "This junction dos not have lights");
-
-
-
-
 	}
+	
+	/**
+	 * @param r - Road type
+	 * @return Boolean value - true or false
+	 * for vehicle that arrived to the junction from road r, checks if there are some other vehicles on the roads with a higher traffic priority on the junction. 
+	 */	
 	public boolean checkAvailability (Road r) {
 		for(Road road: vehicles) {
 			if(road.equals(r)) {
@@ -187,6 +256,10 @@ public class Junction {
 		return false;
 	}
 	
+	/**
+	 * @param exitingRoads - Type ArrayList<Road> 
+	 * @return nothing - Initializes an hasLights 
+	 */	
 	public void setLightsOn() {
 		this.setDelay(this.enteringRoads.size());
 		System.out.println("Junction "+junctionName+" : traffic lights ON. Delay time: "+this.delay);

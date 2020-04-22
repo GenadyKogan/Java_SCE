@@ -17,105 +17,165 @@ public class Vehicle {
 	
 	
 	/*******************************************************/
+	/**
+	 * Ctor for a Vehicle
+	 * @param id - Type int
+	 * @param type - Type VehicleType
+	 * @param lastJunction - Type Junction
+	 */
 	public Vehicle(int id, VehicleType type, Junction lastJunction) {
 		this.setId(id);
 		this.setType(type);
 		this.setLastJunction(lastJunction);
 	}
 	/*******************************************************/
-
+	/**
+	 * @param No parameters
+	 * @return id - Type int
+	 */
 	public int getId() {
 		return id;
 	}
-	
+	/**
+	 * @param id - Type int
+	 * @return nothing - Initializes an id 
+	 */	
 	public void setId(int id) {
 		this.id = id;
 	}
 	
+	/**
+	 * @param No parameters
+	 * @return type - Type VehicleType
+	 */
 	public VehicleType getType() {
 		return type;
 	}
-	
+	/**
+	 * @param type - Type VehicleType
+	 * @return nothing - Initializes an type 
+	 */		
 	public void setType(VehicleType type) {
 		this.type = type;
 	}
-	
+	/**
+	 * @param No parameters
+	 * @return speed - Type int
+	 */
 	public int getSpeed() {
 		return speed;
 	}
-	
+	/**
+	 * @param speed - Type int
+	 * @return nothing - Initializes an speed 
+	 */	
 	public void setSpeed(int speed) {
 		this.speed = speed;
 	}
-	
+	/**
+	 * @param No parameters
+	 * @return currentRoute - Type Route
+	 */
 	public Route getCurrentRoute() {
 		return currentRoute;
 	}
-	
-	public boolean setCurrentRoute(Route currentRoute) {
-		boolean ans=false;
-		if(currentRoute instanceof Route) {
-			this.currentRoute =currentRoute;
-			ans=true;
-		}
-		return ans;	
+	/**
+	 * @param currentRoute - Type Route
+	 * @return nothing - Initializes an currentRoute 
+	 */	
+	public void setCurrentRoute(Route currentRoute) {
+		this.currentRoute =currentRoute;
 	}
-	
+	/**
+	 * @param No parameters
+	 * @return lastJunction - Type Junction
+	 */
 	public Junction getLastJunction() {
 		return lastJunction;
 	}
-	
-	public boolean setLastJunction(Junction lastJunction) {
-		boolean ans=false;
-		if(lastJunction instanceof Junction) {
-			this.lastJunction =lastJunction;
-			ans=true;
-		}
-		return ans;	
+	/**
+	 * @param lastJunction - Type Junction
+	 * @return nothing - Initializes an lastJunction 
+	 */	
+	public void setLastJunction(Junction lastJunction) {
+		this.lastJunction =lastJunction;
 	}
-	
+	/**
+	 * @param No parameters
+	 * @return lastRoad - Type Road
+	 */
 	public Road getLastRoad() {
 		return lastRoad;
 	}
+	/**
+	 * @param lastRoad - Type Road
+	 * @return nothing - Initializes an lastRoad 
+	 */	
+	public void setLastRoad(Road lastRoad) { 
+		this.lastRoad =lastRoad;
+	}
 
-	public void setLastRoad(Road lastRoad) { this.lastRoad =lastRoad;}
-
-	
+	/**
+	 * @param No parameters
+	 * @return movesNow - Type boolean
+	 */
 	public boolean isMovesNow() {
 		return movesNow;
 	}
-	
+	/**
+	 * @param movesNow - Type boolean
+	 * @return nothing - Initializes an movesNow 
+	 */	
 	public void setMovesNow(boolean movesNow) {
 		this.movesNow = movesNow;
 	}
-	
+	/**
+	 * @param No parameters
+	 * @return spentTime - Type double
+	 */
 	public double getSpentTime() {
 		return spentTime;
 	}
-	
+	/**
+	 * @param spentTime - Type double
+	 * @return nothing - Initializes an spentTime 
+	 */	
 	public void setSpentTime(double spentTime) {
 
 		this.spentTime = spentTime;
 	}
 	/*******************************************************/
-	
+	/**
+	 * @param No parameters
+	 * @return nothing - prints the details about the vehicle including current position, time spent on the route and the first and last junctions on the route
+	 */
 	public void status() {
 		this.setSpentTime(new Random().nextInt(13) + 1 );
 		if(this.currentRoute.getRoads().size()>=0) {
 			System.out.println(this.currentRoute.getVehicleType()+". Position: "+this.getCurrentRoute().getJunctions().get(0)+" .Current Route:  " + this.currentRoute.getRoads().get(0) + " spentTime=" +this.spentTime);
 		}
 	}
+	
+	/**
+	 * @param No parameters
+	 * @return String - Print the data for a type and id
+	 */
 	@Override
 	public String toString() {
 		return type + ", id=" + id ;
 	}
-
-	// wait for the current point delay time and move to the next point of the route.
-	/**/
+	
+	/**
+	 * @param No parameters
+	 * @return nothing - wait for the current point delay time and move to the next point of the route. 
+	 */
 	public void move() {
 		checkIn();
 	}
-	
+	/**
+	 * @param No parameters
+	 * @return nothing - if arrived to a junction, update the junction waiting list and calculate the delay time before the next move.
+	 */
 	public void checkIn() {
 		this.setSpentTime(new Random().nextInt(3456) + 1008 );
 		Junction start=this.currentRoute.getJunctions().get(0);
@@ -126,6 +186,7 @@ public class Vehicle {
 				this.lastJunction = this.currentRoute.getJunctions().get(0);
 				System.out.println(this.type +", ID "+ this.id +  " stays at " +start+" - no exiting roads. ");
 			}
+			/**/
 			else {
 				if(this.lastJunction != start ) {
 					start = currentRoute.getJunctions().get(lastIndex + 1);

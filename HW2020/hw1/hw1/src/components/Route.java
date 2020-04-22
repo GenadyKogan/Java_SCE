@@ -11,47 +11,92 @@ public class Route {
 	private double delay; //time that will take the vehicle to make this route.
 	private VehicleType vehicleType;
 	/*******************************************************/
+	/**
+	 * Ctor for a Route
+	 * @param junctions - Type ArrayList<Junction>
+	 * @param roads - Type ArrayList<Road>
+	 * @param vehicleType - Type VehicleType
+	 */
+	
 	public Route(ArrayList<Junction> junctions, ArrayList<Road> roads, VehicleType vehicleType) {
 
 		this.junctions = junctions;
 		this.roads = roads;
 		this.vehicleType = vehicleType;
 	}
-	
-
-
-
+	/**
+	 * Ctor for a Route
+	 * @param start - Type Junction
+	 * @param end - TypeJunction
+	 * @param vehicleType - Type VehicleType
+	 */
 	public Route(Junction start, Junction end, VehicleType vehType) {} // no implemented in this task
 	
 	/*******************************************************/
-
+	/**
+	 * @param No parameters
+	 * @return junctions - Type ArrayList<Junction>
+	 */
 	public ArrayList<Junction> getJunctions() {
 		return junctions;
 	}
-	public void setJunctions(ArrayList<Junction> junctions){this.junctions =junctions;}
+	/**
+	 * @param junctions - Type ArrayList<Junction>
+	 * @return nothing - Initializes an junctions
+	 */
+	public void setJunctions(ArrayList<Junction> junctions){
+		this.junctions =junctions;
+	}
 	
 
-	
+	/**
+	 * @param No parameters
+	 * @return roads - Type ArrayList<Road>
+	 */
 	public ArrayList<Road> getRoads() {
 		return roads;
 	}
-	public void setRoads(ArrayList<Road> roads){this.roads = roads;}
+	/**
+	 * @param roads - Type ArrayList<Road>
+	 * @return nothing - Initializes an roads
+	 */
+	public void setRoads(ArrayList<Road> roads){
+		this.roads = roads;
+	}
 
-
+	/**
+	 * @param No parameters
+	 * @return delay - Type double
+	 */
 	public double getDelay() {
 		return delay;
 	}
+	/**
+	 * @param delay - Type double
+	 * @return nothing - Initializes an delay
+	 */
 	public void setDelay(double delay) {
 		this.delay = delay;
 	}
-	
+	/**
+	 * @param No parameters
+	 * @return vehicleType - Type VehicleType
+	 */
 	public VehicleType getVehicleType() {
 		return vehicleType;
 	}
+	/**
+	 * @param vehicleType - Type VehicleType
+	 * @return nothing - Initializes an vehicleType
+	 */
 	public void setVehicleType(VehicleType vehicleType) {
 		this.vehicleType = vehicleType;
 	}
 	/*******************************************************/
+	/**
+	 * @param other - Object type
+	 * @return Boolean value - true or false
+	 */	
 
 	@Override		
 	public boolean equals(Object other) {
@@ -63,9 +108,11 @@ public class Route {
 	}	
 
 	
+	/******************************************************/
 	/**
-	 * @return *****************************************************/
-	
+	 * @param No parameters
+	 * @return Junction - Returns the first value in Junction 
+	 */
 	public Junction getStart() {
 		if (junctions.size() > 0) {
 			return junctions.get(0);
@@ -74,6 +121,10 @@ public class Route {
 		}
 	}
 	
+	/**
+	 * @param No parameters
+	 * @return Junction - Returns the  last value in Junction 
+	 */
 	public Junction getEnd() {
 		if (junctions.size() > 0) {
 			return junctions.get(this.junctions.size()-1);
@@ -81,6 +132,10 @@ public class Route {
 			return null;
 		}
 	}
+	/**
+	 * @param No parameters
+	 * @return nothing - set length to be a sum of delay values and the time that will take this type of vehicle to pass all the roads and calculate delay.
+	 */
 	public void calcDelay() {
 		double length=0;
 		double speed=0;

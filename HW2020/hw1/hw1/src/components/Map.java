@@ -9,9 +9,20 @@ public class Map {
 	private ArrayList<Road> roads;
 	private Random random = new Random();
 	
+	/**
+	 * Default Ctor for a Map
+	 * @param  No parameters
+	 *Creates a map with 20 random junctions and connects all of them one to another with roads. 
+	 */
 	public Map() {
 		this(20);
 	}
+	
+	/**
+	 * Ctor for a Map
+	 * @param junctions - Type int
+	 * @param roads - Type int
+	 */
 	
 	public Map (int junctions, int roads) {
 		this.junctions=new ArrayList<Junction>();
@@ -56,62 +67,81 @@ public class Map {
 		init();
 
 	}
-	
+	/**
+	 * @param No parameters
+	 * @return nothing - Sending to function setLightsOn
+	 */
 	private void init() {
 		for (int i = 0; i < this.junctions.size(); i++) {
 			this.junctions.get(i).setLightsOn();
 		}
 		
 	}
-
+	/**
+	 * Ctor for a Map
+	 * @param value - Type int
+	 */
 	public Map (int value) {
-		this(value,150);
+		this(value,180);
 	}
+	
+	/**
+	 * Ctor for a Map
+	 * @param juncs - Type ArrayList<Junction>
+	 * @param roads - Type ArrayList<Road> roads
+	 */
 	public Map(ArrayList<Junction> juncs, ArrayList<Road> roads) {
 		this(juncs);
 		this.setRoads(roads);
 	}
 	
+	/**
+	 * Ctor for a Map
+	 * @param juncs - Type ArrayList<Junction>
+	 */
 	public Map (ArrayList<Junction> juncs) {
 		this.setJunctions(juncs);
 	}
 	
-	public Map(Map other) {
-		if(other!=null) {
-			this.setJunctions(other.junctions);
-			this.setRoads(other.roads);
-
-		}
-	}
 
 	/*******************************************************/
-
+	/**
+	 * @param No parameters
+	 * @return junctions - Type ArrayList<Junction>
+	 */
 	public ArrayList<Junction> getJunctions() {
 		return junctions;
 	}
 
-	public boolean setJunctions(ArrayList<Junction> junctions) {
-		boolean ans=false;
-		if(junctions instanceof ArrayList) {
-			this.junctions=new ArrayList<Junction>(junctions);
-			ans=true;
-		}
-		return ans;
+	/**
+	 * @param junctions - Type ArrayList<Junction>
+	 * @return nothing - Initializes an junctions 
+	 */	
+	public void setJunctions(ArrayList<Junction> junctions) {
+		this.junctions=new ArrayList<Junction>(junctions);
 	}
 
+	/**
+	 * @param No parameters
+	 * @return roads - Type ArrayList<Road>
+	 */
 	public ArrayList<Road> getRoads() {
 		return roads;
 	}
 
-	public boolean setRoads(ArrayList<Road> roads) {
-		boolean ans=false;
-		if(roads instanceof ArrayList) {
-			this.roads=new ArrayList<Road>(roads);
-			ans=true;
-		}
-		return ans;
+	/**
+	 * @param junctions - Type ArrayList<Junction>
+	 * @return nothing - Initializes an junctions 
+	 */	
+	public void setRoads(ArrayList<Road> roads) {
+		this.roads=new ArrayList<Road>(roads);
 	}
 	/*******************************************************/
+	/**
+	 * @param r - Type Road
+	 * @return ans - Type boolean
+	 * function add Road
+	 */
 	public boolean addRoad(Road r) {
 		boolean ans=false;
 		if(r!=null) {
@@ -131,6 +161,10 @@ public class Map {
 
 	}
 	
+	/**
+	 * @param r - Type Road
+	 * @return nothing - remove Road
+	 */
 	public void removeRoad(Road r) {
 		boolean ans=false;
 		if(r!=null) {
@@ -143,10 +177,14 @@ public class Map {
 			if(ans==true)
 				this.roads.remove(r);		
 		}
-		
+
 	}
 
-	
+	/**
+	 * @param junc - Type Junction
+	 * @return ans - Type boolean
+	 * function add junc
+	 */
 	public boolean addJunction(Junction junc) {
 		boolean ans=false;
 		if(junc!=null) {
@@ -167,7 +205,10 @@ public class Map {
 
 	}
 	
-	//removes the junction and all connected to it roads from the map.
+	/**
+	 * @param junc - Type Junction
+	 * @return nothing - removes the junction and all connected to it roads from the map.
+	 */
 	public void removeJunction(Junction junc) {		
 		if(junc!=null) {
 	        for (Junction element : getJunctions()) { 
