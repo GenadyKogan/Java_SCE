@@ -184,9 +184,7 @@ public class Vehicle {
 		if(!this.movesNow && this.currentRoute!=null) {
 			if(this.lastJunction == null) {
 				this.lastJunction = this.currentRoute.getJunctions().get(0);
-				System.out.println(this.type +", ID "+ this.id +  " stays at " +start+" - no exiting roads. ");
 			}
-			/**/
 			else {
 				if(this.lastJunction != start ) {
 					start = currentRoute.getJunctions().get(lastIndex + 1);
@@ -203,7 +201,6 @@ public class Vehicle {
 				System.out.println(this.type +", ID "+ this.id + " has finished the route. Total time: "+ this.getSpentTime());
 			if(this.lastJunction == this.currentRoute.getJunctions().get(0))
 				System.out.println(this.type +", ID "+ this.id + "  is starting route from "+start+" to "+lastJunction );
-		
 			this.spentTime = this.lastJunction.getDelay();
 
 		}
