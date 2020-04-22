@@ -162,7 +162,7 @@ public class Junction {
 	/*******************************************************/
 	public String changeLight() {
 		int flag=0;
-/**/
+/***/
 		
 		if(isHasLights()==true) {
 			System.out.println( this.getEnteringRoads().get(flag).toString()+": green light");
