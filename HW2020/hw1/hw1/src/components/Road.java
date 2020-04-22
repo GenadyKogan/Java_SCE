@@ -56,28 +56,13 @@ public class Road {
 	public Junction getFromJunc() {
 		return fromJunc;
 	}
-//	public boolean setFromJunc(Junction fromJunc) {
-//		boolean ans=false;
-//		if(fromJunc instanceof Junction) {
-//			this.fromJunc=fromJunc;
-//			ans=true;
-//		}
-//		return ans;
-//	}
+
 	public void setFromJunc(Junction fromJunc) { this.fromJunc=fromJunc;}
 	
 	public Junction getToJunc() {
 		return toJunc;
 	}
 	
-//	public boolean setToJunc(Junction toJunc) {
-//		boolean ans=false;
-//		if(toJunc instanceof Junction) {
-//			this.toJunc=toJunc;
-//			ans=true;
-//		}
-//		return ans;
-//	}
 
 	public void setToJunc(Junction toJunc) { this.toJunc=toJunc; }
 	
@@ -85,15 +70,7 @@ public class Road {
 		return allowedVehicles;
 	}
 	
-//	public boolean setAllowedVehicle(ArrayList<VehicleType> allowedVehicles) {
-//		boolean ans=false;
-//		if(allowedVehicles instanceof ArrayList) {
-//			allowedVehicles=new ArrayList<VehicleType>();
-//			this.allowedVehicles =allowedVehicles;
-//			ans=true;
-//		}
-//		return ans;
-//	}
+
 	public void setAllowedVehicle(ArrayList<VehicleType> allowedVehicles){this.allowedVehicles =allowedVehicles;}
 	public boolean isOpen() {
 		return isOpen;
@@ -128,7 +105,7 @@ public class Road {
 	public void setMaxSpeed(int maxSpeed) {
 		this.maxSpeed = maxSpeed;
 	}
-	/*------------------------*/
+
 	public VehicleType getAllowed() {
 		return allowed;
 	}

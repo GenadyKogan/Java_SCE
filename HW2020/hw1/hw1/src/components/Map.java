@@ -52,21 +52,21 @@ public class Map {
 			// To -> enter , from - > exit
 			fromJunction.addExitRoad(this.roads.get(i));
 			toJunction.addEnterRoad(this.roads.get(i));
+			
 		}
 		init();
-/**/
+
 	}
 	
 	private void init() {
 		for (int i = 0; i < this.junctions.size(); i++) {
 			this.junctions.get(i).setLightsOn();
-			this.junctions.get(i).changeLight();
 		}
 		
 	}
 
 	public Map (int value) {
-		this(value,300);
+		this(value,100);
 	}
 	public Map(ArrayList<Junction> juncs, ArrayList<Road> roads) {
 		this(juncs);

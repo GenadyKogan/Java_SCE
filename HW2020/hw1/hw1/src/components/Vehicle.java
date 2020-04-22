@@ -22,10 +22,9 @@ public class Vehicle {
 		this.setType(type);
 		this.setLastJunction(lastJunction);
 		this.setSpentTime(new Random().nextInt(30) + 1 );
-
 	}
 	/*******************************************************/
-	
+
 	public int getId() {
 		return id;
 	}
@@ -133,7 +132,11 @@ public class Vehicle {
 					System.out.println(this.type +", ID "+ this.id + " is moving on from "+start+" to "+lastJunction );
 				}
 				else
+				{
 					System.out.println(this.type +", ID "+ this.id +  " stays at " +start+" - no exiting roads. ");
+					this.lastJunction.changeLight();
+				}
+				
 			}
 			this.spentTime = this.lastJunction.getDelay();
 		}

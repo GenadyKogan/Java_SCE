@@ -24,7 +24,7 @@ public class Junction {
 		enteringRoads = new ArrayList<Road>();
 		exitingRoads = new ArrayList<Road>();
 		this.setVehicles(new ArrayList<Road>());
-		this.setDelay(new Random().nextInt(6) + 1 );
+	//	this.setDelay(new Random().nextInt(12) + 1 );
 
 	}
 
@@ -123,6 +123,22 @@ public class Junction {
 		this.exitingRoads.add (roadExitRoad);
 	
 	}
+	
+
+	public void initExitingRoads() {
+		int i=(new Random().nextInt(5) + 1 );
+		this.exitingRoads =new ArrayList<Road>();
+		this.exitingRoads.add(new Road(new Junction(""+i , new Point(1.2*i,  1.3*1)),new Junction(""+i*1.4 , new Point(1.2*i, 3.2*i))));
+	}
+	
+	
+	public void initEnteringRoads() {
+		int i=(new Random().nextInt(5) + 1 );
+		this.enteringRoads =new ArrayList<Road>();
+		this.enteringRoads.add(new Road(new Junction(""+i  , new Point(1.2*i, 3.2*i)),new Junction("" +i, new Point(1.2*i,  1.3*1))));
+		
+	}	
+
 	/*******************************************************/
 
 	@Override
@@ -144,12 +160,23 @@ public class Junction {
 	}	
 	
 	/*******************************************************/
-	public void changeLight() {
-			int flag=0;
+	public String changeLight() {
+		int flag=0;
+/**/
+		
+		if(isHasLights()==true) {
+			System.out.println( this.getEnteringRoads().get(flag).toString()+": green light");
+			if(this.enteringRoads.size()>0)
+			{
+				if(this.delay>=0) {
+					for(int i=0;i<this.enteringRoads.size();i++) 
+					{
+						this.delay-=1;
+						System.out.println( "roads from "+this.enteringRoads.get(i).getFromJunc()+ " to "+ this.enteringRoads.get(i).getToJunc()+" has been created");
 
-			if(isHasLights()==false)
-				System.out.println("This junction dos not have lidht");
-			else if (isHasLights()==true ) {
+					}
+					
+				}
 				for(int i=0;i<this.enteringRoads.size();i++) {
 					if (this.enteringRoads.get(i).isOpen()) { 
 							   flag+=1;
@@ -158,14 +185,16 @@ public class Junction {
 				} 
 				for (Road element : getEnteringRoads()) 
 				    element.setOpen(false);
-				flag+=1;
-				if(flag<this.enteringRoads.size())
-				{
-				    getEnteringRoads().get(flag).setOpen(true);
-					System.out.println("roads from "+this.enteringRoads.get(flag).getFromJunc()+ " to "+ this.enteringRoads.get(flag).getToJunc()+": green light");
-				}
-
+				getEnteringRoads().get(flag+1).setOpen(true);
 			}
+			else
+				System.out.println( "No entiring roads in this junction");
+			
+		}
+		else
+			return "This junction dos not have lights";
+		
+		return "";
 
 	}
 	public boolean checkAvailability (Road r) {
@@ -177,9 +206,10 @@ public class Junction {
 		return false;
 	}
 	public void setLightsOn() {
-		this.setHasLights(true);
+		this.setDelay(this.enteringRoads.size());
 		System.out.println("Junction "+junctionName+" : traffic lights ON. Delay time: "+this.delay);
-
+		this.setHasLights(true);
+		this.changeLight();
 
 	}
 

@@ -146,9 +146,8 @@ public class Driving {
 	public void startDrive(int maxTime) {
 		int j=0;
 		for(int i=1; i<maxTime+1;i++ ) {
-			System.out.println("TURN"+i);
+			System.out.println("TURN "+i);
 			for(j=0; j<this.currentVehicles.size();j++) {
-			//	System.out.println(this.currentVehicles.get(j).toString() + " is moving on from " );
 				this.currentVehicles.get(j).move();
 				
 			}
