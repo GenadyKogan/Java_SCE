@@ -124,17 +124,27 @@ public class Vehicle {
 		if(!this.movesNow && this.currentRoute!=null) {
 			if(this.lastJunction == null) {
 				this.lastJunction = this.currentRoute.getJunctions().get(0);
+
+				System.out.println(this.type +", ID "+ this.id + " is moving on from "+this.currentRoute.getJunctions().get(0)+" to "+lastJunction );
+
+			} else {
+				if(lastIndex < this.currentRoute.getJunctions().size() && this.currentRoute.getJunctions().size()>=2) {
+					this.lastJunction = currentRoute.getJunctions().get(lastIndex + 1);
+					Junction lastJunction = this.currentRoute.getJunctions().get(lastIndex);
+					this.currentRoute.getJunctions().remove(lastIndex);
+					System.out.println(this.type +", ID "+ this.id + " is moving on from "+this.currentRoute.getJunctions().get(0)+" to "+lastJunction );
+
 			} 
 			
 			else {
 				if(this.lastJunction != start ) {
 					start = currentRoute.getJunctions().get(lastIndex + 1);
 					System.out.println(this.type +", ID "+ this.id + " is moving on from "+start+" to "+lastJunction );
+
 				}
 				else
 				{
 					System.out.println(this.type +", ID "+ this.id +  " stays at " +start+" - no exiting roads. ");
-					this.lastJunction.changeLight();
 				}
 				
 			}
@@ -142,4 +152,5 @@ public class Vehicle {
 		}
 	}
 
+	}
 }
