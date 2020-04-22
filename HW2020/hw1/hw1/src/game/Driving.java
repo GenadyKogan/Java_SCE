@@ -146,6 +146,7 @@ public class Driving {
 	public void startDrive(int maxTime) {
 		for(int i=1; i<maxTime+1;i++ ) {
 			System.out.println("TURN "+i);
+			System.out.println(this.currentVehicles.get(i).toString() + "  is starting route "+this.currentMap.getRoads().get(i).toString() );
 			for(int j=0; j<this.currentVehicles.size();j++) {
 				this.currentVehicles.get(j).move();
 				

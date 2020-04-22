@@ -117,14 +117,14 @@ public class Vehicle {
 	}
 	
 	public void checkIn() {
+		this.setSpentTime(new Random().nextInt(3456) + 1008 );
 		Junction start=this.currentRoute.getJunctions().get(0);
 		this.setLastJunction(this.currentRoute.getJunctions().get(this.currentRoute.getJunctions().size()-1));
 		int lastIndex = this.currentRoute.getJunctions().indexOf(start);
 		if(!this.movesNow && this.currentRoute!=null) {
 			if(this.lastJunction == null) {
 				this.lastJunction = this.currentRoute.getJunctions().get(0);
-				System.out.println(this.type +", ID "+ this.id + " is moving on from "+this.currentRoute.getJunctions().get(0)+" to "+lastJunction );
-
+				System.out.println(this.type +", ID "+ this.id +  " stays at " +start+" - no exiting roads. ");
 			}
 			else {
 				if(this.lastJunction != start ) {
@@ -135,10 +135,14 @@ public class Vehicle {
 				{
 					System.out.println(this.type +", ID "+ this.id +  " stays at " +start+" - no exiting roads. ");
 					this.lastJunction.changeLight();
-					
 				}
 				
 			}
+			if(this.lastJunction==this.currentRoute.getJunctions().get(this.currentRoute.getJunctions().size()-1))
+				System.out.println(this.type +", ID "+ this.id + " has finished the route. Total time: "+ this.getSpentTime());
+			if(this.lastJunction == this.currentRoute.getJunctions().get(0))
+				System.out.println(this.type +", ID "+ this.id + "  is starting route from "+start+" to "+lastJunction );
+		
 			this.spentTime = this.lastJunction.getDelay();
 
 		}
