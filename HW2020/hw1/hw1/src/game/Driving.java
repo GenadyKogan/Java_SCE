@@ -144,10 +144,9 @@ public class Driving {
 		return true;
 	}
 	public void startDrive(int maxTime) {
-		int j=0;
 		for(int i=1; i<maxTime+1;i++ ) {
 			System.out.println("TURN "+i);
-			for(j=0; j<this.currentVehicles.size();j++) {
+			for(int j=0; j<this.currentVehicles.size();j++) {
 				this.currentVehicles.get(j).move();
 				
 			}

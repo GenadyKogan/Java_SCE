@@ -111,6 +111,7 @@ public class Vehicle {
 	}
 
 	// wait for the current point delay time and move to the next point of the route.
+	/**/
 	public void move() {
 		checkIn();
 	}
@@ -133,7 +134,7 @@ public class Vehicle {
 				else
 				{
 					System.out.println(this.type +", ID "+ this.id +  " stays at " +start+" - no exiting roads. ");
-				//	this.lastJunction.setLightsOn();
+					this.lastJunction.changeLight();
 					
 				}
 				

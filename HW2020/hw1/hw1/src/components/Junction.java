@@ -159,7 +159,7 @@ public class Junction {
 	}	
 	
 	/*******************************************************/
-	public String changeLight() {
+	public void changeLight() {
 		int flag=0;
 		if(isHasLights()==true) {
 			if(this.enteringRoads.size()>0)
@@ -185,11 +185,8 @@ public class Junction {
 				System.out.println( "No entiring roads in this junction");
 		}
 		else
-			return "This junction dos not have lights";
+			System.out.println( "This junction dos not have lights");
 
-		
-
-		return "";
 
 
 
