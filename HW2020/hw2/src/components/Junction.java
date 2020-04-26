@@ -34,6 +34,22 @@ public class Junction  extends Point /*implements RouteParts*/  {
 	
 	//================================
 	
+	public void addExitingRoad(Road roadExitRoad) { //using for a road
+		this.exitingRoads.add (roadExitRoad);
+	
+	}
+	
+	public void addEnteringRoad(Road roadEnterRoad) { 
+		this.enteringRoads.add (roadEnterRoad);
+	}
+	
+	
+	
+
+	
+	//================================
+
+	
 	public int getObjectsCount() {
 		return objectsCount;
 	}
@@ -45,17 +61,6 @@ public class Junction  extends Point /*implements RouteParts*/  {
 	public void setJunctionName(String junctionName) {
 		this.junctionName = junctionName;
 	}
-
-	public void addExitRoad(Road roadExitRoad) { //using for a road
-		this.exitingRoads.add (roadExitRoad);
-	
-	}
-	
-	public void addEnterRoad(Road roadEnterRoad) { 
-		this.enteringRoads.add (roadEnterRoad);
-	}
-	//================================
-
 	@Override
 	public boolean checkValue(double Val, double min, double max) {
 		// TODO Auto-generated method stub
