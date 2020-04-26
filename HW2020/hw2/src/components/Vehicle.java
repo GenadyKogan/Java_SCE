@@ -28,20 +28,12 @@ public class Vehicle implements Utilities, Timer {
 		
 	}
 	//================================
-<<<<<<< HEAD
+
 	//get and set
 	public int getId() {
 		return id;
 	}
-=======
-	
-	
-	
-	
-	
-	
-	
->>>>>>> branch 'master' of https://github.com/GenadyKogan/Java_SCE.git
+
 
 	public void setId(int id) {
 		this.id = id;

@@ -19,10 +19,7 @@ public class Road  implements RouteParts, Utilities{
 	//================================
 
 	public Road (Junction start, Junction end){
-<<<<<<< HEAD
-	
-		
-=======
+
 		this.allowedSpeedOptions= new int[]{20,40,50,55,60,70,80,90};
 		this.vehicleTypes=new VehicleType[7];
 		this.setStartJunction(start);
@@ -32,7 +29,7 @@ public class Road  implements RouteParts, Utilities{
 		//this.setMaxSpeed();
 		//this.setLength();
 		//this.setEnable();
->>>>>>> branch 'master' of https://github.com/GenadyKogan/Java_SCE.git
+
 	}
 	//================================
 	// set/get
