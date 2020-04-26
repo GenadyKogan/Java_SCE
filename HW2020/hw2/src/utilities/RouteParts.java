@@ -6,5 +6,5 @@ public interface RouteParts extends Utilities{
 	//void checkIn(Vehicle vehicle);
 	//void checkout(Vehicle vehicle);
 	//RouteParts findNextPart(Vehicle vehicle);
-	void stayOnCurrentPart(Vehicle vehicle); 
+	//void stayOnCurrentPart(Vehicle vehicle); 
 }
