@@ -141,6 +141,14 @@ public class Vehicle implements Utilities, Timer {
 		
 	}
 
+	public Road getLastRoad() {
+		return lastRoad;
+	}
+
+	public void setLastRoad(Road lastRoad) {
+		this.lastRoad = lastRoad;
+	}
+
 
 	
 	

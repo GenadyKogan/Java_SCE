@@ -105,64 +105,33 @@ public class Road  implements RouteParts, Utilities{
 		this.waitingVehicles.add(vehicle);
 		}
 	public double calcEstimatedTime(Object obj){
-		double spendTime;
-		
-		return length;
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	//================================
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-
-
-
-
-
-
-
-
-
-	
-		
+		if(obj instanceof Vehicle) {
+			return this.length/Math.min(this.maxSpeed,((Vehicle) obj).getVehicleType().getAverageSpeed());
+		}
+		return 0;
 	}
 	public double calcLength(){
-		//to do
-		return length;
+		double xPoint=this.startJunction.getX()-this.endJunction.getX();
+		double yPoint=this.startJunction.getY()-this.endJunction.getY();
+		return Math.sqrt(xPoint*xPoint + yPoint*yPoint);
 		
 	}
 	public boolean canLeave(Vehicle vehicle){
-		//to do
-		return enable;
+		return vehicle.getTimeOnCurrentPart()<=vehicle.getTimeFromRouteStart();
 		
 	}
 	public void checkIn(Vehicle vehicle){
-		
+	// to fo	
 	}
 	public void checkout(Vehicle vehicle){
-		
+		// to do
 	}
 	public RouteParts findNextPart(Vehicle vehicle){
-		//to do
-		return null;
+		return vehicle.getCurrentRoutePart();
 		
 	}
 	public void removeVehicleFromWaitingVehicles(Vehicle vehicle){
-		
+		this.waitingVehicles.remove(vehicle);
 	}
 	public void stayOnCurrentPart(Vehicle vehicle){
 		
