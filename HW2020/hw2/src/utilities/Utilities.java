@@ -1,9 +1,16 @@
 package utilities;
 
+import java.util.ArrayList;
+
 public interface Utilities {
-	public boolean checkValue(double Val, double min, double max);
-	public void correctingMessage(double wrongVal, double correctVal, String varName);
-	public void errorMessage(double wrongVal, String varName);
-	public boolean getRandomBoolean();
-	public boolean getRandomDouble(double min, double max);
+	 boolean checkValue(double Val, double min, double max);
+	 void correctingMessage(double wrongVal, double correctVal, String varName);
+	 void errorMessage(double wrongVal, String varName);
+	 boolean getRandomBoolean();
+	 boolean getRandomDouble(double min, double max);
+	 double  getRandomInt(int min, int max);
+	 ArrayList<Integer> getRandomIntArray(int min, int max, int arraySize);
+	 void successMessage(String  objName); 
+	
+	
 }
