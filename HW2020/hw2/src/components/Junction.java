@@ -11,7 +11,7 @@ public class Junction  /*extends Point*/ /*implements RouteParts*/  {
 	//================================
 	
 	public Junction() {
-		this.setJunctionName((String)objectsCount);
+		this.setJunctionName(junctionName);
 		
 	}
 	
