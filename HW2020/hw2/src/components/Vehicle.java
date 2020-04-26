@@ -40,8 +40,7 @@ public class Vehicle implements Utilities, Timer {
 	public VehicleType getVehicleType() {
 		return vehicleType;
 	}
-/**/
-	//
+/*aaaa*/
 	public void setVehicleType(VehicleType vehicleType) {
 		this.vehicleType = vehicleType;
 	}
