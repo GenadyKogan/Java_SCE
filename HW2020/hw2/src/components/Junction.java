@@ -12,7 +12,7 @@ public class Junction  extends Point /*implements RouteParts*/  {
 	private ArrayList<Road> exitingRoads;
 	private String junctionName;
 	//================================
-	
+	//
 	public Junction() {
 
 		//this();
