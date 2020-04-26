@@ -13,7 +13,7 @@ public class Vehicle implements Utilities, Timer {
 	private int timeFromRouteStart;
 	private int timeOnCurrentPart;
 	private int objectsCount;
-	//private Road lastRoad;
+	private Road lastRoad;
 	private String status;
 	
 	public Vehicle(Road road) {
@@ -28,10 +28,20 @@ public class Vehicle implements Utilities, Timer {
 		
 	}
 	//================================
+<<<<<<< HEAD
 	//get and set
 	public int getId() {
 		return id;
 	}
+=======
+	
+	
+	
+	
+	
+	
+	
+>>>>>>> branch 'master' of https://github.com/GenadyKogan/Java_SCE.git
 
 	public void setId(int id) {
 		this.id = id;
