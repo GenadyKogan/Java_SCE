@@ -1,6 +1,7 @@
 package components;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Junction  /*extends Point*/ /*implements RouteParts*/  {
 	private int objectsCount=1;
@@ -11,11 +12,17 @@ public class Junction  /*extends Point*/ /*implements RouteParts*/  {
 	//================================
 	
 	public Junction() {
-		this.setJunctionName(String.valueOf(junctionName));
+		//this();
+		//this.setJunctionName(String.valueOf(junctionName));
+		//setX(new Random().nextInt(799) + 0 );
+		//setY(new Random().nextInt(599) + 0);
 		
 	}
 	
-	
+	public Junction(String junctionName, double x, double y) {
+		this.setJunctionName(junctionName);
+		
+	}
 	
 	//================================
 	
