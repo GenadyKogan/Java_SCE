@@ -14,11 +14,10 @@ public class Junction  extends Point /*implements RouteParts*/  {
 	//================================
 	
 	public Junction() {
-		this();
-		this.setJunctionName(String.valueOf(junctionName));
-		setX(new Random().nextInt(799) + 0 );
-		setY(new Random().nextInt(599) + 0);
-		
+		//this();
+		//this.setJunctionName(String.valueOf(junctionName));
+		//setX(new Random().nextInt(799) + 0 );
+		//setY(new Random().nextInt(599) + 0);
 		
 	}
 	
