@@ -17,7 +17,7 @@ public class Vehicle implements Utilities, Timer {
 	private String status;
 	
 	public Vehicle(Road road) {
-		
+		this.setId(id);
 	}
 	
 	public void move(){
@@ -40,7 +40,7 @@ public class Vehicle implements Utilities, Timer {
 	public VehicleType getVehicleType() {
 		return vehicleType;
 	}
-
+//
 	public void setVehicleType(VehicleType vehicleType) {
 		this.vehicleType = vehicleType;
 	}
