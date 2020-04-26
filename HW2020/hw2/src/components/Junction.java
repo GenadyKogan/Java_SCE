@@ -14,15 +14,12 @@ public class Junction  extends Point /*implements RouteParts*/  {
 	//================================
 	
 	public Junction() {
-		this();
-		this.setJunctionName(String.valueOf(junctionName));
-		setX(new Random().nextInt(799) + 0 );
-		setY(new Random().nextInt(599) + 0);
-		
-		
+		super(new Random().nextInt(799) + 0,new Random().nextInt(599) + 0);
+		this.setJunctionName(String.valueOf(junctionName));		
 	}
 	
 	public Junction(String junctionName, double x, double y) {
+		super(x,y);
 		this.setJunctionName(junctionName);
 		
 	}
@@ -33,14 +30,23 @@ public class Junction  extends Point /*implements RouteParts*/  {
 		return objectsCount;
 	}
 
-
-
 	public String getJunctionName() {
 		return junctionName;
 	}
+	
 	public void setJunctionName(String junctionName) {
 		this.junctionName = junctionName;
 	}
+
+	public void addExitRoad(Road roadExitRoad) { //using for a road
+		this.exitingRoads.add (roadExitRoad);
+	
+	}
+	
+	public void addEnterRoad(Road roadEnterRoad) { 
+		this.enteringRoads.add (roadEnterRoad);
+	}
+	//================================
 
 	@Override
 	public boolean checkValue(double Val, double min, double max) {
