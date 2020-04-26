@@ -28,7 +28,69 @@ public class Vehicle implements Utilities, Timer {
 		
 	}
 	//================================
+	//get and set
+	public int getId() {
+		return id;
+	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public VehicleType getVehicleType() {
+		return vehicleType;
+	}
+
+	public void setVehicleType(VehicleType vehicleType) {
+		this.vehicleType = vehicleType;
+	}
+
+	public RouteParts getCurrentRoutePart() {
+		return currentRoutePart;
+	}
+
+	public void setCurrentRoutePart(RouteParts currentRoutePart) {
+		this.currentRoutePart = currentRoutePart;
+	}
+
+	public int getTimeFromRouteStart() {
+		return timeFromRouteStart;
+	}
+
+	public void setTimeFromRouteStart(int timeFromRouteStart) {
+		this.timeFromRouteStart = timeFromRouteStart;
+	}
+
+	public int getTimeOnCurrentPart() {
+		return timeOnCurrentPart;
+	}
+
+	public void setTimeOnCurrentPart(int timeOnCurrentPart) {
+		this.timeOnCurrentPart = timeOnCurrentPart;
+	}
+
+	public int getObjectsCount() {
+		return objectsCount;
+	}
+
+	public void setObjectsCount(int objectsCount) {
+		this.objectsCount = objectsCount;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	
+	
+	
+	//================================
+
+
+	
 	@Override
 	public boolean checkValue(double Val, double min, double max) {
 		// TODO Auto-generated method stub
@@ -76,4 +138,10 @@ public class Vehicle implements Utilities, Timer {
 		// TODO Auto-generated method stub
 		
 	}
+
+
+	
+	
+	
+	
 }
