@@ -44,6 +44,50 @@ public class Junction  extends Point /*implements RouteParts*/  {
 	}
 	
 	
+	public double calcEstimatedTime(Object obj){
+		//to do
+		return -1;
+		
+	}
+	public boolean canLeave(Vehicle vehicle){
+		return false;
+		//to do
+	}
+	public boolean checkAvailability(Vehicle vehicle) {
+		//to do
+		return false;
+		
+	}
+	
+	public void checkIn(Vehicle vehicle){
+		
+	}
+	public void checkOut(Vehicle vehicle){
+		
+	}
+
+	public RouteParts findNextPart(Vehicle vehicle){
+		//to do
+		return null;
+		
+	}
+	void stayOnCurrentPart(Vehicle vehicle){
+		
+	}
+	//================================
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	//================================
 
