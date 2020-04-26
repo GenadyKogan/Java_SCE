@@ -13,7 +13,7 @@ public class Vehicle implements Utilities, Timer {
 	private int timeFromRouteStart;
 	private int timeOnCurrentPart;
 	private int objectsCount;
-	//private Road lastRoad;
+	private Road lastRoad;
 	private String status;
 	
 	public Vehicle(Road road) {
@@ -28,6 +28,13 @@ public class Vehicle implements Utilities, Timer {
 		
 	}
 	//================================
+	
+	
+	
+	
+	
+	
+	
 
 	@Override
 	public boolean checkValue(double Val, double min, double max) {

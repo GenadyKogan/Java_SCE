@@ -7,6 +7,7 @@ import utilities.VehicleType;
 
 public class Road  implements RouteParts, Utilities{
 	private int [] allowedSpeedOptions;
+	
 	private boolean enable;
 	private Junction startJunction;
 	private Junction endJunction;
@@ -18,16 +19,123 @@ public class Road  implements RouteParts, Utilities{
 	//================================
 
 	public Road (Junction start, Junction end){
-		
+		this.allowedSpeedOptions= new int[]{20,40,50,55,60,70,80,90};
+		this.vehicleTypes=new VehicleType[7];
+		this.setStartJunction(start);
+		this.setEndJunction(end);
+		this.setWaitingVehicles(new ArrayList<Vehicle>());
+		//this.setGreenlight();
+		//this.setMaxSpeed();
+		//this.setLength();
+		//this.setEnable();
 	}
 	//================================
-
-	public void addVehicleToWaitingVehicles(Vehicle vehicle){
-		
+	// set/get
+	
+	public int[] getAllowedSpeedOptions() {
+		return allowedSpeedOptions;
 	}
-	public double calcEstimatedTime(Object obj){
-		//to do
+	
+	public boolean isEnable() {
+		return enable;
+	}
+
+	public void setEnable(boolean enable) {
+		this.enable = enable;
+	}
+
+	public boolean isGreenlight() {
+		return greenlight;
+	}
+
+	public void setGreenlight(boolean greenlight) {
+		this.greenlight = greenlight;
+	}
+
+	public double getLength() {
 		return length;
+	}
+
+	public void setLength(double length) {
+		this.length = length;
+	}
+
+	public int getMaxSpeed() {
+		return maxSpeed;
+	}
+
+	public void setMaxSpeed(int maxSpeed) {
+		this.maxSpeed = maxSpeed;
+	}
+
+	public VehicleType[] getVehicleTypes() {
+		return vehicleTypes;
+	}
+
+	public void setVehicleTypes(VehicleType vehicleTypes,int index) {
+		this.vehicleTypes[index] = vehicleTypes;
+	}
+
+	public ArrayList<Vehicle> getWaitingVehicles() {
+		return waitingVehicles;
+	}
+
+	public void setWaitingVehicles(ArrayList<Vehicle> waitingVehicles) {
+		this.waitingVehicles =new ArrayList<Vehicle>(waitingVehicles);
+	}
+
+	public Junction getStartJunction() {
+		return startJunction;
+	}
+
+	public void setStartJunction(Junction startJunction) {
+		this.startJunction = startJunction;
+	}
+	
+	
+	
+	
+	
+	
+	//================================
+	//methods
+	public void addVehicleToWaitingVehicles(Vehicle vehicle){
+		this.waitingVehicles.add(vehicle);
+		}
+	public double calcEstimatedTime(Object obj){
+		double spendTime;
+		
+		return length;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//================================
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+
+
+
+
+
+
+
+	
 		
 	}
 	public double calcLength(){
@@ -102,4 +210,14 @@ public class Road  implements RouteParts, Utilities{
 		// TODO Auto-generated method stub
 		
 	}
+
+	public Junction getEndJunction() {
+		return endJunction;
+	}
+
+	public void setEndJunction(Junction endJunction) {
+		this.endJunction = endJunction;
+	}
+
+	
 }
