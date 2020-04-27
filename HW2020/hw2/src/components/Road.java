@@ -7,7 +7,6 @@ import utilities.VehicleType;
 
 public class Road  implements RouteParts, Utilities{
 	private int [] allowedSpeedOptions;
-	
 	private boolean enable;
 	private Junction startJunction;
 	private Junction endJunction;
@@ -18,6 +17,7 @@ public class Road  implements RouteParts, Utilities{
 	private ArrayList<Vehicle> waitingVehicles;
 	//================================
 
+	
 	public Road (Junction start, Junction end){
 
 		this.allowedSpeedOptions= new int[]{20,40,50,55,60,70,80,90};
@@ -94,11 +94,6 @@ public class Road  implements RouteParts, Utilities{
 		this.startJunction = startJunction;
 	}
 	
-	
-	
-	
-	
-	
 	//================================
 	//methods
 	public void addVehicleToWaitingVehicles(Vehicle vehicle){
@@ -121,11 +116,40 @@ public class Road  implements RouteParts, Utilities{
 		
 	}
 	public void checkIn(Vehicle vehicle){
-
+		for(Vehicle i: waitingVehicles) {
+			
+			if (!i.equals(vehicle)) {
+				this.waitingVehicles.add(i);
+				System.out.println(" vehicle "+vehicle+" on the road ");
+				break;
+			}
+		}
 	}
 	public void checkout(Vehicle vehicle){
-		// to do
+		for(Vehicle i: waitingVehicles) {
+			
+			if (i.equals(vehicle)) {
+				this.waitingVehicles.remove(i);
+				System.out.println(" vehicle "+vehicle+" delete on the road ");
+				break;
+			}
+		}
 	}
+	@Override		
+	public boolean equals(Object other) {
+		boolean ans =false;
+		if(other instanceof Road) {
+			ans=( this.allowedSpeedOptions==((Road)other).allowedSpeedOptions   &&  this.enable==((Road)other).enable 
+					&& this.startJunction ==((Road)other).startJunction &&  this.endJunction ==((Road)other).endJunction
+					&& this.greenlight ==((Road)other).greenlight && this.length ==((Road)other).length
+					&& this.maxSpeed ==((Road)other).maxSpeed) && this.vehicleTypes ==((Road)other).vehicleTypes
+					&& this.waitingVehicles ==((Road)other).waitingVehicles;
+			return ans;
+		}
+		return ans;
+	}
+	
+	
 	public RouteParts findNextPart(Vehicle vehicle){
 		return vehicle.getCurrentRoutePart();
 		
@@ -135,7 +159,7 @@ public class Road  implements RouteParts, Utilities{
 		this.waitingVehicles.remove(vehicle);
 	}
 	public void stayOnCurrentPart(Vehicle vehicle){
-		
+		// TO DO
 	}
 	
 	
