@@ -121,7 +121,7 @@ public class Road  implements RouteParts, Utilities{
 		
 	}
 	public void checkIn(Vehicle vehicle){
-	// to fo	
+
 	}
 	public void checkout(Vehicle vehicle){
 		// to do
@@ -130,6 +130,7 @@ public class Road  implements RouteParts, Utilities{
 		return vehicle.getCurrentRoutePart();
 		
 	}
+	///
 	public void removeVehicleFromWaitingVehicles(Vehicle vehicle){
 		this.waitingVehicles.remove(vehicle);
 	}

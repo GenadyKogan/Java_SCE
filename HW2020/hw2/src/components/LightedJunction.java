@@ -6,8 +6,11 @@ public class LightedJunction extends Junction{
 		
 	}
 	public LightedJunction(String name, double x, double y, boolean sequential, boolean lightsOn) {
-		
+		super(name, x, y);
+		lights.setTrafficLightsOn(lightsOn);
 	}
+	
+	//================================
 	public double calcEstimatedTime(Object obj){
 		//to do
 		return 0;
@@ -18,4 +21,5 @@ public class LightedJunction extends Junction{
 		return false;
 		
 	}
+	//================================
 }
