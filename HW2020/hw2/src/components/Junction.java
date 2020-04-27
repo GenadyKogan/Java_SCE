@@ -5,7 +5,7 @@ import java.util.Random;
 
 import utilities.Point;
 
-public class Junction  extends Point /*implements RouteParts*/  {
+public class Junction  extends Point implements RouteParts {
 	private int objectsCount=1;
 	
 	private ArrayList<Road> enteringRoads;
@@ -14,13 +14,6 @@ public class Junction  extends Point /*implements RouteParts*/  {
 	//================================
 	//
 	public Junction() {
-
-		//this();
-		//this.setJunctionName(String.valueOf(junctionName));
-		//setX(new Random().nextInt(799) + 0 );
-		//setY(new Random().nextInt(599) + 0);
-		
-
 		super(new Random().nextInt(799) + 0,new Random().nextInt(599) + 0);
 		this.setJunctionName(String.valueOf(junctionName));		
 
@@ -33,7 +26,38 @@ public class Junction  extends Point /*implements RouteParts*/  {
 	}
 	
 	//================================
+	// set/get
+	public int getObjectsCount() {
+		return objectsCount;
+	}
+
+	public String getJunctionName() {
+		return junctionName;
+	}
 	
+	public void setJunctionName(String junctionName) {
+		this.junctionName = junctionName;
+	}
+	
+	public ArrayList<Road> getEnteringRoads() {
+		return enteringRoads;
+	}
+	public void setEnteringRoads(ArrayList<Road> enteringRoads) {
+		this.enteringRoads =new ArrayList<Road>(enteringRoads);
+	}
+	public ArrayList<Road> getExitingRoads() {
+		return exitingRoads;
+	}
+	public void setExitingRoads(ArrayList<Road> exitingRoads) {
+		this.exitingRoads = new ArrayList<Road>(exitingRoads);
+	}
+	public void setObjectsCount(int objectsCount) {
+		this.objectsCount = objectsCount;
+	}
+	
+	
+	//================================
+	//methods
 	public void addExitingRoad(Road roadExitRoad) { //using for a road
 		this.exitingRoads.add (roadExitRoad);
 	
@@ -45,13 +69,15 @@ public class Junction  extends Point /*implements RouteParts*/  {
 	
 	
 	public double calcEstimatedTime(Object obj){
-		//to do
+		double estimateTime;
+		//for()
 		return -1;
 		
 	}
 	public boolean canLeave(Vehicle vehicle){
+		
+		
 		return false;
-		//to do
 	}
 	public boolean checkAvailability(Vehicle vehicle) {
 		//to do
@@ -71,7 +97,7 @@ public class Junction  extends Point /*implements RouteParts*/  {
 		return null;
 		
 	}
-	void stayOnCurrentPart(Vehicle vehicle){
+	public void stayOnCurrentPart(Vehicle vehicle){
 		
 	}
 	//================================
@@ -92,17 +118,7 @@ public class Junction  extends Point /*implements RouteParts*/  {
 	//================================
 
 	
-	public int getObjectsCount() {
-		return objectsCount;
-	}
 
-	public String getJunctionName() {
-		return junctionName;
-	}
-	
-	public void setJunctionName(String junctionName) {
-		this.junctionName = junctionName;
-	}
 	@Override
 	public boolean checkValue(double Val, double min, double max) {
 		// TODO Auto-generated method stub
@@ -147,6 +163,12 @@ public class Junction  extends Point /*implements RouteParts*/  {
 
 	@Override
 	public void successMessage(String objName) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void checkout(Vehicle vehicle) {
 		// TODO Auto-generated method stub
 		
 	}
