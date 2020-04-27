@@ -8,7 +8,7 @@ import utilities.VehicleType;
 public class Vehicle implements Utilities, Timer {
 	private int id;
 	private VehicleType vehicleType;
-	//private Route currentRoute ;
+	private Route currentRoute ;
 	private RouteParts currentRoutePart;
 	private int timeFromRouteStart;
 	private int timeOnCurrentPart;
@@ -147,6 +147,14 @@ public class Vehicle implements Utilities, Timer {
 
 	public void setLastRoad(Road lastRoad) {
 		this.lastRoad = lastRoad;
+	}
+
+	public Route getCurrentRoute() {
+		return currentRoute;
+	}
+
+	public void setCurrentRoute(Route currentRoute) {
+		this.currentRoute = currentRoute;
 	}
 
 
