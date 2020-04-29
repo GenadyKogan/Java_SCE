@@ -1,6 +1,8 @@
 package components;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
 
 import utilities.Utilities;
 import utilities.VehicleType;
@@ -13,7 +15,7 @@ public class Road  implements RouteParts, Utilities{
 	private boolean greenlight;
 	private double length;
 	private int maxSpeed;
-	private VehicleType[] vehicleTypes;
+	private  VehicleType[] vehicleTypes;
 	private ArrayList<Vehicle> waitingVehicles;
 	//================================
 
@@ -21,19 +23,36 @@ public class Road  implements RouteParts, Utilities{
 	public Road (Junction start, Junction end){
 
 		this.allowedSpeedOptions= new int[]{20,40,50,55,60,70,80,90};
-		this.vehicleTypes=new VehicleType[7];
+		
+	
+		//VehicleType[] vehicleTypesList= {VehicleType.car,VehicleType.bus,VehicleType.bicycle, VehicleType.motorcycle, VehicleType.truck, VehicleType.tram, VehicleType.semitrailer};
+		VehicleType[] vehicleTypesList= {VehicleType.car,VehicleType.bus,VehicleType.bicycle, VehicleType.motorcycle, VehicleType.truck, VehicleType.tram, VehicleType.semitrailer};
+		this.setVehicleTypes(vehicleTypesList);
+		
 		this.setStartJunction(start);
 		this.setEndJunction(end);
 		this.setWaitingVehicles(new ArrayList<Vehicle>());
 		//this.setGreenlight();
-		//this.setMaxSpeed();
-		//this.setLength();
+		this.setMaxSpeed(this.allowedSpeedOptions[ new Random().nextInt(this.allowedSpeedOptions.length)]);
+		this.setLength(this.calcLength());
 		//this.setEnable();
+		System.out.println("Road from "+this.startJunction.toString()+" to "+this.getEndJunction().toString()+" length: "+this.length+ ", max speed: "+this.maxSpeed+ " has been created");
+		this.endJunction.addEnteringRoad(this);
+		this.startJunction.addExitingRoad(this);
+
 
 	}
+
 	//================================
 	// set/get
+
+	private void setVehicleTypes(VehicleType[] vehicleTypes) {
+		this.vehicleTypes=new VehicleType[7];
+		for(int i=0;i<vehicleTypes.length;i++)
+			this.vehicleTypes[i]=vehicleTypes[i];
+
 	
+	}
 	public int[] getAllowedSpeedOptions() {
 		return allowedSpeedOptions;
 	}
@@ -93,12 +112,21 @@ public class Road  implements RouteParts, Utilities{
 	public void setStartJunction(Junction startJunction) {
 		this.startJunction = startJunction;
 	}
-	
+
+	public Junction getEndJunction() {
+		return endJunction;
+	}
+
+	public void setEndJunction(Junction endJunction) {
+			this.endJunction = endJunction;
+
+	}
+
 	//================================
 	//methods
 	public void addVehicleToWaitingVehicles(Vehicle vehicle){
 		this.waitingVehicles.add(vehicle);
-		}
+	}
 	public double calcEstimatedTime(Object obj){
 		if(obj instanceof Vehicle) {
 			return this.length/Math.min(this.maxSpeed,((Vehicle) obj).getVehicleType().getAverageSpeed());
@@ -163,8 +191,13 @@ public class Road  implements RouteParts, Utilities{
 	}
 	
 	
-	
+	@Override
+	public String toString() {
+		return 	"Road from "+this.startJunction+" to "+this.endJunction+" length: "+this.length+ ", max speed: "+this.maxSpeed+ " has been created";
+
+	}
 	//================================
+
 
 	@Override
 	public boolean checkValue(double Val, double min, double max) {
@@ -207,13 +240,6 @@ public class Road  implements RouteParts, Utilities{
 		
 	}
 
-	public Junction getEndJunction() {
-		return endJunction;
-	}
-
-	public void setEndJunction(Junction endJunction) {
-		this.endJunction = endJunction;
-	}
 
 	
 }

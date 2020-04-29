@@ -1,5 +1,6 @@
 package components;
 import java.util.ArrayList;
+import java.util.Random;
 
 import utilities.Timer;
 import utilities.Utilities;
@@ -12,12 +13,18 @@ public class Vehicle implements Utilities, Timer {
 	private RouteParts currentRoutePart;
 	private int timeFromRouteStart;
 	private int timeOnCurrentPart;
-	private int objectsCount;
+	private static int objectsCount=1;
 	private Road lastRoad;
 	private String status;
 	
 	public Vehicle(Road road) {
-		this.setId(id);
+		this.setId(this.getObjectsCount());
+		this.setStatus(null);
+		this.setVehicleType(road.getVehicleTypes()[ new Random().nextInt(road.getVehicleTypes().length)]);
+		this.setLastRoad(road);
+		System.out.println("Vehicle "+ this.objectsCount +": "+ this.vehicleType.name()+", average speed: "+ this.vehicleType.getAverageSpeed()+"  has been created");
+		this.setObjectsCount(objectsCount+1);
+	
 	}
 	
 	public void move(){
@@ -41,6 +48,13 @@ public class Vehicle implements Utilities, Timer {
 
 	public VehicleType getVehicleType() {
 		return vehicleType;
+	}
+
+	@Override
+	public String toString() {
+		return "Vehicle [id=" + id + ", vehicleType=" + vehicleType + ", currentRoute=" + currentRoute
+				+ ", currentRoutePart=" + currentRoutePart + ", timeFromRouteStart=" + timeFromRouteStart
+				+ ", timeOnCurrentPart=" + timeOnCurrentPart + ", lastRoad=" + lastRoad + ", status=" + status + "]";
 	}
 
 	public void setVehicleType(VehicleType vehicleType) {
@@ -87,7 +101,22 @@ public class Vehicle implements Utilities, Timer {
 		this.status = status;
 	}
 	
-	
+	public Road getLastRoad() {
+		return lastRoad;
+	}
+
+	public void setLastRoad(Road lastRoad) {
+		this.lastRoad = lastRoad;
+	}
+
+	public Route getCurrentRoute() {
+		return currentRoute;
+	}
+
+	public void setCurrentRoute(Route currentRoute) {
+		this.currentRoute = currentRoute;
+	}
+
 	
 	//================================
 
@@ -140,26 +169,6 @@ public class Vehicle implements Utilities, Timer {
 		// TODO Auto-generated method stub
 		
 	}
-
-	public Road getLastRoad() {
-		return lastRoad;
-	}
-
-	public void setLastRoad(Road lastRoad) {
-		this.lastRoad = lastRoad;
-	}
-
-	public Route getCurrentRoute() {
-		return currentRoute;
-	}
-
-	public void setCurrentRoute(Route currentRoute) {
-		this.currentRoute = currentRoute;
-	}
-
-
-	
-	
 	
 	
 }

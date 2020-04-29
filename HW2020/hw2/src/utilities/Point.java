@@ -23,7 +23,7 @@ public abstract class Point implements Utilities {
 			setX(x);
 			setY(y);
 		}
-		System.out.print("Point (" + getX()+","+getY()+") has been created\n");
+		//System.out.print("Point (" + getX()+","+getY()+") has been created\n");
 	}
 	
 	public Point() {
