@@ -101,6 +101,7 @@ public class Junction  extends Point implements RouteParts {
 	}
 	
 	public boolean checkAvailability(Vehicle vehicle) {
+
 		if(this.getEnteringRoads().contains(vehicle.getLastRoad()) && vehicle.getLastRoad().getWaitingVehicles().indexOf(vehicle)!=-1) {
 			for(int i=0 ;i<vehicle.getLastRoad().getWaitingVehicles().size();i++)
 			{
@@ -111,6 +112,18 @@ public class Junction  extends Point implements RouteParts {
 						time-=1;
 				}
 			}
+
+	//	System.out.println(this.getExitingRoads());
+		System.out.println("khkjj "+this.getEnteringRoads().contains(vehicle.getLastRoad()));
+	//	System.out.println(vehicle.getLastRoad().getWaitingVehicles());
+		if(this.getExitingRoads().contains(vehicle.getLastRoad()) && this.getExitingRoads().indexOf(vehicle.getLastRoad().getWaitingVehicles())!=-1) {
+//			if(this.getExitingRoads().indexOf(vehicle.getLastRoad().getWaitingVehicles())!=0){
+//				for(int i=0;i< this.getExitingRoads().indexOf(vehicle.getLastRoad().getWaitingVehicles());i++) {
+//				}
+//				
+//			}
+			System.out.println("asdasdddaddafsdf");
+
 			return true;
 		}
 
