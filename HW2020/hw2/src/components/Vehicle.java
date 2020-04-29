@@ -24,7 +24,6 @@ public class Vehicle implements Utilities, Timer {
 		this.setLastRoad(road);
 		System.out.println("Vehicle "+ this.objectsCount +": "+ this.vehicleType.name()+", average speed: "+ this.vehicleType.getAverageSpeed()+"  has been created");
 		this.setObjectsCount(objectsCount+1);
-	
 	}
 	
 	public void move(){
