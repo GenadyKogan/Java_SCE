@@ -14,19 +14,44 @@ public class Map implements Utilities {
 
 	public Map (int numOfJunctions) {
 		this.junctions=new ArrayList<Junction>();
-		for (int i = 0; i < numOfJunctions; i++) {
-			int sizeX=(new Random().nextInt(799) + 0 );
-			int sizeY=(new Random().nextInt(599) + 0 );
-			this.junctions.add(new Junction("Junction " + i , sizeX, sizeY));
+		for (int i = 1; i < numOfJunctions+1; i++) {
+			int valX=(new Random().nextInt(799) + 0 );
+			int valY=(new Random().nextInt(599) + 0 );
+			this.junctions.add(new Junction(i+"" , valX, valY));
 		}
 		SetAllRoads();
 		this.lights=new ArrayList<TrafficLights>();
 		
 	}
-	//aa//
+	//================================
+
+	public ArrayList<Junction> getJunctions() {
+		return junctions;
+	}
+
+	public ArrayList<Road> getRoads() {
+		return roads;
+	}
+
+	public void setRoads(ArrayList<Road> roads) {
+		this.roads =new ArrayList<Road>(roads);
+	}
+
+	public ArrayList<TrafficLights> getLights() {
+		return lights;
+	}
+
+	public void setLights(ArrayList<TrafficLights> lights) {
+		this.lights = lights;
+	}
+
+	public void setJunctions(ArrayList<Junction> junctions) {
+		this.junctions = new ArrayList<Junction>(junctions);
+	}
 	//================================
 
 	public void SetAllRoads() {
+		System.out.println("================= CREATING ROADS=================");
 		this.roads=new ArrayList<Road>();
 		for(Junction start :this.junctions) {
 			for(Junction end:this.junctions ) {
@@ -35,16 +60,40 @@ public class Map implements Utilities {
 				}
 			}
 		}
+	//	System.out.println("roads"+this.roads);
 	}
+	//
 	public void turnLightsOn(){
 		
 	}
 	
 	//================================
+	
 
+	public boolean addJunction(Junction junc) {
+		boolean ans=false;
+		if(junc!=null) {
+	        for (Junction element : getJunctions()) { 
+	            if (element.equals(junc)) { 
+	            	ans = true; 
+	                break; 
+	            } 
+	        } 			
+			if(ans==false)
+			{
+				this.junctions.add(junc);
+			//	System.out.println("Junction "+junc.getJunctionName() +" nas been added to the map");
+			}
+			
+		}
+		return ans;
+
+	}
 	
-	
-	
+	//================================
+
+
+
 	@Override
 	public boolean checkValue(double Val, double min, double max) {
 		// TODO Auto-generated method stub
