@@ -7,7 +7,22 @@ public class Route  implements RouteParts{
 	private ArrayList<RouteParts> RouteParts;
 	private Vehicle vehicle;
 
-
+	public Route(RouteParts start, Vehicle vehicle) {
+		
+	}
+	
+	
+	
+	//===================================================
+	//get/set
+	
+	
+	
+	
+	
+	//===================================================
+	//methods
+	
 	@Override
 	public boolean checkValue(double Val, double min, double max) {
 		// TODO Auto-generated method stub
@@ -42,9 +57,6 @@ public class Route  implements RouteParts{
 		return 0;
 	}
 	
-	public Route(RouteParts start, Vehicle vehicle) {
-		
-	}
 	
 
 	public boolean canLeave(Vehicle vehicle){
