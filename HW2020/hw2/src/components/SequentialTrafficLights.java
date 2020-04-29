@@ -9,7 +9,6 @@ public class SequentialTrafficLights  extends TrafficLights {
 	
 	public SequentialTrafficLights(ArrayList<Road> roads) {
 		super(roads);
-		// TODO Auto-generated constructor stub
 	}
 	//================================
 

@@ -6,7 +6,6 @@ public class RandomTrafficLights extends TrafficLights{
 
 	public RandomTrafficLights (ArrayList<Road> roads){
 		super(roads);
-		// TODO Auto-generated constructor stub
 	}
 	public void changeIndex(){
 		

@@ -6,18 +6,20 @@ import utilities.Timer;
 import utilities.Utilities;
 
 public abstract class TrafficLights  implements Timer, Utilities{
-	private int objectsCount;
+	private static int objectsCount=1;
 	private int delay;
 	private int greenLightIndex;
 	private int id;
-	private int minDelay;
-	private int maxDelay;
+	private static final int minDelay=2;
+	private static final int maxDelay=6;
 	private ArrayList<Road> roads;
 	private boolean trafficLightsOn;
 	private int workingTime;
-	
+
 	public TrafficLights(ArrayList<Road> roads) {
-		
+		this.setRoads(roads);
+		this.setId(this.getObjectsCount());
+		this.setObjectsCount(objectsCount+1);	
 	}
 	//================================
 	public int getObjectsCount() {
@@ -52,28 +54,13 @@ public abstract class TrafficLights  implements Timer, Utilities{
 		this.id = id;
 	}
 
-	public int getMinDelay() {
-		return minDelay;
-	}
-
-	public void setMinDelay(int minDelay) {
-		this.minDelay = minDelay;
-	}
-
-	public int getMaxDelay() {
-		return maxDelay;
-	}
-
-	public void setMaxDelay(int maxDelay) {
-		this.maxDelay = maxDelay;
-	}
-
 	public ArrayList<Road> getRoads() {
 		return roads;
 	}
 
 	public void setRoads(ArrayList<Road> roads) {
-		this.roads = new ArrayList<Road>(roads);
+		this.roads=new ArrayList<Road>();
+		this.roads = roads;
 	}
 
 	public boolean isTrafficLightsOn() {

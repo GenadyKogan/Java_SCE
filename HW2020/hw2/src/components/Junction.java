@@ -27,8 +27,8 @@ public class Junction  extends Point implements RouteParts {
 		this.setJunctionName(junctionName);
 		
 		System.out.print("Junction "+this.getJunctionName()+ " (" + getX()+","+getY()+") has been created\n");
-		if(this.objectsCount%2==1)
-			System.out.println("Junction null has been created.");
+	/*	if(this.objectsCount%2==1)
+			System.out.println("Junction null has been created.");*/
 		
 		this.setObjectsCount(objectsCount+1);	
 		this.setExitingRoads(new ArrayList<Road>());
@@ -89,7 +89,6 @@ public class Junction  extends Point implements RouteParts {
 		
 	}
 	public boolean canLeave(Vehicle vehicle){
-		System.out.println(vehicle);
 		if(!checkAvailability(vehicle)) {
 			if(!this.getExitingRoads().contains(vehicle.getLastRoad()))
 				vehicle.setStatus("vehicle can't cross the junction and leave because there are no ways out of the junction");
@@ -100,7 +99,20 @@ public class Junction  extends Point implements RouteParts {
 		return true;
 
 	}
+	
 	public boolean checkAvailability(Vehicle vehicle) {
+
+		if(this.getEnteringRoads().contains(vehicle.getLastRoad()) && vehicle.getLastRoad().getWaitingVehicles().indexOf(vehicle)!=-1) {
+			for(int i=0 ;i<vehicle.getLastRoad().getWaitingVehicles().size();i++)
+			{
+
+				if(i<vehicle.getLastRoad().getWaitingVehicles().indexOf(vehicle)+1) {
+
+						double time=calcEstimatedTime(this.enteringRoads.get(i).getWaitingVehicles().get(i));
+						time-=1;
+				}
+			}
+
 	//	System.out.println(this.getExitingRoads());
 		System.out.println("khkjj "+this.getEnteringRoads().contains(vehicle.getLastRoad()));
 	//	System.out.println(vehicle.getLastRoad().getWaitingVehicles());
@@ -111,8 +123,10 @@ public class Junction  extends Point implements RouteParts {
 //				
 //			}
 			System.out.println("asdasdddaddafsdf");
+
 			return true;
 		}
+
 		return false;
 		
 	}
@@ -120,24 +134,37 @@ public class Junction  extends Point implements RouteParts {
 	public void checkIn(Vehicle vehicle){
 		if(vehicle.getLastRoad().getWaitingVehicles().contains(vehicle))
 			vehicle.getLastRoad().getWaitingVehicles().remove(vehicle);
-		
 	}
 	public void checkOut(Vehicle vehicle){
 		if(vehicle !=null)
 			vehicle.getLastRoad().getWaitingVehicles().add(vehicle);
-		System.out.println(vehicle);
+		
 	}
 
 	public RouteParts findNextPart(Vehicle vehicle){
-		//to do
+	//	System.out.println("//"+this.getExitingRoads());
+	//	System.out.println(vehicle.getCurrentRoute().getRouteParts());
 		return null;
 		
 	}
 	public void stayOnCurrentPart(Vehicle vehicle){
 		System.out.println(vehicle.getStatus());
+		
 	}
+	/**/
 	//================================
+	@Override		
+	public boolean equals(Object other) {
 
+		boolean ans =false;
+		if(other instanceof Junction) {
+			ans=( this.junctionName==((Junction)other).junctionName   
+					&& this.getX() ==((Junction)other).getX() 
+					&& this.getY() ==((Junction)other).getY());
+			return ans;
+		}
+		return ans;
+	}	
 	
 	
 	

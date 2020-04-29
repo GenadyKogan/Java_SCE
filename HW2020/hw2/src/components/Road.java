@@ -24,8 +24,6 @@ public class Road  implements RouteParts, Utilities{
 
 		this.allowedSpeedOptions= new int[]{20,40,50,55,60,70,80,90};
 		
-	
-		//VehicleType[] vehicleTypesList= {VehicleType.car,VehicleType.bus,VehicleType.bicycle, VehicleType.motorcycle, VehicleType.truck, VehicleType.tram, VehicleType.semitrailer};
 		VehicleType[] vehicleTypesList= {VehicleType.car,VehicleType.bus,VehicleType.bicycle, VehicleType.motorcycle, VehicleType.truck, VehicleType.tram, VehicleType.semitrailer};
 		this.setVehicleTypes(vehicleTypesList);
 		
@@ -36,9 +34,10 @@ public class Road  implements RouteParts, Utilities{
 		this.setMaxSpeed(this.allowedSpeedOptions[ new Random().nextInt(this.allowedSpeedOptions.length)]);
 		this.setLength(this.calcLength());
 		//this.setEnable();
-		System.out.println("Road from "+this.startJunction.toString()+" to "+this.getEndJunction().toString()+" length: "+this.length+ ", max speed: "+this.maxSpeed+ " has been created");
 		this.endJunction.addEnteringRoad(this);
 		this.startJunction.addExitingRoad(this);
+		System.out.println("Road from "+this.startJunction.toString()+" to "+this.getEndJunction().toString()+" length: "+this.length+ ", max speed: "+this.maxSpeed+ " has been created");
+
 
 
 	}
@@ -193,7 +192,7 @@ public class Road  implements RouteParts, Utilities{
 	
 	@Override
 	public String toString() {
-		return 	"Road from "+this.startJunction+" to "+this.endJunction+" length: "+this.length+ ", max speed: "+this.maxSpeed+ " has been created";
+		return 	"Road from "+this.startJunction+" to "+this.endJunction+" length: "+this.length+ ", max speed: "+this.maxSpeed;
 
 	}
 	//================================
