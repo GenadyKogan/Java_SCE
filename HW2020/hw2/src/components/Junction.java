@@ -102,14 +102,15 @@ public class Junction  extends Point implements RouteParts {
 	}
 	public boolean checkAvailability(Vehicle vehicle) {
 	//	System.out.println(this.getExitingRoads());
-	//	System.out.println(this.getExitingRoads().contains(vehicle.getLastRoad()));
+		System.out.println("khkjj "+this.getEnteringRoads().contains(vehicle.getLastRoad()));
 	//	System.out.println(vehicle.getLastRoad().getWaitingVehicles());
 		if(this.getExitingRoads().contains(vehicle.getLastRoad()) && this.getExitingRoads().indexOf(vehicle.getLastRoad().getWaitingVehicles())!=-1) {
-			if(this.getExitingRoads().indexOf(vehicle.getLastRoad().getWaitingVehicles())!=0){
-				for(int i=0;i< this.getExitingRoads().indexOf(vehicle.getLastRoad().getWaitingVehicles());i++) {
-				}
-				
-			}
+//			if(this.getExitingRoads().indexOf(vehicle.getLastRoad().getWaitingVehicles())!=0){
+//				for(int i=0;i< this.getExitingRoads().indexOf(vehicle.getLastRoad().getWaitingVehicles());i++) {
+//				}
+//				
+//			}
+			System.out.println("asdasdddaddafsdf");
 			return true;
 		}
 		return false;
