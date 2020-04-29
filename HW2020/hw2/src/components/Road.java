@@ -39,7 +39,6 @@ public class Road  implements RouteParts, Utilities{
 		System.out.println("Road from "+this.startJunction.toString()+" to "+this.getEndJunction().toString()+" length: "+this.length+ ", max speed: "+this.maxSpeed+ " has been created");
 
 
-
 	}
 
 	//================================

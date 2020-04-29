@@ -83,6 +83,7 @@ public abstract class TrafficLights  implements Timer, Utilities{
 	//================================
 
 	public abstract void changeIndex();
+	
 	public void changeLights(){
 		
 	}
@@ -90,7 +91,6 @@ public abstract class TrafficLights  implements Timer, Utilities{
 		
 	}
 
-		
-	
+
 	
 }

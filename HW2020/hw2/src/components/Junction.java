@@ -75,12 +75,15 @@ public class Junction  extends Point implements RouteParts {
 	//================================
 	//methods
 	public void addExitingRoad(Road roadExitRoad) { //using for a road
-		this.exitingRoads.add (roadExitRoad);
+		
+		if(!this.exitingRoads.contains(roadExitRoad))
+			this.exitingRoads.add (roadExitRoad);
 	
 	}
 	
 	public void addEnteringRoad(Road roadEnterRoad) { 
-		this.enteringRoads.add (roadEnterRoad);
+		if(!this.enteringRoads.contains(roadEnterRoad))
+			this.enteringRoads.add (roadEnterRoad);
 	}
 	
 	
@@ -130,8 +133,8 @@ public class Junction  extends Point implements RouteParts {
 	}
 
 	public RouteParts findNextPart(Vehicle vehicle){
-	//	System.out.println("//"+this.getExitingRoads());
-		System.out.println(vehicle.getCurrentRoute().getRouteParts());
+		System.out.println("//"+this.getExitingRoads());
+		//System.out.println(vehicle.getCurrentRoute().getRouteParts());
 		return null;
 		
 	}
@@ -139,7 +142,7 @@ public class Junction  extends Point implements RouteParts {
 		System.out.println(vehicle.getStatus());
 		
 	}
-	/**/
+
 	//================================
 	@Override		
 	public boolean equals(Object other) {
@@ -157,8 +160,7 @@ public class Junction  extends Point implements RouteParts {
 	
 	
 	
-	
-	
+
 	
 	
 	
@@ -223,6 +225,6 @@ public class Junction  extends Point implements RouteParts {
 		// TODO Auto-generated method stub
 		
 	}
-	
+
 	
 }

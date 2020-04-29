@@ -1,7 +1,9 @@
 package components;
 
 import java.util.ArrayList;
+import java.util.Random;
 
+import utilities.Point;
 import utilities.Utilities;
 
 public class Map implements Utilities {
@@ -11,12 +13,28 @@ public class Map implements Utilities {
 	//================================
 
 	public Map (int numOfJunctions) {
+		this.junctions=new ArrayList<Junction>();
+		for (int i = 0; i < numOfJunctions; i++) {
+			int sizeX=(new Random().nextInt(799) + 0 );
+			int sizeY=(new Random().nextInt(599) + 0 );
+			this.junctions.add(new Junction("Junction " + i , sizeX, sizeY));
+		}
+		SetAllRoads();
+		this.lights=new ArrayList<TrafficLights>();
 		
 	}
+	//aa//
 	//================================
 
 	public void SetAllRoads() {
-		
+		this.roads=new ArrayList<Road>();
+		for(Junction start :this.junctions) {
+			for(Junction end:this.junctions ) {
+				if(start!=end) {
+					this.roads.add(new Road(start,end));
+				}
+			}
+		}
 	}
 	public void turnLightsOn(){
 		
@@ -66,5 +84,7 @@ public class Map implements Utilities {
 	public void successMessage(String objName) {
 		// TODO Auto-generated method stub
 		
+	}
+	public void setTrafficLightsOn(boolean trafficLightsOn) {
 	}
 }
