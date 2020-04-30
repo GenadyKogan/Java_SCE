@@ -12,6 +12,7 @@ public class Map implements Utilities {
 	private ArrayList<TrafficLights> lights;
 	//================================
 /**/
+	
 	public Map (int numOfJunctions) {
 		this.junctions=new ArrayList<Junction>();
 		this.lights=new ArrayList<TrafficLights>();
