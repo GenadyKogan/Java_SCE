@@ -11,15 +11,23 @@ public class Map implements Utilities {
 	private ArrayList<Road> roads;
 	private ArrayList<TrafficLights> lights;
 	//================================
-
+/**/
 	public Map (int numOfJunctions) {
 		this.junctions=new ArrayList<Junction>();
+		this.lights=new ArrayList<TrafficLights>();
+		boolean [] booleanElem={true,false};
 		for (int i = 1; i < numOfJunctions+1; i++) {
+			boolean isSequential=booleanElem[ new Random().nextInt(booleanElem.length)];
+			boolean lightsOn=booleanElem[ new Random().nextInt(booleanElem.length)];
+			boolean isTrafficLights=booleanElem[ new Random().nextInt(booleanElem.length)];
 			int valX=(new Random().nextInt(799) + 0 );
 			int valY=(new Random().nextInt(599) + 0 );
 			this.junctions.add(new Junction(i+"" , valX, valY));
+		//	if(this.lights.)
 		}
+
 		SetAllRoads();
+	
 		this.lights=new ArrayList<TrafficLights>();
 		
 	}
@@ -52,17 +60,22 @@ public class Map implements Utilities {
 
 	public void SetAllRoads() {
 		System.out.println("================= CREATING ROADS=================");
+
 		this.roads=new ArrayList<Road>();
+		
 		for(Junction start :this.junctions) {
 			for(Junction end:this.junctions ) {
 				if(start!=end) {
 					this.roads.add(new Road(start,end));
+	
 				}
+				
 			}
+
 		}
-	//	System.out.println("roads"+this.roads);
+
 	}
-	//
+	
 	public void turnLightsOn(){
 		
 	}

@@ -23,7 +23,9 @@ public class Driving  implements Utilities, Timer {
 	}
 //
 	public void  drive(int numOfTurns) {
-		// TO DO
+		for(int i=0;i<numOfTurns;i++) {
+			incrementDrivingTime();
+		}
 	}
 	public void incrementDrivingTime() {
 		// TO DO

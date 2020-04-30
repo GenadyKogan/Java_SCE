@@ -16,10 +16,11 @@ public class Junction  extends Point implements RouteParts {
 	public Junction() {
 		super(new Random().nextInt(799) + 0,new Random().nextInt(599) + 0);
 		this.setJunctionName(String.valueOf(objectsCount));	
-		System.out.print("Junction "+this.getObjectsCount()+ " (" + getX()+","+getY()+") has been created\n");
-		this.setObjectsCount(objectsCount+1);
+		System.out.print("Junction "+this.getObjectsCount()+ " (" + getX()+","+getY()+") "+ "has been created\n");
 		this.setExitingRoads(new ArrayList<Road>());
 		this.setEnteringRoads(new ArrayList<Road>());
+		this.setObjectsCount(objectsCount+1);
+
 	}
 	
 	public Junction(String junctionName, double x, double y) {
@@ -30,9 +31,9 @@ public class Junction  extends Point implements RouteParts {
 	/*	if(this.objectsCount%2==1)
 			System.out.println("Junction null has been created.");*/
 		
-		this.setObjectsCount(objectsCount+1);	
 		this.setExitingRoads(new ArrayList<Road>());
 		this.setEnteringRoads(new ArrayList<Road>());
+		this.setObjectsCount(objectsCount+1);	
 
 	}
 	

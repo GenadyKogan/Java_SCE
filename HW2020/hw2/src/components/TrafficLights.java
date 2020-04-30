@@ -63,7 +63,7 @@ public abstract class TrafficLights  implements Timer, Utilities{
 		this.roads = roads;
 	}
 
-	public boolean isTrafficLightsOn() {
+	public boolean getTrafficLightsOn() {
 		return trafficLightsOn;
 	}
 
