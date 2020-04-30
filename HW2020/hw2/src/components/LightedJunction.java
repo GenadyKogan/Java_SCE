@@ -1,14 +1,20 @@
 package components;
 
 public class LightedJunction extends Junction{
-	private TrafficLights lights=new SequentialTrafficLights(null);
+	private TrafficLights light;
 
 	public LightedJunction(String name, double x, double y, boolean sequential, boolean lightsOn) {
 		super(name, x, y);
-		lights.setTrafficLightsOn(lightsOn);
+		this.light=new SequentialTrafficLights(null);
+		this.light.setTrafficLightsOn(lightsOn);
 		
 	}
 	
+	public TrafficLights getLights() {
+		return this.light;
+	}
+
+
 	//================================
 	public LightedJunction(){
 		
@@ -25,4 +31,5 @@ public class LightedJunction extends Junction{
 	}
 	//================================
 	
+
 }

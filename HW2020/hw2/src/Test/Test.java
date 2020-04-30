@@ -85,25 +85,25 @@ public class Test {
 		d=new LightedJunction ("b",2,3, true, true);
 //		Sequential traffic lights 1Lights can not be turned on at junction with no entering roads
 //		Junction b  (2,00 , 3,00), Lighted has been created.
-	//	System.out.println(b.equals(d));
-	//	System.out.println(d.equals(b));
+		System.out.println(b.equals(d));
+		System.out.println(d.equals(b));
 		LightedJunction e=(LightedJunction)d;
-	//	System.out.println(b.equals(e));
-	//	System.out.println(e.equals(b));
+		System.out.println(b.equals(e));
+		System.out.println(e.equals(b));
 //		true
 //		true
 //		true
 //		true
-	//	Road cd=new Road(c,d);
-	//	Road bd=new Road(b,d);
+		Road cd=new Road(c,d);
+		Road bd=new Road(b,d);
 		e.getLights().setTrafficLightsOn(true);
 //		Road from Junction c to Junction b (Lighted), length: 217, max speed 40 has been created.
 //		Road from Junction b to Junction b (Lighted), length: 0, max speed 70 has been created.
 //		Sequential traffic lights 1 turned ON, delay time: 5
 //		- Road from Junction c to Junction b (Lighted), length: 217, max speed 40: green light.
-//		e.getLights().changeLights();
+		e.getLights().changeLights();
 //		- Road from Junction b to Junction b (Lighted), length: 0, max speed 55: green light.
-//		e.getLights().changeLights();
+		e.getLights().changeLights();
 //		- Road from Junction c to Junction b (Lighted), length: 217, max speed 40: green light.
 		System.out.println(c.findNextPart(vehicle));
 //		Road from Junction c to Junction b, length: 217, max speed 70
