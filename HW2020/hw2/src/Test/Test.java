@@ -101,9 +101,9 @@ public class Test {
 //		Road from Junction b to Junction b (Lighted), length: 0, max speed 70 has been created.
 //		Sequential traffic lights 1 turned ON, delay time: 5
 //		- Road from Junction c to Junction b (Lighted), length: 217, max speed 40: green light.
-//		e.getLights().changeLights();
+		e.getLights().changeLights();
 //		- Road from Junction b to Junction b (Lighted), length: 0, max speed 55: green light.
-//		e.getLights().changeLights();
+		e.getLights().changeLights();
 //		- Road from Junction c to Junction b (Lighted), length: 217, max speed 40: green light.
 		System.out.println(c.findNextPart(vehicle));
 //		Road from Junction c to Junction b, length: 217, max speed 70

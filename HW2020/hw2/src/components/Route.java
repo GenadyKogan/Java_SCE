@@ -4,7 +4,12 @@ import java.util.ArrayList;
 
 public class Route  implements RouteParts{
 
-	private ArrayList<RouteParts> RouteParts;
+
+	private ArrayList<RouteParts> RouteParts=null;
+
+
+	//private ArrayList<RouteParts> RouteParts;
+
 	private Vehicle vehicle;
 
 	public Route(RouteParts start, Vehicle vehicle) {
