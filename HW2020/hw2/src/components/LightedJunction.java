@@ -7,10 +7,8 @@ public class LightedJunction extends Junction{
 		super(name, x, y);
 		this.light=new SequentialTrafficLights(null);
 		this.light.setTrafficLightsOn(lightsOn);
-		if(this.light.getTrafficLightsOn())
-			System.out.print(""+super.toString()+ " (Lighted) " + "has been created\n");
-		else
-			System.out.print(""+super.toString()+ " has been created\n");
+
+
 	}
 	
 	public TrafficLights getLights() {

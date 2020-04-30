@@ -11,32 +11,31 @@ public class Map implements Utilities {
 	private ArrayList<Road> roads;
 	private ArrayList<TrafficLights> lights;
 	//================================
-/***/
-	
+
 	public Map (int numOfJunctions) {
 		this.junctions=new ArrayList<Junction>();
 		this.lights=new ArrayList<TrafficLights>();
-		
 		boolean [] booleanElem={true,false};
+		boolean isLightedJunction=booleanElem[ new Random().nextInt(booleanElem.length)];
+		int valX=(new Random().nextInt(799) + 0 );
+		int valY=(new Random().nextInt(599) + 0 );
 		for (int i = 1; i < numOfJunctions+1; i++) {
-			int valX=(new Random().nextInt(799) + 0 );
-			int valY=(new Random().nextInt(599) + 0 );
-			this.junctions.add(new Junction(i+"" , valX, valY));
+
+			if(!isLightedJunction)
+				this.junctions.add(new Junction(i+"" , valX, valY));
+			else
+			{
+				boolean isSequential=booleanElem[ new Random().nextInt(booleanElem.length)];
+				this.junctions.add(new LightedJunction(i+"" , valX, valY,isSequential,false));
+			}
+			
+
 		}
-
-
-			boolean isLightedJunction=booleanElem[ new Random().nextInt(booleanElem.length)];
-
-			if(isLightedJunction) {
-				boolean lightsOn=booleanElem[ new Random().nextInt(booleanElem.length)];
-
-		
-		}
-
-			SetAllRoads();
+		turnLightsOn();
+		SetAllRoads();
 	}
 	//================================
-
+//
 	public ArrayList<Junction> getJunctions() {
 		return junctions;
 	}
@@ -80,7 +79,16 @@ public class Map implements Utilities {
 	}
 	
 	public void turnLightsOn(){
-		
+		boolean [] booleanElem={true,false};
+		for (Junction junc: this.junctions) {
+			if(junc instanceof LightedJunction) {
+				boolean lightsOn=booleanElem[ new Random().nextInt(booleanElem.length)];
+				((LightedJunction)junc).getLights().setTrafficLightsOn(lightsOn);
+					System.out.print(""+junc + " has been created\n");
+			}
+		}
+		System.out.println("kk"+this.junctions);
+
 	}
 	
 	//================================
@@ -107,6 +115,7 @@ public class Map implements Utilities {
 	}
 	
 	//================================
+
 
 
 
