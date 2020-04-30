@@ -87,7 +87,7 @@ public class Test {
 //		Junction b  (2,00 , 3,00), Lighted has been created.
 	//	System.out.println(b.equals(d));
 	//	System.out.println(d.equals(b));
-		//LightedJunction e=(LightedJunction)d;
+		LightedJunction e=(LightedJunction)d;
 	//	System.out.println(b.equals(e));
 	//	System.out.println(e.equals(b));
 //		true
@@ -96,7 +96,7 @@ public class Test {
 //		true
 	//	Road cd=new Road(c,d);
 	//	Road bd=new Road(b,d);
-//		e.getLights().setTrafficLightsOn(true);
+		e.getLights().setTrafficLightsOn(true);
 //		Road from Junction c to Junction b (Lighted), length: 217, max speed 40 has been created.
 //		Road from Junction b to Junction b (Lighted), length: 0, max speed 70 has been created.
 //		Sequential traffic lights 1 turned ON, delay time: 5

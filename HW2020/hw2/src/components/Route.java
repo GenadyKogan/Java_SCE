@@ -8,23 +8,6 @@ public class Route  implements RouteParts{
 	private Vehicle vehicle;
 
 	public Route(RouteParts start, Vehicle vehicle) {
-
-		
-	}
-	
-	
-	
-	//===================================================
-	//get/set
-	
-	
-	
-	
-	
-	//===================================================
-	//methods
-	
-
 		this.RouteParts =new ArrayList<RouteParts>();
 		this.addRouteParts(start);
 	} 
@@ -70,7 +53,6 @@ public class Route  implements RouteParts{
 	
 
 	//methods
-
 	@Override
 	public boolean checkValue(double Val, double min, double max) {
 		// TODO Auto-generated method stub
@@ -104,35 +86,6 @@ public class Route  implements RouteParts{
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
-	
-	
-
-	public boolean canLeave(Vehicle vehicle){
-		return false;
-		
-	}
-	public void checkIn(Vehicle vehicle){
-		
-	}
-	public void checkout(Vehicle vehicle){
-		
-	}
-	public RouteParts findNextPart(Vehicle vehicle){
-		return null;
-		
-	}
-	public void stayOnCurrentPart(Vehicle vehicle){
-		
-	}
-	
-	//================================
-
-	
-	
-
-
-
 
 	@Override
 	public void correctingMessage(double wrongVal, double correctVal, String varName) {
