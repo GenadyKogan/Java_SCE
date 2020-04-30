@@ -11,6 +11,7 @@ public class LightedJunction extends Junction{
 
 	}
 	
+
 	public TrafficLights getLights() {
 		return this.light;
 	}
@@ -31,14 +32,7 @@ public class LightedJunction extends Junction{
 		
 	}
 
-	@Override
-	public String toString() {
-		if(this.light.getTrafficLightsOn())
-			return ""+super.toString()+" (Lighted)";
-		else
-			return ""+super.toString();
 
-	}
 	
 	//================================
 

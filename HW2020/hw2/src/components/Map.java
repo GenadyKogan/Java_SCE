@@ -1,6 +1,7 @@
 package components;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 import utilities.Point;
@@ -15,14 +16,17 @@ public class Map implements Utilities {
 	public Map (int numOfJunctions) {
 		this.junctions=new ArrayList<Junction>();
 		this.lights=new ArrayList<TrafficLights>();
+		this.roads=new ArrayList<Road>();
 		boolean [] booleanElem={true,false};
-		boolean isLightedJunction=booleanElem[ new Random().nextInt(booleanElem.length)];
+
 		int valX=(new Random().nextInt(799) + 0 );
 		int valY=(new Random().nextInt(599) + 0 );
 		for (int i = 1; i < numOfJunctions+1; i++) {
-
-			if(!isLightedJunction)
+			boolean isLightedJunction=booleanElem[ new Random().nextInt(booleanElem.length)];
+			if(!isLightedJunction) {
 				this.junctions.add(new Junction(i+"" , valX, valY));
+			
+			}
 			else
 			{
 				boolean isSequential=booleanElem[ new Random().nextInt(booleanElem.length)];
@@ -31,8 +35,25 @@ public class Map implements Utilities {
 			
 
 		}
+
 		turnLightsOn();
 		SetAllRoads();
+		
+		init();
+
+	}
+	private void init() {
+
+		for(Junction junc : this.junctions) {
+			String className = junc.getClass().getSimpleName();
+			if(className.equals("Junction")) {
+				System.out.println("true");
+			}
+
+			System.out.println(className);
+		}
+		
+		
 	}
 	//================================
 //
@@ -63,54 +84,31 @@ public class Map implements Utilities {
 
 	public void SetAllRoads() {
 		System.out.println("================= CREATING ROADS=================");
-
-		this.roads=new ArrayList<Road>();
 		this.lights=new ArrayList<TrafficLights>();
 		for(Junction start :this.junctions) {
-			for(Junction end:this.junctions ) {
+			for(Junction end:this.junctions ) 
 				if(start!=end) {
 					this.roads.add(new Road(start,end));
-				}
-				
-			}
-
+					this.lights.add(new SequentialTrafficLights(start.getEnteringRoads()));
+				}		
 		}
-		
+
+			System.out.println(this.lights);
+
 	}
-	
+	//
 	public void turnLightsOn(){
 		boolean [] booleanElem={true,false};
-		for (Junction junc: this.junctions) {
-			if(junc instanceof LightedJunction) {
-				boolean lightsOn=booleanElem[ new Random().nextInt(booleanElem.length)];
+
+		for(Junction junc:this.junctions) {
+			boolean lightsOn=booleanElem[ new Random().nextInt(booleanElem.length)];
+			String className = junc.getClass().getSimpleName();
+			if(className.equals("LightedJunction")) 
 				((LightedJunction)junc).getLights().setTrafficLightsOn(lightsOn);
-					System.out.print(""+junc + " has been created\n");
-			}
+			System.out.print(""+junc.toString() + " has been created\n");
 		}
-		System.out.println("kk"+this.junctions);
 
-	}
-	
-	//================================
-	
-
-	public boolean addJunction(Junction junc) {
-		boolean ans=false;
-		if(junc!=null) {
-	        for (Junction element : getJunctions()) { 
-	            if (element.equals(junc)) { 
-	            	ans = true; 
-	                break; 
-	            } 
-	        } 			
-			if(ans==false)
-			{
-				this.junctions.add(junc);
-			//	System.out.println("Junction "+junc.getJunctionName() +" nas been added to the map");
-			}
 			
-		}
-		return ans;
 
 	}
 	
