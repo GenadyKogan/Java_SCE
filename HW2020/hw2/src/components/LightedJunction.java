@@ -11,7 +11,6 @@ public class LightedJunction extends Junction{
 			System.out.print(""+super.toString()+ " (Lighted) " + "has been created\n");
 		else
 			System.out.print(""+super.toString()+ " has been created\n");
-
 	}
 	
 	public TrafficLights getLights() {
