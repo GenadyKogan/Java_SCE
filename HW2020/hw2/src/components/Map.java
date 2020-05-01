@@ -17,33 +17,27 @@ public class Map implements Utilities {
 		this.junctions=new ArrayList<Junction>();
 		this.lights=new ArrayList<TrafficLights>();
 		this.roads=new ArrayList<Road>();
-		boolean [] booleanElem={true,false};
-
-		int valX=(new Random().nextInt(799) + 0 );
-		int valY=(new Random().nextInt(599) + 0 );
 		for (int i = 1; i < numOfJunctions+1; i++) {
-			boolean isLightedJunction=booleanElem[ new Random().nextInt(booleanElem.length)];
-			if(!isLightedJunction) {
-				this.junctions.add(new Junction(i+"" , valX, valY));
-			
-			}
+			boolean isLightedJunction=this.getRandomBoolean();
+			if(!isLightedJunction)
+				this.junctions.add(new Junction(i+"" , getRandomInt(0,800), getRandomInt(0,600)));
 			else
 			{
-				boolean isSequential=booleanElem[ new Random().nextInt(booleanElem.length)];
-				this.junctions.add(new LightedJunction(i+"" , valX, valY,isSequential,false));
-
+				boolean isSequential=this.getRandomBoolean();
+				LightedJunction temp=new LightedJunction();
+				this.junctions.add(temp);
+				this.lights.add(temp.getTrafficLights());
 			}
-			
-
 		}
 
-		turnLightsOn();
+		for(Junction junc:this.junctions)
+			System.out.print(""+junc.toString() + " has been created\n");
 		SetAllRoads();
-		
-		//init();
-
 	}
-	private void init() {
+
+	
+	
+/*	private void init() {
 
 		for(Junction junc : this.junctions) {
 			String className = junc.getClass().getSimpleName();
@@ -55,9 +49,9 @@ public class Map implements Utilities {
 		}
 		
 		
-	}
+	}*/
 	//================================
-//
+
 	public ArrayList<Junction> getJunctions() {
 		return junctions;
 	}
@@ -90,11 +84,11 @@ public class Map implements Utilities {
 			for(Junction end:this.junctions ) 
 				if(start!=end) {
 					this.roads.add(new Road(start,end));
-					this.lights.add(new SequentialTrafficLights(start.getEnteringRoads()));
 				}		
 		}
 
 	}
+	
 
 	public void turnLightsOn(){
 		boolean [] booleanElem={true,false};
@@ -103,7 +97,7 @@ public class Map implements Utilities {
 			boolean lightsOn=booleanElem[ new Random().nextInt(booleanElem.length)];
 			String className = junc.getClass().getSimpleName();
 			if(className.equals("LightedJunction")) 
-				((LightedJunction)junc).getLights().setTrafficLightsOn(lightsOn);
+				((LightedJunction)junc).getTrafficLights().setTrafficLightsOn(lightsOn);
 			System.out.print(""+junc.toString() + " has been created\n");
 
 
@@ -120,7 +114,8 @@ public class Map implements Utilities {
 
 	@Override
 	public boolean checkValue(double Val, double min, double max) {
-		// TODO Auto-generated method stub
+		if(Val<max && Val>min)
+			return true;
 		return false;
 	}
 	@Override
@@ -135,23 +130,28 @@ public class Map implements Utilities {
 	}
 	@Override
 	public boolean getRandomBoolean() {
-		// TODO Auto-generated method stub
-		return false;
+		boolean [] booleanElem={true,false};
+		return booleanElem[ new Random().nextInt(booleanElem.length)];
 	}
 	@Override
-	public boolean getRandomDouble(double min, double max) {
-		// TODO Auto-generated method stub
-		return false;
+	public double getRandomDouble(double min, double max) {
+		 double random_double = Math.random() * (max - min + 1) + min; 
+		 return random_double;
 	}
+
+
 	@Override
-	public double getRandomInt(int min, int max) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int getRandomInt(int min, int max) {
+		Random random = new Random();
+		return random.nextInt(max-min+1) + min;
 	}
 	@Override
 	public ArrayList<Integer> getRandomIntArray(int min, int max, int arraySize) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Integer> list = new ArrayList<Integer>();
+        for (int i = 0; i <arraySize; i++) {
+            list.add(getRandomInt(min,max));
+        }
+        return list;
 	}
 	@Override
 	public void successMessage(String objName) {

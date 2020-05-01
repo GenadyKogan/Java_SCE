@@ -1,6 +1,7 @@
 package components;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Route  implements RouteParts{
 
@@ -37,7 +38,11 @@ public class Route  implements RouteParts{
 		return false;
 		
 	}
-
+	
+	public double calcEstimatedTime(Object obj) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	public void checkIn(Vehicle vehicle){
 
 	}
@@ -60,22 +65,28 @@ public class Route  implements RouteParts{
 	//methods
 	@Override
 	public boolean checkValue(double Val, double min, double max) {
-		// TODO Auto-generated method stub
+		if(Val<max && Val>min)
+			return true;
 		return false;
 	}
-
 
 	@Override
 	public boolean getRandomBoolean() {
-		// TODO Auto-generated method stub
-		return false;
+		boolean [] booleanElem={true,false};
+		return booleanElem[ new Random().nextInt(booleanElem.length)];
+	}
+
+	@Override
+	public double getRandomDouble(double min, double max) {
+		 double random_double = Math.random() * (max - min + 1) + min; 
+		 return random_double;
 	}
 
 
 	@Override
-	public double getRandomInt(int min, int max) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int getRandomInt(int min, int max) {
+		Random random = new Random();
+		return random.nextInt(max-min+1) + min;
 	}
 
 
@@ -86,11 +97,6 @@ public class Route  implements RouteParts{
 		
 	}
 
-	@Override
-	public double calcEstimatedTime(Object obj) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	@Override
 	public void correctingMessage(double wrongVal, double correctVal, String varName) {
@@ -106,17 +112,12 @@ public class Route  implements RouteParts{
 
 
 	@Override
-	public boolean getRandomDouble(double min, double max) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-
-
-	@Override
 	public ArrayList<Integer> getRandomIntArray(int min, int max, int arraySize) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Integer> list = new ArrayList<Integer>();
+        for (int i = 0; i <arraySize; i++) {
+            list.add(getRandomInt(min,max));
+        }
+        return list;
 	}
 
 

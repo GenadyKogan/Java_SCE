@@ -62,7 +62,7 @@ public class Test {
 //		Vehicle 2: truck, average speed: 80 has been created.
 //		- is starting a new Route from Road from Junction a to Junction b, length: 11, max speed 80 to Junction c, estimated time for route: 3.0.
 //		- is starting to move on Road from Junction a to Junction b, length: 11, max speed 80, time to finish: 0.0.
-		b.checkOut(car);
+	//	b.checkOut(car);
 //		- has left the Junction b.
 		System.out.println(b.calcEstimatedTime(car));
 //		1.0
@@ -96,14 +96,14 @@ public class Test {
 //		true
 		Road cd=new Road(c,d);
 		Road bd=new Road(b,d);
-		e.getLights().setTrafficLightsOn(true);
+		//e.getLights().setTrafficLightsOn(true);
 //		Road from Junction c to Junction b (Lighted), length: 217, max speed 40 has been created.
 //		Road from Junction b to Junction b (Lighted), length: 0, max speed 70 has been created.
 //		Sequential traffic lights 1 turned ON, delay time: 5
 //		- Road from Junction c to Junction b (Lighted), length: 217, max speed 40: green light.
-		e.getLights().changeLights();
+	//	e.getLights().changeLights();
 //		- Road from Junction b to Junction b (Lighted), length: 0, max speed 55: green light.
-		e.getLights().changeLights();
+	//	e.getLights().changeLights();
 //		- Road from Junction c to Junction b (Lighted), length: 217, max speed 40: green light.
 		System.out.println(c.findNextPart(vehicle));
 //		Road from Junction c to Junction b, length: 217, max speed 70

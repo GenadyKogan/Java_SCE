@@ -7,30 +7,19 @@ public class LightedJunction extends Junction{
 	private TrafficLights light;
 
 	public LightedJunction() {
-		super(""+new Random().nextInt(10)+0,new Random().nextInt(799) + 0 ,new Random().nextInt(599) + 0);
+		super(String.valueOf(getObjectsCount()),new Random().nextInt(799) + 0 ,new Random().nextInt(599) + 0);
 		boolean [] booleanElem={true,false};
 		boolean isSequential=booleanElem[ new Random().nextInt(booleanElem.length)];
 		boolean lightsOn=booleanElem[ new Random().nextInt(booleanElem.length)];
-
-		if(isSequential)
-			this.light=new SequentialTrafficLights(this.getEnteringRoads());
-		else
-			this.light=new RandomTrafficLights(this.getEnteringRoads());
+		isSequential (isSequential);
 		this.light.setTrafficLightsOn(lightsOn);
 	}
 	public LightedJunction(String name, double x, double y, boolean sequential, boolean lightsOn) {
 		super(name, x, y);
-		if(sequential)
-			this.light=new SequentialTrafficLights(this.getEnteringRoads());
-		else
-			this.light=new RandomTrafficLights(this.getEnteringRoads());
+		isSequential (sequential);
 		this.light.setTrafficLightsOn(lightsOn);
 	}
 	
-//111//
-	public TrafficLights getLights() {
-		return this.light;
-	}
 
 
 	//================================
@@ -49,7 +38,16 @@ public class LightedJunction extends Junction{
 	public String toString() {
 		return "junction "+this.getJunctionName()+" (lighted)";
 	}
+	public TrafficLights getTrafficLights() {
+		return this.light;
+	}
 	
+	public void isSequential (boolean isSequential) {
+		if(isSequential)
+			this.light=new SequentialTrafficLights(this.getEnteringRoads());
+		else
+			this.light=new RandomTrafficLights(this.getEnteringRoads());
+	}
 	//================================
 
 }

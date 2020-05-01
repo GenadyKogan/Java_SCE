@@ -85,10 +85,6 @@ public abstract class TrafficLights  implements Timer, Utilities{
 	public abstract void changeIndex();
 	
 	public void changeLights(){
-		int flag=0;
-		if(getTrafficLightsOn()) {
-			
-		}
 
 			
 	}

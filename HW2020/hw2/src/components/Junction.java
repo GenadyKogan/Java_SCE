@@ -19,23 +19,23 @@ public class Junction  extends Point implements RouteParts {
 		//System.out.print("Junction "+this.getObjectsCount()+ " (" + getX()+","+getY()+") "+ "has been created\n");
 		this.setExitingRoads(new ArrayList<Road>());
 		this.setEnteringRoads(new ArrayList<Road>());
-		this.setObjectsCount(objectsCount+1);
+		setObjectsCount(objectsCount+1);
 
 	}
 	
 	public Junction(String junctionName, double x, double y) {
 		super(x,y);
 		this.setJunctionName(junctionName);
-		//System.out.print("Junction "+this.getJunctionName()+ " (" + getX()+","+getY()+") has been create\n");
+	//	System.out.print("Junction "+this.getJunctionName()+" has been create\n");
 		this.setExitingRoads(new ArrayList<Road>());
 		this.setEnteringRoads(new ArrayList<Road>());
-		this.setObjectsCount(objectsCount+1);	
+		setObjectsCount(objectsCount+1);	
 
 	}
 	
 	//================================
 	// set/get
-	public int getObjectsCount() {
+	public  static int getObjectsCount() {
 		return objectsCount;
 	}
 
@@ -59,18 +59,18 @@ public class Junction  extends Point implements RouteParts {
 	public void setExitingRoads(ArrayList<Road> exitingRoads) {
 		this.exitingRoads = new ArrayList<Road>(exitingRoads);
 	}
-	public void setObjectsCount(int objectsCount) {
-		this.objectsCount = objectsCount;
+	public static void setObjectsCount(int objectsCount2) {
+		objectsCount = objectsCount2;
 	}
 	
+	//================================
+	//methods
 	
 	@Override
 	public String toString() {
 		return "junction "+this.getJunctionName();
 	}
 
-	//================================
-	//methods
 	public void addExitingRoad(Road roadExitRoad) { //using for a road
 		
 		if(!this.exitingRoads.contains(roadExitRoad))
@@ -123,14 +123,15 @@ public class Junction  extends Point implements RouteParts {
 		if(vehicle.getLastRoad().getWaitingVehicles().contains(vehicle))
 			vehicle.getLastRoad().getWaitingVehicles().remove(vehicle);
 	}
-	public void checkOut(Vehicle vehicle){
+	
+	public void checkout(Vehicle vehicle){
 		if(vehicle !=null)
 			vehicle.getLastRoad().getWaitingVehicles().add(vehicle);
 		
 	}
 
 	public RouteParts findNextPart(Vehicle vehicle){
-		System.out.println("//"+this.getExitingRoads());
+		//System.out.println("//"+this.getExitingRoads());
 		//System.out.println(vehicle.getCurrentRoute().getRouteParts());
 		return null;
 		
@@ -152,26 +153,13 @@ public class Junction  extends Point implements RouteParts {
 			return ans;
 		}
 		return ans;
-	}	
-	
-	
-	
-	
-
-	
-	
-	
-	
-	
-	
-	
+	}
 	//================================
-
-	
 
 	@Override
 	public boolean checkValue(double Val, double min, double max) {
-		// TODO Auto-generated method stub
+		if(Val<max && Val>min)
+			return true;
 		return false;
 	}
 
@@ -189,26 +177,30 @@ public class Junction  extends Point implements RouteParts {
 
 	@Override
 	public boolean getRandomBoolean() {
-		// TODO Auto-generated method stub
-		return false;
+		boolean [] booleanElem={true,false};
+		return booleanElem[ new Random().nextInt(booleanElem.length)];
 	}
 
 	@Override
-	public boolean getRandomDouble(double min, double max) {
-		// TODO Auto-generated method stub
-		return false;
+	public double getRandomDouble(double min, double max) {
+		 double random_double = Math.random() * (max - min + 1) + min; 
+		 return random_double;
 	}
 
+
 	@Override
-	public double getRandomInt(int min, int max) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int getRandomInt(int min, int max) {
+		Random random = new Random();
+		return random.nextInt(max-min+1) + min;
 	}
 
 	@Override
 	public ArrayList<Integer> getRandomIntArray(int min, int max, int arraySize) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Integer> list = new ArrayList<Integer>();
+        for (int i = 0; i <arraySize; i++) {
+            list.add(getRandomInt(min,max));
+        }
+        return list;
 	}
 
 	@Override
@@ -217,11 +209,21 @@ public class Junction  extends Point implements RouteParts {
 		
 	}
 
-	@Override
-	public void checkout(Vehicle vehicle) {
-		// TODO Auto-generated method stub
-		
-	}
+
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+
+
+
 
 	
 }
