@@ -31,6 +31,7 @@ public class Map implements Utilities {
 			{
 				boolean isSequential=booleanElem[ new Random().nextInt(booleanElem.length)];
 				this.junctions.add(new LightedJunction(i+"" , valX, valY,isSequential,false));
+
 			}
 			
 
@@ -39,7 +40,7 @@ public class Map implements Utilities {
 		turnLightsOn();
 		SetAllRoads();
 		
-		init();
+		//init();
 
 	}
 	private void init() {
@@ -93,10 +94,8 @@ public class Map implements Utilities {
 				}		
 		}
 
-			//System.out.println(this.lights);
-
 	}
-	//111
+
 	public void turnLightsOn(){
 		boolean [] booleanElem={true,false};
 

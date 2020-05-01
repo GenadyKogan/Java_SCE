@@ -101,7 +101,6 @@ public class Junction  extends Point implements RouteParts {
 	}
 	
 	public boolean checkAvailability(Vehicle vehicle) {
-
 		if(this.getEnteringRoads().contains(vehicle.getLastRoad()) && vehicle.getLastRoad().getWaitingVehicles().indexOf(vehicle)!=-1) {
 			for(int i=0 ;i<vehicle.getLastRoad().getWaitingVehicles().size();i++)
 			{
