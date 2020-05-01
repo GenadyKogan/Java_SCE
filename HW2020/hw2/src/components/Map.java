@@ -93,10 +93,10 @@ public class Map implements Utilities {
 				}		
 		}
 
-			System.out.println(this.lights);
+			//System.out.println(this.lights);
 
 	}
-	//
+	//111
 	public void turnLightsOn(){
 		boolean [] booleanElem={true,false};
 
@@ -106,6 +106,8 @@ public class Map implements Utilities {
 			if(className.equals("LightedJunction")) 
 				((LightedJunction)junc).getLights().setTrafficLightsOn(lightsOn);
 			System.out.print(""+junc.toString() + " has been created\n");
+
+
 		}
 
 			

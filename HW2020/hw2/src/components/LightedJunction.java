@@ -32,7 +32,10 @@ public class LightedJunction extends Junction{
 		
 	}
 
-
+	@Override
+	public String toString() {
+		return "junction "+this.getJunctionName()+" (lighted)";
+	}
 	
 	//================================
 
