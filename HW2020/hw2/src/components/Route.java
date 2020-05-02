@@ -6,10 +6,8 @@ import java.util.Random;
 public class Route  implements RouteParts{
 
 
-	private ArrayList<RouteParts> RouteParts=null;
+	private ArrayList<RouteParts> RouteParts;
 
-
-	//private ArrayList<RouteParts> RouteParts;
 
 	private Vehicle vehicle;
 
@@ -31,8 +29,18 @@ public class Route  implements RouteParts{
 	public void addRouteParts(RouteParts routeParts) {
 		this.addRouteParts(routeParts);
 	}	
+	public Vehicle getVehicle() {
+		return vehicle;
+	}
+
+	public void setVehicle(Vehicle vehicle) {
+		this.vehicle = vehicle;
+	}
+
 	//================================
 	//metods
+
+
 
 	public boolean canLeave(Vehicle vehicle){
 		return false;
@@ -119,6 +127,8 @@ public class Route  implements RouteParts{
         }
         return list;
 	}
+
+
 
 
 }

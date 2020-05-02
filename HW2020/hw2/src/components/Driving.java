@@ -14,36 +14,63 @@ public class Driving  implements Utilities, Timer {
 	public Driving (int numOfJunctions, int numOfVehicles) {
 		System.out.println("================= CREATING JUNCTIONS=================");
 		this.map= new Map(numOfJunctions);
+	
 		this.vehicles=new ArrayList<Vehicle>();
-		for (int i = 0; i < numOfVehicles ; i++) 
-			this.vehicles.add(new Vehicle(map.getRoads().get(i)));
-		
-
+		for (int i = 0; i < numOfVehicles ; i++) {
+			Vehicle temp=new Vehicle(map.getRoads().get(i));
+			this.vehicles.add(temp);
+			temp.setCurrentRoute(getRandomRouteFromJunction(vehicles.get(i).getCurrentRoutePart(),vehicles.get(i).getVehicleType()));
+		}
+	//	System.out.println(this.vehicles);
 
 	}
 //
 	public void  drive(int numOfTurns) {
-		for(int i=0;i<numOfTurns;i++) {
-			incrementDrivingTime();
+		//System.out.println(numOfTurns);
+		for(int i=1;i<numOfTurns+1;i++) {
+			System.out.println("TURN "+i);
+			this.incrementDrivingTime();
 		}
 	}
 	public void incrementDrivingTime() {
-	/*	for(int i=1; i<drivingTime+1;i++ ) {
-			System.out.println("TURN "+i);
-			System.out.println(this.vehicles.get(i).toString() + "  is starting route " );
 			for(int j=0; j<this.vehicles.size();j++) {
-				this.vehicles.get(j).move();
-				
-			}
-		}*/
+				this.vehicles.get(j).incrementDrivingTime();
+		}
+	
+	}
+	
+	public Route getRandomRouteFromJunction( RouteParts currentRoutePart, VehicleType vehicleType) {
+		
+		return null;
+	
 	}
 	//========================================
+	//get & set
+	
+
+	public int getDrivingTime() {
+		return drivingTime;
+	}
+	public void setDrivingTime(int drivingTime) {
+		this.drivingTime = drivingTime;
+	}
+	public ArrayList<Timer> getAllTimedElements() {
+		return allTimedElements;
+	}
+	public void setAllTimedElements(ArrayList<Timer> allTimedElements) {
+		this.allTimedElements = new ArrayList<Timer>(allTimedElements);
+	}
+	//========================================
+	
+	
 	@Override
 	public boolean checkValue(double Val, double min, double max) {
 		if(Val<max && Val>min)
 			return true;
 		return false;
 	}
+
+
 	@Override
 	public void correctingMessage(double wrongVal, double correctVal, String varName) {
 		// TODO Auto-generated method stub

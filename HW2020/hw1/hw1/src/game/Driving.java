@@ -178,6 +178,7 @@ public class Driving {
 	public Route getRandomRouteFromJunction(Junction start, VehicleType vehicleType) {
 		ArrayList<Junction> junctions = new ArrayList<Junction>(); 
 		ArrayList<Road> roads = new ArrayList<Road>();
+		System.out.println("sss"+start);
 		junctions.add(start);
 		Junction currJunctions = start;
 		Road currRoad;

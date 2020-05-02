@@ -27,13 +27,22 @@ public class Vehicle implements Utilities, Timer {
 	}
 	
 	public void move(){
-		
+		System.out.println("gg");
 	}
 	
 	public void incrementDrivingTime() {
-		
+		this.setTimeFromRouteStart(this.timeFromRouteStart+1);
+		this.setTimeOnCurrentPart(this.timeOnCurrentPart+1);
+		move();
 	}
 	//================================
+
+	@Override
+	public String toString() {
+		return "Vehicle [id=" + id + ", vehicleType=" + vehicleType + ", currentRoute=" + currentRoute
+				+ ", currentRoutePart=" + currentRoutePart + ", timeFromRouteStart=" + timeFromRouteStart
+				+ ", timeOnCurrentPart=" + timeOnCurrentPart + ", lastRoad=" + lastRoad + ", status=" + status + "]";
+	}
 
 	//get and set
 	public int getId() {
