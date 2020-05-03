@@ -36,7 +36,7 @@ public class LightedJunction extends Junction{
 
 	@Override
 	public String toString() {
-		return "junction "+this.getJunctionName()+" (lighted)";
+		return "junction "+this.getJunctionName()+" (lighted)" ;
 	}
 	public TrafficLights getTrafficLights() {
 		return this.light;

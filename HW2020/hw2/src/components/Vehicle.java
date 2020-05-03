@@ -25,11 +25,17 @@ public class Vehicle implements Utilities, Timer {
 		System.out.println("Vehicle "+ this.objectsCount +": "+ this.vehicleType.name()+", average speed: "+ this.vehicleType.getAverageSpeed()+"  has been created");
 		this.setObjectsCount(objectsCount+1);
 		this.setCurrentRoutePart(lastRoad);
+		
 	}
-	
+	//================================
 	public void move(){
-	
-
+	/*	if(this.lastRoad.getEndJunction().equals(this.getCurrentRoutePart())) {//for routes that start at junctions with no exiting roads
+			System.out.println(this.toString()+ " stays at "+this.lastRoad.getEndJunction() + " - no exiting roads.");
+			return;
+		}
+		else
+			System.out.println(this.toString()+ " stays at "+this.lastRoad.getEndJunction() + " - no exiting roads.");
+*/
 	}
 	
 	public void incrementDrivingTime() {
@@ -39,6 +45,7 @@ public class Vehicle implements Utilities, Timer {
 	}
 	//================================
 
+	//================================
 	@Override
 	public String toString() {
 		return "Vehicle [id=" + id + ", vehicleType=" + vehicleType + ", currentRoute=" + currentRoute

@@ -14,12 +14,13 @@ public class Driving  implements Utilities, Timer {
 	public Driving (int numOfJunctions, int numOfVehicles) {
 		System.out.println("================= CREATING JUNCTIONS=================");
 		this.map= new Map(numOfJunctions);
-	
+		System.out.println("================= GAME MAP HAS BEEN CREATED =================");
+		System.out.println("================= CREATING VEHICLES =================");
 		this.vehicles=new ArrayList<Vehicle>();
 		for (int i = 0; i < numOfVehicles ; i++) {
 			Vehicle temp=new Vehicle(map.getRoads().get(i));
 			this.vehicles.add(temp);
-			temp.setCurrentRoute(getRandomRouteFromRouteParts(vehicles.get(i).getCurrentRoutePart(),vehicles.get(i)));
+
 		}
 		
 
@@ -38,30 +39,19 @@ public class Driving  implements Utilities, Timer {
 		}
 	}
 	
-	public Route getRandomRouteFromRouteParts( RouteParts currentRoutePart, Vehicle vehicle) {
 
-		
-		ArrayList<RouteParts> RouteParts= new ArrayList<RouteParts> ();
-		RouteParts.add(currentRoutePart);
-		RouteParts currRouteParts=currentRoutePart;
-		ArrayList<Junction> junc =new ArrayList<Junction>();
-		junc.addAll(map.getJunctions());
-		ArrayList<RouteParts> RouteParts2= new ArrayList<RouteParts> ();
-		RouteParts2.addAll(map.getJunctions());
-		RouteParts2.addAll(map.getRoads());
-		RouteParts.addAll(RouteParts2);
-
-		Route route=new Route(currRouteParts,vehicle);
-		route.addRouteParts(RouteParts);
-		return route;
-		
-	}
 	//========================================
 	//get & set
 	
 
 	public int getDrivingTime() {
 		return drivingTime;
+	}
+	public ArrayList<Vehicle> getVehicles() {
+		return vehicles;
+	}
+	public void setVehicles(ArrayList<Vehicle> vehicles) {
+		this.vehicles = vehicles;
 	}
 	public void setDrivingTime(int drivingTime) {
 		this.drivingTime = drivingTime;

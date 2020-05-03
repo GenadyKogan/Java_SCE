@@ -120,6 +120,7 @@ public class Road  implements RouteParts, Utilities{
 
 	}
 
+
 	//================================
 	//methods
 	public void addVehicleToWaitingVehicles(Vehicle vehicle){
@@ -175,7 +176,7 @@ public class Road  implements RouteParts, Utilities{
 		return ans;
 	}
 	
-	
+
 	public RouteParts findNextPart(Vehicle vehicle){
 		return vehicle.getCurrentRoutePart();
 		

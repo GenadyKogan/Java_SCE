@@ -22,7 +22,7 @@ public abstract class TrafficLights  implements Timer, Utilities{
 		this.setId(this.getObjectsCount());
 		this.setObjectsCount(objectsCount+1);	
 		this.greenLightIndex=-1;
-		this.delay=0;
+		this.setDelay(this.getRandomInt(0, 10));
 	}
 	//================================
 	public int getObjectsCount() {
@@ -72,8 +72,13 @@ public abstract class TrafficLights  implements Timer, Utilities{
 
 	public void setTrafficLightsOn(boolean trafficLightsOn) {
 		this.trafficLightsOn = trafficLightsOn;
+		
 	}
 
+	@Override
+	public String toString() {
+		return "Random traffic lights" ;
+	}
 	public int getWorkingTime() {
 		return workingTime;
 	}
@@ -94,6 +99,7 @@ public abstract class TrafficLights  implements Timer, Utilities{
 		}
 		this.greenLightIndex=++this.greenLightIndex % this.roads.size();
 		this.setGreenLight(this.greenLightIndex);
+	
 			
 	}
 	
@@ -109,12 +115,24 @@ public abstract class TrafficLights  implements Timer, Utilities{
 			System.out.println(roads.get(greenLightIndex).toString() + ": green light");
 			
 		}
-		
 	}
 
 	public void incrementDrivingTime() {
 		
 	}
+	public void setLightsOn() {
+		if (this.roads.size()>0) {
+			//for (Road road: this.roads) {road.setIsOpen(false);}//reset all entering roads to red first
+			greenLightIndex=new Random().nextInt(this.roads.size());
+			this.setTrafficLightsOn(true);
+			setDelay(new Random().nextInt(maxDelay));
+			System.out.println(this.toString() +" "+this.roads.get(greenLightIndex).getEndJunction()+" turned ON. Delay time: " + delay);
+			setGreenLight(greenLightIndex);
+		}
+		else System.out.println(this.toString() + ": No entering roads, traffic lights can't be turned on.");
+		
+	}
+
 
 
 	
