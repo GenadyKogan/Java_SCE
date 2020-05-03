@@ -36,8 +36,6 @@ public class Map implements Utilities {
 		for(Junction junc:this.junctions)
 			System.out.print(""+junc.toString() + " has been created\n");
 		SetAllRoads();
-		
-		//System.out.println("//"+this.lights.toString());
 		init();
 	}
 

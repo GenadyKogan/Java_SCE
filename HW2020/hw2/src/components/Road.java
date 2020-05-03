@@ -33,7 +33,7 @@ public class Road  implements RouteParts, Utilities{
 		//this.setGreenlight();
 		this.setMaxSpeed(this.allowedSpeedOptions[ new Random().nextInt(this.allowedSpeedOptions.length)]);
 		this.setLength(this.calcLength());
-		//this.setEnable();
+		this.setEnable(enable);
 		this.endJunction.addEnteringRoad(this);
 		this.startJunction.addExitingRoad(this);
 		System.out.println("Road from "+this.startJunction.toString()+" to "+this.getEndJunction().toString()+" length: "+this.length+ ", max speed: "+this.maxSpeed+ " has been created");
@@ -245,6 +245,8 @@ public class Road  implements RouteParts, Utilities{
 		// TODO Auto-generated method stub
 		
 	}
+
+
 
 
 	

@@ -14,9 +14,21 @@ public class Route  implements RouteParts{
 	public Route(RouteParts start, Vehicle vehicle) {
 		this.RouteParts =new ArrayList<RouteParts>();
 		this.setVehicle(vehicle);
-		this.RouteParts.add(start);
+		initRouteParts(start,vehicle); 
+		
 	} 
 	
+	private void initRouteParts(RouteParts start,Vehicle vehicle) {
+		this.RouteParts.add(start);
+		for(int i=0;i<9;i++) {
+			this.RouteParts.add(vehicle.getLastRoad().getStartJunction().getEnteringRoads().get(i).getStartJunction());
+			this.RouteParts.add(vehicle.getLastRoad().getStartJunction().getEnteringRoads().get(i));
+			this.RouteParts.add(vehicle.getLastRoad().getStartJunction().getEnteringRoads().get(i).getEndJunction());
+
+		}
+		System.out.println("-is starting a new Route "+start+ " to"+ this.RouteParts.get(1)+ " estimated time for route:"+this.calcEstimatedTime(vehicle) );
+	}
+//
 	@Override
 	public String toString() {
 		return "Route [RouteParts=" + RouteParts + ", vehicle=" + vehicle + "]";
@@ -41,7 +53,7 @@ public class Route  implements RouteParts{
 	}
 
 	public void setVehicle(Vehicle vehicle) {
-		this.vehicle=new Vehicle(vehicle.getLastRoad());
+		this.vehicle=vehicle;
 	}
 
 	//================================
@@ -55,8 +67,8 @@ public class Route  implements RouteParts{
 	}
 	
 	public double calcEstimatedTime(Object obj) {
-		// TODO Auto-generated method stub
-		return 0;
+		return 1;
+		
 	}
 	public void checkIn(Vehicle vehicle){
 

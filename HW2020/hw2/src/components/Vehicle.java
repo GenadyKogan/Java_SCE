@@ -24,19 +24,30 @@ public class Vehicle implements Utilities, Timer {
 		this.setLastRoad(road);
 		System.out.println("Vehicle "+ this.objectsCount +": "+ this.vehicleType.name()+", average speed: "+ this.vehicleType.getAverageSpeed()+"  has been created");
 		this.setCurrentRoutePart(lastRoad);
+		this.setTimeFromRouteStart(0);
+		this.setTimeOnCurrentPart(0);
+		this.currentRoute=new Route(currentRoutePart,this);
 		this.setObjectsCount(objectsCount+1);
 	}
 	//================================
-	public void move(){
-	//	System.out.println("//"+this.lastRoad.getEndJunction().getEnteringRoads());
 
-		if(this.lastRoad.getEndJunction().equals(this.getCurrentRoutePart())) {//for routes that start at junctions with no exiting roads
-			System.out.println(this.toString()+ " stays at "+this.lastRoad.getEndJunction() + " - no exiting roads.");
+	public void move(){
+		if(this.lastRoad.getStartJunction().getEnteringRoads().get(0)!=this.currentRoutePart) {
+			System.out.println("is starting");
 		
 		}
 
 	}
-	
+/*	public void checkOutJunc(Junction junc, Road road) {
+		
+		junc.getVehicles().remove(lastRoad);
+		lastRoad=road;
+		movesNow=true;
+		
+		System.out.println(this.toString()+ " has left  " +junc.toString()+ ".");
+		System.out.println(this.toString()+ " is moving on  " +road.toString()+ ". Delay time: " + road.calcDelay(type)+".");
+		
+	}*/
 	public void incrementDrivingTime() {
 		this.setTimeFromRouteStart(this.timeFromRouteStart+1);
 		this.setTimeOnCurrentPart(this.timeOnCurrentPart+1);
