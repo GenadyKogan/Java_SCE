@@ -77,7 +77,7 @@ public abstract class TrafficLights  implements Timer, Utilities{
 
 	@Override
 	public String toString() {
-		return "Random traffic lights" ;
+		return ""+ this.trafficLightsOn ;
 	}
 	public int getWorkingTime() {
 		return workingTime;
@@ -105,7 +105,7 @@ public abstract class TrafficLights  implements Timer, Utilities{
 	
 	public void setGreenLight(int index) {
 		if(!this.trafficLightsOn) {
-			System.out.println(this.toString() +" traffic lights are OFF");
+			System.out.println("Random traffic lights traffic lights are OFF");
 		}
 		if(greenLightIndex>=0) {
 			
@@ -126,7 +126,7 @@ public abstract class TrafficLights  implements Timer, Utilities{
 			greenLightIndex=new Random().nextInt(this.roads.size());
 			this.setTrafficLightsOn(true);
 			setDelay(new Random().nextInt(maxDelay));
-			System.out.println(this.toString() +" "+this.roads.get(greenLightIndex).getEndJunction()+" turned ON. Delay time: " + delay);
+			System.out.println(super.getClass().getSimpleName()+" traffic lights "+this.roads.get(greenLightIndex).getEndJunction().getJunctionName()+" turned ON. Delay time: " + delay);
 			setGreenLight(greenLightIndex);
 		}
 		else System.out.println(this.toString() + ": No entering roads, traffic lights can't be turned on.");

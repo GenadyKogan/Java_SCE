@@ -23,19 +23,18 @@ public class Vehicle implements Utilities, Timer {
 		this.setVehicleType(road.getVehicleTypes()[ new Random().nextInt(road.getVehicleTypes().length)]);
 		this.setLastRoad(road);
 		System.out.println("Vehicle "+ this.objectsCount +": "+ this.vehicleType.name()+", average speed: "+ this.vehicleType.getAverageSpeed()+"  has been created");
-		this.setObjectsCount(objectsCount+1);
 		this.setCurrentRoutePart(lastRoad);
-		
+		this.setObjectsCount(objectsCount+1);
 	}
 	//================================
 	public void move(){
-	/*	if(this.lastRoad.getEndJunction().equals(this.getCurrentRoutePart())) {//for routes that start at junctions with no exiting roads
+	//	System.out.println("//"+this.lastRoad.getEndJunction().getEnteringRoads());
+
+		if(this.lastRoad.getEndJunction().equals(this.getCurrentRoutePart())) {//for routes that start at junctions with no exiting roads
 			System.out.println(this.toString()+ " stays at "+this.lastRoad.getEndJunction() + " - no exiting roads.");
-			return;
+		
 		}
-		else
-			System.out.println(this.toString()+ " stays at "+this.lastRoad.getEndJunction() + " - no exiting roads.");
-*/
+
 	}
 	
 	public void incrementDrivingTime() {
@@ -45,12 +44,10 @@ public class Vehicle implements Utilities, Timer {
 	}
 	//================================
 
-	//================================
+
 	@Override
 	public String toString() {
-		return "Vehicle [id=" + id + ", vehicleType=" + vehicleType + ", currentRoute=" + currentRoute
-				+ ", currentRoutePart=" + currentRoutePart + ", timeFromRouteStart=" + timeFromRouteStart
-				+ ", timeOnCurrentPart=" + timeOnCurrentPart + ", lastRoad=" + lastRoad + ", status=" + status + "]";
+		return "Vehicle "+this.id +" "+this.vehicleType +", average speed: " + this.vehicleType.getAverageSpeed();
 	}
 
 	//get and set

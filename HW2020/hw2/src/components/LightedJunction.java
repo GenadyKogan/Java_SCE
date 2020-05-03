@@ -38,6 +38,8 @@ public class LightedJunction extends Junction{
 	public String toString() {
 		return "junction "+this.getJunctionName()+" (lighted)" ;
 	}
+
+	
 	public TrafficLights getTrafficLights() {
 		return this.light;
 	}

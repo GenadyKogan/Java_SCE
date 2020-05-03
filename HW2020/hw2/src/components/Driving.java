@@ -17,25 +17,25 @@ public class Driving  implements Utilities, Timer {
 		System.out.println("================= GAME MAP HAS BEEN CREATED =================");
 		System.out.println("================= CREATING VEHICLES =================");
 		this.vehicles=new ArrayList<Vehicle>();
-		for (int i = 0; i < numOfVehicles ; i++) {
-			Vehicle temp=new Vehicle(map.getRoads().get(i));
-			this.vehicles.add(temp);
 
+		for (int i = 0; i < numOfVehicles ; i++) {
+			Vehicle temp=new Vehicle(map.getRoads().get(new Random().nextInt(map.getRoads().size())));
+			this.vehicles.add(temp);
 		}
 		
-
 	}
-//
 	public void  drive(int numOfTurns) {
 		//System.out.println(numOfTurns);
-		for(int i=1;i<numOfTurns+1;i++) {
+		for(int i=0;i<numOfTurns+1 ;i++) {
 			System.out.println("TURN "+i);
 			this.incrementDrivingTime();
 		}
 	}
 	public void incrementDrivingTime() {
 			for(int j=0; j<this.vehicles.size();j++) {
+				System.out.println(this.vehicles.get(j).toString());
 				this.vehicles.get(j).incrementDrivingTime();
+				
 		}
 	}
 	

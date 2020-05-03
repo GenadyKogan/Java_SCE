@@ -37,7 +37,7 @@ public class Map implements Utilities {
 			System.out.print(""+junc.toString() + " has been created\n");
 		SetAllRoads();
 		
-		System.out.println("/a"+this.lights.toString());
+		//System.out.println("//"+this.lights.toString());
 		init();
 	}
 
@@ -59,7 +59,6 @@ public class Map implements Utilities {
 		for(int i=0;i<this.junctions.size();i++) {
 			String className = this.junctions.get(i).getClass().getSimpleName();
 			if(className.equals("LightedJunction")) {
-				//	System.out.println("Random traffic lights "+this.junctions.get(i).getJunctionName()+ " turned ON, delay time: "+this.lights.get(j).getDelay());
 					this.lights.get(j).setLightsOn();
 					j+=1;
 					
@@ -101,7 +100,6 @@ public class Map implements Utilities {
 					this.roads.add(new Road(start,end));
 				}		
 		}
-
 	}
 	
 
