@@ -10,7 +10,7 @@ public class RandomTrafficLights extends TrafficLights{
 	}
 	//================================
 	public void changeIndex(){
-		
+		this.setGreenLightIndex(getRandomInt(0, this.getRoads().size()));
 	}
 	//================================
 	@Override

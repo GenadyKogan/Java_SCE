@@ -13,9 +13,15 @@ public class Route  implements RouteParts{
 
 	public Route(RouteParts start, Vehicle vehicle) {
 		this.RouteParts =new ArrayList<RouteParts>();
-		this.addRouteParts(start);
+		this.setVehicle(vehicle);
+		this.RouteParts.add(start);
 	} 
 	
+	@Override
+	public String toString() {
+		return "Route [RouteParts=" + RouteParts + ", vehicle=" + vehicle + "]";
+	}
+
 	//================================
 	//get and set
 	public ArrayList<RouteParts> getRouteParts() {
@@ -25,16 +31,17 @@ public class Route  implements RouteParts{
 	public void setRouteParts(ArrayList<RouteParts> routeParts) {
 		RouteParts =new ArrayList<RouteParts>(routeParts);
 	}
+	public void addRouteParts(ArrayList<RouteParts> routeParts) {
+		for(int i=0;i<routeParts.size();i++)
+			this.RouteParts.add(i, routeParts.get(i));
+	}
 	
-	public void addRouteParts(RouteParts routeParts) {
-		this.addRouteParts(routeParts);
-	}	
 	public Vehicle getVehicle() {
 		return vehicle;
 	}
 
 	public void setVehicle(Vehicle vehicle) {
-		this.vehicle = vehicle;
+		this.vehicle=new Vehicle(vehicle.getLastRoad());
 	}
 
 	//================================

@@ -1,6 +1,7 @@
 package components;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import utilities.Timer;
 import utilities.Utilities;
@@ -20,6 +21,8 @@ public abstract class TrafficLights  implements Timer, Utilities{
 		this.setRoads(roads);
 		this.setId(this.getObjectsCount());
 		this.setObjectsCount(objectsCount+1);	
+		this.greenLightIndex=-1;
+		this.delay=0;
 	}
 	//================================
 	public int getObjectsCount() {
@@ -85,9 +88,30 @@ public abstract class TrafficLights  implements Timer, Utilities{
 	public abstract void changeIndex();
 	
 	public void changeLights(){
-
+		if (this.roads.size()==0) {
+			System.out.println(this.toString() + ": No entering roads, can not change lights");
+			return;
+		}
+		this.greenLightIndex=++this.greenLightIndex % this.roads.size();
+		this.setGreenLight(this.greenLightIndex);
 			
 	}
+	
+	public void setGreenLight(int index) {
+		if(!this.trafficLightsOn) {
+			System.out.println(this.toString() +" traffic lights are OFF");
+		}
+		if(greenLightIndex>=0) {
+			
+			roads.get(greenLightIndex).setGreenlight(false);
+			greenLightIndex=index;
+			roads.get(greenLightIndex).setGreenlight(true);
+			System.out.println(roads.get(greenLightIndex).toString() + ": green light");
+			
+		}
+		
+	}
+
 	public void incrementDrivingTime() {
 		
 	}

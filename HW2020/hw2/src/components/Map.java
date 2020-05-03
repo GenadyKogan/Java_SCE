@@ -11,6 +11,8 @@ public class Map implements Utilities {
 	private ArrayList<Junction> junctions;
 	private ArrayList<Road> roads;
 	private ArrayList<TrafficLights> lights;
+	
+	private Random random = new Random();
 	//================================
 
 	public Map (int numOfJunctions) {
@@ -33,23 +35,23 @@ public class Map implements Utilities {
 		for(Junction junc:this.junctions)
 			System.out.print(""+junc.toString() + " has been created\n");
 		SetAllRoads();
+		//init();
 	}
 
 	
 	
-/*	private void init() {
+	private void init() {
 
-		for(Junction junc : this.junctions) {
+	/*	for(Junction junc : this.junctions) {
 			String className = junc.getClass().getSimpleName();
 			if(className.equals("Junction")) {
 				System.out.println("true");
 			}
 
 			System.out.println(className);
-		}
-		
-		
-	}*/
+		}*/
+
+	}
 	//================================
 
 	public ArrayList<Junction> getJunctions() {

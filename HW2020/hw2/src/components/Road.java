@@ -63,7 +63,7 @@ public class Road  implements RouteParts, Utilities{
 		this.enable = enable;
 	}
 
-	public boolean isGreenlight() {
+	public boolean getGreenlight() {
 		return greenlight;
 	}
 

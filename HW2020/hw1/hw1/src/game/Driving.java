@@ -180,6 +180,7 @@ public class Driving {
 		ArrayList<Road> roads = new ArrayList<Road>();
 		System.out.println("sss"+start);
 		junctions.add(start);
+		System.out.println("ll"+junctions);
 		Junction currJunctions = start;
 		Road currRoad;
 		for (int i = 0; i <=5; i++) {
@@ -198,6 +199,7 @@ public class Driving {
 				break;
 			}
 		}
+		System.out.println("//"+junctions);
 		return new Route(junctions, roads,vehicleType );
 	}
 	

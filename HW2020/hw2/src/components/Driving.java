@@ -19,9 +19,9 @@ public class Driving  implements Utilities, Timer {
 		for (int i = 0; i < numOfVehicles ; i++) {
 			Vehicle temp=new Vehicle(map.getRoads().get(i));
 			this.vehicles.add(temp);
-			temp.setCurrentRoute(getRandomRouteFromJunction(vehicles.get(i).getCurrentRoutePart(),vehicles.get(i).getVehicleType()));
+			temp.setCurrentRoute(getRandomRouteFromRouteParts(vehicles.get(i).getCurrentRoutePart(),vehicles.get(i)));
 		}
-	//	System.out.println(this.vehicles);
+		
 
 	}
 //
@@ -36,13 +36,25 @@ public class Driving  implements Utilities, Timer {
 			for(int j=0; j<this.vehicles.size();j++) {
 				this.vehicles.get(j).incrementDrivingTime();
 		}
-	
 	}
 	
-	public Route getRandomRouteFromJunction( RouteParts currentRoutePart, VehicleType vehicleType) {
+	public Route getRandomRouteFromRouteParts( RouteParts currentRoutePart, Vehicle vehicle) {
+
 		
-		return null;
-	
+		ArrayList<RouteParts> RouteParts= new ArrayList<RouteParts> ();
+		RouteParts.add(currentRoutePart);
+		RouteParts currRouteParts=currentRoutePart;
+		ArrayList<Junction> junc =new ArrayList<Junction>();
+		junc.addAll(map.getJunctions());
+		ArrayList<RouteParts> RouteParts2= new ArrayList<RouteParts> ();
+		RouteParts2.addAll(map.getJunctions());
+		RouteParts2.addAll(map.getRoads());
+		RouteParts.addAll(RouteParts2);
+
+		Route route=new Route(currRouteParts,vehicle);
+		route.addRouteParts(RouteParts);
+		return route;
+		
 	}
 	//========================================
 	//get & set

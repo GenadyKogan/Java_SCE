@@ -14,8 +14,7 @@ public class SequentialTrafficLights  extends TrafficLights {
 	//================================
 
 	public void changeIndex() {
-		// TODO Auto-generated method stub
-		
+		this.setGreenLightIndex(getRandomInt(0, this.getRoads().size()));
 	}
 	
 	//================================
