@@ -22,7 +22,7 @@ public class Driving  implements Utilities, Timer {
 			Vehicle temp=new Vehicle(map.getRoads().get(new Random().nextInt(map.getRoads().size())));
 			this.vehicles.add(temp);
 		}
-		
+		///*/
 	}
 	public void  drive(int numOfTurns) {
 		System.out.println("================= START DRIVING=================");
