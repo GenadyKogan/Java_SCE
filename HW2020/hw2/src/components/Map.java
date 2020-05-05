@@ -35,13 +35,26 @@ public class Map implements Utilities {
 
 		for(Junction junc:this.junctions)
 			System.out.print(""+junc.toString() + " has been created\n");
+	
 		SetAllRoads();
 		init();
 	}
 
+/*	public void  printLight() {
+		for(Junction junc : this.junctions) {
+			String className = junc.getClass().getSimpleName();
+			if(className.equals("LightedJunction")) {
+				if(((LightedJunction)junc).getTrafficLights().getTrafficLightsOn()==true) {
+					System.out.println(((LightedJunction)junc).getTrafficLights().getClass().getSimpleName()+" traffic lights");
+					System.out.println("- on delay");
+				}
+			}
+
+			
+		}
+	}*/
 	
-	
-	private void init() {
+	public void init() {
 
 	/*	for(Junction junc : this.junctions) {
 			String className = junc.getClass().getSimpleName();
@@ -170,5 +183,6 @@ public class Map implements Utilities {
 		
 	}
 	public void setTrafficLightsOn(boolean trafficLightsOn) {
+		
 	}
 }

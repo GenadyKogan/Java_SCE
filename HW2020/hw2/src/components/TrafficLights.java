@@ -22,7 +22,7 @@ public abstract class TrafficLights  implements Timer, Utilities{
 		this.setId(this.getObjectsCount());
 		this.setObjectsCount(objectsCount+1);	
 		this.greenLightIndex=-1;
-		this.setDelay(this.getRandomInt(0, 10));
+		this.setDelay(this.getRandomInt(minDelay, maxDelay));
 	}
 	//================================
 	public int getObjectsCount() {

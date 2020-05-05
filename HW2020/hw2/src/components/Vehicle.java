@@ -33,20 +33,17 @@ public class Vehicle implements Utilities, Timer {
 	//================================
 
 	public void move(){
-		int i=0;
-		RouteParts start= this.currentRoute.getRouteParts().get(i);
-		if(this.currentRoute.getRouteParts().get(i).equals(this.getLastRoad().getStartJunction() )) {
-			checkOutJunc(this.lastRoad.getStartJunction(), this.lastRoad);
-		}
 		if(this.currentRoute.getRouteParts().get(1).equals(this.getLastRoad().getEndJunction() )) {
+			this.lastRoad.getStartJunction().checkout(this);
 			checkIn();
 		}
-		else {
-			System.out.println("-is still moving on   "+start+", time to finish: "+this.getTimeFromRouteStart());
-			start= this.currentRoute.getRouteParts().get(i+1);
-		}
+		if(!this.currentRoutePart.equals(this.getLastRoad().getEndJunction())) {
+			System.out.println("-is still moving on "+this.currentRoutePart+", time to finish: "+this.getTimeFromRouteStart());
 
-		
+		}
+		else {
+			checkIn();
+		}
 	}
 	@Override
 	public void incrementDrivingTime() {
@@ -61,8 +58,7 @@ public class Vehicle implements Utilities, Timer {
 		this.lastRoad.getWaitingVehicles().add(this);
 		this.setTimeOnCurrentPart(timeOnCurrentPart+1);
 
-		System.out.println(this.toString()+" has arrived to "+this.lastRoad.getEndJunction().toString()+".");
-		if (this.lastRoad.getEndJunction().equals(currentRoute.getRouteParts().get(currentRoute.getRouteParts().size()-1))) {
+		if (this.lastRoad.getStartJunction().equals(currentRoute.getRouteParts().get(currentRoute.getRouteParts().size()-1))) {
 			
 			System.out.println(this.toString() + " has finished the route. Total time: " + this.getTimeOnCurrentPart());
 			this.currentRoute=new Route(currentRoutePart,this);

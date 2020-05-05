@@ -127,6 +127,7 @@ public class Junction  extends Point implements RouteParts {
 	public void checkout(Vehicle vehicle){
 		if(vehicle !=null)
 			vehicle.getLastRoad().getWaitingVehicles().add(vehicle);
+		System.out.println(this.toString()+ " has left  " +this.toString()+ ".");
 		
 	}
 

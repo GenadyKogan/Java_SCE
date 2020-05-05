@@ -30,7 +30,7 @@ public class Road  implements RouteParts, Utilities{
 		this.setStartJunction(start);
 		this.setEndJunction(end);
 		this.setWaitingVehicles(new ArrayList<Vehicle>());
-		//this.setGreenlight();
+		this.setGreenlight(false);
 		this.setMaxSpeed(this.allowedSpeedOptions[ new Random().nextInt(this.allowedSpeedOptions.length)]);
 		this.setLength(this.calcLength());
 		this.setEnable(enable);
@@ -186,7 +186,9 @@ public class Road  implements RouteParts, Utilities{
 		this.waitingVehicles.remove(vehicle);
 	}
 	public void stayOnCurrentPart(Vehicle vehicle){
-		// TO DO
+		if(!vehicle.getCurrentRoutePart().equals(vehicle.getLastRoad())) {
+			System.out.println("-is still moving on "+vehicle.getCurrentRoutePart()+", time to finish: "+vehicle.getTimeFromRouteStart());
+		}
 	}
 	
 	

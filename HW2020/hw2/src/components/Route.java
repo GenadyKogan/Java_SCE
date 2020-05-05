@@ -77,7 +77,6 @@ public class Route  implements RouteParts{
 		for (int i=0;i<this.RouteParts.size();i++) 
 			index+=((Vehicle)obj).getTimeOnCurrentPart();
 		return index;
-		
 	}
 	public void checkIn(Vehicle vehicle){
 	}
