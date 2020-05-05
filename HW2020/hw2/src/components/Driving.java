@@ -37,10 +37,10 @@ public class Driving  implements Utilities, Timer {
 				this.vehicles.get(j).incrementDrivingTime();
 				
 		}
-		
+		this.map.printLight();
 	}
 	
-
+///
 	//========================================
 	//get & set
 	

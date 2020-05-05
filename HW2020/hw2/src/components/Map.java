@@ -40,7 +40,7 @@ public class Map implements Utilities {
 		init();
 	}
 
-/*	public void  printLight() {
+	public void  printLight() {
 		for(Junction junc : this.junctions) {
 			String className = junc.getClass().getSimpleName();
 			if(className.equals("LightedJunction")) {
@@ -52,7 +52,7 @@ public class Map implements Utilities {
 
 			
 		}
-	}*/
+	}
 	
 	public void init() {
 

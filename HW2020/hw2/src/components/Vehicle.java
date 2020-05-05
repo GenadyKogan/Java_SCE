@@ -39,10 +39,10 @@ public class Vehicle implements Utilities, Timer {
 		}
 		if(!this.currentRoutePart.equals(this.getLastRoad().getEndJunction())) {
 			System.out.println("-is still moving on "+this.currentRoutePart+", time to finish: "+this.getTimeFromRouteStart());
-
+			
 		}
 		else {
-			checkIn();
+			this.lastRoad.getStartJunction().checkout(this);
 		}
 	}
 	@Override
