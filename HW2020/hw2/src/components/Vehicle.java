@@ -16,7 +16,7 @@ public class Vehicle implements Utilities, Timer {
 	private static int objectsCount=1;
 	private Road lastRoad;
 	private String status;
-	
+/**/
 	public Vehicle(Road road) {
 		this.setId(this.getObjectsCount());
 		this.setStatus(null);
@@ -24,34 +24,59 @@ public class Vehicle implements Utilities, Timer {
 		this.setLastRoad(road);
 		System.out.println("Vehicle "+ this.objectsCount +": "+ this.vehicleType.name()+", average speed: "+ this.vehicleType.getAverageSpeed()+"  has been created");
 		this.setCurrentRoutePart(lastRoad);
-		this.setTimeFromRouteStart(0);
-		this.setTimeOnCurrentPart(0);
+		this.setTimeFromRouteStart(getRandomInt(1, 15));
+		this.setTimeOnCurrentPart(getRandomInt(1, 13));
 		this.currentRoute=new Route(currentRoutePart,this);
 		this.setObjectsCount(objectsCount+1);
+		
 	}
 	//================================
 
 	public void move(){
-		if(this.lastRoad.getStartJunction().getEnteringRoads().get(0)!=this.currentRoutePart) {
-			System.out.println("is starting");
-		
+		int i=0;
+		RouteParts start= this.currentRoute.getRouteParts().get(i);
+		if(this.currentRoute.getRouteParts().get(i).equals(this.getLastRoad().getStartJunction() )) {
+			checkOutJunc(this.lastRoad.getStartJunction(), this.lastRoad);
+		}
+		if(this.currentRoute.getRouteParts().get(1).equals(this.getLastRoad().getEndJunction() )) {
+			checkIn();
+		}
+		else {
+			System.out.println("-is still moving on   "+start+", time to finish: "+this.getTimeFromRouteStart());
+			start= this.currentRoute.getRouteParts().get(i+1);
 		}
 
+		
 	}
-/*	public void checkOutJunc(Junction junc, Road road) {
-		
-		junc.getVehicles().remove(lastRoad);
-		lastRoad=road;
-		movesNow=true;
-		
-		System.out.println(this.toString()+ " has left  " +junc.toString()+ ".");
-		System.out.println(this.toString()+ " is moving on  " +road.toString()+ ". Delay time: " + road.calcDelay(type)+".");
-		
-	}*/
+	@Override
 	public void incrementDrivingTime() {
 		this.setTimeFromRouteStart(this.timeFromRouteStart+1);
-		this.setTimeOnCurrentPart(this.timeOnCurrentPart+1);
+		this.setTimeOnCurrentPart(timeOnCurrentPart+1);
 		move();
+		
+		
+		
+	}
+	public void checkIn() {
+		this.lastRoad.getWaitingVehicles().add(this);
+		this.setTimeOnCurrentPart(timeOnCurrentPart+1);
+
+		System.out.println(this.toString()+" has arrived to "+this.lastRoad.getEndJunction().toString()+".");
+		if (this.lastRoad.getEndJunction().equals(currentRoute.getRouteParts().get(currentRoute.getRouteParts().size()-1))) {
+			
+			System.out.println(this.toString() + " has finished the route. Total time: " + this.getTimeOnCurrentPart());
+			this.currentRoute=new Route(currentRoutePart,this);
+		}
+		
+	}
+	
+	public void checkOutJunc(Junction junc, Road road) {
+		System.out.println(this.toString()+ " has left  " +junc.toString()+ ".");
+		this.lastRoad.getWaitingVehicles().remove(this);
+		lastRoad=road;
+		
+		
+		
 	}
 	//================================
 
@@ -194,6 +219,8 @@ public class Vehicle implements Utilities, Timer {
 		// TODO Auto-generated method stub
 		
 	}
+
+
 	
 	
 }

@@ -21,12 +21,14 @@ public class Route  implements RouteParts{
 	private void initRouteParts(RouteParts start,Vehicle vehicle) {
 		this.RouteParts.add(start);
 		for(int i=0;i<9;i++) {
-			this.RouteParts.add(vehicle.getLastRoad().getStartJunction().getEnteringRoads().get(i).getStartJunction());
-			this.RouteParts.add(vehicle.getLastRoad().getStartJunction().getEnteringRoads().get(i));
-			this.RouteParts.add(vehicle.getLastRoad().getStartJunction().getEnteringRoads().get(i).getEndJunction());
-
+			if(vehicle.getLastRoad().getStartJunction().getEnteringRoads()!=null) {
+				this.RouteParts.add(vehicle.getLastRoad().getStartJunction().getEnteringRoads().get(i).getStartJunction());
+				this.RouteParts.add(vehicle.getLastRoad().getStartJunction().getEnteringRoads().get(i));
+				this.RouteParts.add(vehicle.getLastRoad().getStartJunction().getEnteringRoads().get(i).getEndJunction());
+			}
 		}
-		System.out.println("-is starting a new Route "+start+ " to"+ this.RouteParts.get(1)+ " estimated time for route:"+this.calcEstimatedTime(vehicle) );
+		System.out.println("-is starting a new Route "+start+ " to "+ this.RouteParts.get(1)+ " estimated time for route:"+this.calcEstimatedTime(vehicle) );
+		System.out.println("-is still moving on   "+start+ ", time to finish: "+vehicle.getTimeFromRouteStart());
 	}
 //
 	@Override
@@ -62,16 +64,21 @@ public class Route  implements RouteParts{
 
 
 	public boolean canLeave(Vehicle vehicle){
+		for(int i=0;i<this.RouteParts.size();i++)
+			if(this.RouteParts.get(i).equals(vehicle.getLastRoad().getEndJunction())) {
+				return true;
+			}
 		return false;
-		
 	}
 	
 	public double calcEstimatedTime(Object obj) {
+		for (int i=0;i<((Vehicle)obj).getLastRoad().getStartJunction().getEnteringRoads().size();i++) {
+			((Vehicle)obj).getTimeOnCurrentPart();
+		}
 		return 1;
 		
 	}
 	public void checkIn(Vehicle vehicle){
-
 	}
 	public void checkout(Vehicle vehicle){
 
@@ -81,7 +88,9 @@ public class Route  implements RouteParts{
 		
 	}
 	public void stayOnCurrentPart(Vehicle vehicle){
-		
+		if(canLeave(vehicle)) {
+			
+		}
 	}
 	
 	//================================

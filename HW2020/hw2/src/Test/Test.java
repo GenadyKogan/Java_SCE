@@ -62,7 +62,7 @@ public class Test {
 //		Vehicle 2: truck, average speed: 80 has been created.
 //		- is starting a new Route from Road from Junction a to Junction b, length: 11, max speed 80 to Junction c, estimated time for route: 3.0.
 //		- is starting to move on Road from Junction a to Junction b, length: 11, max speed 80, time to finish: 0.0.
-	//	b.checkOut(car);
+		b.checkout(car);
 //		- has left the Junction b.
 		System.out.println(b.calcEstimatedTime(car));
 //		1.0
