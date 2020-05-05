@@ -15,6 +15,7 @@ public class Route  implements RouteParts{
 		this.RouteParts =new ArrayList<RouteParts>();
 		this.setVehicle(vehicle);
 		initRouteParts(start,vehicle); 
+		calcEstimatedTime(vehicle);
 		
 	} 
 	
@@ -30,7 +31,7 @@ public class Route  implements RouteParts{
 		System.out.println("-is starting a new Route "+start+ " to "+ this.RouteParts.get(1)+ " estimated time for route:"+this.calcEstimatedTime(vehicle) );
 		System.out.println("-is still moving on   "+start+ ", time to finish: "+vehicle.getTimeFromRouteStart());
 	}
-//
+
 	@Override
 	public String toString() {
 		return "Route [RouteParts=" + RouteParts + ", vehicle=" + vehicle + "]";
@@ -72,10 +73,10 @@ public class Route  implements RouteParts{
 	}
 	
 	public double calcEstimatedTime(Object obj) {
-		for (int i=0;i<((Vehicle)obj).getLastRoad().getStartJunction().getEnteringRoads().size();i++) {
-			((Vehicle)obj).getTimeOnCurrentPart();
-		}
-		return 1;
+		int index=0;
+		for (int i=0;i<this.RouteParts.size();i++) 
+			index+=((Vehicle)obj).getTimeOnCurrentPart();
+		return index;
 		
 	}
 	public void checkIn(Vehicle vehicle){

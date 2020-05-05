@@ -16,7 +16,7 @@ public class Vehicle implements Utilities, Timer {
 	private static int objectsCount=1;
 	private Road lastRoad;
 	private String status;
-/**/
+
 	public Vehicle(Road road) {
 		this.setId(this.getObjectsCount());
 		this.setStatus(null);
