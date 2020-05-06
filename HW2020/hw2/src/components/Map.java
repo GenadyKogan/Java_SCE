@@ -140,7 +140,8 @@ public class Map implements Utilities {
 	}
 	@Override
 	public void errorMessage(double wrongVal, String varName) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub//
+		//
 		
 	}
 	@Override

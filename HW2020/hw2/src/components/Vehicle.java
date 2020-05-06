@@ -38,8 +38,8 @@ public class Vehicle implements Utilities, Timer {
 			checkIn();
 		}
 		if(!this.currentRoutePart.equals(this.getLastRoad().getEndJunction())) {
-			System.out.println("-is still moving on "+this.currentRoutePart+", time to finish: "+this.getTimeFromRouteStart());
-			
+			//System.out.println("-is still moving on "+this.currentRoutePart+", time to finish: "+this.getTimeFromRouteStart());
+			this.currentRoute.stayOnCurrentPart(this);
 		}
 		else {
 			this.lastRoad.getStartJunction().checkout(this);

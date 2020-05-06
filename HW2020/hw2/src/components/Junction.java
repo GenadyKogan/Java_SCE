@@ -21,7 +21,7 @@ public class Junction  extends Point implements RouteParts {
 		setObjectsCount(objectsCount+1);
 
 	}
-	//
+	
 	public Junction(String junctionName, double x, double y) {
 		super(x,y);
 		this.setJunctionName(junctionName);
