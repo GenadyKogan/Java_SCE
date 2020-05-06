@@ -56,15 +56,6 @@ public class Map implements Utilities {
 	
 	public void init() {
 
-	/*	for(Junction junc : this.junctions) {
-			String className = junc.getClass().getSimpleName();
-			if(className.equals("Junction")) {
-				System.out.println("true");
-			}
-
-			System.out.println(className);
-		}*/
-		//
 		System.out.println("================= TRAFFIC LIGHTS TURN ON =================");
 		int j=0;
 		for(int i=0;i<this.junctions.size();i++) {

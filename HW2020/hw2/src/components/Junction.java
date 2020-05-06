@@ -16,17 +16,15 @@ public class Junction  extends Point implements RouteParts {
 	public Junction() {
 		super(new Random().nextInt(799) + 0,new Random().nextInt(599) + 0);
 		this.setJunctionName(String.valueOf(objectsCount));	
-		//System.out.print("Junction "+this.getObjectsCount()+ " (" + getX()+","+getY()+") "+ "has been created\n");
 		this.setExitingRoads(new ArrayList<Road>());
 		this.setEnteringRoads(new ArrayList<Road>());
 		setObjectsCount(objectsCount+1);
 
 	}
-	
+	//
 	public Junction(String junctionName, double x, double y) {
 		super(x,y);
 		this.setJunctionName(junctionName);
-	//	System.out.print("Junction "+this.getJunctionName()+" has been create\n");
 		this.setExitingRoads(new ArrayList<Road>());
 		this.setEnteringRoads(new ArrayList<Road>());
 		setObjectsCount(objectsCount+1);	
@@ -132,8 +130,13 @@ public class Junction  extends Point implements RouteParts {
 	}
 
 	public RouteParts findNextPart(Vehicle vehicle){
-		//System.out.println("//"+this.getExitingRoads());
-		//System.out.println(vehicle.getCurrentRoute().getRouteParts());
+		ArrayList<Road> temp= new ArrayList<Road>();
+		for(int i=0;i<this.enteringRoads.size();i++) {
+			if(this.exitingRoads.get(i).isEnable())
+				temp.add(this.exitingRoads.get(i));
+		}
+		if(!temp.isEmpty()) 
+			return temp.get(this.getRandomInt(0, temp.size()-1));
 		return null;
 		
 	}
@@ -206,7 +209,7 @@ public class Junction  extends Point implements RouteParts {
 
 	@Override
 	public void successMessage(String objName) {
-		// TODO Auto-generated method stub
+		System.out.print("Junction "+objName+ " (" + getX()+","+getY()+") "+ "has been created\n");
 		
 	}
 

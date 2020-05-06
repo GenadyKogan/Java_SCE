@@ -244,7 +244,8 @@ public class Road  implements RouteParts, Utilities{
 	}
 	@Override
 	public void successMessage(String objName) {
-		// TODO Auto-generated method stub
+		System.out.println(objName+"has been created\n");
+
 		
 	}
 

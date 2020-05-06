@@ -40,7 +40,7 @@ public class Driving  implements Utilities, Timer {
 		this.map.printLight();
 	}
 	
-///
+
 	//========================================
 	//get & set
 	
@@ -113,7 +113,7 @@ public class Driving  implements Utilities, Timer {
 	}
 	@Override
 	public void successMessage(String objName) {
-		// TODO Auto-generated method stub
+		System.out.println(objName+"has been created\n");
 		
 	}
 }

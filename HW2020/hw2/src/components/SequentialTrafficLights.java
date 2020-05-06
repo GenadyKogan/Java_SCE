@@ -63,7 +63,8 @@ public class SequentialTrafficLights  extends TrafficLights {
 	}
 	@Override
 	public void successMessage(String objName) {
-		// TODO Auto-generated method stub
+		System.out.println(objName+"has been created\n");
+
 		
 	}
 
