@@ -62,6 +62,8 @@ public class Route  implements RouteParts{
 	//================================
 	//metods
 
+
+
 	public boolean canLeave(Vehicle vehicle){
 		for(int i=0;i<this.RouteParts.size();i++)
 			if(this.RouteParts.get(i).equals(vehicle.getLastRoad().getEndJunction())) {
@@ -127,8 +129,7 @@ public class Route  implements RouteParts{
 
 	@Override
 	public void successMessage(String objName) {
-		System.out.println(objName+"has been created\n");
-
+		// TODO Auto-generated method stub
 		
 	}
 
