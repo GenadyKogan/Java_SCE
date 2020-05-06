@@ -45,12 +45,12 @@ public class Map implements Utilities {
 			String className = junc.getClass().getSimpleName();
 			if(className.equals("LightedJunction")) {
 				if(((LightedJunction)junc).getTrafficLights().getTrafficLightsOn()==true) {
-					System.out.println(((LightedJunction)junc).getTrafficLights().getClass().getSimpleName()+" traffic lights");
+					System.out.println(((LightedJunction)junc).getTrafficLights().getClass().getSimpleName()+" traffic lights "+junc.getJunctionName());
 					System.out.println("- on delay");
 				}
 			}
 
-			
+			///
 		}
 	}
 	

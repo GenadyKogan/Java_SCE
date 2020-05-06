@@ -12,13 +12,13 @@ public interface Utilities {
 
 
 	default void correctingMessage(double wrongVal, double correctVal, String varName) {
-		// TODO Auto-generated method stub
+		if(correctVal !=wrongVal)
+			System.out.println(varName);
 		
 	}
 
 	default void errorMessage(double wrongVal, String varName) {
-		// TODO Auto-generated method stub//
-		//
+		System.out.println(wrongVal+" is incorrect in "+varName);
 		
 	}
 
@@ -45,7 +45,7 @@ public interface Utilities {
 	}
 
 	default void successMessage(String objName) {
-		// TODO Auto-generated method stub
+		System.out.println(objName+" as been create");
 		
 	}
 }
