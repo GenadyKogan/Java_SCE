@@ -21,7 +21,7 @@ public class Junction  extends Point implements RouteParts {
 		setObjectsCount(objectsCount+1);
 
 	}
-	//
+	
 	public Junction(String junctionName, double x, double y) {
 		super(x,y);
 		this.setJunctionName(junctionName);
@@ -158,76 +158,6 @@ public class Junction  extends Point implements RouteParts {
 		}
 		return ans;
 	}
-	//================================
-
-	@Override
-	public boolean checkValue(double Val, double min, double max) {
-		if(Val<max && Val>min)
-			return true;
-		return false;
-	}
-
-	@Override
-	public void correctingMessage(double wrongVal, double correctVal, String varName) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void errorMessage(double wrongVal, String varName) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public boolean getRandomBoolean() {
-		boolean [] booleanElem={true,false};
-		return booleanElem[ new Random().nextInt(booleanElem.length)];
-	}
-
-	@Override
-	public double getRandomDouble(double min, double max) {
-		 double random_double = Math.random() * (max - min + 1) + min; 
-		 return random_double;
-	}
-
-
-	@Override
-	public int getRandomInt(int min, int max) {
-		Random random = new Random();
-		return random.nextInt(max-min+1) + min;
-	}
-
-	@Override
-	public ArrayList<Integer> getRandomIntArray(int min, int max, int arraySize) {
-		ArrayList<Integer> list = new ArrayList<Integer>();
-        for (int i = 0; i <arraySize; i++) {
-            list.add(getRandomInt(min,max));
-        }
-        return list;
-	}
-
-	@Override
-	public void successMessage(String objName) {
-		System.out.print("Junction "+objName+ " (" + getX()+","+getY()+") "+ "has been created\n");
-		
-	}
-
-
-	
-	
-	
-
-	
-	
-	
-	
-	
-	
-	
-
-
-
 
 	
 }
