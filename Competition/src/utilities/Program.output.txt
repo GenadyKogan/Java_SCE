@@ -1,0 +1,55 @@
+start = (0.0,0.0)
+setX(-10): false
+finish = (15000.0,0.0)
+setX(10): true
+air.finish = (15000.0,0.0)
+----------
+arena type = null
+Set AerialArena: true
+arena type = AERIALARENA
+add Plane: true
+add Heli: true
+add Car: false
+add SpeedBoat: false
+Aerial Race ended!
+#1: Helicopter chopper (110.0, 15.0)
+#2: Airplane plane (120.0, 5.0)
+----------
+Set NavalArena: true
+arena type = NEVALARENA
+add SpeedBoat: true
+add SpeedBoat: true
+add SpeedBoat: true
+add SpeedBoat: true
+add RowBoat: true
+add RowBoat: false
+add RowBoat: false
+add RowBoat: false
+Naval Race ended!
+#1: SpeedBoat sb2 (180.0, 5.0)
+#2: SpeedBoat sb3 (120.0, 17.0)
+#3: SpeedBoat sb1 (100.0, 25.0)
+#4: RowBoat rb1 (95.0, 50.0)
+#5: SpeedBoat sb4 (80.0, 25.0)
+----------
+Set LandArena: true
+arena type = LANDARENA
+add Car: true
+add RowBoat: false
+add Car: true
+add Car: true
+add Car: true
+add horse: true
+add horse: true
+add horse: true
+add horse: true
+add horse: false
+Land Race ended!
+#1: Car car3 (200.0, 5.0)
+#2: Car car4 (130.0, 7.0)
+#3: Car car2 (120.0, 10.0)
+#4: Horse horse4 (99.0, 8.0)
+#5: Horse horse2 (84.0, 20.0)
+#6: Horse horse1 (80.0, 25.0)
+#7: Car car1 (100.0, 2.0)
+#8: Horse horse3 (73.0, 4.0)

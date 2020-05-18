@@ -124,7 +124,6 @@ public class Route  implements RouteParts{
 	
 	//================================
 
-<<<<<<< HEAD
 	
 	
 
@@ -188,7 +187,6 @@ public class Route  implements RouteParts{
 
 
 
-=======
->>>>>>> branch 'master' of https://github.com/GenadyKogan/Java_SCE.git
+
 
 }
