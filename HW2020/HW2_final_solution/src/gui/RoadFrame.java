@@ -1,70 +1,110 @@
 package gui;
 import java.awt.BorderLayout;
-import java.awt.Dimension;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Window;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.KeyStroke;
 
-@SuppressWarnings("serial")
-public class RoadFrame extends JPanel {
-   private static final String TITLE_TEXT = "Use The Buttons Below To Manage Transactions";
-   private static final String[] BTN_TEXTS = { "Create a New Account",
-         "Load a Trans from a File", "Add New Transactions",
-         "Search Transactions", "Sort Transactions",
-         "View/Delete Transactions", "Backup Transaction", "Exit" };
-   private static final int TITLE_POINTS = 24;
+public class RoadFrame extends JFrame implements ActionListener{
+	boolean clearOnNextDigit, percent;
+	double lastNumber;
+	String lastOperator;
+	private JLabel jlbOutput;
+	private JButton jbnButtons[];
+	private JPanel jplMaster, jplBackSpace, jplControl;
 
-   public RoadFrame() {
-      JLabel titleLabel = new JLabel(TITLE_TEXT, SwingConstants.CENTER);
-      titleLabel.setFont(titleLabel.getFont().deriveFont(Font.BOLD,
-            TITLE_POINTS));
-      JPanel titlePanel = new JPanel();
-      titlePanel.add(titleLabel); // put it in a JPanel so it will expand to fill BoxLayout
 
-      JPanel accountBalancePanel = new JPanel();
-      accountBalancePanel.add(new JLabel("Account Name:"));
-      accountBalancePanel.add(new JTextField(10));
-      accountBalancePanel.add(Box.createHorizontalStrut(20));
-      accountBalancePanel.add(new JLabel("Balance:"));
-      accountBalancePanel.add(new JTextField(10));
+	private JMenu jmenuFile, jmenuHelp;
+	private JMenuItem jmenuitemExit, jmenuitemAbout;
 
-      JPanel northPanel = new JPanel();
-      northPanel.setLayout(new BoxLayout(northPanel, BoxLayout.PAGE_AXIS));
-      northPanel.add(titlePanel);
-      northPanel.add(accountBalancePanel);
+	Font f12 = new Font("Times New Roman",12, 12);
+	Font f121 = new Font("Times New Roman", 12, 12);
+	
+	public RoadFrame() 
+	{
 
-      JPanel southBtnPanel = new JPanel(new GridLayout(2, 4, 1, 1));
-      for (String btnText : BTN_TEXTS) {
-         southBtnPanel.add(new JButton(btnText));
-      }
+		jmenuFile = new JMenu("File");
+		jmenuFile.setFont(f121);
+		
+		jmenuitemExit = new JMenuItem("Exit");
+		jmenuitemExit.setFont(f12);
 
-      setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 1));
-      setLayout(new BorderLayout());
-      add(northPanel, BorderLayout.NORTH);
-      add(Box.createRigidArea(new Dimension(400, 400))); // just an empty placeholder
-      add(southBtnPanel, BorderLayout.SOUTH);
-   }
+		jmenuFile.add(jmenuitemExit);
 
-   private static void createAndShowGui() {
-	   RoadFrame mainPanel = new RoadFrame();
+		jmenuHelp = new JMenu("Help");
+		jmenuHelp.setFont(f121);
+		jmenuHelp.setMnemonic(KeyEvent.VK_H);
 
-      JFrame frame = new JFrame("Nested Panels Example");
-      frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-      frame.getContentPane().add(mainPanel);
-      frame.pack();
-      frame.setLocationByPlatform(true);
-      frame.setVisible(true);
-   }
+		jmenuitemAbout = new JMenuItem("About Calculator");
+		jmenuitemAbout.setFont(f12);
+		jmenuHelp.add(jmenuitemAbout);
+		
+		JMenuBar mb = new JMenuBar();
+		mb.add(jmenuFile);
+		mb.add(jmenuHelp);
+		setJMenuBar(mb);
 
-   public static void main(String[] args) {
-      SwingUtilities.invokeLater(new Runnable() {
-         public void run() {
-            createAndShowGui();
-         }
-      });
-   }
-}
+		jplMaster = new JPanel();
+
+		
+
+
+
+
+	
+
+		addWindowListener(new WindowAdapter() {
+
+				public void windowClosed(WindowEvent e)
+				{
+					System.exit(0);
+				}
+			}
+		);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}	
+
+
+	public void actionPerformed(ActionEvent e){
+		
+
+
+	}
+
+
+
+
+
+	public static void main(String args[]) {
+		RoadFrame calci = new RoadFrame();
+		calci.setTitle("Java Swing Calculator");
+		calci.setSize(232, 217);
+	
+		calci.setLocation(422, 250);
+		calci.setVisible(true);
+	//	calci.setResizable(false);
+	}
+
+
+}	
 
 
 
