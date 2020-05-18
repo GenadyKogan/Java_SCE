@@ -1,7 +1,10 @@
 package components;
 
 import utilities.Utilities;
-
+/**
+ *  Interface RouteParts extends Utilities
+ *
+ */
 public interface RouteParts extends Utilities{
 	double calcEstimatedTime(Object obj);
 	boolean canLeave(Vehicle vehicle);
