@@ -180,7 +180,7 @@ public class Calculator extends JFrame implements ActionListener{
 		
 		//Fourth Row
 		// add 0, +/-, ., +, and =
-		jplButtons.add(jbnButtons[0]);
+		jplButtons.add( new JButton("+/-"));
 		jplButtons.add(jbnButtons[10]);
 		jplButtons.add(jbnButtons[11]);
 		jplButtons.add(jbnButtons[16]);
