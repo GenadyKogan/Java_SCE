@@ -17,13 +17,14 @@ import java.awt.event.WindowEvent;
 import javax.swing.*;
 
 
-public class RoadFrame extends JFrame {
+public class RoadFrame extends JFrame  implements ActionListener {
 
 	private JPanel jplMaster;
+	private JPanel backGroundPan;
 	private JButton jbnButtons[];
-
+	JLabel text =new JLabel();
 	private JMenu jmenuFile, jmenuHelp,jmenuBackGround ,jmenuVehiclesColor;
-	private JMenuItem jmenuitemExit, jmenuitemHelp ;
+	private JMenuItem jmenuitemExit, jmenuitemHelp,jmenuitemBlue,jmenuitemNone ;
 
 	Font f12 = new Font("Times New Roman",12, 12);
 	Font f121 = new Font("Times New Roman", 12, 12);
@@ -37,8 +38,7 @@ public class RoadFrame extends JFrame {
 
 	public RoadFrame() 
 	{
-
-
+		
 		jmenuFile = new JMenu("File");
 		jmenuFile.setFont(f121);
 		jmenuFile.setMnemonic(KeyEvent.VK_H);
@@ -49,9 +49,15 @@ public class RoadFrame extends JFrame {
 	
 		jmenuBackGround = new JMenu("BackGround");
 		jmenuBackGround.setFont(f121);
-	      for (String btnText : backGround) {
-	    	  jmenuBackGround.add(btnText);
-		  }
+		jmenuFile.setMnemonic(KeyEvent.VK_H);
+		jmenuitemBlue=new JMenuItem("Blue");
+		jmenuitemNone=new JMenuItem("None");
+		jmenuBackGround.add(jmenuitemBlue);
+		jmenuBackGround.add(jmenuitemNone);
+		
+//	      for (String btnText : backGround) {
+//	    	  jmenuBackGround.add(btnText);
+//		  }
 
 		
 		jmenuVehiclesColor = new JMenu("VehiclesColor");
@@ -82,15 +88,29 @@ public class RoadFrame extends JFrame {
 		}
 
 		jplMaster = new JPanel();
+		
+		
+		//========================
+		
+		//========================
+		
 		jplMaster.setLayout(new GridLayout(1,5));
 		for( int item=0;item<5; item++) {
 			jplMaster.add(jbnButtons[item]);
 		}
 		
-		///
 		getContentPane().add(jplMaster, BorderLayout.PAGE_END);
-
 		
+		
+		for (int i=0; i<jbnButtons.length; i++){
+			jbnButtons[i].addActionListener(this);
+		}
+		//  addActionListener
+		jmenuitemExit.addActionListener(this);
+		jmenuBackGround.addActionListener(this);
+		jmenuitemBlue.addActionListener(this);
+		jmenuitemNone.addActionListener(this);
+	//  addActionListener
 		addWindowListener(new WindowAdapter() {
 
 				public void windowClosed(WindowEvent e)
@@ -101,6 +121,18 @@ public class RoadFrame extends JFrame {
 		);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}	
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource()==jmenuitemExit)
+			System.exit(0);
+		else if(e.getSource()==jmenuitemBlue) {
+			System.exit(0);
+		}
+		else if(e.getSource()==jmenuitemNone) {
+			System.exit(0);
+	}
+	}
 
 	public static void main(String args[]) {
 		RoadFrame road = new RoadFrame();
@@ -110,6 +142,10 @@ public class RoadFrame extends JFrame {
 		road.setVisible(true);
 		road.setResizable(true);
 	}
+
+
+
+	
 }
 
 
