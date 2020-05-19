@@ -13,13 +13,13 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-//hhhhh
+
 import javax.swing.*;
 
 
 public class RoadFrame extends JFrame {
 
-	private JPanel jplMaster, jplMaster2;
+	private JPanel jplMaster;
 	private JButton jbnButtons[];
 
 	private JMenu jmenuFile, jmenuHelp,jmenuBackGround ,jmenuVehiclesColor;
@@ -29,6 +29,10 @@ public class RoadFrame extends JFrame {
 	Font f121 = new Font("Times New Roman", 12, 12);
 	private static final String[] vehiclesColor = { "Blue","Magenta","Orange","Random"};
 	private static final String[] backGround = { "Blue","None"};
+	private static final String[] jbnButtonsItems = { "Create read system","Start","Stop","Resume","info"};
+	
+	
+
 	/*************************************************************/
 
 	public RoadFrame() 
@@ -55,13 +59,6 @@ public class RoadFrame extends JFrame {
 	    	  jmenuVehiclesColor.add(btnText);
 		  }
 
-	/*	jmenuitemVehiclesColor1 = new JMenuItem("Blue");
-		jmenuitemVehiclesColor1.setFont(f12);
-		jmenuitemVehiclesColor2 = new JMenuItem("None");
-		jmenuitemVehiclesColor2.setFont(f12);
-		jmenuVehiclesColor.add(jmenuitemVehiclesColor1);
-		jmenuVehiclesColor.add(jmenuitemVehiclesColor2);*/
-		
 		
 		jmenuHelp = new JMenu("Help");
 		jmenuHelp.setFont(f121);
@@ -77,22 +74,18 @@ public class RoadFrame extends JFrame {
 		mb.add(jmenuVehiclesColor);
 		mb.add(jmenuHelp);
 		setJMenuBar(mb);
-/////
-		jbnButtons = new JButton[5];
-		jbnButtons[0] = new JButton("Create read system");
-		jbnButtons[1] = new JButton("Start");
-		jbnButtons[2] = new JButton("Stop");
-		jbnButtons[3] = new JButton("Resume");
-		jbnButtons[4] = new JButton("info");
-		
+
+		jbnButtons = new JButton[5];		
+		for( int item=0;item<5; item++) {
+			jbnButtons[item] = new JButton(jbnButtonsItems[item]);
+		}
+
 		jplMaster = new JPanel();
 		jplMaster.setLayout(new GridLayout(1,5));
-		jplMaster.add(jbnButtons[0]);
-		jplMaster.add(jbnButtons[1]);
-		jplMaster.add(jbnButtons[2]);
-		jplMaster.add(jbnButtons[3]);
-		jplMaster.add(jbnButtons[4]);
-
+		for( int item=0;item<5; item++) {
+			jplMaster.add(jbnButtons[item]);
+		}
+		///
 		getContentPane().add(jplMaster, BorderLayout.PAGE_END);
 
 		
@@ -111,9 +104,7 @@ public class RoadFrame extends JFrame {
 		RoadFrame road = new RoadFrame();
 		Container contentPane = road.getContentPane();
 		road.setTitle("Java Swing Calculator");
-		road.setSize(200, 200);
-	//	road.pack();
-		road.setLocation(422, 250);
+		road.setSize(500, 500);
 		road.setVisible(true);
 		road.setResizable(true);
 	}
