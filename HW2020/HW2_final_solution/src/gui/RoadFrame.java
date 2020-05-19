@@ -18,14 +18,14 @@ import javax.swing.*;
 
 
 public class RoadFrame extends JFrame  implements ActionListener {
-
+	private JSplitPane mainPanel  = new JSplitPane();
 	private JPanel jplMaster;
-	private JPanel backGroundPan;
+	private JPanel topPanel=new JPanel();
 	private JButton jbnButtons[];
 	JLabel text =new JLabel();
 	private JMenu jmenuFile, jmenuHelp,jmenuBackGround ,jmenuVehiclesColor;
 	private JMenuItem jmenuitemExit, jmenuitemHelp,jmenuitemBlue,jmenuitemNone ;
-
+	 private final JScrollPane scrollPane;
 	Font f12 = new Font("Times New Roman",12, 12);
 	Font f121 = new Font("Times New Roman", 12, 12);
 	private static final String[] vehiclesColor = { "Blue","Magenta","Orange","Random"};
@@ -38,7 +38,7 @@ public class RoadFrame extends JFrame  implements ActionListener {
 
 	public RoadFrame() 
 	{
-		
+
 		jmenuFile = new JMenu("File");
 		jmenuFile.setFont(f121);
 		jmenuFile.setMnemonic(KeyEvent.VK_H);
@@ -59,7 +59,7 @@ public class RoadFrame extends JFrame  implements ActionListener {
 //	    	  jmenuBackGround.add(btnText);
 //		  }
 
-		
+
 		jmenuVehiclesColor = new JMenu("VehiclesColor");
 		jmenuVehiclesColor.setFont(f121);
 	      for (String btnText : vehiclesColor) {
@@ -81,18 +81,24 @@ public class RoadFrame extends JFrame  implements ActionListener {
 		mb.add(jmenuVehiclesColor);
 		mb.add(jmenuHelp);
 		setJMenuBar(mb);
-
+//======================================================================================
 		jbnButtons = new JButton[5];		
 		for( int item=0;item<5; item++) {
 			jbnButtons[item] = new JButton(jbnButtonsItems[item]);
 		}
-
+		 getContentPane().add(mainPanel);
+		scrollPane = new JScrollPane(); 
 		jplMaster = new JPanel();
+		mainPanel.setOrientation(JSplitPane.VERTICAL_SPLIT);
+		mainPanel.setDividerLocation(200);
+		mainPanel.setTopComponent(topPanel);
+		mainPanel.setBottomComponent(jplMaster);
 		
 		
-		//========================
+//======================================================================================
 		
-		//========================
+		
+	
 		
 		jplMaster.setLayout(new GridLayout(1,5));
 		for( int item=0;item<5; item++) {
@@ -127,10 +133,10 @@ public class RoadFrame extends JFrame  implements ActionListener {
 		if(e.getSource()==jmenuitemExit)
 			System.exit(0);
 		else if(e.getSource()==jmenuitemBlue) {
-			System.exit(0);
+			topPanel.setBackground(Color.blue);
 		}
 		else if(e.getSource()==jmenuitemNone) {
-			System.exit(0);
+			topPanel.setBackground(null);
 	}
 	}
 
