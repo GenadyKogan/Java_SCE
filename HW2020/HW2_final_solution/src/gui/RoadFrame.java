@@ -116,6 +116,7 @@ public class RoadFrame extends JFrame  implements ActionListener {
 		jmenuBackGround.addActionListener(this);
 		jmenuitemBlue.addActionListener(this);
 		jmenuitemNone.addActionListener(this);
+		jmenuitemHelp.addActionListener(this);
 	//  addActionListener
 		addWindowListener(new WindowAdapter() {
 
@@ -137,7 +138,11 @@ public class RoadFrame extends JFrame  implements ActionListener {
 		}
 		else if(e.getSource()==jmenuitemNone) {
 			topPanel.setBackground(null);
-	}
+		}
+		else if(e.getSource()==jmenuitemHelp) {
+			JDialog dlgAbout = new CustomABOUTDialog(this, "Sapir\n Gena\n", true);
+			dlgAbout.setVisible(true);
+		}
 	}
 
 	public static void main(String args[]) {
