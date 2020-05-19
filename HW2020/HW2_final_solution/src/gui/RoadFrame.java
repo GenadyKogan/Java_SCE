@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-//hhhddd
+//hh
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -23,53 +23,68 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.KeyStroke;
 
-public class RoadFrame extends JFrame implements ActionListener{
-	boolean clearOnNextDigit, percent;
-	double lastNumber;
-	String lastOperator;
-	private JLabel jlbOutput;
-	private JButton jbnButtons[];
-	private JPanel jplMaster, jplBackSpace, jplControl;
+public class RoadFrame extends JFrame {
+
+	private JPanel jplMaster;
 
 
-	private JMenu jmenuFile, jmenuHelp;
-	private JMenuItem jmenuitemExit, jmenuitemAbout;
+	private JMenu jmenuFile, jmenuHelp,jmenuBackGround ,jmenuVehiclesColor;
+	private JMenuItem jmenuitemExit, jmenuitemHelp ;
 
 	Font f12 = new Font("Times New Roman",12, 12);
 	Font f121 = new Font("Times New Roman", 12, 12);
-	
+	private static final String[] vehiclesColor = { "Blue","Magenta","Orange","Random"};
+	private static final String[] backGround = { "Blue","None"};
 	public RoadFrame() 
 	{
 
 		jmenuFile = new JMenu("File");
 		jmenuFile.setFont(f121);
-		
+		jmenuFile.setMnemonic(KeyEvent.VK_H);
 		jmenuitemExit = new JMenuItem("Exit");
 		jmenuitemExit.setFont(f12);
-
 		jmenuFile.add(jmenuitemExit);
 
+	
+		jmenuBackGround = new JMenu("BackGround");
+		jmenuBackGround.setFont(f121);
+	      for (String btnText : backGround) {
+	    	  jmenuBackGround.add(btnText);
+		  }
+
+		
+		jmenuVehiclesColor = new JMenu("VehiclesColor");
+		jmenuVehiclesColor.setFont(f121);
+	      for (String btnText : vehiclesColor) {
+	    	  jmenuVehiclesColor.add(btnText);
+		  }
+
+	/*	jmenuitemVehiclesColor1 = new JMenuItem("Blue");
+		jmenuitemVehiclesColor1.setFont(f12);
+		jmenuitemVehiclesColor2 = new JMenuItem("None");
+		jmenuitemVehiclesColor2.setFont(f12);
+		jmenuVehiclesColor.add(jmenuitemVehiclesColor1);
+		jmenuVehiclesColor.add(jmenuitemVehiclesColor2);*/
+		
+		
+		
 		jmenuHelp = new JMenu("Help");
 		jmenuHelp.setFont(f121);
 		jmenuHelp.setMnemonic(KeyEvent.VK_H);
-
-		jmenuitemAbout = new JMenuItem("About Calculator");
-		jmenuitemAbout.setFont(f12);
-		jmenuHelp.add(jmenuitemAbout);
+		jmenuitemHelp = new JMenuItem("Help");
+		jmenuitemHelp.setFont(f12);
+		jmenuHelp.add(jmenuitemHelp);
+		
+		
 		
 		JMenuBar mb = new JMenuBar();
 		mb.add(jmenuFile);
+		mb.add(jmenuBackGround);
+		mb.add(jmenuVehiclesColor);
 		mb.add(jmenuHelp);
 		setJMenuBar(mb);
 
 		jplMaster = new JPanel();
-
-		
-
-
-
-
-	
 
 		addWindowListener(new WindowAdapter() {
 
@@ -82,17 +97,6 @@ public class RoadFrame extends JFrame implements ActionListener{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}	
 
-
-	public void actionPerformed(ActionEvent e){
-		
-
-
-	}
-
-
-
-
-
 	public static void main(String args[]) {
 		RoadFrame calci = new RoadFrame();
 		calci.setTitle("Java Swing Calculator");
@@ -100,7 +104,6 @@ public class RoadFrame extends JFrame implements ActionListener{
 	
 		calci.setLocation(422, 250);
 		calci.setVisible(true);
-	//	calci.setResizable(false);
 	}
 
 
