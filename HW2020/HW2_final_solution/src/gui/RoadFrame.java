@@ -77,7 +77,7 @@ public class RoadFrame extends JFrame {
 		mb.add(jmenuVehiclesColor);
 		mb.add(jmenuHelp);
 		setJMenuBar(mb);
-///
+/////
 		jbnButtons = new JButton[5];
 		jbnButtons[0] = new JButton("Create read system");
 		jbnButtons[1] = new JButton("Start");
