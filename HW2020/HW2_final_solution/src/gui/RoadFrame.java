@@ -13,7 +13,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-//hhhhh
+
 import javax.swing.*;
 
 
@@ -25,6 +25,7 @@ public class RoadFrame extends JFrame {
 
 	public RoadFrame() 
 	{
+
 	}
 ///
 }
