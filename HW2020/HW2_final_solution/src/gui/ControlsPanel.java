@@ -1,28 +1,42 @@
 package gui;
+
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
 
-import javax.swing.*;
+public class ControlsPanel extends JFrame implements ActionListener{
 
+	private static final long serialVersionUID = 1L;
+	private JPanel jplMaster;
+	private JButton jbnButtons[];
 
-public class RoadFrame extends JFrame {
+	private JMenu jmenuFile, jmenuHelp,jmenuBackGround ,jmenuVehiclesColor;
+	private JMenuItem jmenuitemExit, jmenuitemHelp ;
 
+	Font f12 = new Font("Times New Roman",12, 12);
+	Font f121 = new Font("Times New Roman", 12, 12);
+	private static final String[] vehiclesColor = { "Blue","Magenta","Orange","Random"};
+	private static final String[] backGround = { "Blue","None"};
+	private static final String[] jbnButtonsItems = { "Create read system","Start","Stop","Resume","info"};
+	
 	
 
+	/*************************************************************/
 
-	public RoadFrame() 
+	public ControlsPanel() 
 	{
 
 		jmenuFile = new JMenu("File");
@@ -72,9 +86,8 @@ public class RoadFrame extends JFrame {
 		for( int item=0;item<5; item++) {
 			jplMaster.add(jbnButtons[item]);
 		}
-		
+	
 		getContentPane().add(jplMaster, BorderLayout.PAGE_END);
-
 		
 		addWindowListener(new WindowAdapter() {
 
@@ -94,11 +107,13 @@ public class RoadFrame extends JFrame {
 		road.setSize(500, 500);
 		road.setVisible(true);
 		road.setResizable(true);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
-
-
-
-
-
 
