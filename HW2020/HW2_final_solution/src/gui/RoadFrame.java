@@ -94,12 +94,7 @@ public class RoadFrame extends JFrame {
 		jplMaster.add(jbnButtons[4]);
 
 		getContentPane().add(jplMaster, BorderLayout.PAGE_END);
-		
-		
-		
-		
-		
-		
+
 		
 		addWindowListener(new WindowAdapter() {
 
