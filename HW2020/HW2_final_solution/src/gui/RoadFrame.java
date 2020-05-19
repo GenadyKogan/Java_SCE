@@ -2,6 +2,7 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -11,22 +12,15 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+
 //hhhhh
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.KeyStroke;
+import javax.swing.*;
+
 
 public class RoadFrame extends JFrame {
 
-	private JPanel jplMaster;
-
+	//private JPanel jplMaster;
+	//private JButton jbnButtons[];
 
 	private JMenu jmenuFile, jmenuHelp,jmenuBackGround ,jmenuVehiclesColor;
 	private JMenuItem jmenuitemExit, jmenuitemHelp ;
@@ -35,6 +29,8 @@ public class RoadFrame extends JFrame {
 	Font f121 = new Font("Times New Roman", 12, 12);
 	private static final String[] vehiclesColor = { "Blue","Magenta","Orange","Random"};
 	private static final String[] backGround = { "Blue","None"};
+	/*************************************************************/
+
 	public RoadFrame() 
 	{
 
@@ -58,14 +54,7 @@ public class RoadFrame extends JFrame {
 	      for (String btnText : vehiclesColor) {
 	    	  jmenuVehiclesColor.add(btnText);
 		  }
-
-	/*	jmenuitemVehiclesColor1 = new JMenuItem("Blue");
-		jmenuitemVehiclesColor1.setFont(f12);
-		jmenuitemVehiclesColor2 = new JMenuItem("None");
-		jmenuitemVehiclesColor2.setFont(f12);
-		jmenuVehiclesColor.add(jmenuitemVehiclesColor1);
-		jmenuVehiclesColor.add(jmenuitemVehiclesColor2);*/
-		
+///
 		
 		
 		jmenuHelp = new JMenu("Help");
@@ -74,8 +63,7 @@ public class RoadFrame extends JFrame {
 		jmenuitemHelp = new JMenuItem("Help");
 		jmenuitemHelp.setFont(f12);
 		jmenuHelp.add(jmenuitemHelp);
-		
-		
+	
 		
 		JMenuBar mb = new JMenuBar();
 		mb.add(jmenuFile);
@@ -84,8 +72,47 @@ public class RoadFrame extends JFrame {
 		mb.add(jmenuHelp);
 		setJMenuBar(mb);
 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	/*	JPanel jplButtons = new JPanel();
 		jplMaster = new JPanel();
+		jplButtons.setLayout(new GridLayout(4, 5, 2, 2));
 
+		
+		for (int i=0; i<=9; i++)
+		{
+			jbnButtons[i] = new JButton(String.valueOf(i));
+		}
+		jbnButtons[18] = new JButton("1/x");
+		jplButtons.add(jbnButtons[18]);
+		jplMaster.setLayout(new BorderLayout(2,2));
+
+		jplMaster.add(jplButtons, BorderLayout.SOUTH);
+		
+		
+		getContentPane().add(jplMaster, BorderLayout.SOUTH);
+		requestFocus();*/
+		
+		
+		
+		
+		
+		
+		
 		addWindowListener(new WindowAdapter() {
 
 				public void windowClosed(WindowEvent e)
@@ -98,16 +125,20 @@ public class RoadFrame extends JFrame {
 	}	
 
 	public static void main(String args[]) {
-		RoadFrame calci = new RoadFrame();
-		calci.setTitle("Java Swing Calculator");
-		calci.setSize(232, 217);
-	
-		calci.setLocation(422, 250);
-		calci.setVisible(true);
+		RoadFrame road = new RoadFrame();
+	//	Container contentPane = road.getContentPane();
+		road.setTitle("Java Swing Calculator");
+		road.setSize(232, 212);
+	//	road.pack();
+		road.setLocation(422, 250);
+		road.setVisible(true);
+	//	road.setResizable(false);
 	}
 
+}
 
-}	
+
+
 
 
 

@@ -1,78 +1,95 @@
 package gui;
-
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.GridLayout;
-
-
 import javax.swing.*;
-import javax.swing.BorderFactory;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.SwingUtilities;
+import java.awt.*;
 
-public class wdsd  extends JPanel{
-	   private static final String TITLE_TEXT = "Use The Buttons Below To Manage Transactions";
-	   private static final String[] BTN_TEXTS = { "Create a New Account",
-	         "Load a Trans from a File", "Add New Transactions",
-	         "Search Transactions", "Sort Transactions",
-	         "View/Delete Transactions", "Backup Transaction", "Exit" };
-	   private static final int TITLE_POINTS = 24;
+public class wdsd {
 
-	   public wdsd() {
-	      JLabel titleLabel = new JLabel(TITLE_TEXT, SwingConstants.CENTER);
-	      titleLabel.setFont(titleLabel.getFont().deriveFont(Font.BOLD,
-	            TITLE_POINTS));
-	      JPanel titlePanel = new JPanel();
-	      titlePanel.add(titleLabel); // put it in a JPanel so it will expand to fill BoxLayout
+    public static void main(String[] args) {
+        // creates the JFrame(a window with decorations)
+        JFrame frame = new JFrame("Calculator"); 
+        // stops the program when window is closed
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+        frame.setSize(377, 350);
 
-	      JPanel accountBalancePanel = new JPanel();
-	      accountBalancePanel.add(new JLabel("Account Name:"));
-	      accountBalancePanel.add(new JTextField(10));
-	      accountBalancePanel.add(Box.createHorizontalStrut(20));
-	      accountBalancePanel.add(new JLabel("Balance:"));
-	      accountBalancePanel.add(new JTextField(10));
+        // the main panel of the JFrame, 
+        // remembet you cant add content directly to JFrame
+        JPanel content = new JPanel(new GridLayout(4, 0)); 
+        // panel for the text field
+        JPanel textarea = new JPanel(new GridLayout(4, 0)); 
+        // panel for the buttons, 
+        // GridLayout(int rows, int cols, int horiz_gap, int vert_gap)
+        JPanel buttonarea = new JPanel(new GridLayout(4, 5, 2, 2)); 
 
-	      JPanel northPanel = new JPanel();
-	      northPanel.setLayout(new BoxLayout(northPanel, BoxLayout.PAGE_AXIS));
-	      northPanel.add(titlePanel);
-	      northPanel.add(accountBalancePanel);
+        //  the panel for the bigger bottom buttons
+        JPanel secondbuttonarea = new JPanel(new GridLayout(1, 1, 2, 2)); 
+        // the panel for the text on top
+        JPanel label = new JPanel(); 
+        content.add(label);
+        content.add(textarea);
+        content.add(buttonarea);
+        content.add(secondbuttonarea);
 
-	      JPanel southBtnPanel = new JPanel(new GridLayout(2, 4, 1, 1));
-	      for (String btnText : BTN_TEXTS) {
-	         southBtnPanel.add(new JButton(btnText));
-	      }
+        JLabel words = new JLabel("Polyashenko's Calculator", JLabel.CENTER);
+        label.add(words);
 
-	      setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 1));
-	      setLayout(new BorderLayout());
-	      add(northPanel, BorderLayout.NORTH);
-	      add(Box.createRigidArea(new Dimension(400, 400))); // just an empty placeholder
-	      add(southBtnPanel, BorderLayout.SOUTH);
-	   }
+        JTextField enterhere = new JTextField("0.", JTextField.CENTER);
+        // will set the curser of the text bar on right side
+        enterhere.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT); 
+        textarea.add(enterhere);
 
-	   private static void createAndShowGui() {
-		   RoadFrame mainPanel = new RoadFrame();
+        // makes a button called b1 with text in it
+        JButton b1 = new JButton("BkSP"); 
+        // adds the backspace button to the buttonarea panel
+        buttonarea.add(b1); 
+        JButton b2 = new JButton("CE");
+        buttonarea.add(b2);
+        JButton b3 = new JButton("C");
+        buttonarea.add(b3);
+        JButton b4 = new JButton("/");
+        buttonarea.add(b4);
+        JButton b5 = new JButton("sqrt");
+        buttonarea.add(b5);
+        JButton b6 = new JButton("7");
+        buttonarea.add(b6);
+        JButton b7 = new JButton("8");
+        buttonarea.add(b7);
+        JButton b8 = new JButton("9");
+        buttonarea.add(b8);
+        JButton b9 = new JButton("*");
+        buttonarea.add(b9);
+      //  JButton b10 = new JButton("%");
+     //   buttonarea.add(b10);
+        JButton b11 = new JButton("4");
+        buttonarea.add(b11);
+        JButton b12 = new JButton("5");
+        buttonarea.add(b12);
+        JButton b13 = new JButton("6");
+        buttonarea.add(b13);
+        JButton b14 = new JButton("-");
+        buttonarea.add(b14);
+        JButton b15 = new JButton("1/x");
+        buttonarea.add(b15);
+        JButton b16 = new JButton("1");
+        buttonarea.add(b16);
+        JButton b17 = new JButton("2");
+        buttonarea.add(b17);
+        JButton b18 = new JButton("3");
+        buttonarea.add(b18);
+        JButton b19 = new JButton("+");
+        buttonarea.add(b19);
+        JButton b20 = new JButton("+/-");
+        buttonarea.add(b20);
 
-	      JFrame frame = new JFrame("Nested Panels Example");
-	      frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-	      frame.getContentPane().add(mainPanel);
-	      frame.pack();
-	      frame.setLocationByPlatform(true);
-	      frame.setVisible(true);
-	   }
+        JButton b21 = new JButton("0");
+        secondbuttonarea.add(b21);
+        JButton b22 = new JButton(".");
+        secondbuttonarea.add(b22);
+        JButton b23 = new JButton("=");
+        secondbuttonarea.add(b23);
 
-	   public static void main(String[] args) {
-	      SwingUtilities.invokeLater(new Runnable() {
-	         public void run() {
-	            createAndShowGui();
-	         }
-	      });
-	   }
+        // adds the buttonarea panel to the main panel
+        frame.getContentPane().add(content); 
+        // makes the window visible, put at end of program
+        frame.setVisible(true); 
+    }
 }
