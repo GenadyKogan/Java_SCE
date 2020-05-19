@@ -173,9 +173,9 @@ public class RoadFrame extends JFrame  implements ActionListener {
 			jbnButtons[item] = new JButton(jbnButtonsItems[item]);
 
 		}
-		jbnButtons[0].addActionListener(null);
+
 		 getContentPane().add(mainPanel);
-		 
+
 		scrollPane = new JScrollPane(); 
 
 		jplMaster = new JPanel();
@@ -193,33 +193,25 @@ public class RoadFrame extends JFrame  implements ActionListener {
 		
 
 //======================================================================================
+
 		
-		jbnButtons[0] = new JButton("Create read system");
-		jbnButtons[1] = new JButton("Start");
-		jbnButtons[2] = new JButton("Stop");
-		jbnButtons[3] = new JButton("Resume");
-		jbnButtons[4] = new JButton("info");
+
+		
+
+	
+
+		
 
 		jplMaster.setLayout(new GridLayout(1,5));
 
-		for( int item=0;item<jbnButtons.length; item++) {
+		for( int item=0;item<5; item++) {
 
 			jplMaster.add(jbnButtons[item]);
 
 		}
-		
-/***************************************************************/
-		for (int i=0; i<5; i++){
-			jbnButtons[i].addActionListener(this);
-		}
-		
-		jbnButtons[0].addActionListener(this);
-		jbnButtons[1].addActionListener(this);
-		jbnButtons[2].addActionListener(this);
-		jbnButtons[3].addActionListener(this);
-		jbnButtons[4].addActionListener(this);
 
-/***************************************************************/
+		
+
 		getContentPane().add(jplMaster, BorderLayout.PAGE_END);
 
 		
@@ -318,7 +310,9 @@ public class RoadFrame extends JFrame  implements ActionListener {
 						break;
 				}
 			}
+
 		}
+
 	}
 
 
