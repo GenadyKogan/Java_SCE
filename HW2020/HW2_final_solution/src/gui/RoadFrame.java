@@ -19,8 +19,8 @@ import javax.swing.*;
 
 public class RoadFrame extends JFrame {
 
-	//private JPanel jplMaster;
-	//private JButton jbnButtons[];
+	private JPanel jplMaster, jplMaster2;
+	private JButton jbnButtons[];
 
 	private JMenu jmenuFile, jmenuHelp,jmenuBackGround ,jmenuVehiclesColor;
 	private JMenuItem jmenuitemExit, jmenuitemHelp ;
@@ -54,7 +54,13 @@ public class RoadFrame extends JFrame {
 	      for (String btnText : vehiclesColor) {
 	    	  jmenuVehiclesColor.add(btnText);
 		  }
-////
+
+	/*	jmenuitemVehiclesColor1 = new JMenuItem("Blue");
+		jmenuitemVehiclesColor1.setFont(f12);
+		jmenuitemVehiclesColor2 = new JMenuItem("None");
+		jmenuitemVehiclesColor2.setFont(f12);
+		jmenuVehiclesColor.add(jmenuitemVehiclesColor1);
+		jmenuVehiclesColor.add(jmenuitemVehiclesColor2);*/
 		
 		
 		jmenuHelp = new JMenu("Help");
@@ -71,41 +77,23 @@ public class RoadFrame extends JFrame {
 		mb.add(jmenuVehiclesColor);
 		mb.add(jmenuHelp);
 		setJMenuBar(mb);
-
+///
+		jbnButtons = new JButton[5];
+		jbnButtons[0] = new JButton("Create read system");
+		jbnButtons[1] = new JButton("Start");
+		jbnButtons[2] = new JButton("Stop");
+		jbnButtons[3] = new JButton("Resume");
+		jbnButtons[4] = new JButton("info");
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	/*	JPanel jplButtons = new JPanel();
 		jplMaster = new JPanel();
-		jplButtons.setLayout(new GridLayout(4, 5, 2, 2));
+		jplMaster.setLayout(new GridLayout(1,5));
+		jplMaster.add(jbnButtons[0]);
+		jplMaster.add(jbnButtons[1]);
+		jplMaster.add(jbnButtons[2]);
+		jplMaster.add(jbnButtons[3]);
+		jplMaster.add(jbnButtons[4]);
 
-		
-		for (int i=0; i<=9; i++)
-		{
-			jbnButtons[i] = new JButton(String.valueOf(i));
-		}
-		jbnButtons[18] = new JButton("1/x");
-		jplButtons.add(jbnButtons[18]);
-		jplMaster.setLayout(new BorderLayout(2,2));
-
-		jplMaster.add(jplButtons, BorderLayout.SOUTH);
-		
-		
-		getContentPane().add(jplMaster, BorderLayout.SOUTH);
-		requestFocus();*/
+		getContentPane().add(jplMaster, BorderLayout.PAGE_END);
 		
 		
 		
@@ -126,13 +114,13 @@ public class RoadFrame extends JFrame {
 
 	public static void main(String args[]) {
 		RoadFrame road = new RoadFrame();
-	//	Container contentPane = road.getContentPane();
+		Container contentPane = road.getContentPane();
 		road.setTitle("Java Swing Calculator");
-		road.setSize(232, 212);
+		road.setSize(200, 200);
 	//	road.pack();
 		road.setLocation(422, 250);
 		road.setVisible(true);
-	//	road.setResizable(false);
+		road.setResizable(true);
 	}
 
 }
