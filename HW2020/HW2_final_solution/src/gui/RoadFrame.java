@@ -19,8 +19,21 @@ import javax.swing.*;
 
 public class RoadFrame extends JFrame {
 
+	private JPanel jplMaster;
+	private JButton jbnButtons[];
+
+	private JMenu jmenuFile, jmenuHelp,jmenuBackGround ,jmenuVehiclesColor;
+	private JMenuItem jmenuitemExit, jmenuitemHelp ;
+
+	Font f12 = new Font("Times New Roman",12, 12);
+	Font f121 = new Font("Times New Roman", 12, 12);
+	private static final String[] vehiclesColor = { "Blue","Magenta","Orange","Random"};
+	private static final String[] backGround = { "Blue","None"};
+	private static final String[] jbnButtonsItems = { "Create read system","Start","Stop","Resume","info"};
+	
 	
 
+	/*************************************************************/
 
 	public RoadFrame() 
 	{
@@ -73,6 +86,7 @@ public class RoadFrame extends JFrame {
 			jplMaster.add(jbnButtons[item]);
 		}
 		
+		///
 		getContentPane().add(jplMaster, BorderLayout.PAGE_END);
 
 		
@@ -94,6 +108,7 @@ public class RoadFrame extends JFrame {
 		road.setSize(500, 500);
 		road.setVisible(true);
 		road.setResizable(true);
+	}
 
 }
 
