@@ -6,6 +6,8 @@ import javax.swing.event.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.*; 
 
@@ -60,7 +62,7 @@ public class CreateRoadSystem extends JFrame implements ChangeListener,ActionLis
 
 
         // create a slider 
-        jSliderVehicles = new JSlider(0, 50, 10); 
+        jSliderVehicles = new JSlider(0, 50, 0); 
   
         // paint the ticks and tarcks 
         jSliderVehicles.setPaintTrack(true); 
@@ -98,13 +100,22 @@ public class CreateRoadSystem extends JFrame implements ChangeListener,ActionLis
 			tempPanel.add(jbnButtons[item]);
 		}
 
-	
+	//
 		getContentPane().add(tempPanel, BorderLayout.PAGE_END);
     	getContentPane().add(panel, BorderLayout.PAGE_START);
 	
-     //
+		for (int i=0; i<jbnButtons.length; i++){
+			jbnButtons[i].addActionListener(this);
+		}
         /*******************************************************************************/
-
+		addWindowListener(new WindowAdapter() {
+			public void windowClosed(WindowEvent e)
+			{
+				System.exit(0);
+			}
+		}
+	);
+	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
 
         
@@ -131,7 +142,23 @@ public class CreateRoadSystem extends JFrame implements ChangeListener,ActionLis
     }
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		for (int i=0; i<jbnButtons.length; i++)
+		{
+			if(e.getSource() == jbnButtons[i])
+			{
+				switch(i)
+				{
+					case 0:
+						System.exit(0);
+						break;
+					case 1:
+						System.exit(0);
+						break;
+
+				}
+			}
+
+		}
 		
 	}
 }
