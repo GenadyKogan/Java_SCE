@@ -11,13 +11,14 @@ import javax.swing.*;
 
 public class CreateRoadSystem extends JFrame implements ChangeListener,ActionListener {
 	 // frame 
-    private static JFrame frame, tempFrame; 
+    private JFrame frame, tempFrame; 
     // slider 
-    private static JSlider jSliderVehicles, jSliderJunctions; 
+    private JSlider jSliderVehicles, jSliderJunctions; 
     // label 
-    private  static JLabel lableVehicles, lableJunctions;
-    private  static JPanel panel, tempPanel;
-	private static JButton jbnButtons[];
+
+    private JLabel lableVehicles, lableJunctions;
+    private JPanel panel, tempPanel;
+	private JButton jbnButtons[];
     private static final String[] jbnButtonsItems = { "Ok","Cancel"};
     // main class 
     public CreateRoadSystem() 
@@ -88,17 +89,19 @@ public class CreateRoadSystem extends JFrame implements ChangeListener,ActionLis
         /*******************************************************************************/
         tempPanel = new JPanel(); 
         tempPanel.setLayout(new GridLayout(1,2));
-
 		jbnButtons = new JButton[2];	
 		for( int item=0;item<jbnButtons.length; item++) {
 			jbnButtons[item] = new JButton(jbnButtonsItems[item]);
 		}
-		panel.add(tempPanel);
+	
 		for( int item=0;item<jbnButtons.length; item++) {
 			tempPanel.add(jbnButtons[item]);
 		}
-		panel.add(tempPanel);
-		getContentPane().add(panel);
+
+	
+		getContentPane().add(tempPanel, BorderLayout.PAGE_END);
+    	getContentPane().add(panel, BorderLayout.PAGE_START);
+	
      //
         /*******************************************************************************/
 
@@ -122,7 +125,7 @@ public class CreateRoadSystem extends JFrame implements ChangeListener,ActionLis
         CreateRoadSystem roadSystem = new CreateRoadSystem();
 		Container contentPane = roadSystem.getContentPane();
 		roadSystem.setTitle("Create road system");
-		roadSystem.setSize(500, 400);
+		roadSystem.setSize(400, 300);
 		roadSystem.setVisible(true);
 		roadSystem.setResizable(true);
     }
