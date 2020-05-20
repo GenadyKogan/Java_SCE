@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -100,14 +101,16 @@ public class ControlsPanel extends JFrame implements ActionListener{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}	
 
-	public static void main(String args[]) {
+	/*public static void main(String args[]) {
 		RoadFrame road = new RoadFrame();
 		Container contentPane = road.getContentPane();
 		road.setTitle("Java Swing Calculator");
 		road.setSize(500, 500);
+	//	road.pack();
+		//road.setLocation(400, 250);
 		road.setVisible(true);
 		road.setResizable(true);
-	}
+	}*/
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
