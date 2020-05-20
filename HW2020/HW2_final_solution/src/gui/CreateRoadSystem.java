@@ -3,15 +3,12 @@ package gui;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.*; 
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
+import java.awt.*; 
 import javax.swing.*; 
 
-public class CreateRoadSystem extends JFrame implements ChangeListener,ActionListener {
+public class CreateRoadSystem extends JFrame implements ChangeListener {
 	 // frame 
-    private static JFrame frame, tempFrame; 
+    private static JFrame frame; 
     // slider 
     private static JSlider jSliderVehicles, jSliderJunctions; 
     // label 
@@ -20,18 +17,22 @@ public class CreateRoadSystem extends JFrame implements ChangeListener,ActionLis
 	private static JButton jbnButtons[];
     private static final String[] jbnButtonsItems = { "Ok","Cancel"};
     // main class 
-    public CreateRoadSystem() 
+    public static void main(String[] args) 
     { 
+        // create a new frame 
+    	frame = new JFrame("Create road system"); 
+  
+        // create a object 
+        CreateRoadSystem roadSystem = new CreateRoadSystem();
         
         // create a panel 
         panel = new JPanel(); 
         panel.setLayout(new GridLayout(6,1));
-        // create a new frame 
-   
+        
         
         // create a slider 
         jSliderJunctions = new JSlider(3, 20, 3); 
-  
+  //
         // paint the ticks and tarcks 
         jSliderJunctions.setPaintTrack(true); 
         jSliderJunctions.setPaintTicks(true); 
@@ -89,19 +90,32 @@ public class CreateRoadSystem extends JFrame implements ChangeListener,ActionLis
         tempPanel = new JPanel(); 
         tempPanel.setLayout(new GridLayout(1,2));
 
-		jbnButtons = new JButton[2];	
+		jbnButtons = new JButton[2];		
 		for( int item=0;item<jbnButtons.length; item++) {
 			jbnButtons[item] = new JButton(jbnButtonsItems[item]);
 		}
-		panel.add(tempPanel);
+		tempPanel.setLayout(new GridLayout(1,5));
 		for( int item=0;item<jbnButtons.length; item++) {
 			tempPanel.add(jbnButtons[item]);
 		}
-		panel.add(tempPanel);
-		getContentPane().add(panel);
-     //
+	
+        panel.add(tempPanel); 
         /*******************************************************************************/
-
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        frame.add(panel); 
+        // set the size of frame 
+        frame.setSize(400, 300); 
+        frame.show(); 
+        
         
 
         
@@ -113,24 +127,6 @@ public class CreateRoadSystem extends JFrame implements ChangeListener,ActionLis
     	lableVehicles.setText("value of Slider is =" + jSliderVehicles.getValue()); 
     	lableJunctions.setText("value of Slider is =" + jSliderJunctions.getValue()); 
     } 
-    
-    public static void main(String[] args) 
-    { 
-
-  
-        // create a object 
-        CreateRoadSystem roadSystem = new CreateRoadSystem();
-		Container contentPane = roadSystem.getContentPane();
-		roadSystem.setTitle("Create road system");
-		roadSystem.setSize(500, 400);
-		roadSystem.setVisible(true);
-		roadSystem.setResizable(true);
-    }
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
 }
   
 
