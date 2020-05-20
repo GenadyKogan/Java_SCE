@@ -22,14 +22,15 @@ public class RoadFrame extends JFrame  implements ActionListener {
 	private JPanel jplMaster;
 	private JPanel topPanel=new JPanel();
 	private JButton jbnButtons[];
+	private JButton createRoadSystem;
 	JLabel text =new JLabel();
 	private JMenu jmenuFile, jmenuHelp,jmenuBackGround ,jmenuVehiclesColor;
 	private JMenuItem jmenuitemExit, jmenuitemHelp,jmenuitemBlue,jmenuitemNone ;
-	 private final JScrollPane scrollPane;
+	private final JScrollPane scrollPane;
 	Font f12 = new Font("Times New Roman",12, 12);
 	Font f121 = new Font("Times New Roman", 12, 12);
 	private static final String[] vehiclesColor = { "Blue","Magenta","Orange","Random"};
-	private static final String[] backGround = { "Blue","None"};
+	//private static final String[] backGround = { "Blue","None"};
 	private static final String[] jbnButtonsItems = { "Create read system","Start","Stop","Resume","info"};
 	
 	
@@ -140,7 +141,7 @@ public class RoadFrame extends JFrame  implements ActionListener {
 			topPanel.setBackground(null);
 		}
 		else if(e.getSource()==jmenuitemHelp) {
-			JDialog dlgAbout = new CustomABOUTDialog(this, "Sapir\n Gena\n", true);
+			JDialog dlgAbout = new CustomABOUTDialog(this, "Help",true);
 			dlgAbout.setVisible(true);
 		}
 	}

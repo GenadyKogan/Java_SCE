@@ -25,8 +25,8 @@ public class CustomABOUTDialog extends JDialog implements ActionListener {
 		JPanel p1 = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
 		StringBuffer text = new StringBuffer();
-		text.append("Calculator Information\n\n");
-		text.append("Developer:	Hemanth\n");
+		text.append("Road System\n\n");
+		text.append("Developer:	Sapir & Gena\n");
 		text.append("Version:	1.0");
 		
 		JTextArea jtAreaAbout = new JTextArea(5, 21);
