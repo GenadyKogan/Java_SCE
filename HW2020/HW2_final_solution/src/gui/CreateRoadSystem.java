@@ -100,7 +100,7 @@ public class CreateRoadSystem extends JFrame implements ChangeListener,ActionLis
 			tempPanel.add(jbnButtons[item]);
 		}
 
-	//
+
 		getContentPane().add(tempPanel, BorderLayout.PAGE_END);
     	getContentPane().add(panel, BorderLayout.PAGE_START);
 	
@@ -128,7 +128,7 @@ public class CreateRoadSystem extends JFrame implements ChangeListener,ActionLis
     	lableJunctions.setText("value of Slider is =" + jSliderJunctions.getValue()); 
     } 
     
-    public static void main(String[] args) 
+/*    public static void main(String[] args) 
     { 
 
   
@@ -139,7 +139,7 @@ public class CreateRoadSystem extends JFrame implements ChangeListener,ActionLis
 		roadSystem.setSize(400, 300);
 		roadSystem.setVisible(true);
 		roadSystem.setResizable(true);
-    }
+    }*/
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		for (int i=0; i<jbnButtons.length; i++)

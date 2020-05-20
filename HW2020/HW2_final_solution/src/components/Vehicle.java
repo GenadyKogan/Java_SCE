@@ -38,7 +38,6 @@ public class Vehicle implements Utilities, Timer {
 		currentRoute=new Route(currentLocation, this); //creates a new route for the vehicle and checks it in
 		lastRoad=currentLocation;
 		status=null;
-		
 	}
 	
 	

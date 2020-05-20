@@ -137,7 +137,14 @@ public class RoadFrame extends JFrame  implements ActionListener {
 				switch(i)
 				{
 					case 0:
-						System.exit(0);
+						
+				        CreateRoadSystem roadSystem = new CreateRoadSystem();
+						Container contentPane = roadSystem.getContentPane();
+						roadSystem.setTitle("Create road system");
+						roadSystem.setSize(400, 300);
+						roadSystem.setVisible(true);
+						roadSystem.setResizable(true);
+						
 						break;
 					case 1:
 						System.exit(0);
