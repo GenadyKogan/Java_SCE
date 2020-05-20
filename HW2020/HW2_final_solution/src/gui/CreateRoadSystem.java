@@ -3,36 +3,38 @@ package gui;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.*; 
-import java.awt.*; 
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
 import javax.swing.*; 
 
-public class CreateRoadSystem extends JFrame implements ChangeListener {
+public class CreateRoadSystem extends JFrame implements ChangeListener,ActionListener {
 	 // frame 
-    private static JFrame frame; 
+    private JFrame frame, tempFrame; 
     // slider 
-    private static JSlider jSliderVehicles, jSliderJunctions; 
+    private JSlider jSliderVehicles, jSliderJunctions; 
     // label 
-    private  static JLabel lableVehicles, lableJunctions;
-    private  static JPanel panel, tempPanel;
-	private static JButton jbnButtons[];
+
+    private JLabel lableVehicles, lableJunctions;
+    private JPanel panel, tempPanel;
+	private JButton jbnButtons[];
     private static final String[] jbnButtonsItems = { "Ok","Cancel"};
     // main class 
-    public static void main(String[] args) 
+    public CreateRoadSystem() 
     { 
-        // create a new frame 
-    	frame = new JFrame("Create road system"); 
-  
-        // create a object 
-        CreateRoadSystem roadSystem = new CreateRoadSystem();
         
         // create a panel 
         panel = new JPanel(); 
         panel.setLayout(new GridLayout(6,1));
-        
+        // create a new frame 
+   
         
         // create a slider 
         jSliderJunctions = new JSlider(3, 20, 3); 
-  //
+  
         // paint the ticks and tarcks 
         jSliderJunctions.setPaintTrack(true); 
         jSliderJunctions.setPaintTicks(true); 
@@ -60,7 +62,7 @@ public class CreateRoadSystem extends JFrame implements ChangeListener {
 
 
         // create a slider 
-        jSliderVehicles = new JSlider(0, 50, 10); 
+        jSliderVehicles = new JSlider(0, 50, 0); 
   
         // paint the ticks and tarcks 
         jSliderVehicles.setPaintTrack(true); 
@@ -89,33 +91,31 @@ public class CreateRoadSystem extends JFrame implements ChangeListener {
         /*******************************************************************************/
         tempPanel = new JPanel(); 
         tempPanel.setLayout(new GridLayout(1,2));
-
-		jbnButtons = new JButton[2];		
+		jbnButtons = new JButton[2];	
 		for( int item=0;item<jbnButtons.length; item++) {
 			jbnButtons[item] = new JButton(jbnButtonsItems[item]);
 		}
-		tempPanel.setLayout(new GridLayout(1,5));
+	
 		for( int item=0;item<jbnButtons.length; item++) {
 			tempPanel.add(jbnButtons[item]);
 		}
+
+
+		getContentPane().add(tempPanel, BorderLayout.PAGE_END);
+    	getContentPane().add(panel, BorderLayout.PAGE_START);
 	
-        panel.add(tempPanel); 
+		for (int i=0; i<jbnButtons.length; i++){
+			jbnButtons[i].addActionListener(this);
+		}
         /*******************************************************************************/
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        frame.add(panel); 
-        // set the size of frame 
-        frame.setSize(400, 300); 
-        frame.show(); 
-        
+		addWindowListener(new WindowAdapter() {
+			public void windowClosed(WindowEvent e)
+			{
+				System.exit(0);
+			}
+		}
+	);
+	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
 
         
@@ -127,6 +127,40 @@ public class CreateRoadSystem extends JFrame implements ChangeListener {
     	lableVehicles.setText("value of Slider is =" + jSliderVehicles.getValue()); 
     	lableJunctions.setText("value of Slider is =" + jSliderJunctions.getValue()); 
     } 
+    
+/*    public static void main(String[] args) 
+    { 
+
+  
+        // create a object 
+        CreateRoadSystem roadSystem = new CreateRoadSystem();
+		Container contentPane = roadSystem.getContentPane();
+		roadSystem.setTitle("Create road system");
+		roadSystem.setSize(400, 300);
+		roadSystem.setVisible(true);
+		roadSystem.setResizable(true);
+    }*/
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		for (int i=0; i<jbnButtons.length; i++)
+		{
+			if(e.getSource() == jbnButtons[i])
+			{
+				switch(i)
+				{
+					case 0:
+						System.exit(0);
+						break;
+					case 1:
+						System.exit(0);
+						break;
+
+				}
+			}
+
+		}
+		
+	}
 }
   
 
