@@ -172,6 +172,8 @@ public class CreateRoadSystem extends JFrame implements ActionListener {
 				switch(i)
 				{
 					case 0:
+						RoadFrame road= new RoadFrame();
+						road.add(lableVehicles);
 						System.exit(0);
 						break;
 					case 1:
