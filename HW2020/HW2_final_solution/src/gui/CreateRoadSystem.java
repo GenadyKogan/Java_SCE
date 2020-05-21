@@ -1,13 +1,23 @@
 package gui;
 
+<<<<<<< HEAD
+import javax.swing.border.TitledBorder;
+import javax.swing.event.*; 
+=======
+>>>>>>> branch 'master' of https://github.com/GenadyKogan/Java_SCE.git
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+
+import gui.RoadFrame;
+import javax.swing.*; 
+
 import java.awt.geom.Ellipse2D;
 
 import javax.swing.*;
+
 
 import java.util.Arrays;
 import java.util.Hashtable;
@@ -21,7 +31,8 @@ public class CreateRoadSystem extends JFrame implements ActionListener {
     // slider 
     private JSlider jSliderVehicles, jSliderJunctions; 
     // label 
-
+   private CreateRoadSystem roadSystem = new CreateRoadSystem();
+	private Container contentPane = roadSystem.getContentPane();
     private JLabel lableVehicles, lableJunctions;
 	private JPanel panel, tempPanel;
 	private JButton jbnButtons[];
@@ -55,7 +66,14 @@ public class CreateRoadSystem extends JFrame implements ActionListener {
         lableJunctions = new JLabel(); 
         lableJunctions.setHorizontalAlignment(JLabel.CENTER);
         lableJunctions.setText("Numbers of junctions");
+
         
+		// setChangeListener 
+         jSliderJunctions.addChangeListener(roadSystem); 
+       // set the text of label 
+        lableJunctions.setText("value of Slider is =" + jSliderJunctions.getValue()); 
+        
+
 
 	    // Add positions label in the slider
 	 
