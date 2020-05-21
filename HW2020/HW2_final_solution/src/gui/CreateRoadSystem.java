@@ -1,16 +1,31 @@
 package gui;
 
+<<<<<<< HEAD
 import javax.swing.border.TitledBorder;
 import javax.swing.event.*; 
+=======
+>>>>>>> branch 'master' of https://github.com/GenadyKogan/Java_SCE.git
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+
 import gui.RoadFrame;
 import javax.swing.*; 
 
-public class CreateRoadSystem extends JFrame implements ChangeListener,ActionListener {
+import java.awt.geom.Ellipse2D;
+
+import javax.swing.*;
+
+
+import java.util.Arrays;
+import java.util.Hashtable;
+import java.util.Random;
+
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+public class CreateRoadSystem extends JFrame implements ActionListener {
 	 // frame 
     private JFrame frame, tempFrame; 
     // slider 
@@ -19,19 +34,22 @@ public class CreateRoadSystem extends JFrame implements ChangeListener,ActionLis
    private CreateRoadSystem roadSystem = new CreateRoadSystem();
 	private Container contentPane = roadSystem.getContentPane();
     private JLabel lableVehicles, lableJunctions;
-    private JPanel panel, tempPanel;
+	private JPanel panel, tempPanel;
 	private JButton jbnButtons[];
-    private static final String[] jbnButtonsItems = { "Ok","Cancel"};
+	private static final String[] jbnButtonsItems = { "Ok","Cancel"};
+	Hashtable<Integer, JLabel> position = new Hashtable<Integer, JLabel>();
     // main class 
     public CreateRoadSystem() 
     { 
+
         
         // create a panel 
         panel = new JPanel(); 
         panel.setLayout(new GridLayout(6,1));
         // create a new frame 
    
-        
+        /*******************************************************************************/
+
         // create a slider 
         jSliderJunctions = new JSlider(3, 20, 3); 
   
@@ -48,13 +66,30 @@ public class CreateRoadSystem extends JFrame implements ChangeListener,ActionLis
         lableJunctions = new JLabel(); 
         lableJunctions.setHorizontalAlignment(JLabel.CENTER);
         lableJunctions.setText("Numbers of junctions");
-        
+
         
 		// setChangeListener 
          jSliderJunctions.addChangeListener(roadSystem); 
        // set the text of label 
         lableJunctions.setText("value of Slider is =" + jSliderJunctions.getValue()); 
         
+
+
+	    // Add positions label in the slider
+	 
+	    for(int i=3;i<=20;i++)
+	    	position.put(i, new JLabel(""+i));
+	    // Set the label to be drawn
+	    this.jSliderJunctions.setLabelTable(position);
+	     
+	    // Add change listener to the slider
+	    this.jSliderJunctions.addChangeListener(new ChangeListener() {
+	        public void stateChanged(ChangeEvent e) {
+	        	lableJunctions.setText("Value of the slider is: " + ((JSlider)e.getSource()).getValue());
+	        }
+	    });
+	        
+
         panel.add(lableJunctions);
         panel.add(jSliderJunctions); 
         
@@ -78,12 +113,24 @@ public class CreateRoadSystem extends JFrame implements ChangeListener,ActionLis
         lableVehicles.setHorizontalAlignment(JLabel.CENTER);
         lableVehicles.setText("Numbers of vehicles");
     
-        /*
-        // setChangeListener 
-        jSliderVehicles.addChangeListener(roadSystem); 
-       // set the text of label 
-        lableVehicles.setText("value of Slider is =" + jSliderVehicles.getValue()); 
-        */
+        // Add positions label in the slider
+	    Hashtable<Integer, JLabel> position2 = new Hashtable<Integer, JLabel>();
+	    for(int i=0,index=0;i<=50;i++)
+	    {
+	    	position2.put(index, new JLabel(""+index));
+	    	index+=5;
+	    }
+	  
+	    // Set the label to be drawn
+	    this.jSliderVehicles.setLabelTable(position2);
+	     
+	    // Add change listener to the slider
+	    this.jSliderVehicles.addChangeListener(new ChangeListener() {
+	        public void stateChanged(ChangeEvent e) {
+	        	lableVehicles.setText("Value of the slider is: " + ((JSlider)e.getSource()).getValue());
+	        }
+	    });
+        
         panel.add(lableVehicles); 
         // add slider to panel
         panel.add(jSliderVehicles); 
@@ -118,19 +165,13 @@ public class CreateRoadSystem extends JFrame implements ChangeListener,ActionLis
 	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
 
-        
-        
     } 
-    // if JSlider value is changed 
-    public void stateChanged(ChangeEvent e) 
-    { 
-    	lableVehicles.setText("value of Slider is =" + jSliderVehicles.getValue()); 
-    	lableJunctions.setText("value of Slider is =" + jSliderJunctions.getValue()); 
-    } 
-    
+
+    /*******************************************************************************/
+
 /*    public static void main(String[] args) 
     { 
-
+	//
   
         // create a object 
         CreateRoadSystem roadSystem = new CreateRoadSystem();
@@ -140,7 +181,7 @@ public class CreateRoadSystem extends JFrame implements ChangeListener,ActionLis
 		roadSystem.setVisible(true);
 		roadSystem.setResizable(true);
     }*/
-	@Override
+   	@Override
 	public void actionPerformed(ActionEvent e) {
 		for (int i=0; i<jbnButtons.length; i++)
 		{
@@ -161,6 +202,34 @@ public class CreateRoadSystem extends JFrame implements ChangeListener,ActionLis
 		}
 		
 	}
+
+
+/********************************************************************************/
+
+    public JSlider getjSliderJunctions() {
+		return jSliderJunctions;
+	}
+    public int getjSliderJunctionsVal() {
+		return jSliderJunctions.getValue();
+	}
+	public JLabel getLableJunctions() {
+		return lableJunctions;
+	}
+
+	public Hashtable<Integer, JLabel> getPosition() {
+		return position;
+	}
+
+	public void setPosition(Hashtable<Integer, JLabel> position) {
+		this.position = position;
+	}
+
+
+
+
+
+/********************************************************************************/
+
 }
   
 
