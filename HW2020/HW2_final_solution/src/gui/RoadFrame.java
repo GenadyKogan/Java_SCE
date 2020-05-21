@@ -141,6 +141,7 @@ public class RoadFrame extends JFrame  implements ActionListener {
 				switch(i)
 				{
 					case 0:
+						//
 				        CreateRoadSystem roadSystem = new CreateRoadSystem();
 						Container contentPane = roadSystem.getContentPane();
 						roadSystem.setTitle("Create road system");
@@ -151,7 +152,7 @@ public class RoadFrame extends JFrame  implements ActionListener {
 						roadSystem.getjSliderJunctions().addChangeListener(new ChangeListener() {
 					       public void stateChanged(ChangeEvent e) {
 					    	   System.out.println(roadSystem.getjSliderJunctions().getValue());
-					        //	
+					        //	//
 					        }
 						  });
 						System.out.println(val);
