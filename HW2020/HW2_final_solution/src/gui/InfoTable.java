@@ -20,8 +20,8 @@ public class InfoTable extends JFrame{
         String[][] data = new String[racersNumber][5];
         int i=0;
      
-       /* for (Vehicle vehicle: vehicle.getFinishedCompetitors()){
-        	data[i][0] =  vehicle.getId();
+      /*  for (Vehicle vehicle: vehicle.getFinishedCompetitors()){
+        	data[i][0] =  String.valueOf(vehicle.getId());
             data[i][1] = ""+vehicle.getVehicleType();
             data[i][2] = ""+vehicle.getCurrentRoute();
             data[i][3] = ""+vehicle.getVehicleType().getAverageSpeed();
@@ -30,7 +30,7 @@ public class InfoTable extends JFrame{
         }
                     
         for (Vehicle vehicle: vehicle.getActiveCompetitors()){
-            //  data[i][0] = (String) vehicle.getId();
+            data[i][0] = String.valueOf(vehicle.getId());
             data[i][1] = ""+vehicle.getVehicleType();
             data[i][2] = ""+vehicle.getCurrentRoute();
             data[i][3] = ""+vehicle.getVehicleType().getAverageSpeed();
