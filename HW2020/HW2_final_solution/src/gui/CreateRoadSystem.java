@@ -1,10 +1,8 @@
 package gui;
 
-<<<<<<< HEAD
 import javax.swing.border.TitledBorder;
 import javax.swing.event.*; 
-=======
->>>>>>> branch 'master' of https://github.com/GenadyKogan/Java_SCE.git
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,7 +20,7 @@ import javax.swing.*;
 import java.util.Arrays;
 import java.util.Hashtable;
 import java.util.Random;
-
+////
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 public class CreateRoadSystem extends JFrame implements ActionListener {
@@ -37,7 +35,6 @@ public class CreateRoadSystem extends JFrame implements ActionListener {
 	private JPanel panel, tempPanel;
 	private JButton jbnButtons[];
 	private static final String[] jbnButtonsItems = { "Ok","Cancel"};
-	Hashtable<Integer, JLabel> position = new Hashtable<Integer, JLabel>();
     // main class 
     public CreateRoadSystem() 
     { 
@@ -69,14 +66,14 @@ public class CreateRoadSystem extends JFrame implements ActionListener {
 
         
 		// setChangeListener 
-         jSliderJunctions.addChangeListener(roadSystem); 
+      //   jSliderJunctions.addChangeListener(roadSystem); 
        // set the text of label 
-        lableJunctions.setText("value of Slider is =" + jSliderJunctions.getValue()); 
+      //  lableJunctions.setText("value of Slider is =" + jSliderJunctions.getValue()); 
         
 
 
 	    // Add positions label in the slider
-	 
+    	Hashtable<Integer, JLabel> position = new Hashtable<Integer, JLabel>();
 	    for(int i=3;i<=20;i++)
 	    	position.put(i, new JLabel(""+i));
 	    // Set the label to be drawn
@@ -191,7 +188,6 @@ public class CreateRoadSystem extends JFrame implements ActionListener {
 				{
 					case 0:
 						RoadFrame road= new RoadFrame();
-						road.add(lableVehicles);
 						System.exit(0);
 						break;
 					case 1:
@@ -218,13 +214,6 @@ public class CreateRoadSystem extends JFrame implements ActionListener {
 		return lableJunctions;
 	}
 
-	public Hashtable<Integer, JLabel> getPosition() {
-		return position;
-	}
-
-	public void setPosition(Hashtable<Integer, JLabel> position) {
-		this.position = position;
-	}
 
 
 
