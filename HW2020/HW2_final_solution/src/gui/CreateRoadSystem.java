@@ -29,8 +29,6 @@ public class CreateRoadSystem extends JFrame implements ActionListener {
     // slider 
     private JSlider jSliderVehicles, jSliderJunctions; 
     // label 
-   private CreateRoadSystem roadSystem = new CreateRoadSystem();
-	private Container contentPane = roadSystem.getContentPane();
     private JLabel lableVehicles, lableJunctions;
 	private JPanel panel, tempPanel;
 	private JButton jbnButtons[];
@@ -152,6 +150,7 @@ public class CreateRoadSystem extends JFrame implements ActionListener {
 			jbnButtons[i].addActionListener(this);
 		}
         /*******************************************************************************/
+		//
 		addWindowListener(new WindowAdapter() {
 			public void windowClosed(WindowEvent e)
 			{
@@ -166,7 +165,7 @@ public class CreateRoadSystem extends JFrame implements ActionListener {
 
     /*******************************************************************************/
 
-/*    public static void main(String[] args) 
+   /* public static void main(String[] args) 
     { 
 	//
   
