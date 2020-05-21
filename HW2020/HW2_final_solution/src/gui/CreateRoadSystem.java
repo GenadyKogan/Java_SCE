@@ -1,14 +1,13 @@
 package gui;
 
 import javax.swing.border.TitledBorder;
-import javax.swing.event.ChangeEvent;
 import javax.swing.event.*; 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-
+import gui.RoadFrame;
 import javax.swing.*; 
 
 public class CreateRoadSystem extends JFrame implements ChangeListener,ActionListener {
@@ -17,7 +16,8 @@ public class CreateRoadSystem extends JFrame implements ChangeListener,ActionLis
     // slider 
     private JSlider jSliderVehicles, jSliderJunctions; 
     // label 
-
+   private CreateRoadSystem roadSystem = new CreateRoadSystem();
+	private Container contentPane = roadSystem.getContentPane();
     private JLabel lableVehicles, lableJunctions;
     private JPanel panel, tempPanel;
 	private JButton jbnButtons[];
@@ -49,12 +49,12 @@ public class CreateRoadSystem extends JFrame implements ChangeListener,ActionLis
         lableJunctions.setHorizontalAlignment(JLabel.CENTER);
         lableJunctions.setText("Numbers of junctions");
         
-        /*
-        // setChangeListener 
+        
+		// setChangeListener 
          jSliderJunctions.addChangeListener(roadSystem); 
        // set the text of label 
         lableJunctions.setText("value of Slider is =" + jSliderJunctions.getValue()); 
-        */
+        
         panel.add(lableJunctions);
         panel.add(jSliderJunctions); 
         
