@@ -5,15 +5,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.geom.Ellipse2D;
 
-import javax.swing.*; 
-import java.awt.GridLayout;
+import javax.swing.*;
+
+import java.util.Arrays;
 import java.util.Hashtable;
+import java.util.Random;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 public class CreateRoadSystem extends JFrame implements ActionListener {
@@ -24,9 +23,10 @@ public class CreateRoadSystem extends JFrame implements ActionListener {
     // label 
 
     private JLabel lableVehicles, lableJunctions;
-    private JPanel panel, tempPanel;
+	private JPanel panel, tempPanel;
 	private JButton jbnButtons[];
-    private static final String[] jbnButtonsItems = { "Ok","Cancel"};
+	private static final String[] jbnButtonsItems = { "Ok","Cancel"};
+	Hashtable<Integer, JLabel> position = new Hashtable<Integer, JLabel>();
     // main class 
     public CreateRoadSystem() 
     { 
@@ -58,7 +58,6 @@ public class CreateRoadSystem extends JFrame implements ActionListener {
         
 
 	    // Add positions label in the slider
-	    Hashtable<Integer, JLabel> position = new Hashtable<Integer, JLabel>();
 	 
 	    for(int i=3;i<=20;i++)
 	    	position.put(i, new JLabel(""+i));
@@ -148,16 +147,9 @@ public class CreateRoadSystem extends JFrame implements ActionListener {
 	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
 
-	
-	
-	
-	
-	
-	
-	
-    /*******************************************************************************/
-
     } 
+
+    /*******************************************************************************/
 
 /*    public static void main(String[] args) 
     { 
@@ -171,7 +163,7 @@ public class CreateRoadSystem extends JFrame implements ActionListener {
 		roadSystem.setVisible(true);
 		roadSystem.setResizable(true);
     }*/
-	@Override
+   	@Override
 	public void actionPerformed(ActionEvent e) {
 		for (int i=0; i<jbnButtons.length; i++)
 		{
@@ -192,6 +184,34 @@ public class CreateRoadSystem extends JFrame implements ActionListener {
 		}
 		
 	}
+
+
+/********************************************************************************/
+
+    public JSlider getjSliderJunctions() {
+		return jSliderJunctions;
+	}
+    public int getjSliderJunctionsVal() {
+		return jSliderJunctions.getValue();
+	}
+	public JLabel getLableJunctions() {
+		return lableJunctions;
+	}
+
+	public Hashtable<Integer, JLabel> getPosition() {
+		return position;
+	}
+
+	public void setPosition(Hashtable<Integer, JLabel> position) {
+		this.position = position;
+	}
+
+
+
+
+
+/********************************************************************************/
+
 }
   
 

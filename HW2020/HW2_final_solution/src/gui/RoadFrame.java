@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,7 +14,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.*;
-
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 public class RoadFrame extends JFrame  implements ActionListener {
 	private JSplitPane mainPanel  = new JSplitPane();
 	private JPanel jplMaster;
@@ -27,9 +29,10 @@ public class RoadFrame extends JFrame  implements ActionListener {
 	Font f121 = new Font("Times New Roman", 12, 12);
 	private static final String[] vehiclesColor = { "Blue","Magenta","Orange","Random"};
 	private static final String[] backGround = { "Blue","None"};
-	private static final String[] jbnButtonsItems = { "Create read system","Start","Stop","Resume","info"};
+	private static final String[] jbnButtonsItems1 = { "Create read system","Start","Stop","Resume","info"};
+
 	/*************************************************************/
-	public RoadFrame() 
+	public RoadFrame () 
 	{
 		jmenuFile = new JMenu("File");
 		jmenuFile.setFont(f121);
@@ -74,7 +77,7 @@ public class RoadFrame extends JFrame  implements ActionListener {
 
 		jbnButtons = new JButton[5];		
 		for( int item=0;item<5; item++) {
-			jbnButtons[item] = new JButton(jbnButtonsItems[item]);
+			jbnButtons[item] = new JButton(jbnButtonsItems1[item]);
 		}
 		 getContentPane().add(mainPanel);
 		scrollPane = new JScrollPane(); 
@@ -134,18 +137,25 @@ public class RoadFrame extends JFrame  implements ActionListener {
 		{
 			if(e.getSource() == jbnButtons[i])
 			{
+				
 				switch(i)
 				{
 					case 0:
-						
 				        CreateRoadSystem roadSystem = new CreateRoadSystem();
 						Container contentPane = roadSystem.getContentPane();
 						roadSystem.setTitle("Create road system");
 						roadSystem.setSize(400, 300);
 						roadSystem.setVisible(true);
 						roadSystem.setResizable(true);
-						
-						break;
+						final int val=0;
+						roadSystem.getjSliderJunctions().addChangeListener(new ChangeListener() {
+					       public void stateChanged(ChangeEvent e) {
+					    	   System.out.println(roadSystem.getjSliderJunctions().getValue());
+					        //	
+					        }
+						  });
+						System.out.println(val);
+					break;
 					case 1:
 						System.exit(0);
 						break;
@@ -162,10 +172,14 @@ public class RoadFrame extends JFrame  implements ActionListener {
 			}
 
 		}
+		
 
 	}
 
 
+
+
+	//======================================================================================
 
 	public static void main(String args[]) {
 		RoadFrame road = new RoadFrame();
