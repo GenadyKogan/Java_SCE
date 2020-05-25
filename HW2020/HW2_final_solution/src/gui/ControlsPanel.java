@@ -87,7 +87,7 @@ public class ControlsPanel extends JFrame implements ActionListener{
 		for( int item=0;item<5; item++) {
 			jplMaster.add(jbnButtons[item]);
 		}
-	////
+	/////
 		getContentPane().add(jplMaster, BorderLayout.PAGE_END);
 		
 		addWindowListener(new WindowAdapter() {
