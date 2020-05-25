@@ -142,16 +142,17 @@ public class RoadFrame extends JFrame  implements ActionListener {
 				switch(i)
 				{
 					case 0:
+						
 				        CreateRoadSystem roadSystem = new CreateRoadSystem();
 						Container contentPane = roadSystem.getContentPane();
 						roadSystem.setTitle("Create road system");
 						roadSystem.setSize(400, 300);
 						roadSystem.setVisible(true);
 						roadSystem.setResizable(true);
-						this.setTopPanel(new Graph());
-						mainPanel.setTopComponent(topPanel);
-						
-
+					//	this.setTopPanel(new Graph());
+					//	mainPanel.setTopComponent(topPanel);
+						this.setVisible(false);
+						this.setResizable(false);
 
 						break;
 					case 1:

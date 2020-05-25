@@ -164,8 +164,8 @@ public class CreateRoadSystem extends JFrame implements ActionListener {
     } 
 
 	/*******************************************************************************/
-
- /*   public static void main(String[] args) 
+/*
+   public static void main(String[] args) 
     { 
 	//
   
@@ -186,7 +186,7 @@ public class CreateRoadSystem extends JFrame implements ActionListener {
 				switch(i)
 				{
 					case 0:
-						//System.out.println(jbnButtons[i]);
+				
 						/*getjSliderJunctions().addChangeListener(new ChangeListener() {
 					       public void stateChanged(ChangeEvent e) {
 					           if (!getjSliderJunctions().getValueIsAdjusting()) {
@@ -195,11 +195,19 @@ public class CreateRoadSystem extends JFrame implements ActionListener {
 					        }
 
 						  });*/
-						RoadFrame  road=new RoadFrame();
-						road.setTopPanel(new Graph());
-						road.getMainPanel().setTopComponent(road.getTopPanel());
-						System.exit(0);
-
+						
+					
+						RoadFrame road = new RoadFrame();
+						Container contentPane = road.getContentPane();
+						road.setTitle("Create road system");
+						road.setSize(800, 600);
+			        	road.setTopPanel(new Graph());
+			        	road.getMainPanel().setTopComponent(road.getTopPanel());
+			        	road.setResizable(true);
+			        	road.setVisible(true);
+			        	
+		
+					this.dispose();
 						break;
 					case 1:
 						System.exit(0);
@@ -255,10 +263,9 @@ public class CreateRoadSystem extends JFrame implements ActionListener {
 		this.jbnButtons = jbnButtons;
 	}
 
-	public static String getJbnbuttonsitems(int val) {
-		return jbnButtonsItems[0];
+    public JButton getJbnButtons1(int val) {
+		return jbnButtons[val];
 	}
-
 
 
 /********************************************************************************/
