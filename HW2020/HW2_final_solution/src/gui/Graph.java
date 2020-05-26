@@ -31,11 +31,11 @@ public class Graph extends JPanel
 			for(int j=i+1;j< Nodename.length;j++)
 			{ 
 				
-				if(Math.random() > 3)
-				{
-					//inputTable[i][j] =n;
+				/*if(Math.random() > 0.6)
+				{*/
+					inputTable[i][j] =n;
 					inputTable[j][i] =inputTable[i][j] ;
-				}
+				//}
 			}
 		}
 		for(int i=0;i< Nodename.length;i++)
