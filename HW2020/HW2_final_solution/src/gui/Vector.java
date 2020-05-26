@@ -12,6 +12,7 @@ public class Vector
 		this.setX(x);
 		this.setY(y);
 	}
+
 	public Vector add(Vector v){
 		return new Vector(x+v.x , y+v.y);
 	}
@@ -21,7 +22,7 @@ public class Vector
 	public Vector Mul(double m){
 		return new Vector(x*m , y*m);
 	}
-	public double Dot(Vector v){
+/*	public double Dot(Vector v){
 		return x*v.x + y*v.y;
 	}
 	public double Size(){
@@ -31,7 +32,7 @@ public class Vector
 	public Vector Unit(){
 		double s = Size();
 		return   new Vector(x/s , y/s);
-	}
+	}*/
 	
 	public double getY(){
 		return y;

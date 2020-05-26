@@ -21,7 +21,7 @@ public class Edge
 		g.drawString(""+length,(int) xx,(int) yy);
 	}
 	
-	public Vector getForce(Node toCal)
+	/*public Vector getForce(Node toCal)
 	{
 		Vector dir ;
 		if(a== toCal) {
@@ -37,7 +37,7 @@ public class Edge
 		dir = dir.Unit().Mul(ss);
 		return dir;
 	}
-
+*/
 
 
 }

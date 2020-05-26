@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import components.Driving;
+import utilities.Point;
 
 public class Graph extends JPanel
 {
@@ -35,7 +36,6 @@ public class Graph extends JPanel
 
 					inputTable[i][j] =n;
 					inputTable[j][i] =inputTable[i][j] ;
-
 			}
 		}
 		for(int i=0;i< Nodename.length;i++)
@@ -111,8 +111,8 @@ public class Graph extends JPanel
 		for(int j=0;j< Nodename.length;j++)
 		{ 
 			all.get(j).acc=new Vector();
-			all.get(j).calForce(all);
-			all.get(j). calForceEdge( ); 
+		//	all.get(j).calForce(all);
+		//	all.get(j). calForceEdge( ); 
 			//all.get(j).move();
 		}
 		//scale
@@ -199,13 +199,19 @@ public class Graph extends JPanel
 	
 	public void Scale()
 	{
-		double XMin= Integer.MAX_VALUE;
+		/*double XMin= Integer.MAX_VALUE;
+		
 		double YMin= Integer.MAX_VALUE;
 		double XMax= Integer.MIN_VALUE;
-		double YMax= Integer.MIN_VALUE;
-		
+		double YMax= Integer.MIN_VALUE;*/
+		double XMin=drive.getMap().getJunctions().get(0).getMinVal();
+		double YMin= drive.getMap().getJunctions().get(0).getMinVal();
+		double XMax= drive.getMap().getJunctions().get(0).getMaxX();
+		double YMax= drive.getMap().getJunctions().get(0).getMaxY();
+		System.out.println("XMin "+XMin+" ,YMin "+YMin+" ,XMax "+ XMax+" ,YMax "+YMax);
 		for(int j=0;j< Nodename.length;j++)
 		{
+
 			if(all.get(j).pos.getX() < XMin)
 			{
 				XMin=all.get(j).pos.getX();
@@ -216,21 +222,27 @@ public class Graph extends JPanel
 			}
 			if(all.get(j).pos.getX() > XMax)
 			{
+				System.out.println("x "+all.get(j).pos.getX());
 				XMax=all.get(j).pos.getX();
 			}
 			if(all.get(j).pos.getY() > YMax)
 			{
+				System.out.println("y "+all.get(j).pos.getY());
 				YMax=all.get(j).pos.getY();
 			}
+			
 		}
 		
 		double length_x = XMax- XMin;
 		double length_y = YMax- YMin;
+		
 		double length  = Math.max(length_x, length_y);
+		
+
 		for(int j=0;j< Nodename.length;j++)
 		{
 			 Vector vv = all.get(j).pos;
-			 vv= vv.Mul(400.0 / length);
+			 vv= vv.Mul(700.0 / length);
 			 all.get(j).setPosToDraw(vv);
 		}
 		
