@@ -23,19 +23,19 @@ public class Graph extends JPanel
 	public void GenerateGraph(int n,int vech)
 	{
 		//int n= 12;
+
 		drive=new Driving(n,vech);
+
 		inputTable = new int[n][n];
 		Nodename = new String[n];
 		for(int i=0;i< Nodename.length;i++)
 		{ 
 			for(int j=i+1;j< Nodename.length;j++)
 			{ 
-				
-				//if(Math.random() > 0.1)
-			//	{
+
 					inputTable[i][j] =n;
 					inputTable[j][i] =inputTable[i][j] ;
-			//	}
+
 			}
 		}
 		for(int i=0;i< Nodename.length;i++)
