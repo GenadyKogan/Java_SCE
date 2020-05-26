@@ -31,12 +31,14 @@ public class Edge
 		{
 			dir = a.pos.sub(b.pos);
 		}
-		 double t=dir.Size()-22*length;
+		 double t=dir.Size()-10*length;
 		double ss = Math.signum(t) *Math.log( Math.abs(t))*0.01;
 		//System.out.println("ss=" + ss);
 		dir = dir.Unit().Mul(ss);
 		return dir;
 	}
+
+
 
 }
 

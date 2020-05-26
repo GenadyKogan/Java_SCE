@@ -26,7 +26,7 @@ public class Vector
 	}
 	public double Size(){
 		return  Math.sqrt(x*x + y*y);
-	}
+	}//
 	
 	public Vector Unit(){
 		double s = Size();
