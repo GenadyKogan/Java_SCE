@@ -17,13 +17,13 @@ public class Driving implements Utilities, Timer{
 	private ArrayList<Vehicle> vehicles;
 	private int drivingTime;
 	private ArrayList<Timer> allTimedElements;
-	
+
 	/**Constructor
 	 * @param junctionsNum quantity of junctions
 	 * @param numOfVehicles quantity of vehicles
 	 */
 	public Driving(int junctionsNum, int numOfVehicles) {
-		
+
 		vehicles=new ArrayList<Vehicle>();
 		allTimedElements=new ArrayList<Timer>();
 		drivingTime=0;
@@ -131,4 +131,6 @@ public class Driving implements Utilities, Timer{
 				+ allTimedElements + "]";
 	}
 
+
+	
 }

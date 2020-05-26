@@ -16,6 +16,8 @@ import java.awt.event.WindowEvent;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+
+import components.Driving;
 public class RoadFrame extends JFrame  implements ActionListener {
 	private JSplitPane mainPanel  = new JSplitPane();
 	private JPanel jplMaster;
@@ -30,7 +32,8 @@ public class RoadFrame extends JFrame  implements ActionListener {
 	private static final String[] vehiclesColor = { "Blue","Magenta","Orange","Random"};
 	private static final String[] backGround = { "Blue","None"};
 	private static final String[] jbnButtonsItems1 = { "Create read system","Start","Stop","Resume","info"};
-
+	Graph g=new Graph();
+	private static int valJuncSlider;
 	/*************************************************************/
 	public RoadFrame () 
 	{
@@ -79,7 +82,7 @@ public class RoadFrame extends JFrame  implements ActionListener {
 		for( int item=0;item<5; item++) {
 			jbnButtons[item] = new JButton(jbnButtonsItems1[item]);
 		}
-		 getContentPane().add(mainPanel);
+		getContentPane().add(mainPanel);
 		scrollPane = new JScrollPane(); 
 		jplMaster = new JPanel();
 		mainPanel.setOrientation(JSplitPane.VERTICAL_SPLIT);
@@ -148,15 +151,34 @@ public class RoadFrame extends JFrame  implements ActionListener {
 						roadSystem.setSize(400, 300);
 						roadSystem.setVisible(true);
 						roadSystem.setResizable(true);
-						final int val=0;
+					//	this.setTopPanel(new Graph());
+					//	mainPanel.setTopComponent(topPanel);
+						this.setVisible(false);
+						this.setResizable(false);
 						roadSystem.getjSliderJunctions().addChangeListener(new ChangeListener() {
-					       public void stateChanged(ChangeEvent e) {
-					    	   System.out.println(roadSystem.getjSliderJunctions().getValue());
-					       
-					        }
-						  });
-						
-					break;
+						       public void stateChanged(ChangeEvent e) {
+						           if (!roadSystem.getjSliderJunctions().getValueIsAdjusting()) {
+						               int valueJunctions =(int)roadSystem.getjSliderJunctions().getValue();
+						             
+						               System.out.println("ddd"+valueJunctions);
+						              
+						           }
+						        }
+
+							  });
+						roadSystem.getjSliderVehicles().addChangeListener(new ChangeListener() {
+							       public void stateChanged(ChangeEvent e) {
+							           if (!roadSystem.getjSliderVehicles().getValueIsAdjusting()) {
+							             
+							               int valueVehicles =(int)roadSystem.getjSliderVehicles().getValue();
+							               g.setN(valueVehicles);
+							               System.out.println("ddd"+valueVehicles);
+							           }
+							           
+							        }
+
+								  });
+						break;
 					case 1:
 						System.exit(0);
 						break;
@@ -174,21 +196,12 @@ public class RoadFrame extends JFrame  implements ActionListener {
 
 		}
 		
-
 	}
-
 
 
 
 	//======================================================================================
 
-	public JPanel getTopPanel() {
-		return topPanel;
-	}
-	public void setTopPanel(JPanel topPanel) {
-		this.topPanel = topPanel;
-	}
-	
 	public static void main(String args[]) {
 		RoadFrame road = new RoadFrame();
 		Container contentPane = road.getContentPane();
@@ -198,11 +211,24 @@ public class RoadFrame extends JFrame  implements ActionListener {
 		road.setResizable(true);
 
 	}
-
-
-
-
-
+	public JSplitPane getMainPanel() {
+		return mainPanel;
+	}
+	public void setMainPanel(JSplitPane mainPanel) {
+		this.mainPanel = mainPanel;
+	}
+	public JPanel getTopPanel() {
+		return topPanel;
+	}
+	public void setTopPanel(JPanel topPanel) {
+		this.topPanel = topPanel;
+	}
+	public JPanel getJplMaster() {
+		return jplMaster;
+	}
+	public void setJplMaster(JPanel jplMaster) {
+		this.jplMaster = jplMaster;
+	}
 
 
 	
