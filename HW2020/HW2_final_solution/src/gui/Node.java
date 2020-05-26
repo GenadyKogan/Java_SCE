@@ -17,7 +17,7 @@ public class Node
 	public Color color;
 	public Node()
 	{
-		pos= new Vector(300+(int)(Math.random()*300-150), 300+(int)(Math.random()*300-150));
+		pos= new Vector(300+(int)(Math.random()*5), 300+(int)(Math.random()*5));
 		vel = new Vector(0,0);
 		acc = new Vector(0,0);
 		//color = new Color((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
