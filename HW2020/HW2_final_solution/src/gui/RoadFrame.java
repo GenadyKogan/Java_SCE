@@ -33,6 +33,7 @@ public class RoadFrame extends JFrame  implements ActionListener {
 	private static final String[] backGround = { "Blue","None"};
 	private static final String[] jbnButtonsItems1 = { "Create read system","Start","Stop","Resume","info"};
 	private static int valJuncSlider;
+	private int valueJunctions;
 	/*************************************************************/
 	public RoadFrame () 
 	{
@@ -150,16 +151,16 @@ public class RoadFrame extends JFrame  implements ActionListener {
 						roadSystem.setSize(400, 300);
 						roadSystem.setVisible(true);
 						roadSystem.setResizable(true);
-					//	this.setTopPanel(new Graph());
-					//	mainPanel.setTopComponent(topPanel);
+						//this.setTopPanel(new Graph());
+						//mainPanel.setTopComponent(topPanel);
 						this.setVisible(false);
 						this.setResizable(false);
 					/*	roadSystem.getjSliderJunctions().addChangeListener(new ChangeListener() {
 						       public void stateChanged(ChangeEvent e) {
 						           if (!roadSystem.getjSliderJunctions().getValueIsAdjusting()) {
-						               int valueJunctions =(int)roadSystem.getjSliderJunctions().getValue();
-						             
-						               System.out.println("ddd"+valueJunctions);
+						               //int valueJunctions =(int)roadSystem.getjSliderJunctions().getValue();
+						        	   setValueJunctions((int)roadSystem.getjSliderJunctions().getValue());
+						               System.out.println("Junction "+valueJunctions);
 						              
 						           }
 						        }
@@ -170,7 +171,7 @@ public class RoadFrame extends JFrame  implements ActionListener {
 							           if (!roadSystem.getjSliderVehicles().getValueIsAdjusting()) {
 							             
 							               int valueVehicles =(int)roadSystem.getjSliderVehicles().getValue();
-							               System.out.println("ddd"+valueVehicles);
+							               System.out.println("vehicle"+valueVehicles);
 							           }
 							           
 							        }
@@ -226,6 +227,12 @@ public class RoadFrame extends JFrame  implements ActionListener {
 	}
 	public void setJplMaster(JPanel jplMaster) {
 		this.jplMaster = jplMaster;
+	}
+	public int getValueJunctions() {
+		return valueJunctions;
+	}
+	public void setValueJunctions(int valueJunctions) {
+		this.valueJunctions = valueJunctions;
 	}
 
 

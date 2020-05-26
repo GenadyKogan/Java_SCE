@@ -20,7 +20,7 @@ public class Node
 		pos= new Vector(300+(int)(Math.random()*300-150), 300+(int)(Math.random()*300-150));
 		vel = new Vector(0,0);
 		acc = new Vector(0,0);
-		color = new Color((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
+		//color = new Color((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
 	}
 	
 	
@@ -39,7 +39,7 @@ public class Node
 		}
 		System.out.println(result.Size());
 		acc = this.acc.add(result); 
-	//	System.out.println("acc= "+acc.Size());
+
 		return result;
 	}
 	public Vector calForceEdge( )
@@ -51,18 +51,22 @@ public class Node
 			
 		} 
 		acc = this.acc.add(result); 
-	//	System.out.println("acc 2 = "+acc.Size());
+
 		return result;
 	}
 	
-	public void move()
+	/*public void move()
 	{
 		vel= vel.add(acc);
 		pos= pos.add(vel);
 		
 		vel=vel.Mul(0.99);
+<<<<<<< HEAD
 		//System.out.println(pos.getX() + " , " + pos.getY());
 	}
+=======
+		System.out.println(pos.getX() + " , " + pos.getY());
+	}*/
 	
 	public void Draw(Graphics g)
 	{
