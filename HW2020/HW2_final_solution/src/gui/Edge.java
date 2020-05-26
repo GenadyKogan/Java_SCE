@@ -13,7 +13,7 @@ public class Edge
 	public void Draw(Graphics g)
 	{
 		g.setColor(Color.black);
-		g.drawLine ((int)(a.posTodraw.getX() ), (int)(a.posTodraw.getY() ),(int)(b.posTodraw.getX() ),(int)(b.posTodraw.getY() )    );
+		g.drawLine ((int)(a.posTodraw.getX() ), (int)(a.posTodraw.getY() ),(int)(b.posTodraw.getX() ),(int)(b.posTodraw.getY() ));
 		double xx,yy;
 		xx= (a.posTodraw.getX()  + b.posTodraw.getX() )/2;
 		yy= (a.posTodraw.getY()  + b.posTodraw.getY() )/2;

@@ -16,6 +16,8 @@ import java.awt.event.WindowEvent;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+
+import components.Driving;
 public class RoadFrame extends JFrame  implements ActionListener {
 	private JSplitPane mainPanel  = new JSplitPane();
 	private JPanel jplMaster;
@@ -30,7 +32,7 @@ public class RoadFrame extends JFrame  implements ActionListener {
 	private static final String[] vehiclesColor = { "Blue","Magenta","Orange","Random"};
 	private static final String[] backGround = { "Blue","None"};
 	private static final String[] jbnButtonsItems1 = { "Create read system","Start","Stop","Resume","info"};
-
+	Graph g=new Graph();
 	private static int valJuncSlider;
 	/*************************************************************/
 	public RoadFrame () 
@@ -153,7 +155,29 @@ public class RoadFrame extends JFrame  implements ActionListener {
 					//	mainPanel.setTopComponent(topPanel);
 						this.setVisible(false);
 						this.setResizable(false);
+						roadSystem.getjSliderJunctions().addChangeListener(new ChangeListener() {
+						       public void stateChanged(ChangeEvent e) {
+						           if (!roadSystem.getjSliderJunctions().getValueIsAdjusting()) {
+						               int valueJunctions =(int)roadSystem.getjSliderJunctions().getValue();
+						             
+						               System.out.println("ddd"+valueJunctions);
+						              
+						           }
+						        }
 
+							  });
+						roadSystem.getjSliderVehicles().addChangeListener(new ChangeListener() {
+							       public void stateChanged(ChangeEvent e) {
+							           if (!roadSystem.getjSliderVehicles().getValueIsAdjusting()) {
+							             
+							               int valueVehicles =(int)roadSystem.getjSliderVehicles().getValue();
+							               g.setN(valueVehicles);
+							               System.out.println("ddd"+valueVehicles);
+							           }
+							           
+							        }
+
+								  });
 						break;
 					case 1:
 						System.exit(0);

@@ -2,9 +2,9 @@ package gui;
 
 public class Main
 {
-	public static void main(String[] args)
+	/*public static void main(String[] args)
 	{
-		int n= 50000;
+	int n= 50000;
 		int x[] = new int [n];
 		long a,b;
 		////////////////////////////////
@@ -173,5 +173,5 @@ public class Main
 		 }
 	}
 	
-
+*/
 }

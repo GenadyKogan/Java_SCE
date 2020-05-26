@@ -69,7 +69,7 @@ public class Node
 		g.setColor(color);
 		g.fillOval((int)(posTodraw.getX()-20), (int)(posTodraw.getY()-20), 40, 40);
 		g.setColor(Color.black); 
-		g.drawString(name,(int)(posTodraw.getX()-20), (int)(posTodraw.getY()-20));
+		//g.drawString(name,(int)(posTodraw.getX()-20), (int)(posTodraw.getY()-20));
 	}
 	
 	public void setPosToDraw(Vector v)
@@ -86,4 +86,6 @@ public class Node
 		}
 		return new Vector(sx/ll.size(),sy/ll.size());
 	}
+	
+
 }

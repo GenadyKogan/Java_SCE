@@ -24,6 +24,7 @@ import java.util.Random;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import components.Driving;
 import components.Road;
 public class CreateRoadSystem extends JFrame implements ActionListener {
 	 // frame 
@@ -35,7 +36,7 @@ public class CreateRoadSystem extends JFrame implements ActionListener {
 	private JPanel panel, tempPanel;
 	private JButton jbnButtons[];
 	private static final String[] jbnButtonsItems = { "Ok","Cancel"};
-	
+	Driving d= new Driving(3,0);
 	Hashtable<Integer, JLabel> position = new Hashtable<Integer, JLabel>();
 
 	// main class 
@@ -69,21 +70,22 @@ public class CreateRoadSystem extends JFrame implements ActionListener {
 
         
 
-
+        
 	    // Add positions label in the slider
 	    for(int i=3;i<=20;i++)
 	    	position.put(i, new JLabel(""+i));
 	    // Set the label to be drawn
 	    this.jSliderJunctions.setLabelTable(position);
-	     
+	   
 	    // Add change listener to the slider
 	    this.jSliderJunctions.addChangeListener(new ChangeListener() {
 	        public void stateChanged(ChangeEvent e) {
 	        	lableJunctions.setText("Value of the slider is: " + ((JSlider)e.getSource()).getValue());
+	        	
 	        }
 	    });
 	        
-
+	    System.out.println(this.jSliderJunctions.getValue());
         panel.add(lableJunctions);
         panel.add(jSliderJunctions); 
         
@@ -153,7 +155,7 @@ public class CreateRoadSystem extends JFrame implements ActionListener {
 		addWindowListener(new WindowAdapter() {
 			public void windowClosed(WindowEvent e)
 			{
-				//System.exit(0);
+				System.exit(0);
 				
 			}
 		}
@@ -175,42 +177,35 @@ public class CreateRoadSystem extends JFrame implements ActionListener {
 		roadSystem.setTitle("Create road system");
 		roadSystem.setSize(400, 300);
 		roadSystem.setVisible(true);
-		roadSystem.setResizable(true);
+	//	roadSystem.setResizable(true);
     }*/
    	@Override
 	public void actionPerformed(ActionEvent e) {
 		for (int i=0; i<jbnButtons.length; i++)
 		{
+			
 			if(e.getSource() == jbnButtons[i])
 			{
+				
 				switch(i)
 				{
 					case 0:
-				
-						/*getjSliderJunctions().addChangeListener(new ChangeListener() {
-					       public void stateChanged(ChangeEvent e) {
-					           if (!getjSliderJunctions().getValueIsAdjusting()) {
-					               int sleepSense = (int)getjSliderJunctions().getValue();
-					           }
-					        }
 
-						  });*/
-						
-					
 						RoadFrame road = new RoadFrame();
 						Container contentPane = road.getContentPane();
 						road.setTitle("Create road system");
 						road.setSize(800, 600);
-			        	road.setTopPanel(new Graph());
+						Graph g=new Graph();
+					
+						road.setTopPanel(g);
 			        	road.getMainPanel().setTopComponent(road.getTopPanel());
 			        	road.setResizable(true);
 			        	road.setVisible(true);
-			        	
-		
-					this.dispose();
 						break;
 					case 1:
-						System.exit(0);
+						this.jSliderJunctions.setValue(3);
+						this.jSliderVehicles.setValue(0);
+					
 						break;
 
 				}
@@ -226,45 +221,17 @@ public class CreateRoadSystem extends JFrame implements ActionListener {
     public JSlider getjSliderJunctions() {
 		return jSliderJunctions;
 	}
-    public int getjSliderJunctionsVal() {
-		return jSliderJunctions.getValue();
-	}
-	public JLabel getLableJunctions() {
-		return lableJunctions;
+
+	public JSlider getjSliderVehicles() {
+		return jSliderVehicles;
 	}
 
 	public JLabel getLableVehicles() {
 		return lableVehicles;
 	}
 
-	public void setLableVehicles(JLabel lableVehicles) {
-		this.lableVehicles = lableVehicles;
-	}
-
-	public void setLableJunctions(JLabel lableJunctions) {
-		this.lableJunctions = lableJunctions;
-	}
-
-
-    public Hashtable<Integer, JLabel> getPosition() {
-		return position;
-	}
-
-	public void setPosition(Hashtable<Integer, JLabel> position) {
-		this.position = position;
-	}
-
-
-    public JButton[] getJbnButtons() {
-		return jbnButtons;
-	}
-
-	public void setJbnButtons(JButton[] jbnButtons) {
-		this.jbnButtons = jbnButtons;
-	}
-
-    public JButton getJbnButtons1(int val) {
-		return jbnButtons[val];
+	public JLabel getLableJunctions() {
+		return lableJunctions;
 	}
 
 

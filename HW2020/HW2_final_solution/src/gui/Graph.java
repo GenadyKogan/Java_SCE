@@ -7,32 +7,33 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import components.Driving;
+
 public class Graph extends JPanel
 {
-	public int [][] inputTable =new int[][]
-			{ 	{0,1,1,1,1} ,
-				{1,0,5,0,0} ,
-				{1,5,0,0,1} ,
-				{1,0,0,0,1} ,
-				{1,0,1,1,0} ,
-			};
-	public String[] Nodename = new String[]{"A","B","C","D","E"};
+	
+	public int n;
+
+	public int [][] inputTable =new int[][]{};
+	public String[] Nodename = new String[] {}; 
 	
 	ArrayList<Node> all = new ArrayList<Node>();
 	ArrayList<Edge> edges = new ArrayList<Edge>();
 	
 	public void GenerateGraph()
 	{
-		int n= 12;
+		//int n= 12;
+		n=getN();
 		inputTable = new int[n][n];
 		Nodename = new String[n];
 		for(int i=0;i< Nodename.length;i++)
 		{ 
 			for(int j=i+1;j< Nodename.length;j++)
 			{ 
+				
 				if(Math.random() > 0.6)
 				{
-					inputTable[i][j] = (int)(Math.random() * 20);
+					inputTable[i][j] =(int)(Math.random() * 20);
 					inputTable[j][i] =inputTable[i][j] ;
 				}
 			}
@@ -45,7 +46,7 @@ public class Graph extends JPanel
 	
 	public void GenerateGraph2()
 	{
-		int n= 12;
+		n=12;
 		inputTable = new int[n][n];
 		Nodename = new String[n];
 		for(int i=0;i< Nodename.length;i++)
@@ -99,6 +100,14 @@ public class Graph extends JPanel
 	}
 	
 	
+	public int getN() {
+		return n;
+	}
+	
+	public void setN(int n) {
+		this.n = n;
+	}
+
 	
 	public Graph()
 	{
@@ -148,10 +157,10 @@ public class Graph extends JPanel
 		
 		JFrame f = new JFrame();
 		f.add(this);
-	/*
-	 * 	f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.setSize(600,600);
-		f.setVisible(true);*/
+	
+	 // 	f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	//	f.setSize(600,600);
+	//	f.setVisible(true);
 	}
 
 	public void paint(Graphics g)
@@ -166,11 +175,11 @@ public class Graph extends JPanel
 			edges.get(j).Draw(g);
 		}
 	}
-	public static void main(String[] args)
+/*	public static void main(String[] args)
 	{
 		new Graph();
 	}
-	
+	*/
 	
 	public void Scale()
 	{
