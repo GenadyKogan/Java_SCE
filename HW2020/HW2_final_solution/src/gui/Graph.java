@@ -16,14 +16,14 @@ public class Graph extends JPanel
 
 	public int [][] inputTable =new int[][]{};
 	public String[] Nodename = new String[] {}; 
-	
+	private Driving drive;
 	ArrayList<Node> all = new ArrayList<Node>();
 	ArrayList<Edge> edges = new ArrayList<Edge>();
 	
-	public void GenerateGraph()
+	public void GenerateGraph(int n)
 	{
 		//int n= 12;
-		n=12;
+		
 		inputTable = new int[n][n];
 		Nodename = new String[n];
 		for(int i=0;i< Nodename.length;i++)
@@ -31,9 +31,9 @@ public class Graph extends JPanel
 			for(int j=i+1;j< Nodename.length;j++)
 			{ 
 				
-				if(Math.random() > 0.6)
+				if(Math.random() > 3)
 				{
-					inputTable[i][j] =(int)(Math.random() * 20);
+					//inputTable[i][j] =n;
 					inputTable[j][i] =inputTable[i][j] ;
 				}
 			}
@@ -67,9 +67,9 @@ public class Graph extends JPanel
 	}*/
 	
 	
-	public void ProcessInput()
+	public void ProcessInput(int n)
 	{
-		GenerateGraph();
+		GenerateGraph(n);
 		//GenerateGraph2();
 		all = new ArrayList<Node>();
 		edges =new ArrayList<Edge>();
@@ -103,9 +103,10 @@ public class Graph extends JPanel
 
 
 	
-	public Graph()
+	public Graph(int jun,int vech)
 	{
-		ProcessInput();
+		
+		ProcessInput(jun);
 		
 		for(int j=0;j< Nodename.length;j++)
 		{ 

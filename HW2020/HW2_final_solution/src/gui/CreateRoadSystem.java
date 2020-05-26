@@ -38,7 +38,9 @@ public class CreateRoadSystem extends JFrame implements ActionListener {
 	private static final String[] jbnButtonsItems = { "Ok","Cancel"};
 	Driving d= new Driving(3,0);
 	Hashtable<Integer, JLabel> position = new Hashtable<Integer, JLabel>();
-
+	private int valueJunctions;
+	
+	private int valueVehicles;
 	// main class 
     public CreateRoadSystem() 
     { 
@@ -81,8 +83,10 @@ public class CreateRoadSystem extends JFrame implements ActionListener {
 	    this.jSliderJunctions.addChangeListener(new ChangeListener() {
 	        public void stateChanged(ChangeEvent e) {
 	        	lableJunctions.setText("Value of the slider is: " + ((JSlider)e.getSource()).getValue());
-	            int valueJunctions =(int)getjSliderJunctions().getValue();
-	            System.out.println("ddd"+valueJunctions);
+	           
+	        	setValueJunctions((int)getjSliderJunctions().getValue());
+	        	//int valueJunctions =(int)getjSliderJunctions().getValue();
+	            //System.out.println("Junction "+getValueJunctions());
 	        	
 	        }
 	    });
@@ -125,8 +129,10 @@ public class CreateRoadSystem extends JFrame implements ActionListener {
 	    this.jSliderVehicles.addChangeListener(new ChangeListener() {
 	        public void stateChanged(ChangeEvent e) {
 	        	lableVehicles.setText("Value of the slider is: " + ((JSlider)e.getSource()).getValue());
-	            int valueVehicles =(int)getjSliderVehicles().getValue();
-	            System.out.println("ddd"+valueVehicles);
+	            //int valueVehicles =(int)getjSliderVehicles().getValue();
+	           // System.out.println("vehicle"+valueVehicles);
+	            setValueVehicles((int)getjSliderVehicles().getValue());
+	            //System.out.println("vehicle "+getValueVehicles());
 	        }
 	       
 	    });
@@ -198,8 +204,8 @@ public class CreateRoadSystem extends JFrame implements ActionListener {
 						Container contentPane = road.getContentPane();
 						road.setTitle("Create road system");
 						road.setSize(800, 600);
-						Graph g=new Graph();
-					
+						Graph g=new Graph(getValueJunctions(),getValueVehicles());
+						//Driving drive=new Driving(getValueJunctions(), getValueVehicles());
 						road.setTopPanel(g);
 			        	road.getMainPanel().setTopComponent(road.getTopPanel());
 			        	road.setResizable(true);
@@ -235,6 +241,22 @@ public class CreateRoadSystem extends JFrame implements ActionListener {
 
 	public JLabel getLableJunctions() {
 		return lableJunctions;
+	}
+
+	public int getValueJunctions() {
+		return valueJunctions;
+	}
+
+	public void setValueJunctions(int valueJunctions) {
+		this.valueJunctions = valueJunctions;
+	}
+
+	public int getValueVehicles() {
+		return valueVehicles;
+	}
+
+	public void setValueVehicles(int valueVehicles) {
+		this.valueVehicles = valueVehicles;
 	}
 
 

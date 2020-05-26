@@ -37,7 +37,7 @@ public class Node
 			result=result.add(temp);
 			
 		}
-		System.out.println(result.Size());
+		//System.out.println(result.Size());
 		acc = this.acc.add(result); 
 
 		return result;
