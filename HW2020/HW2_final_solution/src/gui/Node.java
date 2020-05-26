@@ -39,7 +39,7 @@ public class Node
 		}
 		System.out.println(result.Size());
 		acc = this.acc.add(result); 
-		System.out.println("acc= "+acc.Size());
+	//	System.out.println("acc= "+acc.Size());
 		return result;
 	}
 	public Vector calForceEdge( )
@@ -51,7 +51,7 @@ public class Node
 			
 		} 
 		acc = this.acc.add(result); 
-		System.out.println("acc 2 = "+acc.Size());
+	//	System.out.println("acc 2 = "+acc.Size());
 		return result;
 	}
 	
@@ -61,7 +61,7 @@ public class Node
 		pos= pos.add(vel);
 		
 		vel=vel.Mul(0.99);
-		System.out.println(pos.getX() + " , " + pos.getY());
+		//System.out.println(pos.getX() + " , " + pos.getY());
 	}
 	
 	public void Draw(Graphics g)

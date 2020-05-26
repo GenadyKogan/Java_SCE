@@ -81,11 +81,12 @@ public class CreateRoadSystem extends JFrame implements ActionListener {
 	    this.jSliderJunctions.addChangeListener(new ChangeListener() {
 	        public void stateChanged(ChangeEvent e) {
 	        	lableJunctions.setText("Value of the slider is: " + ((JSlider)e.getSource()).getValue());
+	            int valueJunctions =(int)getjSliderJunctions().getValue();
+	            System.out.println("ddd"+valueJunctions);
 	        	
 	        }
 	    });
 	        
-	    System.out.println(this.jSliderJunctions.getValue());
         panel.add(lableJunctions);
         panel.add(jSliderJunctions); 
         
@@ -124,6 +125,8 @@ public class CreateRoadSystem extends JFrame implements ActionListener {
 	    this.jSliderVehicles.addChangeListener(new ChangeListener() {
 	        public void stateChanged(ChangeEvent e) {
 	        	lableVehicles.setText("Value of the slider is: " + ((JSlider)e.getSource()).getValue());
+	            int valueVehicles =(int)getjSliderVehicles().getValue();
+	            System.out.println("ddd"+valueVehicles);
 	        }
 	       
 	    });

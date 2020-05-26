@@ -154,7 +154,7 @@ public class RoadFrame extends JFrame  implements ActionListener {
 					//	mainPanel.setTopComponent(topPanel);
 						this.setVisible(false);
 						this.setResizable(false);
-						roadSystem.getjSliderJunctions().addChangeListener(new ChangeListener() {
+					/*	roadSystem.getjSliderJunctions().addChangeListener(new ChangeListener() {
 						       public void stateChanged(ChangeEvent e) {
 						           if (!roadSystem.getjSliderJunctions().getValueIsAdjusting()) {
 						               int valueJunctions =(int)roadSystem.getjSliderJunctions().getValue();
@@ -175,7 +175,7 @@ public class RoadFrame extends JFrame  implements ActionListener {
 							           
 							        }
 
-								  });
+								  });*////
 						break;
 					case 1:
 						System.exit(0);
