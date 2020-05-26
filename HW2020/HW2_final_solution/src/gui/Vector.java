@@ -1,6 +1,6 @@
 package gui;
 
-
+//
 public class Vector
 {
 	private double x,y;
