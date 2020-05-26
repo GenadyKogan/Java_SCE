@@ -32,7 +32,6 @@ public class RoadFrame extends JFrame  implements ActionListener {
 	private static final String[] vehiclesColor = { "Blue","Magenta","Orange","Random"};
 	private static final String[] backGround = { "Blue","None"};
 	private static final String[] jbnButtonsItems1 = { "Create read system","Start","Stop","Resume","info"};
-	Graph g=new Graph();
 	private static int valJuncSlider;
 	/*************************************************************/
 	public RoadFrame () 
@@ -171,7 +170,6 @@ public class RoadFrame extends JFrame  implements ActionListener {
 							           if (!roadSystem.getjSliderVehicles().getValueIsAdjusting()) {
 							             
 							               int valueVehicles =(int)roadSystem.getjSliderVehicles().getValue();
-							               g.setN(valueVehicles);
 							               System.out.println("ddd"+valueVehicles);
 							           }
 							           

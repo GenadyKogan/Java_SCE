@@ -23,7 +23,7 @@ public class Graph extends JPanel
 	public void GenerateGraph()
 	{
 		//int n= 12;
-		n=getN();
+		n=12;
 		inputTable = new int[n][n];
 		Nodename = new String[n];
 		for(int i=0;i< Nodename.length;i++)
@@ -100,13 +100,7 @@ public class Graph extends JPanel
 	}
 	
 	
-	public int getN() {
-		return n;
-	}
-	
-	public void setN(int n) {
-		this.n = n;
-	}
+
 
 	
 	public Graph()
