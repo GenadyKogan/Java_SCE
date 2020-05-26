@@ -242,7 +242,7 @@ public class Graph extends JPanel
 		for(int j=0;j< Nodename.length;j++)
 		{
 			 Vector vv = all.get(j).pos;
-			 vv= vv.Mul(700.0 / length);
+			 vv= vv.Mul(1000.0 / length);
 			 all.get(j).setPosToDraw(vv);
 		}
 		

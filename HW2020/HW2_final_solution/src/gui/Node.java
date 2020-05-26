@@ -18,11 +18,16 @@ public class Node
 	public Color color;
 	public Node(Driving drive, int i)
 	{
+
+		pos= new Vector(300+(int)(Math.random()*5), 300+(int)(Math.random()*5));
+
 	//	pos= new Vector(300+(int)(Math.random()*300-150), 300+(int)(Math.random()*300-150));
 		pos= new Vector(300+(int)drive.getMap().getJunctions().get(i).getX(), 300+(int)drive.getMap().getJunctions().get(i).getY());
 		System.out.println("i="+i);
 		System.out.println("300+x val="+(int)(300+drive.getMap().getJunctions().get(i).getX()));
 		System.out.println("300+y val ="+(int)(300+drive.getMap().getJunctions().get(i).getY()));
+
+
 		vel = new Vector(0,0);
 		acc = new Vector(0,0);
 		//color = new Color((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
