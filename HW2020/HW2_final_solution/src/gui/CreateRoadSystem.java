@@ -85,7 +85,7 @@ public class CreateRoadSystem extends JFrame implements ActionListener {
 	        }
 	    });
 	        
-	    System.out.println(this.jSliderJunctions.getValue());
+	   // System.out.println(this.jSliderJunctions.getValue());
         panel.add(lableJunctions);
         panel.add(jSliderJunctions); 
         

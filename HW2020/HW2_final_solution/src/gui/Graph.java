@@ -44,9 +44,9 @@ public class Graph extends JPanel
 		}
 	}
 	
-	public void GenerateGraph2()
+	/*public void GenerateGraph2()
 	{
-		n=12;
+		n=6;
 		inputTable = new int[n][n];
 		Nodename = new String[n];
 		for(int i=0;i< Nodename.length;i++)
@@ -64,7 +64,7 @@ public class Graph extends JPanel
 		{ 
 			Nodename[i]= "" + (char)(65+i);
 		}
-	}
+	}*/
 	
 	
 	public void ProcessInput()
@@ -106,7 +106,28 @@ public class Graph extends JPanel
 	public Graph()
 	{
 		ProcessInput();
-		Thread t = new Thread(new Runnable()
+		
+		for(int j=0;j< Nodename.length;j++)
+		{ 
+			all.get(j).acc=new Vector();
+			all.get(j).calForce(all);
+			all.get(j). calForceEdge( ); 
+			//all.get(j).move();
+		}
+		//scale
+		Scale();
+		//centroid
+		Vector centoid = all.get(0).getCentroid(all);
+		Vector temp = (new Vector(300,300)).sub(centoid);
+		for(int j=0;j< Nodename.length;j++)
+		{ 
+			 all.get(j).posTodraw=all.get(j).posTodraw.add(temp) ;
+		}
+		
+		
+		
+		
+		/*Thread t = new Thread(new Runnable()
 		{ 
 			@Override
 			public void run()
@@ -125,7 +146,7 @@ public class Graph extends JPanel
 						all.get(j).acc=new Vector();
 						all.get(j).calForce(all);
 						all.get(j). calForceEdge( ); 
-						all.get(j).move();
+						//all.get(j).move();
 					}
 					//scale
 					Scale();
@@ -145,7 +166,7 @@ public class Graph extends JPanel
 				 }
 			}
 		});
-		t.start();
+		t.start();*/
 		
 		
 		
