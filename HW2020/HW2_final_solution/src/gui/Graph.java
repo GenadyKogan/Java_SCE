@@ -34,14 +34,14 @@ public class Graph extends JPanel
 			{ 
 
 					inputTable[i][j] =n;
-					inputTable[j][i] =inputTable[i][j] ;
+					//inputTable[i][i] =inputTable[i][j] ;
 
 			}
 		}
-		for(int i=0;i< Nodename.length;i++)
-		{ 
-			Nodename[i]= "" + (char)(65+i);
-		}
+//		for(int i=0;i< Nodename.length;i++)
+//		{ 
+//			Nodename[i]= "" + (char)(65+i);
+//		}
 	}
 	
 	/*public void GenerateGraph2()
@@ -111,8 +111,8 @@ public class Graph extends JPanel
 		for(int j=0;j< Nodename.length;j++)
 		{ 
 			all.get(j).acc=new Vector();
-			all.get(j).calForce(all);
-			all.get(j). calForceEdge( ); 
+			//all.get(j).calForce(all);
+			//all.get(j). calForceEdge( ); 
 			//all.get(j).move();
 		}
 		//scale
@@ -197,6 +197,12 @@ public class Graph extends JPanel
 	}
 	*/
 	
+	
+	
+	
+	//pos= new Vector(300+(int)drive.getMap().getJunctions().get(i).getX(), 300+(int)drive.getMap().getJunctions().get(i).getY());
+	
+	
 	public void Scale()
 	{
 		double XMin= Integer.MAX_VALUE;
@@ -230,7 +236,7 @@ public class Graph extends JPanel
 		for(int j=0;j< Nodename.length;j++)
 		{
 			 Vector vv = all.get(j).pos;
-			 vv= vv.Mul(400.0 / length);
+			 vv= vv.Mul(300.0 / length);
 			 all.get(j).setPosToDraw(vv);
 		}
 		

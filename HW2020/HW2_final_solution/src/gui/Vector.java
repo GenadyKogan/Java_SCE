@@ -11,6 +11,7 @@ public class Vector
 	public Vector(double x,double y){
 		this.setX(x);
 		this.setY(y);
+		
 	}
 	public Vector add(Vector v){
 		return new Vector(x+v.x , y+v.y);
