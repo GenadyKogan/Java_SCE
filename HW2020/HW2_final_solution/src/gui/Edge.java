@@ -22,6 +22,7 @@ public class Edge
 		//g.drawString(""+length,(int) xx,(int) yy);
 	}
 	
+
 //	public Vector getForce(Node toCal)
 //	{
 //		Vector dir ;
@@ -38,6 +39,25 @@ public class Edge
 ////		dir = dir.Unit().Mul(ss);
 //		return dir;
 //	}
+
+
+	/*public Vector getForce(Node toCal)
+	{
+		Vector dir ;
+		if(a== toCal) {
+			dir = b.pos.sub(a.pos);
+		}
+		else
+		{
+			dir = a.pos.sub(b.pos);
+		}
+		 double t=dir.Size()-10*length;
+		double ss = Math.signum(t) *Math.log( Math.abs(t))*0.01;
+		//System.out.println("ss=" + ss);
+		dir = dir.Unit().Mul(ss);
+		return dir;
+	}
+*/
 
 
 
