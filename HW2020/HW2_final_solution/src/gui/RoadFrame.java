@@ -18,6 +18,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import components.Driving;
+import utilities.Timer;
 public class RoadFrame extends JFrame  implements ActionListener {
 	private JSplitPane mainPanel  = new JSplitPane();
 	private JPanel jplMaster;
@@ -29,7 +30,8 @@ public class RoadFrame extends JFrame  implements ActionListener {
 	 private final JScrollPane scrollPane;
 	Font f12 = new Font("Times New Roman",12, 12);
 	Font f121 = new Font("Times New Roman", 12, 12);
-	private static final String[] vehiclesColor = { "Blue","Magenta","Orange","Random"};
+	//private static final String[] vehiclesColor = { "Blue","Magenta","Orange","Random"};
+	private JMenuItem  jmBlue, jmMagenta, jmOrange, jmRandom;
 	private static final String[] backGround = { "Blue","None"};
 	private static final String[] jbnButtonsItems1 = { "Create read system","Start","Stop","Resume","info"};
 	private static int valJuncSlider;
@@ -45,7 +47,7 @@ public class RoadFrame extends JFrame  implements ActionListener {
 		jmenuFile.add(jmenuitemExit);
 		jmenuBackGround = new JMenu("BackGround");
 		jmenuBackGround.setFont(f121);
-		jmenuFile.setMnemonic(KeyEvent.VK_H);
+		jmenuBackGround.setMnemonic(KeyEvent.VK_H);
 		jmenuitemBlue=new JMenuItem("Blue");
 		jmenuitemNone=new JMenuItem("None");
 		jmenuBackGround.add(jmenuitemBlue);
@@ -59,9 +61,20 @@ public class RoadFrame extends JFrame  implements ActionListener {
 //		  }
 		jmenuVehiclesColor = new JMenu("VehiclesColor");
 		jmenuVehiclesColor.setFont(f121);
-	      for (String btnText : vehiclesColor) {
+		jmenuVehiclesColor.setMnemonic(KeyEvent.VK_H);
+		/*for (String btnText : vehiclesColor) {
 	    	  jmenuVehiclesColor.add(btnText);
-		  }
+		  }*/
+		jmBlue=new JMenuItem("Blue");
+		jmMagenta=new JMenuItem("Magenta");
+		jmOrange=new JMenuItem("Orange");
+		jmRandom=new JMenuItem("Random");	
+		jmenuVehiclesColor.add(jmBlue);
+		jmenuVehiclesColor.add(jmMagenta);		
+		jmenuVehiclesColor.add(jmOrange);
+		jmenuVehiclesColor.add(jmRandom);
+
+		
 		jmenuHelp = new JMenu("Help");
 		jmenuHelp.setFont(f121);
 		jmenuHelp.setMnemonic(KeyEvent.VK_H);
@@ -110,6 +123,14 @@ public class RoadFrame extends JFrame  implements ActionListener {
 		jmenuitemBlue.addActionListener(this);
 		jmenuitemNone.addActionListener(this);
 		jmenuitemHelp.addActionListener(this);
+		
+		jmBlue.addActionListener(this);
+		jmMagenta.addActionListener(this);
+		jmOrange.addActionListener(this);
+		jmRandom.addActionListener(this);
+
+		
+		
 	//  addActionListener
 
 		addWindowListener(new WindowAdapter() {
@@ -124,6 +145,10 @@ public class RoadFrame extends JFrame  implements ActionListener {
 //
 	@Override
 	public void actionPerformed(ActionEvent e) {
+        CreateRoadSystem roadSystem = new CreateRoadSystem();
+		Container contentPane = roadSystem.getContentPane();
+		roadSystem.setTitle("Create road system");
+		roadSystem.setSize(400, 300);
 		if(e.getSource()==jmenuitemExit)
 			System.exit(0);
 		else if(e.getSource()==jmenuitemBlue) {
@@ -136,8 +161,33 @@ public class RoadFrame extends JFrame  implements ActionListener {
 			JDialog dlgAbout = new CustomABOUTDialog(this, "Sapir\n Gena\n", true);
 			dlgAbout.setVisible(true);
 		}
+		else if(e.getSource()==jmBlue) {
+            Color tempclr  = new Color(0, 0, 255);
+            roadSystem.getMap().setColor(tempclr);
+            roadSystem.getMap().repaint();
+
+		}
+		else if(e.getSource()==this.jmMagenta) {
+            Color tempclr  = new Color(255, 0, 255);
+            roadSystem.getMap().setColor(tempclr);
+            roadSystem.getMap().repaint();
+	
+		}
+		else if(e.getSource()==this.jmOrange) {
+            Color tempclr  = new Color(255, 200, 0);
+            roadSystem.getMap().setColor(tempclr);
+            roadSystem.getMap().repaint();
+		
+		}
+		else if(e.getSource()==jmRandom) {
+            Color tempclr  = new Color(0, 255, 255);
+            roadSystem.getMap().setColor(tempclr);
+            roadSystem.getMap().repaint();
+		
+		}
 		for (int i=0; i<jbnButtons.length; i++)
 		{
+
 			if(e.getSource() == jbnButtons[i])
 			{
 				
@@ -145,41 +195,27 @@ public class RoadFrame extends JFrame  implements ActionListener {
 				{
 					case 0:
 						
-				        CreateRoadSystem roadSystem = new CreateRoadSystem();
-						Container contentPane = roadSystem.getContentPane();
-						roadSystem.setTitle("Create road system");
-						roadSystem.setSize(400, 300);
+
 						roadSystem.setVisible(true);
 						roadSystem.setResizable(true);
-						//this.setTopPanel(new Graph());
-						//mainPanel.setTopComponent(topPanel);
 						this.setVisible(false);
 						this.setResizable(false);
-					/*	roadSystem.getjSliderJunctions().addChangeListener(new ChangeListener() {
-						       public void stateChanged(ChangeEvent e) {
-						           if (!roadSystem.getjSliderJunctions().getValueIsAdjusting()) {
-						               //int valueJunctions =(int)roadSystem.getjSliderJunctions().getValue();
-						        	   setValueJunctions((int)roadSystem.getjSliderJunctions().getValue());
-						               System.out.println("Junction "+valueJunctions);
-						              
-						           }
-						        }
 
-							  });
-						roadSystem.getjSliderVehicles().addChangeListener(new ChangeListener() {
-							       public void stateChanged(ChangeEvent e) {
-							           if (!roadSystem.getjSliderVehicles().getValueIsAdjusting()) {
-							             
-							               int valueVehicles =(int)roadSystem.getjSliderVehicles().getValue();
-							               System.out.println("vehicle"+valueVehicles);
-							           }
-							           
-							        }
-
-								  });*////
 						break;
 					case 1:
-						System.exit(0);
+
+						roadSystem.setDrivingTime(0);
+		                for (int j=0; j<8;j++) {
+
+		                	roadSystem.getMap().repaint();
+		                    for(Timer element: roadSystem.getAllTimedElements()) {
+		                        element.incrementDrivingTime();
+		                        System.out.println();
+		                        roadSystem.getMap().repaint();
+
+		                    }
+
+		                }
 						break;
 					case 2:
 						System.exit(0);
@@ -188,7 +224,39 @@ public class RoadFrame extends JFrame  implements ActionListener {
 						System.exit(0);
 						break;
 					case 4:
-						System.exit(0);
+						
+
+		                if (roadSystem.isInfoflag() == true){
+		                	roadSystem.setInfoflag(false);
+
+		                	//roadSystem.getTable().setVisible(false);
+		                    System.out.println("111111111");
+		                    JPanel table= new JPanel();
+		                    table.add(roadSystem.getTable());
+		                    table.setVisible(true);
+		                  //  roadSystem.getMap().setVisible(true);
+		                  /*  JPanel table= new JPanel();
+		                    table.add(roadSystem.getTable());
+		                    table.setVisible(true);*/
+
+
+		                }
+		                else{
+		                    roadSystem.setInfoflag(true);
+		                    roadSystem.setTable(new InfoTable( roadSystem.getVehicles()));
+		                 //   roadSystem.getTable().setVisible(true);
+		                    
+		                    JPanel table= new JPanel();
+		                    table.add(roadSystem.getTable());
+		                    table.setVisible(true);
+		                    System.out.println("2222222222222");
+		                  //  this.add(table);
+		        		//	this.setTopPanel(roadSystem.getTable());
+					     //   this.getMainPanel().setTopComponent(this.getTopPanel());
+		               //     roadSystem.getMap().setVisible(false);
+		                    
+		   
+		                }
 						break;
 				}
 			}

@@ -1,62 +1,42 @@
 package gui;
 
+import java.util.ArrayList;
+
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import components.Vehicle;
-////
 
 
+import javax.swing.*;
+import javax.swing.border.TitledBorder;
+import java.util.ArrayList;
 
 
-public class InfoTable extends JFrame{
+public class InfoTable extends JPanel{
 
-    public InfoTable(Vehicle vehicle, int racersNumber){
-        super("Vehicles information");
-        
-        String[] columnNames = {"Vihicle #","Type","Location","Time on loc","Speed"};
-        String[][] data = new String[racersNumber][5];
-        int i=0;
-     
+    public InfoTable(ArrayList<Vehicle> vehicles){
+        this.setBorder(BorderFactory.createTitledBorder( BorderFactory.createEtchedBorder()));
+        String[][] rec2 = new String[vehicles.size()][5];
+        for (int i=0; i<vehicles.size();i++) {
 
-       /* for (Vehicle vehicle: vehicle.){
-=======
-      /*  for (Vehicle vehicle: vehicle.getFinishedCompetitors()){
->>>>>>> branch 'master' of https://github.com/GenadyKogan/Java_SCE.git
-        	data[i][0] =  String.valueOf(vehicle.getId());
-            data[i][1] = ""+vehicle.getVehicleType();
-            data[i][2] = ""+vehicle.getCurrentRoute();
-            data[i][3] = ""+vehicle.getVehicleType().getAverageSpeed();
-            data[i][4] = "Yes";
-            i++;
+            rec2[i][0]= String.valueOf(vehicles.get(i).getId());
+            rec2[i][1] = vehicles.get(i).getVehicleType().toString();
+            rec2[i][2] = vehicles.get(i).getLastRoad().toString();
+            rec2[i][3] = String.valueOf(vehicles.get(i).getTimeOnCurrentPart());
+            rec2[i][4] = String.valueOf(vehicles.get(i).getVehicleType().getAverageSpeed());
+
         }
-                    
-<<<<<<< HEAD
-        for (Vehicle vehicle: vehicle.)){
-        	data[i][0] =  String.valueOf(vehicle.getId());
-=======
-        for (Vehicle vehicle: vehicle.getActiveCompetitors()){
-            data[i][0] = String.valueOf(vehicle.getId());
->>>>>>> branch 'master' of https://github.com/GenadyKogan/Java_SCE.git
-            data[i][1] = ""+vehicle.getVehicleType();
-            data[i][2] = ""+vehicle.getCurrentRoute();
-            data[i][3] = ""+vehicle.getVehicleType().getAverageSpeed();
-            data[i][4] = "No";
-            i++;
-        }*/
-                    
-        JTable table = new JTable(data, columnNames);
-        table.setPreferredScrollableViewportSize(table.getPreferredSize());
-        JScrollPane scrollPane = new JScrollPane(table);
+        String[] header = { "Vehicle", "Type", "Location" , "Time on loc", "Speed"};
+        JTable table = new JTable(rec2, header);
+        this.add(new JScrollPane(table));
+        this.setVisible(true);
 
-        JPanel tabPan = new JPanel();
-        tabPan.add(scrollPane);                   
-
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setContentPane(tabPan);
-        pack();
-        setVisible(true); 
     }
+
+	
+
 }
