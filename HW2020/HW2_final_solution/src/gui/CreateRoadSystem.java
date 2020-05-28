@@ -250,6 +250,7 @@ public class CreateRoadSystem extends JFrame implements ActionListener {
 		                
 
 		            //    table = new InfoTable(vehicles);
+		             //   table.setSize(400, 300);
 		             //   table.setVisible(false);
 		             
 

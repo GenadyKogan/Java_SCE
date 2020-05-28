@@ -225,41 +225,14 @@ public class RoadFrame extends JFrame  implements ActionListener {
 						break;
 					case 4:
 						System.out.println("Info");
+						InfoTable Itable= new InfoTable(roadSystem.getVehicles());
+						Itable.setSize(400, 300);
+					     JPanel Jtable= new JPanel();
+							Jtable.add(Itable);
 
-		                if (roadSystem.isInfoflag() == true){
-		                	//roadSystem.setInfoflag(false);
+					     Jtable.setVisible(true);
 
-		                	//roadSystem.getTable().setVisible(false);
-		                    System.out.println("111111111");
-		                    JPanel table= new JPanel();
-		                    table.setSize(1200, 1200);
-		               //     table.add(roadSystem.getTable());
-		                    table.setVisible(true);
-		                    
-		                  //  roadSystem.getMap().setVisible(true);
-		                  /*  JPanel table= new JPanel();
-		                    table.add(roadSystem.getTable());
-		                    table.setVisible(true);*/
-
-
-		                }
-		                else{
-		                    roadSystem.setInfoflag(true);
-		                    roadSystem.setTable(new InfoTable( roadSystem.getVehicles()));
-		                 //   roadSystem.getTable().setVisible(true);
-		                    
-		                    JPanel table= new JPanel();
-		                   // table.add(roadSystem.getTable());
-		                    table.setSize(1200,1200);
-		                    table.setVisible(true);
-		                    System.out.println("2222222222222");
-		                  //  this.add(table);
-		        		//	this.setTopPanel(roadSystem.getTable());
-					     //   this.getMainPanel().setTopComponent(this.getTopPanel());
-		               //     roadSystem.getMap().setVisible(false);
-		                    //sysojh
-		   
-		                }
+		             
 						break;
 				}
 			}
