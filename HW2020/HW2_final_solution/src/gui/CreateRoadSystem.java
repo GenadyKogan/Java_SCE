@@ -10,13 +10,15 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import gui.RoadFrame;
+import utilities.Timer;
+
 import javax.swing.*; 
 ///
 import java.awt.geom.Ellipse2D;
 
 import javax.swing.*;
 
-
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Hashtable;
 import java.util.Random;
@@ -25,7 +27,10 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import components.Driving;
+import components.Map;
 import components.Road;
+import components.TrafficLights;
+import components.Vehicle;
 public class CreateRoadSystem extends JFrame implements ActionListener {
 	 // frame 
     private JFrame frame, tempFrame; 
@@ -36,12 +41,21 @@ public class CreateRoadSystem extends JFrame implements ActionListener {
 	private JPanel panel, tempPanel;
 	private JButton jbnButtons[];
 	private static final String[] jbnButtonsItems = { "Ok","Cancel"};
-	
+
 	Hashtable<Integer, JLabel> position = new Hashtable<Integer, JLabel>();
 	private int valueJunctions;
 	
 	private int valueVehicles;
 	// main class 
+	
+	
+    private static InfoTable table;
+    private static int drivingTime;
+    private static ArrayList<Timer> allTimedElements;
+    private static Map drivermap;
+    private static ArrayList<Vehicle> vehicles;
+    private static boolean infoflag = false;
+    private static graphGui map;
     public CreateRoadSystem() 
     { 
 
@@ -192,7 +206,11 @@ public class CreateRoadSystem extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		for (int i=0; i<jbnButtons.length; i++)
 		{
-			
+			RoadFrame road = new RoadFrame();
+			Container contentPane = road.getContentPane();
+			road.setTitle("Create road system");
+			road.setSize(800, 600);
+        	
 			if(e.getSource() == jbnButtons[i])
 			{
 				
@@ -200,21 +218,51 @@ public class CreateRoadSystem extends JFrame implements ActionListener {
 				{
 					case 0:
 
-						RoadFrame road = new RoadFrame();
-						Container contentPane = road.getContentPane();
-						road.setTitle("Create road system");
-						road.setSize(800, 600);
-						Graph g=new Graph(getValueJunctions(),getValueVehicles());
-						//Driving drive=new Driving(getValueJunctions(), getValueVehicles());
-						road.setTopPanel(g);
-			        	road.getMainPanel().setTopComponent(road.getTopPanel());
-			        	road.setResizable(true);
-			        	road.setVisible(true);
+
+			        	drivermap =new Map(this.getValueJunctions());
+			        	vehicles=new ArrayList<Vehicle>();
+
+		                while(vehicles.size()<getValueVehicles()) {
+		                    Road temp=drivermap.getRoads().get(getRandomInt(0,drivermap.getRoads().size()));//random road from the map
+		                    if( temp.getEnabled())
+		                        vehicles.add(new Vehicle(temp));
+		                }
+		                
+		                allTimedElements=new ArrayList<Timer>();
+		                allTimedElements.addAll(vehicles);
+
+		                for (TrafficLights light: drivermap.getLights()) {
+		                    if (light.getTrafficLightsOn()) {
+		                        allTimedElements.add(light);
+		                    }
+		                }
+
+		                map = new graphGui(drivermap.getJunctions(),vehicles);
+		                for (int j = 0;j<drivermap.getJunctions().size();j++){
+		          
+
+		                    System.out.println("Junc number "+ j + "X and Y:");
+
+		                    System.out.println(drivermap.getJunctions().get(j).getX());
+		                    System.out.println(drivermap.getJunctions().get(j).getY());
+		                
+		                }
+		                
+
+		                table = new InfoTable(vehicles);
+		                table.setVisible(false);
+		             
+
+		    			road.setTopPanel(map);
+				        road.getMainPanel().setTopComponent(road.getTopPanel());
+				        road.setResizable(true);
+				        road.setVisible(true);
+
+
 						break;
 					case 1:
-						this.jSliderJunctions.setValue(3);
-						this.jSliderVehicles.setValue(0);
-					
+		                this.setVisible(false);
+		            	this.setResizable(false);
 						break;
 
 				}
@@ -224,6 +272,10 @@ public class CreateRoadSystem extends JFrame implements ActionListener {
 		
 	}
 
+
+public void setjSliderVehicles(JSlider jSliderVehicles) {
+		this.jSliderVehicles = jSliderVehicles;
+	}
 
 /********************************************************************************/
 
@@ -259,7 +311,67 @@ public class CreateRoadSystem extends JFrame implements ActionListener {
 		this.valueVehicles = valueVehicles;
 	}
 
+    private static int getRandomInt(int minimum, int maximum) {
+        return new Random().nextInt(maximum-minimum)+minimum;
+    }
 
+	public static int getDrivingTime() {
+		return drivingTime;
+	}
+
+	public static void setDrivingTime(int drivingTime) {
+		CreateRoadSystem.drivingTime = drivingTime;
+	}
+
+	public static ArrayList<Timer> getAllTimedElements() {
+		return allTimedElements;
+	}
+
+	public static void setAllTimedElements(ArrayList<Timer> allTimedElements) {
+		CreateRoadSystem.allTimedElements = allTimedElements;
+	}
+
+	public static Map getDrivermap() {
+		return drivermap;
+	}
+
+	public static void setDrivermap(Map drivermap) {
+		CreateRoadSystem.drivermap = drivermap;
+	}
+
+	public static ArrayList<Vehicle> getVehicles() {
+		return vehicles;
+	}
+
+	public static void setVehicles(ArrayList<Vehicle> vehicles) {
+		CreateRoadSystem.vehicles = vehicles;
+	}
+
+	public static boolean isInfoflag() {
+		return infoflag;
+	}
+
+	public static void setInfoflag(boolean infoflag) {
+		CreateRoadSystem.infoflag = infoflag;
+	}
+
+	public static graphGui getMap() {
+		return map;
+	}
+
+	public static void setMap(graphGui map) {
+		CreateRoadSystem.map = map;
+	}
+
+	public static InfoTable getTable() {
+		return table;
+	}
+
+	public static void setTable(InfoTable table) {
+		CreateRoadSystem.table = table;
+	}
+    
+    
 /********************************************************************************/
 
 }
