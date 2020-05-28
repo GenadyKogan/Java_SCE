@@ -33,7 +33,7 @@ public class InfoTable extends JFrame{
         JTable table = new JTable(rec2, header);
        
         this.add(new JScrollPane(table));
-      
+      //
         this.setVisible(true);
         this.setSize(500, 500);
     }
