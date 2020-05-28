@@ -36,6 +36,10 @@ public class RoadFrame extends JFrame  implements ActionListener {
 	private static final String[] jbnButtonsItems1 = { "Create read system","Start","Stop","Resume","info"};
 	private static int valJuncSlider;
 	private int valueJunctions;
+	
+	
+	
+    private static InfoTable table;
 	/*************************************************************/
 	public RoadFrame () 
 	{
@@ -231,11 +235,11 @@ public class RoadFrame extends JFrame  implements ActionListener {
 
 		                	//roadSystem.getTable().setVisible(false);
 		                    System.out.println("111111111");
-		                    JPanel table= new JPanel();
-		                    table.setSize(1200, 1200);
-		               //     table.add(roadSystem.getTable());
-		                    table.setVisible(true);
+		                    //JPanel table= new JPanel();
 		                    
+		               //     table.add(roadSystem.getTable());
+		                    
+		                   // table.setSize(1200, 1200);
 		                  //  roadSystem.getMap().setVisible(true);
 		                  /*  JPanel table= new JPanel();
 		                    table.add(roadSystem.getTable());
@@ -248,16 +252,17 @@ public class RoadFrame extends JFrame  implements ActionListener {
 		                    roadSystem.setTable(new InfoTable( roadSystem.getVehicles()));
 		                 //   roadSystem.getTable().setVisible(true);
 		                    
-		                    JPanel table= new JPanel();
+		                    //JPanel table= new JPanel();
 		                   // table.add(roadSystem.getTable());
-		                    table.setSize(1200,1200);
-		                    table.setVisible(true);
+		                   
+		                    //table.setVisible(true);
 		                    System.out.println("2222222222222");
 		                  //  this.add(table);
 		        		//	this.setTopPanel(roadSystem.getTable());
 					     //   this.getMainPanel().setTopComponent(this.getTopPanel());
 		               //     roadSystem.getMap().setVisible(false);
 		                    //sysojh
+		                 
 		   
 		                }
 						break;

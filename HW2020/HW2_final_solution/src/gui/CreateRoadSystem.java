@@ -252,7 +252,7 @@ public class CreateRoadSystem extends JFrame implements ActionListener {
 		            //    table = new InfoTable(vehicles);
 		             //   table.setVisible(false);
 		             
-
+		                
 		    			road.setTopPanel(map);
 				        road.getMainPanel().setTopComponent(road.getTopPanel());
 				        road.setResizable(true);
