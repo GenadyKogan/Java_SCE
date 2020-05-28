@@ -12,10 +12,11 @@ import java.util.ArrayList;
 public class Node
 {
 	public String name;
-	public ArrayList<Edge> Adj=new ArrayList<Edge>();
+	//public ArrayList<Edge> Adj=new ArrayList<Edge>();
 	public Vector pos,vel,acc;
 	public Vector posTodraw;
 	public Color color;
+	
 	public Node(Driving drive, int i)
 	{
 
@@ -24,15 +25,16 @@ public class Node
 	//	pos= new Vector(300+(int)(Math.random()*300-150), 300+(int)(Math.random()*300-150));
 		pos= new Vector(300+(int)drive.getMap().getJunctions().get(i).getX(), 300+(int)drive.getMap().getJunctions().get(i).getY());
 
-		System.out.println("i="+i);
-		System.out.println("300+x val="+(int)(300+drive.getMap().getJunctions().get(i).getX()));
-		System.out.println("300+y val ="+(int)(300+drive.getMap().getJunctions().get(i).getY()));
+		
+		//System.out.println("300+x val="+(int)(300+drive.getMap().getJunctions().get(i).getX()));
+		//System.out.println("300+y val ="+(int)(300+drive.getMap().getJunctions().get(i).getY()));
 
 
 
 		//vel = new Vector(0,0);
 		//acc = new Vector(0,0);
 		//color = new Color((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
+		System.out.println("="+i);
 		
 	}
 	
@@ -117,7 +119,7 @@ public class Node
 		g.setColor(color);
 		g.fillOval((int)(posTodraw.getX()-10), (int)(posTodraw.getY()-10), 20, 20);
 		g.setColor(Color.black); 
-		//g.drawString(name,(int)(posTodraw.getX()-20), (int)(posTodraw.getY()-20));
+		g.drawString(name,(int)(posTodraw.getX()-20), (int)(posTodraw.getY()-20));
 	}
 	
 	public void setPosToDraw(Vector v)

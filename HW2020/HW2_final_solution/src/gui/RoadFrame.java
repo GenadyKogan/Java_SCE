@@ -224,24 +224,25 @@ public class RoadFrame extends JFrame  implements ActionListener {
 						System.exit(0);
 						break;
 					case 4:
-						
+						System.out.println("Info");
 
-		                if (roadSystem.isInfoflag() == true){
-		                	roadSystem.setInfoflag(false);
+		                //if (roadSystem.isInfoflag() == true){
+		                	//roadSystem.setInfoflag(false);
 
 		                	//roadSystem.getTable().setVisible(false);
 		                    System.out.println("111111111");
 		                    JPanel table= new JPanel();
 		                    table.add(roadSystem.getTable());
 		                    table.setVisible(true);
+		                    
 		                  //  roadSystem.getMap().setVisible(true);
 		                  /*  JPanel table= new JPanel();
 		                    table.add(roadSystem.getTable());
 		                    table.setVisible(true);*/
 
 
-		                }
-		                else{
+		               // }
+		                /*else{
 		                    roadSystem.setInfoflag(true);
 		                    roadSystem.setTable(new InfoTable( roadSystem.getVehicles()));
 		                 //   roadSystem.getTable().setVisible(true);
@@ -256,7 +257,7 @@ public class RoadFrame extends JFrame  implements ActionListener {
 		               //     roadSystem.getMap().setVisible(false);
 		                    //sysojh
 		   
-		                }
+		                }*/
 						break;
 				}
 			}
