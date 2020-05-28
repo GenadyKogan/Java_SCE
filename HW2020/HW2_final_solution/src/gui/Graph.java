@@ -19,7 +19,7 @@ public class Graph extends JPanel
 	public String[] Nodename = new String[] {}; 
 	private Driving drive;
 	ArrayList<Node> all = new ArrayList<Node>();
-	ArrayList<Edge> edges = new ArrayList<Edge>();
+	//ArrayList<Edge> edges = new ArrayList<Edge>();
 	
 	public void GenerateGraph(int n,int vech)
 	{
@@ -43,10 +43,10 @@ public class Graph extends JPanel
 
 			}
 		}
-//		for(int i=0;i< Nodename.length;i++)
-//		{ 
-//			Nodename[i]= "" + (char)(65+i);
-//		}
+		for(int i=0;i< Nodename.length;i++)
+		{ 
+			Nodename[i]= "" + (char)(65+i);
+		}
 	}
 	
 	/*public void GenerateGraph2()
@@ -77,31 +77,31 @@ public class Graph extends JPanel
 		GenerateGraph(jun,vech);
 		//GenerateGraph2();
 		all = new ArrayList<Node>();
-		edges =new ArrayList<Edge>();
+		//edges =new ArrayList<Edge>();
 		
 		for(int i=0;i< Nodename.length;i++)
 		{
 			all.add(new Node(drive, i));
 			all.get(i).name = Nodename[i]; 
-			all.get(i).Adj= new ArrayList<Edge>();
+			//all.get(i).Adj= new ArrayList<Edge>();
 		}
 		
-		for(int i=0;i< Nodename.length;i++)
-		{ 
-			for(int j=i+1;j< Nodename.length;j++)
-			{ 
-				if(inputTable[i][j] != 0)
-				{
-					Edge e = new Edge();
-					e.a = all.get(i);
-					e.b = all.get(j);
-					e.length = inputTable[i][j] ;
-					edges.add(e);
-					all.get(i).Adj.add(e);
-					all.get(j).Adj.add(e); 
-				}
-			}
-		}
+//		for(int i=0;i< Nodename.length;i++)
+//		{ 
+//			for(int j=i+1;j< Nodename.length;j++)
+//			{ 
+//				if(inputTable[i][j] != 0)
+//				{
+//					//Edge e = new Edge();
+//					//e.a = all.get(i);
+//					//e.b = all.get(j);
+//					//e.length = inputTable[i][j] ;
+//					//edges.add(e);
+//					//all.get(i).Adj.add(e);
+//					//all.get(j).Adj.add(e); 
+//				}
+//			}
+//		}
 	}
 	
 	
@@ -196,10 +196,10 @@ public class Graph extends JPanel
 		{
 			all.get(j).Draw(g);
 		}
-		for(int j=0;j< edges.size();j++)
-		{
-			edges.get(j).Draw(g);
-		}
+//		for(int j=0;j< edges.size();j++)
+//		{
+//			edges.get(j).Draw(g);
+//		}
 	}
 /*	public static void main(String[] args)
 	{
@@ -259,7 +259,7 @@ public class Graph extends JPanel
 		{
 			 Vector vv = all.get(j).pos;
 
-			 vv= vv.Mul(300.0 / length);
+			 
 
 			 vv= vv.Mul(1000.0 / length);
 

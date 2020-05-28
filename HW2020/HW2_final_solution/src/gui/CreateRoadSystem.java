@@ -36,7 +36,7 @@ public class CreateRoadSystem extends JFrame implements ActionListener {
 	private JPanel panel, tempPanel;
 	private JButton jbnButtons[];
 	private static final String[] jbnButtonsItems = { "Ok","Cancel"};
-	Driving d= new Driving(3,0);
+	
 	Hashtable<Integer, JLabel> position = new Hashtable<Integer, JLabel>();
 	private int valueJunctions;
 	
