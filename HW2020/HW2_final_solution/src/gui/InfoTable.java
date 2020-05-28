@@ -21,7 +21,7 @@ public class InfoTable extends JFrame{
     public InfoTable(ArrayList<Vehicle> vehicles){
         String[][] rec2 = new String[vehicles.size()][5];
         for (int i=0; i<vehicles.size();i++) {
-
+////
             rec2[i][0]= String.valueOf(vehicles.get(i).getId());
             rec2[i][1] = vehicles.get(i).getVehicleType().toString();
             rec2[i][2] = vehicles.get(i).getLastRoad().toString();
