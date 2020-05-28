@@ -254,7 +254,7 @@ public class RoadFrame extends JFrame  implements ActionListener {
 		        		//	this.setTopPanel(roadSystem.getTable());
 					     //   this.getMainPanel().setTopComponent(this.getTopPanel());
 		               //     roadSystem.getMap().setVisible(false);
-		                    
+		                    //sysojh
 		   
 		                }
 						break;
