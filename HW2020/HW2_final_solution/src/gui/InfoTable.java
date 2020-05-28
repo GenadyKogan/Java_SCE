@@ -16,10 +16,9 @@ import javax.swing.border.TitledBorder;
 import java.util.ArrayList;
 
 
-public class InfoTable extends JPanel{
+public class InfoTable extends JFrame{
 
     public InfoTable(ArrayList<Vehicle> vehicles){
-        this.setBorder(BorderFactory.createTitledBorder( BorderFactory.createEtchedBorder()));
         String[][] rec2 = new String[vehicles.size()][5];
         for (int i=0; i<vehicles.size();i++) {
 
@@ -37,6 +36,5 @@ public class InfoTable extends JPanel{
 
     }
 
-	
 
 }
