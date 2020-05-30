@@ -38,6 +38,7 @@ public class Vehicle implements Utilities, Timer {
 		currentRoute=new Route(currentLocation, this); //creates a new route for the vehicle and checks it in
 		lastRoad=currentLocation;
 		status=null;
+		
 	}
 	
 	
@@ -218,6 +219,7 @@ public class Vehicle implements Utilities, Timer {
 		timeFromRouteStart++;
 		timeOnCurrentPart++;
 		move();
+
 	}
 	
 	/**controls the vehicle moving from one route part to the next one
@@ -263,6 +265,8 @@ public class Vehicle implements Utilities, Timer {
 	public static void setObjectsCount(int objectsCount) {
 		Vehicle.objectsCount = objectsCount;
 	}
-	
+
+
+
 	
 }

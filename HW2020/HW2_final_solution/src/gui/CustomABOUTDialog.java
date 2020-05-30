@@ -17,7 +17,13 @@ import javax.swing.JTextArea;
 
 public class CustomABOUTDialog extends JDialog implements ActionListener {
 	JButton jbnOk;
-
+/**
+ * constructor
+ * @param parent
+ * @param title
+ * @param modal
+ * Create a frame of help
+ */
 	CustomABOUTDialog(JFrame parent, String title, boolean modal){
 		super(parent, title, modal);
 		setBackground(Color.black);
@@ -59,7 +65,9 @@ public class CustomABOUTDialog extends JDialog implements ActionListener {
 
 		pack();
 	}
-
+/**
+ * @param e - type ActionEvent
+ */
 	public void actionPerformed(ActionEvent e)
 	{
 		if(e.getSource() == jbnOk)	{

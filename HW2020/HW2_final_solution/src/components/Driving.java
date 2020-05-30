@@ -33,8 +33,9 @@ public class Driving implements Utilities, Timer{
 		
 		while(vehicles.size()<numOfVehicles) {
 			Road temp=map.getRoads().get(getRandomInt(0,map.getRoads().size()));//random road from the map
-			if( temp.getEnabled())
+			if( temp.getEnabled()) {
 				vehicles.add(new Vehicle(temp));
+			}	
 		}
 		
 		allTimedElements.addAll(vehicles);
@@ -93,6 +94,7 @@ public class Driving implements Utilities, Timer{
 	 */
 	public ArrayList<Timer> getAllTimedElements() {
 		return allTimedElements;
+		
 	}
 
 	/**
@@ -100,6 +102,7 @@ public class Driving implements Utilities, Timer{
 	 */
 	public void setAllTimedElements(ArrayList<Timer> allTimedElements) {
 		this.allTimedElements = allTimedElements;
+
 	}
 
 	/**method runs the game for given quantity of turns
@@ -130,6 +133,8 @@ public class Driving implements Utilities, Timer{
 		return "Driving [map=" + map + ", vehicles=" + vehicles + ", drivingTime=" + drivingTime + ", allTimedElements="
 				+ allTimedElements + "]";
 	}
+
+
 
 
 	
