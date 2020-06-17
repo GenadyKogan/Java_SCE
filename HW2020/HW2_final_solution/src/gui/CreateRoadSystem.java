@@ -33,12 +33,12 @@ import components.Map;
 import components.Road;
 import components.TrafficLights;
 import components.Vehicle;
-<<<<<<< HEAD
+
 public class CreateRoadSystem extends JFrame implements ActionListener, Runnable{
 	 // frame 
-=======
+
 public class CreateRoadSystem extends JFrame implements ActionListener {
->>>>>>> branch 'master' of https://github.com/GenadyKogan/Java_SCE.git
+
     private JFrame frame, tempFrame; 
     private JSlider jSliderVehicles, jSliderJunctions; 
     private JLabel lableVehicles, lableJunctions;
@@ -412,14 +412,14 @@ public class CreateRoadSystem extends JFrame implements ActionListener {
 	public static void setTable(InfoTable table) {
 		CreateRoadSystem.table = table;
 	}
-<<<<<<< HEAD
+
 
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
 		
 	}
-=======
+
 	/**
 	 * 
 	 * @return info - type boolean
@@ -436,7 +436,7 @@ public class CreateRoadSystem extends JFrame implements ActionListener {
 	}
 
 
->>>>>>> branch 'master' of https://github.com/GenadyKogan/Java_SCE.git
+
     
     
 /********************************************************************************/
