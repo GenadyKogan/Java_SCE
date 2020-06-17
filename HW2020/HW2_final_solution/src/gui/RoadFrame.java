@@ -36,39 +36,34 @@ public class RoadFrame extends JFrame  implements ActionListener {
 	private static final String[] jbnButtonsItems1 = { "Create read system","Start","Stop","Resume","info"};
 	private static int valJuncSlider;
 	private int valueJunctions;
-	
-	
-	
-    private static InfoTable table;
-	/*************************************************************/
+	private static InfoTable table;
+	/*********************/
+/**
+ * defective constructor 
+ */
 	public RoadFrame () 
 	{
 		jmenuFile = new JMenu("File");
 		jmenuFile.setFont(f121);
 		jmenuFile.setMnemonic(KeyEvent.VK_H);
+		
 		jmenuitemExit = new JMenuItem("Exit");
 		jmenuitemExit.setFont(f12);
 		jmenuFile.add(jmenuitemExit);
+		
 		jmenuBackGround = new JMenu("BackGround");
 		jmenuBackGround.setFont(f121);
 		jmenuBackGround.setMnemonic(KeyEvent.VK_H);
+		
 		jmenuitemBlue=new JMenuItem("Blue");
 		jmenuitemNone=new JMenuItem("None");
 		jmenuBackGround.add(jmenuitemBlue);
 		jmenuBackGround.add(jmenuitemNone);
-
-	
-//	      for (String btnText : backGround) {
-
-//	    	  jmenuBackGround.add(btnText);
-
-//		  }
+		
 		jmenuVehiclesColor = new JMenu("VehiclesColor");
 		jmenuVehiclesColor.setFont(f121);
 		jmenuVehiclesColor.setMnemonic(KeyEvent.VK_H);
-		/*for (String btnText : vehiclesColor) {
-	    	  jmenuVehiclesColor.add(btnText);
-		  }*/
+	
 		jmBlue=new JMenuItem("Blue");
 		jmMagenta=new JMenuItem("Magenta");
 		jmOrange=new JMenuItem("Orange");
@@ -133,10 +128,6 @@ public class RoadFrame extends JFrame  implements ActionListener {
 		jmOrange.addActionListener(this);
 		jmRandom.addActionListener(this);
 
-		
-		
-	//  addActionListener
-
 		addWindowListener(new WindowAdapter() {
 				public void windowClosed(WindowEvent e)
 				{
@@ -146,7 +137,10 @@ public class RoadFrame extends JFrame  implements ActionListener {
 		);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}	
-//
+
+	/**
+	 * @param e - type ActionEvent
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
         CreateRoadSystem roadSystem = new CreateRoadSystem();
@@ -167,26 +161,26 @@ public class RoadFrame extends JFrame  implements ActionListener {
 		}
 		else if(e.getSource()==jmBlue) {
             Color tempclr  = new Color(0, 0, 255);
-            roadSystem.getMap().setColor(tempclr);
-            roadSystem.getMap().repaint();
+            roadSystem.getGui().setColor(tempclr);
+            roadSystem.getGui().repaint();
 
 		}
 		else if(e.getSource()==this.jmMagenta) {
             Color tempclr  = new Color(255, 0, 255);
-            roadSystem.getMap().setColor(tempclr);
-            roadSystem.getMap().repaint();
+            roadSystem.getGui().setColor(tempclr);
+            roadSystem.getGui().repaint();
 	
 		}
 		else if(e.getSource()==this.jmOrange) {
             Color tempclr  = new Color(255, 200, 0);
-            roadSystem.getMap().setColor(tempclr);
-            roadSystem.getMap().repaint();
+            roadSystem.getGui().setColor(tempclr);
+            roadSystem.getGui().repaint();
 		
 		}
 		else if(e.getSource()==jmRandom) {
             Color tempclr  = new Color(0, 255, 255);
-            roadSystem.getMap().setColor(tempclr);
-            roadSystem.getMap().repaint();
+            roadSystem.getGui().setColor(tempclr);
+            roadSystem.getGui().repaint();
 		
 		}
 		for (int i=0; i<jbnButtons.length; i++)
@@ -197,45 +191,58 @@ public class RoadFrame extends JFrame  implements ActionListener {
 				
 				switch(i)
 				{
+				// create road system button
 					case 0:
-						
-
 						roadSystem.setVisible(true);
 						roadSystem.setResizable(true);
 						this.setVisible(false);
 						this.setResizable(false);
 
 						break;
+				// start button
 					case 1:
-
+						
 						roadSystem.setDrivingTime(0);
-		                for (int j=0; j<8;j++) {
+		                for (int j=0; j<10;j++) {
 
-		                	roadSystem.getMap().repaint();
+		                	roadSystem.getGui().repaint();
 		                    for(Timer element: roadSystem.getAllTimedElements()) {
 		                        element.incrementDrivingTime();
-		                        System.out.println();
-		                        roadSystem.getMap().repaint();
-
+		                        roadSystem.getGui().repaint();
+		                        
 		                    }
 
 		                }
 						break;
+				// stop button 
 					case 2:
-						System.exit(0);
+						                
+	
 						break;
+				// resume button
 					case 3:
+						
 						System.exit(0);
 						break;
+				// info button
 					case 4:
+<<<<<<< HEAD
 
 		                if (roadSystem.isInfoflag() == true){
 		                	roadSystem.setInfoflag(false);
+=======
+		                if (roadSystem.isInfo() == true){
+		                	roadSystem.setInfo(false);		
+>>>>>>> branch 'master' of https://github.com/GenadyKogan/Java_SCE.git
 		                }
 		                else{
-		                    roadSystem.setInfoflag(true);
+		                    roadSystem.setInfo(true);
+		                    roadSystem.setInfo(false);
 		                    roadSystem.setTable(new InfoTable( roadSystem.getVehicles()));
+<<<<<<< HEAD
 		                    roadSystem.setInfoflag(false);
+=======
+>>>>>>> branch 'master' of https://github.com/GenadyKogan/Java_SCE.git
 		                }
 						break;
 				}
@@ -258,35 +265,32 @@ public class RoadFrame extends JFrame  implements ActionListener {
 		road.setResizable(true);
 
 	}
+	/**
+	 * 
+	 * @return mainPanel - type JSplitPane
+	 */
 	public JSplitPane getMainPanel() {
 		return mainPanel;
 	}
-	public void setMainPanel(JSplitPane mainPanel) {
-		this.mainPanel = mainPanel;
-	}
+	/**
+	 * 
+	 * @return topPanel - type JPanel
+	 */
 	public JPanel getTopPanel() {
 		return topPanel;
 	}
+	/**
+	 * 
+	 * @param topPanel - type JPanel
+	 */
 	public void setTopPanel(JPanel topPanel) {
 		this.topPanel = topPanel;
 	}
-	public JPanel getJplMaster() {
-		return jplMaster;
-	}
-	public void setJplMaster(JPanel jplMaster) {
-		this.jplMaster = jplMaster;
-	}
-	public int getValueJunctions() {
-		return valueJunctions;
-	}
-	public void setValueJunctions(int valueJunctions) {
-		this.valueJunctions = valueJunctions;
-	}
+
+
+
 
 
 	
 
 }
-
-
-

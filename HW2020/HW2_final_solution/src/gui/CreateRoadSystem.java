@@ -15,6 +15,8 @@ import utilities.Timer;
 import javax.swing.*; 
 ///
 import java.awt.geom.Ellipse2D;
+import java.io.IOException;
+import java.nio.CharBuffer;
 
 import javax.swing.*;
 
@@ -31,31 +33,29 @@ import components.Map;
 import components.Road;
 import components.TrafficLights;
 import components.Vehicle;
+<<<<<<< HEAD
 public class CreateRoadSystem extends JFrame implements ActionListener, Runnable{
 	 // frame 
+=======
+public class CreateRoadSystem extends JFrame implements ActionListener {
+>>>>>>> branch 'master' of https://github.com/GenadyKogan/Java_SCE.git
     private JFrame frame, tempFrame; 
-    // slider 
     private JSlider jSliderVehicles, jSliderJunctions; 
-    // label 
     private JLabel lableVehicles, lableJunctions;
 	private JPanel panel, tempPanel;
 	private JButton jbnButtons[];
 	private static final String[] jbnButtonsItems = { "Ok","Cancel"};
-
 	Hashtable<Integer, JLabel> position = new Hashtable<Integer, JLabel>();
-	private int valueJunctions;
-	
-	private int valueVehicles;
-	// main class 
-	
-	
-    private static InfoTable table;
-    private static int drivingTime;
+	private static int valueJunctions;
+	private static int valueVehicles;	
+    private  static ArrayList<Vehicle> vehicles;
+    private  static boolean info = false;
+    private static  graphGui gui;
+    private  static InfoTable table;
+    private  static int drivingTime;
     private static ArrayList<Timer> allTimedElements;
-    private static Map drivermap;
-    private static ArrayList<Vehicle> vehicles;
-    private static boolean infoflag = false;
-    private static graphGui map;
+    private  static Map drivermap;
+    Hashtable<Integer, JLabel> position2 = new Hashtable<Integer, JLabel>();
     public CreateRoadSystem() 
     { 
 
@@ -129,7 +129,6 @@ public class CreateRoadSystem extends JFrame implements ActionListener, Runnable
         lableVehicles.setText("Numbers of vehicles");
     
         // Add positions label in the slider
-	    Hashtable<Integer, JLabel> position2 = new Hashtable<Integer, JLabel>();
 	    for(int i=0,index=0;i<=50;i++)
 	    {
 	    	position2.put(index, new JLabel(""+index));
@@ -202,6 +201,9 @@ public class CreateRoadSystem extends JFrame implements ActionListener, Runnable
 		roadSystem.setVisible(true);
 	//	roadSystem.setResizable(true);
     }*/
+/**
+ * @param e - type ActionEvent
+ */
    	@Override
 	public void actionPerformed(ActionEvent e) {
 		for (int i=0; i<jbnButtons.length; i++)
@@ -216,50 +218,48 @@ public class CreateRoadSystem extends JFrame implements ActionListener, Runnable
 				
 				switch(i)
 				{
+				// OK button
 					case 0:
-
 
 			        	drivermap =new Map(this.getValueJunctions());
 			        	vehicles=new ArrayList<Vehicle>();
 
 		                while(vehicles.size()<getValueVehicles()) {
 		                    Road temp=drivermap.getRoads().get(getRandomInt(0,drivermap.getRoads().size()));//random road from the map
-		                    if( temp.getEnabled())
+		                    if( temp.getEnabled()) {
 		                        vehicles.add(new Vehicle(temp));
+		                        
+		                    }
 		                }
-		                
 		                allTimedElements=new ArrayList<Timer>();
 		                allTimedElements.addAll(vehicles);
-
+		              
 		                for (TrafficLights light: drivermap.getLights()) {
 		                    if (light.getTrafficLightsOn()) {
 		                        allTimedElements.add(light);
 		                    }
 		                }
 
-		                map = new graphGui(drivermap.getJunctions(),vehicles);
+		                this.gui = new graphGui(drivermap.getJunctions(),vehicles);
 		                for (int j = 0;j<drivermap.getJunctions().size();j++){
 		          
 
 		                    System.out.println("Junc number "+ j + "X and Y:");
-
+		    	       
 		                    System.out.println(drivermap.getJunctions().get(j).getX());
 		                    System.out.println(drivermap.getJunctions().get(j).getY());
 		                
 		                }
 		                
 
-		            //    table = new InfoTable(vehicles);
-		             //   table.setVisible(false);
-		             
-		                
-		    			road.setTopPanel(map);
+
+		    			road.setTopPanel(this.gui);
 				        road.getMainPanel().setTopComponent(road.getTopPanel());
 				        road.setResizable(true);
 				        road.setVisible(true);
 
-
 						break;
+						// Cancel button
 					case 1:
 		                this.setVisible(false);
 		            	this.setResizable(false);
@@ -273,109 +273,170 @@ public class CreateRoadSystem extends JFrame implements ActionListener, Runnable
 	}
 
 
-public void setjSliderVehicles(JSlider jSliderVehicles) {
-		this.jSliderVehicles = jSliderVehicles;
-	}
-
 /********************************************************************************/
-
+/**
+ * 
+ * @return jSliderJunctions - type JSlider
+ */
     public JSlider getjSliderJunctions() {
 		return jSliderJunctions;
 	}
 
+    /**
+     * 
+     * @return jSliderVehicles - type JSlider
+     */
 	public JSlider getjSliderVehicles() {
 		return jSliderVehicles;
 	}
 
-	public JLabel getLableVehicles() {
-		return lableVehicles;
-	}
-
-	public JLabel getLableJunctions() {
-		return lableJunctions;
-	}
-
+	/**
+	 * 
+	 * @return valueJunctions - type int
+	 */
 	public int getValueJunctions() {
 		return valueJunctions;
 	}
 
+	/**
+	 * 
+	 * @param valueJunctions - type int
+	 */
 	public void setValueJunctions(int valueJunctions) {
 		this.valueJunctions = valueJunctions;
 	}
-
+	/**
+	 * 
+	 * @return valueVehicles - type int
+	 */
 	public int getValueVehicles() {
 		return valueVehicles;
 	}
-
+	/**
+	 * 
+	 * @param valueVehicles - type int
+	 */
 	public void setValueVehicles(int valueVehicles) {
 		this.valueVehicles = valueVehicles;
 	}
-
+	/**
+	 * 
+	 * @param minimum
+	 * @param maximum
+	 * @return int value
+	 */
     private static int getRandomInt(int minimum, int maximum) {
         return new Random().nextInt(maximum-minimum)+minimum;
     }
-
-	public static int getDrivingTime() {
+	/**
+	 * 
+	 * @return drivingTime - type int
+	 */
+	public int getDrivingTime() {
 		return drivingTime;
 	}
-
+	/**
+	 * 
+	 * @param drivingTime - type int
+	 */
 	public static void setDrivingTime(int drivingTime) {
 		CreateRoadSystem.drivingTime = drivingTime;
 	}
-
+	/**
+	 * 
+	 * @return allTimedElements - type ArrayList<Timer>
+	 */
 	public static ArrayList<Timer> getAllTimedElements() {
 		return allTimedElements;
 	}
-
+/**
+ * 
+ * @param allTimedElements
+ */
 	public static void setAllTimedElements(ArrayList<Timer> allTimedElements) {
 		CreateRoadSystem.allTimedElements = allTimedElements;
 	}
-
-	public static Map getDrivermap() {
+/**
+ * 
+ * @return drivermap - type Map
+ */
+	public static  Map getDrivermap() {
 		return drivermap;
 	}
-
+/**
+ * 
+ * @param drivermap - type Map
+ */
 	public static void setDrivermap(Map drivermap) {
 		CreateRoadSystem.drivermap = drivermap;
 	}
-
+	/**
+	 * 
+	 * @return vehicles - type ArrayList<Vehicle>
+	 */
 	public static ArrayList<Vehicle> getVehicles() {
 		return vehicles;
 	}
-
+	/**
+	 * 
+	 * @param vehicles - type ArrayList<Vehicle>
+	 */
 	public static void setVehicles(ArrayList<Vehicle> vehicles) {
 		CreateRoadSystem.vehicles = vehicles;
 	}
-
-	public static boolean isInfoflag() {
-		return infoflag;
+	/**
+	 * 
+	 * @return gui - type getGui
+	 */
+	public static graphGui getGui() {
+		return gui;
 	}
-
-	public static void setInfoflag(boolean infoflag) {
-		CreateRoadSystem.infoflag = infoflag;
+	/**
+	 * 
+	 * @param gui - type gui
+	 */
+	public static void setGui(graphGui gui) {
+		CreateRoadSystem.gui = gui;
 	}
-
-	public static graphGui getMap() {
-		return map;
-	}
-
-	public static void setMap(graphGui map) {
-		CreateRoadSystem.map = map;
-	}
-
+	/**
+	 * 
+	 * @return table - type InfoTable
+	 */
 	public static InfoTable getTable() {
 		return table;
 	}
-
+	/**
+	 * 
+	 * @param table - type InfoTable
+	 */
 	public static void setTable(InfoTable table) {
 		CreateRoadSystem.table = table;
 	}
+<<<<<<< HEAD
 
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
 		
 	}
+=======
+	/**
+	 * 
+	 * @return info - type boolean
+	 */
+	public static boolean isInfo() {
+		return info;
+	}
+	/**
+	 * 
+	 * @param info - type boolean
+	 */
+	public static void setInfo(boolean info) {
+		CreateRoadSystem.info = info;
+	}
+
+
+>>>>>>> branch 'master' of https://github.com/GenadyKogan/Java_SCE.git
     
     
 /********************************************************************************/

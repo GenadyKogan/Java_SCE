@@ -8,30 +8,34 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class graphGui extends JPanel {
+public class graphGui extends JPanel{
 
-	 private ArrayList<Junction> junctions;
-	    Color clr1;
+		private ArrayList<Junction> junctions;
+		private Color color;
 	    private  ArrayList<Vehicle> vehicles;
+	/**
+	 * Constructor  class graphGui
+	 * @param junctions
+	 * @param vehicles
+	 */
+	    public graphGui(ArrayList<Junction> junctions,ArrayList<Vehicle> vehicles){
 
-	    public graphGui(ArrayList<Junction> junctions2,ArrayList<Vehicle> vehicles2){
-
-	        junctions = junctions2;
-	        vehicles = vehicles2;
-	        clr1  = new Color(0, 0, 255);
-	        for (int i = 0;i<junctions.size();i++){
-
-	            System.out.println("Junc TTTTTTTTTTTTTTTTnumber "+ i + "X and Y:");
-
-	            System.out.println(junctions.get(i).getX());
-	            System.out.println(junctions.get(i).getY());
-
-	            System.out.println("\n\n");
-
-	        }
-
+	        this.junctions = junctions;
+	        color  = new Color(0, 0, 255);
+	        this.vehicles = vehicles;
 	    }
-	    
+	/**
+	 * The function that creates the vehicle at a particular place on the road    
+	 * @param g
+	 * @param x1
+	 * @param y1
+	 * @param x2
+	 * @param y2
+	 * @param d
+	 * @param h
+	 * @param clr1
+	 * @param clr2
+	 */
 	    private void drawRotetedVehicle(Graphics g, int x1, int y1, int x2, int y2, int d, int h , Color clr1  , Color clr2 ){
 	        int dx = x2 - x1, dy = y2 - y1, delta = 10;
 	        double D = Math.sqrt(dx*dx + dy*dy);
@@ -57,73 +61,53 @@ public class graphGui extends JPanel {
 	        g.fillOval((int) xm1-2,(int) ym1-2,4,4);
 	        g.fillOval((int) xn1-2,(int) yn1-2,4,4);
 	        g.fillOval((int) xm-2,(int) ym-2,4,4);
-	        g.fillOval((int) xn-2,(int) yn-2,4,4);
+	        g.fillOval((int) xn-2,(int) yn-2,4,4); 
 	        g.setColor(clr2);
 
 	    }
-
-
-
-	    public void setColor (Color clr){
-
-	        clr1 = clr;
-
-
-
-
-	    }
 	    
+/**
+ * @param g - type Graphics 
+ */
 	    public void paintComponent(Graphics g)  {
 	        super.paintComponent(g);
-
-
-
-
-
 	        for (int i = 0;i<junctions.size();i++){
-
-
 	            if (junctions.get(i) instanceof LightedJunction){
-
-	                if(((LightedJunction) junctions.get(i)).getLights().getTrafficLightsOn()==true){
+	                if(((LightedJunction) junctions.get(i)).getLights().getTrafficLightsOn()==true)
 	                    g.setColor(Color.GREEN);
-	                }else{
+	                else
 	                    g.setColor(Color.red);
-	                }
-
 	            }
-	            else{
+	            else
 	                g.setColor(Color.black);
-	            }
-
-
-
-
-
-
-
-
 	            g.fillOval((int) (junctions.get(i).getX()), (int) (junctions.get(i).getY()), 30, 30);
-
-
 	            for (int j = 0;j<junctions.size();j++) {
-
 	                g.setColor(Color.BLACK);
-
 	                g.drawLine((int) (junctions.get(i).getX() + 20 / 2), (int) (junctions.get(i).getY() + 20 / 2), (int) (junctions.get(j).getX() + 20 / 2), (int) (junctions.get(j).getY() + 20 / 2));
-
-
 	            }
-
 	        }
 
 	        for(int i = 0;i<vehicles.size();i++) {
+	           drawRotetedVehicle(g,(int) (vehicles.get(i).getLastRoad().getStartJunction().getX()), (int) (vehicles.get(i).getLastRoad().getStartJunction().getY()), (int) (vehicles.get(i).getLastRoad().getEndJunction().getX()), (int) (vehicles.get(i).getLastRoad().getEndJunction().getY()),  10, 4,this.color,this.color);
 
-
-	            drawRotetedVehicle(g,(int) (vehicles.get(i).getLastRoad().getStartJunction().getX()), (int) (vehicles.get(i).getLastRoad().getStartJunction().getY()), (int) (vehicles.get(i).getLastRoad().getEndJunction().getX()), (int) (vehicles.get(i).getLastRoad().getEndJunction().getY()),  10, 4,clr1,clr1);
 	        }
-
-
-
 	    }
+	/**
+	 * 	    
+	 * @param color - type Color
+	 * @return nothing
+	 */
+		public void setColor (Color color){
+	        this.color = color;
+	    }
+	/**
+	 * @param color nothing
+	 * @return color - type Color
+	 */
+	    public Color getColor() {
+			return color;
+		}
+	    
+	    
+
 }
