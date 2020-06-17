@@ -31,7 +31,7 @@ import components.Map;
 import components.Road;
 import components.TrafficLights;
 import components.Vehicle;
-public class CreateRoadSystem extends JFrame implements ActionListener {
+public class CreateRoadSystem extends JFrame implements ActionListener, Runnable{
 	 // frame 
     private JFrame frame, tempFrame; 
     // slider 
@@ -369,6 +369,12 @@ public void setjSliderVehicles(JSlider jSliderVehicles) {
 
 	public static void setTable(InfoTable table) {
 		CreateRoadSystem.table = table;
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
 	}
     
     
