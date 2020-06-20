@@ -1,6 +1,7 @@
 public class AbstractFactoryPatternDemo { 
 	   public static void main(String[] args) { 
 		      //get shape factory 
+		   	//FactoryProducer aa =new FactoryProducer();
 		      AbstractFactory shapeFactory = FactoryProducer.getFactory("SHAPE"); 
 		 //
 		      //get an object of Shape Circle 
